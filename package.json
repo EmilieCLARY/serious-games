@@ -1,0 +1,24 @@
+{
+  "name": "serious-games",
+  "version": "1.0.0",
+  "description": "CIR 2 Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmilieCLARY/serious-games.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmilieCLARY/serious-games/issues"
+  },
+  "homepage": "https://github.com/EmilieCLARY/serious-games#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "phaser": "^3.55.2",
+    "socket.io": "^4.4.1"
+  }
+}
