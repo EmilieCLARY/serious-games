@@ -18,9 +18,13 @@ var config = {
 var game = new Phaser.Game(config);
 
 var cursor;
+var upKey;
+var downKey;
 var ship;
 var turtle;
 
+var rope;
+var handle;
 
 function preload ()
 {
@@ -34,6 +38,8 @@ function preload ()
 function create ()
 {
     cursor = this.input.keyboard.createCursorKeys();
+    //upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+    //downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
 
     this.add.sprite(600, -100, 'sky');
     var backgroundImage = this.add.sprite(600,500, 'background');
@@ -66,7 +72,8 @@ function create ()
     // Je pense qu'il faut faire un constructeur (comme au dessus mais j'ai une erreur) à la manière des avions différenciables pour le projet
 
 
-
+    //handle = this.add.sprite(ship.x, ship.y - 100, 'point');
+    //rope = new Phaser.Line(ship.x, ship.y, handle.x, handle.y);
 }
 
 function update ()
@@ -82,6 +89,16 @@ function update ()
     if(cursor.left.isUp && cursor.right.isUp){
         ship.setVelocityX(0);
     }
+
+    //if(upKey.isDown){
+    //    handle.setVelocityY(100);
+    //}
+    //if(downKey.isDown){
+    //    handle.setVelocityY(-100);
+    //}
+    //if(upKey.isUp && downKey.isUp){
+    //    handle.setVelocityY(0);
+    //}
     
     if(turtle.x >= 1159){
         turtle.setVelocityX(-100);
