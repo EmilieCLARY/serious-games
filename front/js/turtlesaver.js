@@ -90,8 +90,9 @@ function create ()
             turtle.setVelocityX(100);
             turtle.setFlip(true, false);
         }
-    
+        //game.physics.arcade.enable(turtle);
         tabTurtle[i] = turtle;
+
     }
 
 
@@ -128,6 +129,8 @@ function create ()
                 masque.setAngularVelocity(-vitesseSpin);
             }
 
+            //game.physics.arcade.enable(masque);
+
             masque.body.collideWorldBounds = true;
 
             tabDechet[i] = masque;
@@ -149,6 +152,8 @@ function create ()
                 bouteille.setAngularVelocity(-vitesseSpin);
             }
 
+            //game.physics.arcade.enable(bouteille);
+
             tabDechet[i] = bouteille;
 
             bouteille.body.collideWorldBounds = true;
@@ -168,6 +173,8 @@ function create ()
             else{
                 sacPlastique.setAngularVelocity(-vitesseSpin);
             }
+
+            //game.physics.arcade.enable(sacPlastique);
 
             tabDechet[i] = sacPlastique;
 
@@ -191,7 +198,8 @@ function create ()
     rope = new Phaser.Geom.Line(handle2.x - 2, handle2.y, handle.x - 2, handle.y - 12);
     graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x000000 } });
     graphics.strokeLineShape(rope);
-    
+
+    //game.physics.arcade.enable(handle);
 }
 
 function update ()
@@ -284,5 +292,16 @@ function update ()
             tabTurtle[i].setFlip(true, false);
         }
     }
+
+    //for(let i = 0; i < tabDechet.length; i++){
+    //        /*collision = this.game.physics.arcade.collide(
+    //            tabDechet[i],
+    //            handle,
+    //            console.log("touché"),
+    //          );*/
+    //        game.physics.arcade.collide(handle, tabDechet[i])
+//
+    //}
+
 }
 
