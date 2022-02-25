@@ -104,7 +104,7 @@ function create ()
     let positionYDechets = 260;
     let typeDechets = 0;
 
-    for(let i = 0; i < 8; i++){
+    for(let i = 0; i < 7; i++){
         
         let positionXDechets = Phaser.Math.Between(1, this.game.config.width-50);
 
@@ -269,7 +269,6 @@ function update ()
     /* --  Contrôle des tortues --  */
     /*                              */
     /********************************/
-
 
     
     for(let i = 0; i < tabTurtle.length; i++){
