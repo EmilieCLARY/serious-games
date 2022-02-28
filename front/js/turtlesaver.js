@@ -25,6 +25,7 @@ var turtle;
 var bouteille;
 var masque;
 var sacPlastique;
+var dechetGrappiné = null;
 
 var rope;
 var handle;
@@ -212,10 +213,10 @@ function create ()
     /********************************/
 
     handle = this.physics.add.sprite(ship.x, ship.y + 60, 'grappin');
-    handle.setBodySize(400, 250);
+    handle.setBodySize(400, 200);
     handle2 = this.physics.add.sprite(ship.x, ship.y + 20);
     handle.setScale(0.08);
-    handle.body.setOffset(50, 250);
+    handle.body.setOffset(70, 270);
     handle.body.collideWorldBounds = true;
     rope = new Phaser.Geom.Line(handle2.x - 2, handle2.y, handle.x - 2, handle.y - 12);
     graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x000000 } });
@@ -224,7 +225,7 @@ function create ()
 
     /********************************/
     /*                              */
-    /* --  Contrôle des collisions --  */
+    /* -- Contrôle des collisions --*/
     /*                              */
     /********************************/
 
@@ -243,8 +244,13 @@ function create ()
     }
     for(let j = 0; j < tabDechet.length; j++){
         this.physics.add.overlap(handle, tabDechet[j], function(){
-            tabDechet[j].destroy();
+            if(dechetGrappiné == null) dechetGrappiné = j;
         });
+        this.physics.add.overlap(ship, tabDechet[j], function(){
+            tabDechet[j].destroy();
+            dechetGrappiné = null;
+        });
+
     }
 
 }
@@ -294,6 +300,11 @@ function update ()
         rope.setTo(handle2.x - 2, handle2.y, handle.x - 2, handle.y - 12);
         graphics.clear();
         graphics.strokeLineShape(rope);
+    }
+
+    if(dechetGrappiné != null){
+        tabDechet[dechetGrappiné].setX(handle.x);
+        tabDechet[dechetGrappiné].setY(handle.y + 20);
     }
 
     /********************************/
