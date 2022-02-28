@@ -32,6 +32,7 @@ var handle2;
 var graphics;
 var player_health = 3;
 var life;
+var gameover;
 var tabTurtle = [];
 var tabDechet = [];
 
@@ -53,6 +54,8 @@ function preload ()
     this.load.image('two-life', '../img/turtle_saver/two-heart.png')
     this.load.image('one-life', '../img/turtle_saver/one-heart.png')
     this.load.image('zero-life', '../img/turtle_saver/zero-heart.png')
+
+    //this.load.image('zero-life', '../img/turtle_saver/gameover.png')
 
     this.load.bitmapFont('desyrel', '../fonts/bitmapFonts/desyrel.png', '../fonts/bitmapFonts/desyrel.xml');
 
@@ -337,23 +340,34 @@ function update ()
         }
     }
 
+
+    /********************************/
+    /*                              */
+    /*    --  Système de vie --     */
+    /*                              */
+    /********************************/
+
+    
+
     if(player_health == 2){
         life.destroy()
         life = this.physics.add.sprite(this.game.config.width - 95, 50, 'two-life');
         life.setScale(0.075);
-        life.setBodySize(2000, 1500) 
+        //life.setBodySize(2000, 1500) 
     }
     if(player_health == 1){
         life.destroy()
         life = this.physics.add.sprite(this.game.config.width - 95, 50, 'one-life');
         life.setScale(0.075);
-        life.setBodySize(2000, 1500) 
+        //life.setBodySize(2000, 1500) 
     }
     
     if(player_health == 0){
         life.destroy()
         life = this.physics.add.sprite(this.game.config.width - 95, 50, 'zero-life');
         life.setScale(0.075);
-        life.setBodySize(2000, 1500) 
+        //life.setBodySize(2000, 1500) 
+        //gameover = this.physics.add.sprite(this.game.config.width/2, this.game.config.height/2, 'gameover');
+        //gameover.setScale(0.5);
     }
 }
