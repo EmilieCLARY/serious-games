@@ -30,6 +30,8 @@ var rope;
 var handle;
 var handle2;
 var graphics;
+var player_health = 3;
+var life;
 var tabTurtle = [];
 var tabDechet = [];
 
@@ -38,11 +40,22 @@ function preload ()
     this.load.image('background', '../img/turtle_saver/background.png');
     this.load.image('sky', '../img/turtle_saver/sky.png');
     this.load.image('ship', '../img/turtle_saver/fishing-ship.png');
+
     this.load.image('turtle', '../img/turtle_saver/turtle.png');
+
     this.load.image('grappin', '../img/turtle_saver/grappin.png');
+
     this.load.image('sac-plastique', '../img/turtle_saver/pla-bag.png')
     this.load.image('bouteille', '../img/turtle_saver/bottle.png')
     this.load.image('masque', '../img/turtle_saver/face-mask.png')
+
+    this.load.image('full-life', '../img/turtle_saver/full-life.png')
+    this.load.image('two-life', '../img/turtle_saver/two-heart.png')
+    this.load.image('one-life', '../img/turtle_saver/one-heart.png')
+    this.load.image('zero-life', '../img/turtle_saver/zero-heart.png')
+
+    this.load.bitmapFont('desyrel', '../fonts/bitmapFonts/desyrel.png', '../fonts/bitmapFonts/desyrel.xml');
+
 }
 
 
@@ -205,7 +218,6 @@ function create ()
     graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x000000 } });
     graphics.strokeLineShape(rope);
 
-    //game.physics.arcade.enable(handle);
 
     /********************************/
     /*                              */
@@ -213,9 +225,17 @@ function create ()
     /*                              */
     /********************************/
 
+    life = this.physics.add.sprite(this.game.config.width - 95, 50, 'full-life');
+    life.setScale(0.075);
+    life.setBodySize(2000, 1500) 
+
     for(let i = 0; i < tabTurtle.length; i++){
+
         this.physics.add.overlap(handle, tabTurtle[i], function(){
+            
             tabTurtle[i].destroy();
+            player_health = player_health -1;
+
         });
     }
     for(let j = 0; j < tabDechet.length; j++){
@@ -223,6 +243,7 @@ function create ()
             tabDechet[j].destroy();
         });
     }
+
 }
 
 function update ()
@@ -316,14 +337,23 @@ function update ()
         }
     }
 
-    //for(let i = 0; i < tabDechet.length; i++){
-    //        /*collision = this.game.physics.arcade.collide(
-    //            tabDechet[i],
-    //            handle,
-    //            console.log("touché"),
-    //          );*/
-    //        game.physics.arcade.collide(handle, tabDechet[i])
-//
-    //}
-
+    if(player_health == 2){
+        life.destroy()
+        life = this.physics.add.sprite(this.game.config.width - 95, 50, 'two-life');
+        life.setScale(0.075);
+        life.setBodySize(2000, 1500) 
+    }
+    if(player_health == 1){
+        life.destroy()
+        life = this.physics.add.sprite(this.game.config.width - 95, 50, 'one-life');
+        life.setScale(0.075);
+        life.setBodySize(2000, 1500) 
+    }
+    
+    if(player_health == 0){
+        life.destroy()
+        life = this.physics.add.sprite(this.game.config.width - 95, 50, 'zero-life');
+        life.setScale(0.075);
+        life.setBodySize(2000, 1500) 
+    }
 }
