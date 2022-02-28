@@ -79,6 +79,8 @@ function create ()
         turtle = this.physics.add.sprite(positionX, positionY, 'turtle');
         turtle.setScale(0.025);
         turtle.setFlip(true, false);
+        turtle.setBodySize(2000, 1500)
+        //turtle.body.setOffset(20,20);
         turtle.body.collideWorldBounds = true;
         
         let random = Math.floor(Math.random() * 2);
@@ -138,6 +140,7 @@ function create ()
         }
         else if(typeDechets % 3 == 1){
             bouteille = this.physics.add.sprite(positionXDechets, positionYDechets, 'bouteille');
+            bouteille.setBodySize(300, 300)
             bouteille.setScale(0.125);
 
             let vitesse = Phaser.Math.Between(20, 75);
@@ -160,6 +163,7 @@ function create ()
         }
         else{
             sacPlastique = this.physics.add.sprite(positionXDechets, positionYDechets, 'sac-plastique');
+            sacPlastique.setBodySize(900, 900);
             sacPlastique.setScale(0.035);
 
             let vitesse = Phaser.Math.Between(20, 75);
@@ -192,14 +196,33 @@ function create ()
     /********************************/
 
     handle = this.physics.add.sprite(ship.x, ship.y + 60, 'grappin');
+    handle.setBodySize(400, 250);
     handle2 = this.physics.add.sprite(ship.x, ship.y + 20);
     handle.setScale(0.08);
+    handle.body.setOffset(50, 250);
     handle.body.collideWorldBounds = true;
     rope = new Phaser.Geom.Line(handle2.x - 2, handle2.y, handle.x - 2, handle.y - 12);
     graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x000000 } });
     graphics.strokeLineShape(rope);
 
     //game.physics.arcade.enable(handle);
+
+    /********************************/
+    /*                              */
+    /* --  Contrôle des collisions --  */
+    /*                              */
+    /********************************/
+
+    for(let i = 0; i < tabTurtle.length; i++){
+        this.physics.add.overlap(handle, tabTurtle[i], function(){
+            tabTurtle[i].destroy();
+        });
+    }
+    for(let j = 0; j < tabDechet.length; j++){
+        this.physics.add.overlap(handle, tabDechet[j], function(){
+            tabDechet[j].destroy();
+        });
+    }
 }
 
 function update ()
@@ -304,4 +327,3 @@ function update ()
     //}
 
 }
-
