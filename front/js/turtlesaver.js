@@ -34,6 +34,7 @@ var graphics;
 var player_health = 3;
 var life;
 var gameover;
+var nbrDechet;
 var tabTurtle = [];
 var tabDechet = [];
 
@@ -57,9 +58,6 @@ function preload ()
     this.load.image('zero-life', '../img/turtle_saver/zero-heart.png')
 
     //this.load.image('zero-life', '../img/turtle_saver/gameover.png')
-
-    this.load.bitmapFont('desyrel', '../fonts/bitmapFonts/desyrel.png', '../fonts/bitmapFonts/desyrel.xml');
-
 }
 
 
@@ -201,10 +199,13 @@ function create ()
 
             sacPlastique.body.collideWorldBounds = true;
         }
+        
+        nbrDechet+=1;
+        console.log(nbrDechet);
 
         typeDechets += 1;
     
-    }    
+    }
 
     /********************************/
     /*                              */
@@ -248,16 +249,15 @@ function create ()
         });
         this.physics.add.overlap(ship, tabDechet[j], function(){
             tabDechet[j].destroy();
+            nbrDechet-=1;
             dechetGrappiné = null;
         });
 
     }
-
 }
 
 function update ()
 {
-
     /**************************************/
     /*                                    */
     /* --  Contrôles Bateau + Grappin --  */
@@ -381,4 +381,40 @@ function update ()
         //gameover = this.physics.add.sprite(this.game.config.width/2, this.game.config.height/2, 'gameover');
         //gameover.setScale(0.5);
     }
+
+    // Il faut mettre un compteur de déchet restants, avec un texte ?
+
+    switch (nbrDechet) {
+        case '0':
+            // Afficher écran de fin du jeux
+            break;
+        case '1':
+
+            break;
+        case '2':
+
+            break;
+        case '3':
+
+            break;    
+            
+        case '4':
+
+            break; 
+            
+        case '5':
+
+            break;
+            
+        case '6':
+
+            break;
+        case 7:
+
+            break;            
+
+        default:
+          console.log("Oopsie, ça bug");
+      }
+      
 }
