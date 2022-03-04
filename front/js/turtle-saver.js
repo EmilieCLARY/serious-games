@@ -10,7 +10,7 @@ var config = {
     physics : {
         default : "arcade",
         arcade : {
-            debug : true,
+            //debug : true,
         }
     }
 };
@@ -20,12 +20,16 @@ var game = new Phaser.Game(config);
 var cursor;
 var upKey;
 var downKey;
+var ZQSD;
 var ship;
 var turtle;
 var bouteille;
 var masque;
 var sacPlastique;
 var dechetGrappiné = null;
+var text;
+var timeText;
+var textGAMEOVER;
 
 var rope;
 var handle;
@@ -34,7 +38,7 @@ var graphics;
 var player_health = 3;
 var life;
 var gameover;
-var nbrDechet;
+var nbrDechet = 0;
 var tabTurtle = [];
 var tabDechet = [];
 
@@ -64,6 +68,7 @@ function preload ()
 function create ()
 {
     cursor = this.input.keyboard.createCursorKeys();
+    ZQSD = this.input.keyboard.addKeys("Z,Q,S,D");
 
     this.add.sprite(600, -100, 'sky');
     var backgroundImage = this.add.sprite(600,500, 'background');
@@ -81,11 +86,11 @@ function create ()
     let compteur = 0;
     let positionY = 200;
 
-    for(let i = 0; i < 8; i++){
+    for(let i = 0; i < 10; i++){
         
         let positionX = Phaser.Math.Between(1, this.game.config.width-50);
 
-        if(compteur % 2 == 1){
+        if(compteur % 3 == 1){
             positionY = positionY + 120;
         }
 
@@ -100,11 +105,11 @@ function create ()
         
         let random = Math.floor(Math.random() * 2);
         if(random == 0){
-            turtle.setVelocityX(-100);
+            turtle.setVelocityX(-130);
             turtle.setFlip(false, false);
         }
         else {
-            turtle.setVelocityX(100);
+            turtle.setVelocityX(130);
             turtle.setFlip(true, false);
         }
         //game.physics.arcade.enable(turtle);
@@ -200,8 +205,7 @@ function create ()
             sacPlastique.body.collideWorldBounds = true;
         }
         
-        nbrDechet+=1;
-        console.log(nbrDechet);
+        nbrDechet += 1;
 
         typeDechets += 1;
     
@@ -254,9 +258,35 @@ function create ()
         });
 
     }
+
+    /********************************/
+    /*                              */
+    /* --  Texte Déchet / Timer  -- */
+    /*                              */
+    /********************************/
+
+    text = this.add.text(10, 10, "Waste :" + nbrDechet + "/10",{
+        font: "20px Arial",
+        fill : "#000000",
+        align : "center"
+    });
+
+    textTime = this.add.text(200, 10,"Time : ",{
+        font: "20px Arial",
+        fill : "#000000",
+        align : "center"
+    });
+
+    textGAMEOVER = this.add.text(this.game.config.height/2, this.game.config.width/2, "", {
+        font: "20px Arial",
+        fill : "#000000",
+        align : "center"
+    });
+
+
 }
 
-function update ()
+function update (time, delta)
 {
     /**************************************/
     /*                                    */
@@ -265,7 +295,7 @@ function update ()
     /**************************************/
 
 
-    if(cursor.left.isDown){
+    if(cursor.left.isDown || ZQSD.Q.isDown){
         ship.setVelocityX(-200);
         handle.setX(ship.x);
         handle2.setX(ship.x);
@@ -274,7 +304,7 @@ function update ()
         graphics.strokeLineShape(rope);
         ship.setFlip(false, false);
     }
-    if(cursor.right.isDown){
+    if(cursor.right.isDown || ZQSD.D.isDown){
         ship.setVelocityX(200);
         handle.setX(ship.x);
         handle2.setX(ship.x);
@@ -283,11 +313,11 @@ function update ()
         graphics.strokeLineShape(rope);
         ship.setFlip(true, false);
     }
-    if(cursor.left.isUp && cursor.right.isUp){
+    if(cursor.left.isUp && cursor.right.isUp && ZQSD.Q.isUp && ZQSD.D.isUp){
         ship.setVelocityX(0);
     }
 
-    if(cursor.up.isDown){
+    if(cursor.up.isDown || ZQSD.Z.isDown){
         if(handle.y >= ship.y + 60){
             handle.setY(handle.y - 3);
         }
@@ -295,7 +325,7 @@ function update ()
         graphics.clear();
         graphics.strokeLineShape(rope);
     }
-    if(cursor.down.isDown){
+    if(cursor.down.isDown || ZQSD.S.isDown){
         handle.setY(handle.y + 3);
         rope.setTo(handle2.x - 2, handle2.y, handle.x - 2, handle.y - 12);
         graphics.clear();
@@ -342,11 +372,13 @@ function update ()
         
         if(tabTurtle[i].x > this.game.config.width-50){
             //console.log(tabTurtle[i].x);
-            tabTurtle[i].setVelocityX(-100);
+            let vitesse = Phaser.Math.Between(100, 150);
+            tabTurtle[i].setVelocityX(-vitesse);
             tabTurtle[i].setFlip(false, false);
         }
         else if(tabTurtle[i].x < 42){
-            tabTurtle[i].setVelocityX(100);
+            let vitesse = Phaser.Math.Between(100, 150);
+            tabTurtle[i].setVelocityX(vitesse);
             tabTurtle[i].setFlip(true, false);
         }
     }
@@ -381,40 +413,40 @@ function update ()
         //gameover = this.physics.add.sprite(this.game.config.width/2, this.game.config.height/2, 'gameover');
         //gameover.setScale(0.5);
     }
+    
+    text.setText("Waste : " + nbrDechet);
+    
+    let currentTime = parseInt(time/1000)
 
-    // Il faut mettre un compteur de déchet restants, avec un texte ?
+    if(currentTime >= 120){
+        textGAMEOVER.setText("GAME OVER\nTime is over, turtles are dead because of you !");
+    }
+    else if(nbrDechet == 0){
+        textGAMEOVER.setText("You win !\n You Get all the waste");
+        
+    }else if(player_health == 0){
+        textGAMEOVER.setText("GAME OVER \n No more lifes, turtles are dead because of you !");
+    }
 
-    switch (nbrDechet) {
-        case '0':
-            // Afficher écran de fin du jeux
-            break;
-        case '1':
-
-            break;
-        case '2':
-
-            break;
-        case '3':
-
-            break;    
-            
-        case '4':
-
-            break; 
-            
-        case '5':
-
-            break;
-            
-        case '6':
-
-            break;
-        case 7:
-
-            break;            
-
-        default:
-          console.log("Oopsie, ça bug");
-      }
+    if(currentTime < 60){  
+        if(currentTime < 10){
+            textTime.setText("Time: 0:0" + currentTime);
+        } 
+        else{
+            textTime.setText("Time: 0:" + currentTime);
+        }
+    }
+    else{
+        let min = Math.floor(currentTime/60);
+        let sec = currentTime - 60*min;
+        if(sec < 10){
+            textTime.setText("Time: "+ min + ":0" + sec);
+        } 
+        else{
+            textTime.setText("Time: "+ min + ":" + sec);
+        }
+        
+    }
+      
       
 }
