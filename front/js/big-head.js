@@ -18,26 +18,26 @@ var config = {
 var game = new Phaser.Game(config);
 
 
-function preload ()
-{   //this.load.image('tiles1', '../img/big_head/scifi_platformTiles_32x32.png');
-    this.load.tilemapTiledJSON('map',"../JSON/big_head/oui.json");
-    this.load.image("tiles","../JSON/big_head/tiles1.png");
+function preload (){
+    this.load.tilemapTiledJSON('map',"../JSON/big_head/map.json");
+
+    this.load.image("tiles","../img/big_head/tiles1.png");
+
 }
 
-var map;
-var tileset;
-var layer;
+function create (){
+    const map = this.make.tilemap({ key: "map", tileWidth: 64, tileHeight: 64});
+    const tileset = map.addTilesetImage("tiles1","tiles");
+    const layer = map.createLayer("toplayer", tileset, 0, 0);
+    
+    this.cameras.main.setBounds(0, 0, 3392, 100);
+    this.physics.world.setBounds(0, 0, 3392, 240);
 
-function create ()
-{
-    map = this.make.tilemap({ key: "map", tileWidth: 32, tileHeight: 64});
-    tileset = map.addTilesetImage("tiles1","tiles");
-    layer = map.createLayer("Tile Layer 1", tileset, 0, 0);
-
+    
+    this.cameras.main.setZoom(0.0155);
 }
 
 function update (time, delta)
 {
 
-      
 }
