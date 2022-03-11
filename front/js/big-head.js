@@ -10,13 +10,14 @@ var config = {
     physics : {
         default : "arcade",
         arcade : {
-            gravity: { y: 14000 },
+            debug: true,
+            gravity: { y: 1000 },
         }
     }
 };
 
 var game = new Phaser.Game(config);
-
+var coinsCollected;
 
 function preload (){
     this.load.tilemapTiledJSON('map',"../JSON/big_head/map1.json");
@@ -24,6 +25,7 @@ function preload (){
     this.load.image("tiles","../img/big_head/tiles1.png");
     this.load.image("player","../img/big_head/player.png");
     this.load.image('spike', '../img/big_head/spike.png');
+    this.load.image("coin", "../img/big_head/item.png");
 
 }
 
@@ -37,7 +39,7 @@ function create (){
     /*                              */
     /********************************/
     
-    const map = this.make.tilemap({ key: "map", tileWidth: 64, tileHeight: 64});
+    const map = this.make.tilemap({ key: "map", tileWidth: 12000, tileHeight: 60});
     const tileset = map.addTilesetImage("tiles1","tiles");
 
 
@@ -46,10 +48,14 @@ function create (){
     /* --  Création des plateformes --  */
     /*                                  */
     /************************************/
-    
+
     const platforms = map.createLayer('plat', tileset, 0, 0);
+
+    //const items = map.createLayer('items', tileset, 0, 0);
     platforms.setCollisionByExclusion(-1, true);
 
+    //items.setTileIndexCallback(0, hitCoin, this);
+    //items.setCollisionByExclusion(-1, hitCoin, true);
 
     /********************************/
     /*                              */
@@ -57,9 +63,12 @@ function create (){
     /*                              */
     /********************************/ 
 
-    this.player = this.physics.add.image(400, 100, 'player').setAngle(90).setCollideWorldBounds(true);
+    this.player = this.physics.add.image(600, 50, 'player').setAngle(90).setCollideWorldBounds(true);
+    //this.player = this.physics.add.sprite(400, 100, 'player').setAngle(90).setBounds(0.1);
     this.player.setScale(0.15);
     this.physics.add.collider(this.player, platforms);
+
+    this.physics.add.collider(this.player, items, hitCoin);
 
     /********************************/
     /*                              */
@@ -67,8 +76,8 @@ function create (){
     /*                              */
     /********************************/
 
-    this.cameras.main.setBounds(0, 0, 3392,870);
-    this.physics.world.setBounds(0, 0, 3392, 870);
+    this.cameras.main.setBounds(0, 0, 12000, 1270);
+    this.physics.world.setBounds(0, 0, 12000, 1270);
 
     this.cameras.main.setZoom(0.7);
 
@@ -89,13 +98,14 @@ function create (){
         //name: 'Spikes'
       //});
 
+
     spike = map.getObjectLayer("Spikes")
 
     //Erreur là, à commenter pour que ça marche
-    spike.objects.forEach(spike => {
-        const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
-        spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
-    });
+    //spike.objects.forEach(spike => {
+    //    const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
+    //    spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
+    //});
 
     this.physics.add.collider(this.player, this.spikes, playerHit, null, this);
 
@@ -103,24 +113,20 @@ function create (){
 
 function update (time, delta)
 {
-    this.player.setVelocity(0);
+    this.player.setVelocityX(0);
 
     if (this.cursors.left.isDown)
     {
-        this.player.setAngle(-90).setVelocityX(-200);
+        this.player.setAngle(-90).setVelocityX(-500);
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.setAngle(90).setVelocityX(200);
+        this.player.setAngle(90).setVelocityX(500);
     }
 
-    if (this.cursors.up.isDown)
+    if ((this.cursors.up.isDown || this.cursors.space.isDown) && this.player.body.onFloor())
     {
-        this.player.setVelocityY(-200);
-    }
-    else if (this.cursors.down.isDown)
-    {
-        this.player.setVelocityY(200);
+        this.player.setVelocityY(-640);
     }
 
     if (this.cursors.left.isDown && this.player.x > 0)
@@ -134,14 +140,31 @@ function update (time, delta)
         this.player.x += 2.5;
     }
 
-    if (this.cursors.up.isDown && this.player.y > 0)
-    {
-        this.player.y -= 2.5;
-    }
-    else if (this.cursors.down.isDown && this.player.y < 240)
-    {
-        this.player.y += 2.5;
-    }
+    //if (this.cursors.up.isDown && this.player.y > 0)
+    //{
+    //    this.player.y -= 2.5;
+    //}
+    //else if (this.cursors.down.isDown && this.player.y < 240)
+    //{
+    //    this.player.y += 2.5;
+    //}
+}
+
+function collectCoin(player, coin) {
+    coin.destroy(coin.x, coin.y); // remove the tile/coin
+    coinScore ++; // increment the score
+    return false;
+}
+
+function hitCoin (sprite, tile)
+{
+    console.log("salut")
+    items.removeTileAt(tile.x, tile.y);
+    coinsCollected += 1;
+
+    // Return true to exit processing collision of this tile vs the sprite - in this case, it
+    // doesn't matter since the coin tiles are not set to collide.
+    return false;
 }
 
 function playerHit(player, spike) {
