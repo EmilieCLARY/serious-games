@@ -25,7 +25,6 @@ function preload (){
     this.load.image("tiles","../img/big_head/tiles1.png");
     this.load.image("player","../img/big_head/player.png");
     this.load.image('spike', '../img/big_head/spike.png');
-    this.load.image("coin", "../img/big_head/item.png");
 
 }
 
@@ -51,11 +50,12 @@ function create (){
 
     const platforms = map.createLayer('plat', tileset, 0, 0);
 
-    //const items = map.createLayer('items', tileset, 0, 0);
+    const items = map.createLayer('items', tileset, 0, 0);
     platforms.setCollisionByExclusion(-1, true);
 
     //items.setTileIndexCallback(0, hitCoin, this);
     //items.setCollisionByExclusion(-1, hitCoin, true);
+
 
     /********************************/
     /*                              */
@@ -148,12 +148,6 @@ function update (time, delta)
     //{
     //    this.player.y += 2.5;
     //}
-}
-
-function collectCoin(player, coin) {
-    coin.destroy(coin.x, coin.y); // remove the tile/coin
-    coinScore ++; // increment the score
-    return false;
 }
 
 function hitCoin (sprite, tile)
