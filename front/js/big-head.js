@@ -17,14 +17,19 @@ var config = {
 };
 
 var game = new Phaser.Game(config);
-var coinsCollected;
+var coinLayer;
+var coinsCollected = 0;
+
+
 
 function preload (){
     this.load.tilemapTiledJSON('map',"../JSON/big_head/map1.json");
 
     this.load.image("tiles","../img/big_head/tiles1.png");
-    this.load.image("player","../img/big_head/player.png");
+    this.load.atlas('player', '../img/big_head/player.png', '../JSON/big_head/player.json');
+
     this.load.image('spike', '../img/big_head/spike.png');
+    this.load.spritesheet('coin', '../img/big_head/coin.png', { frameWidth: 32, frameHeight: 32 });
 
 }
 
@@ -49,12 +54,16 @@ function create (){
     /************************************/
 
     const platforms = map.createLayer('plat', tileset, 0, 0);
-
-    const items = map.createLayer('items', tileset, 0, 0);
     platforms.setCollisionByExclusion(-1, true);
 
-    //items.setTileIndexCallback(0, hitCoin, this);
-    //items.setCollisionByExclusion(-1, hitCoin, true);
+    /*************************************/
+    /*                                   */
+    /* --  Création des récupérables --  */
+    /*                                   */
+    /*************************************/
+
+    var coinTiles = map.addTilesetImage('tiles1', 'tiles');
+    coinLayer = map.createLayer('items', tileset, 0, 0);
 
 
     /********************************/
@@ -65,10 +74,10 @@ function create (){
 
     this.player = this.physics.add.image(600, 50, 'player').setAngle(90).setCollideWorldBounds(true);
     //this.player = this.physics.add.sprite(400, 100, 'player').setAngle(90).setBounds(0.1);
-    this.player.setScale(0.15);
+    this.player.setScale(1);
     this.physics.add.collider(this.player, platforms);
 
-    this.physics.add.collider(this.player, items, hitCoin);
+    this.physics.add.overlap(this.player, coinLayer, hitCoin);
 
     /********************************/
     /*                              */
@@ -85,30 +94,30 @@ function create (){
 
     /********************************/
     /*                              */
-    /* --  Création des spikes  --  */
+    /*   --  Création du texte  --  */
     /*                              */
     /********************************/
 
-    this.spikes = this.physics.add.group({
-        allowGravity: false,
-        immovable: true
-      });
 
-      //createFromObjects(spike, {
-        //name: 'Spikes'
-      //});
+    text = this.add.text(1, 1, '', {
+        fontSize: '20px',
+        fill: '#ffffff'
+    });
+    text.setScrollFactor(0);
+    updateText();
+   
+    /********************************/
+    /*                              */
+    /*   --  Player animations  --  */
+    /*                              */
+    /********************************/
 
-
-    spike = map.getObjectLayer("Spikes")
-
-    //Erreur là, à commenter pour que ça marche
-    //spike.objects.forEach(spike => {
-    //    const spikeSprite = this.spikes.create(spike.x, spike.y + 200 - spike.height, 'spike').setOrigin(0);
-    //    spikeSprite.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
-    //});
-
-    this.physics.add.collider(this.player, this.spikes, playerHit, null, this);
-
+    this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2 }),
+        frameRate: 10,
+        repeat: -1
+    });
 }
 
 function update (time, delta)
@@ -118,10 +127,14 @@ function update (time, delta)
     if (this.cursors.left.isDown)
     {
         this.player.setAngle(-90).setVelocityX(-500);
+        //this.player.anims.play('walk', true); // play walk animation
+
     }
     else if (this.cursors.right.isDown)
     {
         this.player.setAngle(90).setVelocityX(500);
+        //this.player.anims.play('walk', true); // play walk animation
+
     }
 
     if ((this.cursors.up.isDown || this.cursors.space.isDown) && this.player.body.onFloor())
@@ -152,29 +165,17 @@ function update (time, delta)
 
 function hitCoin (sprite, tile)
 {
-    console.log("salut")
-    items.removeTileAt(tile.x, tile.y);
+    coinLayer.removeTileAt(tile.x, tile.y);
+    
     coinsCollected += 1;
 
-    // Return true to exit processing collision of this tile vs the sprite - in this case, it
-    // doesn't matter since the coin tiles are not set to collide.
-    return false;
+    updateText();
 }
 
-function playerHit(player, spike) {
-    // Set velocity back to 0
-    player.setVelocity(0, 0);
-    // Put the player back in its original position
-    player.setX(50);
-    player.setY(300);
-    // Set the visibility to 0 i.e. hide the player
-    player.setAlpha(0);
-    // Add a tween that 'blinks' until the player is gradually visible
-    let tw = this.tweens.add({
-      targets: player,
-      alpha: 1,
-      duration: 100,
-      ease: 'Linear',
-      repeat: 5,
-    });
+function updateText ()
+{
+    text.setText(
+        '\nCoins collected: ' + coinsCollected
+    );
+    console.log('oué')
 }
