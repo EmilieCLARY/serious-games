@@ -23,7 +23,7 @@ var cooldown = 0;
 
 
 function preload (){
-    this.load.tilemapTiledJSON('map',"../JSON/big_head/test28274.json");
+    this.load.tilemapTiledJSON('map',"../JSON/big_head/mapDef.json");
 
     this.load.image("tiles","../img/big_head/morning.png");
     //this.load.image("coin","../img/big_head/coin.png");
@@ -56,7 +56,6 @@ function create (){
 
     const platforms = map.createLayer('back', tileset, 0, 0);
     //platforms.setCollisionByExclusion(-1, true);
-    platforms.setCollisionBetween(1, 60);
 
     /*************************************/
     /*                                   */
@@ -64,9 +63,12 @@ function create (){
     /*                                   */
     /*************************************/
 
-    var coinTiles = map.addTilesetImage('coin', 'coin');
+    var coinTiles = map.addTilesetImage('coin');
     coinLayer = map.createLayer('items', coinTiles, 0, 0);
 
+
+    platforms.setCollisionBetween(1, 60);
+    coinLayer.setTileIndexCallback(61, hitCoin, this);
 
     /********************************/
     /*                              */
@@ -75,12 +77,11 @@ function create (){
     /********************************/ 
 
     this.player = this.physics.add.sprite(0, 0, 'player').setCollideWorldBounds(true);
-    this.player.setScale(0.5);
+    this.player.setScale(0.35);
     this.physics.add.collider(this.player, platforms);
 
     // PB TILEMAP
-    coinLayer.setTileIndexCallback(61, hitCoin, this.player);
-    //this.physics.add.overlap(this.player, coinLayer, hitCoin);
+    this.physics.add.collider(this.player, coinLayer, hitCoin);
 
     /********************************/
     /*                              */
@@ -88,10 +89,10 @@ function create (){
     /*                              */
     /********************************/
 
-    this.cameras.main.setBounds(0, 0, 15400, 4000);
-    this.physics.world.setBounds(0, 0, 15400, 4000);
+    this.cameras.main.setBounds(0, 0, 15400, 480);
+    this.physics.world.setBounds(0, 0, 15400, 480);
 
-    this.cameras.main.setZoom(1);
+    this.cameras.main.setZoom(1.6);
 
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
 
@@ -129,22 +130,22 @@ function update (time, delta)
 
     if (this.cursors.left.isDown)
     {
-        this.player.setVelocityX(-500);
+        this.player.setVelocityX(-200);
         this.player.flipX = true;
-        this.player.anims.play('walk', true); // play walk animation
+        this.player.anims.play('walk', true);
 
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.setVelocityX(500);
+        this.player.setVelocityX(200);
         this.player.flipX = false;
-        this.player.anims.play('walk', true); // play walk animation
+        this.player.anims.play('walk', true);
     }
 
     if ((this.cursors.up.isDown || this.cursors.space.isDown) && this.player.body.onFloor() || (this.player.body.onWall() && (this.cursors.up.isDown || this.cursors.space.isDown)))
     {    
         if(cooldown == 0 || time - cooldown >= 600){
-            this.player.setVelocityY(-640);
+            this.player.setVelocityY(-340);
                 cooldown = time;
         }
     }
