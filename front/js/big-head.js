@@ -28,6 +28,7 @@ function preload (){
     this.load.image("tiles","../img/big_head/morning.png");
     //this.load.image("coin","../img/big_head/coin.png");
     this.load.atlas('player', '../img/big_head/player.png', '../JSON/big_head/player.json');
+    this.load.image("sky","../img/big_head/sky.png");
 
     //this.load.image('spike', '../img/big_head/spike.png');
     this.load.spritesheet('coin', '../img/big_head/coin.png', { frameWidth: 32, frameHeight: 32 });
@@ -46,6 +47,9 @@ function create (){
     
     const map = this.make.tilemap({ key: "map", tileWidth: 1400, tileHeight: 40});
     const tileset = map.addTilesetImage("morning_adventures_tileset_16x16","tiles");
+
+    var background = map.addTilesetImage("sky", "sky");
+    const backgroundLayer = map.createLayer('sky', background, 0, 0);
 
 
     /************************************/
@@ -68,7 +72,6 @@ function create (){
 
 
     platforms.setCollisionBetween(1, 60);
-    coinLayer.setTileIndexCallback(61, hitCoin, this);
 
     /********************************/
     /*                              */
@@ -80,8 +83,8 @@ function create (){
     this.player.setScale(0.35);
     this.physics.add.collider(this.player, platforms);
 
-    // PB TILEMAP
-    this.physics.add.collider(this.player, coinLayer, hitCoin);
+    coinLayer.setTileIndexCallback(61, hitCoin);
+    this.physics.add.overlap(this.player, coinLayer);
 
     /********************************/
     /*                              */
