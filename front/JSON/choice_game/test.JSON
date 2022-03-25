@@ -1,0 +1,50 @@
+{
+    "choice1": {
+        "1" : {
+            "response": "COUCOU",
+            "nextChoice" : {
+                "1" : {
+                    "response": "COUCOU",
+                    "nextChoice" : {
+                        "1" : "COUCOU",
+                        "2" : "COUCOUCOU",
+                        "3" : "COUCOUCOUCOU"
+                    }
+                },
+                "2" : {
+                    "response": "COUCOU",
+                    "nextChoice" : {
+                        "1" : "COUCOU",
+                        "2" : "COUCOUCOU",
+                        "3" : "COUCOUCOUCOU"
+                    }
+                },
+                "3" : {
+                    "response": "COUCOU",
+                    "nextChoice" : {
+                        "1" : "COUCOU",
+                        "2" : "COUCOUCOU",
+                        "3" : "COUCOUCOUCOU"
+                    }
+                }
+            }
+        },
+        "2" : {
+            "response": "COUCOU",
+            "nextChoice" : {
+                "1" : "COUCOU",
+                "2" : "COUCOUCOU",
+                "3" : "COUCOUCOUCOU"
+            }
+        },
+        "3" : {
+            "response": "COUCOU",
+            "nextChoice" : {
+                "1" : "COUCOU",
+                "2" : "COUCOUCOU",
+                "3" : "COUCOUCOUCOU"
+            }
+        }
+        
+    }
+}

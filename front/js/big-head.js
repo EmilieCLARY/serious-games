@@ -20,6 +20,10 @@ var game = new Phaser.Game(config);
 var coinLayer;
 var coinsCollected = 0;
 var cooldown = 0;
+var doorLayer;
+
+
+var platforms;
 
 
 function preload (){
@@ -32,6 +36,7 @@ function preload (){
 
     //this.load.image('spike', '../img/big_head/spike.png');
     this.load.image('melon', '../img/big_head/melon.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.image('cadenas', '../img/big_head/door.png', { frameWidth: 32, frameHeight: 32 });
 
 }
 
@@ -58,7 +63,7 @@ function create (){
     /*                                  */
     /************************************/
 
-    const platforms = map.createLayer('back', tileset, 0, 0);
+    platforms = map.createLayer('back', tileset, 0, 0);
     //platforms.setCollisionByExclusion(-1, true);
 
     /*************************************/
@@ -73,6 +78,11 @@ function create (){
 
     platforms.setCollisionBetween(1, 60);
 
+
+    var doorTiles = map.addTilesetImage('cadenas');
+    doorLayer = map.createLayer('lock1', doorTiles, 0, 0);
+
+
     /********************************/
     /*                              */
     /*  --  Création du perso   --  */
@@ -84,7 +94,13 @@ function create (){
     this.physics.add.collider(this.player, platforms);
 
     coinLayer.setTileIndexCallback(61, hitCoin);
+    //doorLayer.setTileIndexCallback(102, hitDoor);
+
+    doorLayer.setCollisionBetween(102, 102);
+
     this.physics.add.overlap(this.player, coinLayer);
+    this.physics.add.collider(this.player, doorLayer, null, hitDoor);
+
 
     /********************************/
     /*                              */
@@ -113,6 +129,13 @@ function create (){
     text.setScrollFactor(0);
     updateText();
 
+    newText = this.add.text(940, 400, 'Take all \nthe watermelon !', {
+        fontSize: '10px',
+        fill: '#ff0000'
+    });
+    newText.setShadow(5, 5, 'rgba(0,0,0,0.5)', 15);
+    //newText.setScrollFactor(0);
+
     /********************************/
     /*                              */
     /*   --  Player animations  --  */
@@ -133,14 +156,14 @@ function update (time, delta)
 
     if (this.cursors.left.isDown)
     {
-        this.player.setVelocityX(-200);
+        this.player.setVelocityX(-100);
         this.player.flipX = true;
         this.player.anims.play('walk', true);
 
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.setVelocityX(200);
+        this.player.setVelocityX(100);
         this.player.flipX = false;
         this.player.anims.play('walk', true);
     }
@@ -164,6 +187,16 @@ function update (time, delta)
         this.player.x += 2.5;
     }
 
+    //if(coinsCollected >= 2){
+//
+    //
+    //    //hitDoor()
+    //}
+
+    //doorLayer.removeTileAt(968, 431);
+
+    //console.log(parseInt(this.player.x),parseInt(this.player.y));
+
     updateText()
 }
 
@@ -172,17 +205,34 @@ function hitCoin (sprite, tile)
     coinLayer.removeTileAt(tile.x, tile.y);
     coinsCollected += 1;
 
-    console.log(coinsCollected)
-
     updateText();
 
     return true;
 }
 
+function hitDoor (sprite, tile)
+{
+    if(coinsCollected >= 30){
+        doorLayer.removeTileAt(tile.x, tile.y);
+        //coinsCollected = 0;
+        newText.setText('');
+    }
+    return true;
+}
+
 function updateText ()
 {
-    text.setText(
-        'Arrow keys to move. Space to jump' +
-        '\nWatermelon collected: ' + coinsCollected
-    );
+    let tmp = 30 - coinsCollected;
+    if(tmp !== 0){
+        text.setText(
+            'Arrow keys to move. Space to jump' +
+            '\nWatermelon remaining: ' +  tmp
+        );
+    }
+    else{
+        text.setText(
+            'Arrow keys to move. Space to jump' +
+            '\nThe door is unlocked ! You can go to the next room !'
+        );
+    }
 }
