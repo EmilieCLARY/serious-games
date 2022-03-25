@@ -10,7 +10,7 @@ var config = {
     physics : {
         default : "arcade",
         arcade : {
-            debug: true,
+            debug: false,
             gravity: { y: 1000 },
         }
     }
@@ -31,7 +31,7 @@ function preload (){
     this.load.image("sky","../img/big_head/sky.png");
 
     //this.load.image('spike', '../img/big_head/spike.png');
-    this.load.spritesheet('coin', '../img/big_head/coin.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.image('melon', '../img/big_head/melon.png', { frameWidth: 32, frameHeight: 32 });
 
 }
 
@@ -67,7 +67,7 @@ function create (){
     /*                                   */
     /*************************************/
 
-    var coinTiles = map.addTilesetImage('coin');
+    var coinTiles = map.addTilesetImage('melon');
     coinLayer = map.createLayer('items', coinTiles, 0, 0);
 
 
@@ -106,25 +106,25 @@ function create (){
     /********************************/
 
 
-    text = this.add.text(1, 1, '', {
-        fontSize: '20px',
+    text = this.add.text(250, 150, '', {
+        fontSize: '13px',
         fill: '#ffffff'
     });
     text.setScrollFactor(0);
     updateText();
-   
+
     /********************************/
     /*                              */
     /*   --  Player animations  --  */
     /*                              */
     /********************************/
 
-
     this.anims.create({
         key: 'walk',
         frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2}),
         frameRate: 10,
     });
+
 }
 
 function update (time, delta)
@@ -163,6 +163,8 @@ function update (time, delta)
         //this.player.setAngle(90);
         this.player.x += 2.5;
     }
+
+    updateText()
 }
 
 function hitCoin (sprite, tile)
@@ -170,9 +172,9 @@ function hitCoin (sprite, tile)
     coinLayer.removeTileAt(tile.x, tile.y);
     coinsCollected += 1;
 
-    updateText();
+    console.log(coinsCollected)
 
-    console.log("coucou")
+    updateText();
 
     return true;
 }
@@ -180,6 +182,7 @@ function hitCoin (sprite, tile)
 function updateText ()
 {
     text.setText(
-        '\nCoins collected: ' + coinsCollected
+        'Arrow keys to move. Space to jump' +
+        '\nWatermelon collected: ' + coinsCollected
     );
 }
