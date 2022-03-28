@@ -79,7 +79,7 @@ function create (){
     coinLayer = map.createLayer('items', coinTiles, 0, 0);
 
 
-    platforms.setCollisionBetween(2, 250);
+    platforms.setCollisionBetween(1, 250);
 
     var doorTiles = map.addTilesetImage('cadenas');
     doorLayer = map.createLayer('lock1', doorTiles, 0, 0);
@@ -95,10 +95,10 @@ function create (){
     this.player.setScale(0.35);
     this.physics.add.collider(this.player, platforms);
 
-    coinLayer.setTileIndexCallback(61, hitCoin);
+    coinLayer.setTileIndexCallback(1, hitCoin);
     //doorLayer.setTileIndexCallback(102, hitDoor);
 
-    doorLayer.setCollisionBetween(102, 102);
+    doorLayer.setCollisionBetween(42, 42);
 
     this.physics.add.overlap(this.player, coinLayer);
     this.physics.add.collider(this.player, doorLayer, null, hitDoor);
