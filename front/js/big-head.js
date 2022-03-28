@@ -24,12 +24,14 @@ var doorLayer;
 
 
 var platforms;
+var platforms2;
 
 
 function preload (){
     this.load.tilemapTiledJSON('map',"../JSON/big_head/mapDef.json");
 
-    this.load.image("tiles","../img/big_head/morning.png");
+    this.load.image("tiles","../img/big_head/tileset.png");
+
     //this.load.image("coin","../img/big_head/coin.png");
     this.load.atlas('player', '../img/big_head/player.png', '../JSON/big_head/player.json');
     this.load.image("sky","../img/big_head/sky.png");
@@ -51,7 +53,7 @@ function create (){
     /********************************/
     
     const map = this.make.tilemap({ key: "map", tileWidth: 1400, tileHeight: 40});
-    const tileset = map.addTilesetImage("morning_adventures_tileset_16x16","tiles");
+    const tileset = map.addTilesetImage("tileset","tiles");
 
     var background = map.addTilesetImage("sky", "sky");
     const backgroundLayer = map.createLayer('sky', background, 0, 0);
@@ -64,6 +66,7 @@ function create (){
     /************************************/
 
     platforms = map.createLayer('back', tileset, 0, 0);
+
     //platforms.setCollisionByExclusion(-1, true);
 
     /*************************************/
@@ -76,8 +79,7 @@ function create (){
     coinLayer = map.createLayer('items', coinTiles, 0, 0);
 
 
-    platforms.setCollisionBetween(1, 60);
-
+    platforms.setCollisionBetween(2, 250);
 
     var doorTiles = map.addTilesetImage('cadenas');
     doorLayer = map.createLayer('lock1', doorTiles, 0, 0);
