@@ -1,80 +1,77 @@
-var jsonData = {
-    "scenar1": {
-        "response": "COUCOU",
-        "r1": {
-            "choice" : "Yes",
-            "response": "COUCOU1",
-            "nextChoice": {
-                "r1": {
-                    "choice" : "Yes",
-                    "response": "COUCOU2",
-                    "nextChoice": {
-                        "r1": "COUCOU",
-                        "r2": "COUCOUCOU",
-                        "r3": "COUCOUCOUCOU"
-                    }
-                },
-                "r2": {
-                    "choice" : "No",
-                    "response": "COUCOU2",
-                    "nextChoice": {
-                        "r1": "COUCOU",
-                        "r2": "COUCOUCOU",
-                        "r3": "COUCOUCOUCOU"
-                    }
-                },
-                "r3": {
-                    "choice" : "Maybe",
-                    "response": "COUCOU2",
-                    "nextChoice": {
-                        "r1": "COUCOU",
-                        "r2": "COUCOUCOU",
-                        "r3": "COUCOUCOUCOU"
-                    }
-                }
-            }
-        },
-        "r2": {
-            "choice" : "No",
-            "response": "COUCOU",
-            "nextChoice": {
-                "r1": "COUCOU",
-                "r2": "COUCOUCOU",
-                "r3": "COUCOUCOUCOU"
-            }
-        },
-        "r3": {
-            "choice" : "Maybe",
-            "response": "COUCOU",
-            "nextChoice": {
-                "r1": "COUCOU",
-                "r2": "COUCOUCOU",
-                "r3": "COUCOUCOUCOU"
-            }
-        }
+const textElement = document.getElementById('text');
+const optionButtonsElement = document.getElementById('option-buttons');
 
-    }
-}//require('../JSON/choice_game/test.JSON')
+let state = {}
 
-jsonData = JSON.stringify(jsonData);
-
-let responseHtml = document.getElementById("response");
-let choice1 = document.getElementById("1");
-choice1.addEventListener("click", event => newResponse(1));
-let choice2 = document.getElementById("2");
-choice2.addEventListener("click", event => newResponse(2));
-let choice3 = document.getElementById("3");
-choice3.addEventListener("click", event => newResponse(3));
-
-let scenariiiii = JSON.parse(jsonData);
-
-console.log(scenariiiii.scenar1.response);
-
-responseHtml.textContent = scenariiiii.scenar1.response;
-choice1.textContent = scenariiiii.scenar1.r1.choice;
-choice2.textContent = scenariiiii.scenar1.r2.choice;
-choice3.textContent = scenariiiii.scenar1.r3.choice;
-
-function newResponse(data){
-    responseHtml.textContent 
+function startGame() {
+    state = {}
+    showTextNode(1)
 }
+
+function showTextNode(textNodeIndex) {
+    const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
+    textElement.innerText = textNode.text;
+    while (optionButtonsElement.firstChild) {
+        optionButtonsElement.removeChild(optionButtonsElement.firstChild);
+    }
+
+    textNode.options.forEach(option => {
+        if (showOption(option)) {
+            const button = document.createElement('button');
+            button.innerText = option.text;
+            button.classList.add('btn');
+            button.addEventListener('click', () => selectOption(option));
+            optionButtonsElement.appendChild(button);
+        }
+    });
+}
+
+function showOption(option) {
+    return option.requiredState == null || option.requiredState(state);
+}
+
+function selectOption(option) {
+    const nextTextNodeId = option.nextText;
+    if (nextTextNodeId <= 0) {
+        return startGame();
+    }
+    state = Object.assign(state, option.setState);
+    showTextNode(nextTextNodeId);
+}
+
+const textNodes = [
+    {
+        id: 1,
+        text: 'You wake up in a strange place and you see a jar of blue goo near you.',
+        options: [
+            {
+                text: 'Take the goo',
+                nextText: 2
+            },
+            {
+                text: 'Leave the goo',
+                nextText: 2
+            }
+        ]
+    },
+    {
+        id: 2,
+        text: 'You venture forth in search of answers to where you are when you come across a merchant.',
+        options: [
+            {
+                text: 'Trade the goo for a sword',
+                nextText: 1
+            },
+            {
+                text: 'Trade the goo for a shield',
+                nextText: 1
+            },
+            {
+                text: 'Ignore the merchant',
+                nextText: 1
+            }
+        ]
+    }
+];
+
+startGame();
