@@ -21,22 +21,25 @@ var coinLayer;
 var coinsCollected = 0;
 var cooldown = 0;
 var doorLayer;
+var blueChampLayer;
 
+var etatChampRouge = 0;
+var etatChampGreen = 0;
 
 var platforms;
 var platforms2;
 
 
 function preload (){
+
     this.load.tilemapTiledJSON('map',"../JSON/big_head/mapDef.json");
 
     this.load.image("tiles","../img/big_head/tileset.png");
+    this.load.image('champs', '../img/big_head/champs.png', { frameWidth: 32, frameHeight: 32 });
 
-    //this.load.image("coin","../img/big_head/coin.png");
     this.load.atlas('player', '../img/big_head/player.png', '../JSON/big_head/player.json');
     this.load.image("sky","../img/big_head/sky.png");
 
-    //this.load.image('spike', '../img/big_head/spike.png');
     this.load.image('melon', '../img/big_head/melon.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('cadenas', '../img/big_head/door.png', { frameWidth: 32, frameHeight: 32 });
 
@@ -84,6 +87,14 @@ function create (){
     var doorTiles = map.addTilesetImage('cadenas');
     doorLayer = map.createLayer('lock1', doorTiles, 0, 0);
 
+    var blueChampTiles = map.addTilesetImage('champs');
+    blueChampLayer = map.createLayer('BlueChamp', blueChampTiles, 0, 0);
+
+    //var greenChampTiles = map.addTilesetImage('champs');
+    //greenChampLayer = map.createLayer('GreenChamp', greenChampTiles, 0, 0);
+//
+    //var redChampTiles = map.addTilesetImage('champs');
+    //redChampLayer = map.createLayer('RedChamp', redChampTiles, 0, 0);
 
     /********************************/
     /*                              */
@@ -96,13 +107,15 @@ function create (){
     this.physics.add.collider(this.player, platforms);
 
     coinLayer.setTileIndexCallback(1, hitCoin);
-    //doorLayer.setTileIndexCallback(102, hitDoor);
 
     doorLayer.setCollisionBetween(42, 42);
 
+    blueChampLayer.setTileIndexCallback(223, hitBlueChamp);
+
+
     this.physics.add.overlap(this.player, coinLayer);
     this.physics.add.collider(this.player, doorLayer, null, hitDoor);
-
+    this.physics.add.overlap(this.player, blueChampLayer);
 
     /********************************/
     /*                              */
@@ -158,14 +171,26 @@ function update (time, delta)
 
     if (this.cursors.left.isDown)
     {
-        this.player.setVelocityX(-100);
+        if(etatChampRouge == 0){
+            this.player.setVelocityX(-100);
+        }
+        else{
+            this.player.setVelocityX(-200);
+        }
+
         this.player.flipX = true;
         this.player.anims.play('walk', true);
 
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.setVelocityX(100);
+        if(etatChampRouge == 0){
+            this.player.setVelocityX(100);
+        }
+        else{
+            this.player.setVelocityX(200);
+        }
+
         this.player.flipX = false;
         this.player.anims.play('walk', true);
     }
@@ -178,28 +203,50 @@ function update (time, delta)
         }
     }
 
-    if (this.cursors.left.isDown && this.player.x > 0)
-    {
-        //this.player.setAngle(-90);
-        this.player.x -= 2.5;
+    if(etatChampGreen == 1){
+        this.player.setVelocityY(200);
     }
-    else if (this.cursors.right.isDown && this.player.x < 3392)
-    {
-        //this.player.setAngle(90);
-        this.player.x += 2.5;
-    }
-
-    //if(coinsCollected >= 2){
-//
-    //
-    //    //hitDoor()
-    //}
-
-    //doorLayer.removeTileAt(968, 431);
-
-    //console.log(parseInt(this.player.x),parseInt(this.player.y));
 
     updateText()
+}
+
+function hitBlueChamp (sprite, tile)
+{
+    blueChampLayer.removeTileAt(tile.x, tile.y);
+
+    console.log("champi bleu")
+
+    player.setScale(0.20);
+
+    var x = setTimeout(function() { player.setScale(0.35); }, 7000);   // Attend 7 secondes avant exécution   
+
+    return true;
+}
+
+function hitRedChamp (sprite, tile)
+{
+    redChampLayer.removeTileAt(tile.x, tile.y);
+
+    console.log("champi rouge")
+
+    etatChampRouge = 1;
+    
+    var x = setTimeout(function() { etatChampRouge = 0; }, 7000);   // Attend 7 secondes avant exécution   
+
+    return true;
+}
+
+function hitGreenChamp (sprite, tile)
+{
+    greenChampLayer.removeTileAt(tile.x, tile.y);
+
+    console.log("champi vert")
+
+    etatChampGreen = 1;
+
+    var x = setTimeout(function() { etatChampGreen = 0; }, 7000);   // Attend 7 secondes avant exécution   
+
+    return true;
 }
 
 function hitCoin (sprite, tile)
@@ -214,7 +261,7 @@ function hitCoin (sprite, tile)
 
 function hitDoor (sprite, tile)
 {
-    if(coinsCollected >= 30){
+    if(coinsCollected >= 0){
         doorLayer.removeTileAt(tile.x, tile.y);
         //coinsCollected = 0;
         newText.setText('');
