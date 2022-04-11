@@ -81,7 +81,6 @@ function create (){
     var coinTiles = map.addTilesetImage('melon');
     coinLayer = map.createLayer('items', coinTiles, 0, 0);
 
-
     platforms.setCollisionBetween(1, 250);
 
     var doorTiles = map.addTilesetImage('cadenas');
@@ -90,11 +89,11 @@ function create (){
     var blueChampTiles = map.addTilesetImage('champs');
     blueChampLayer = map.createLayer('BlueChamp', blueChampTiles, 0, 0);
 
-    //var greenChampTiles = map.addTilesetImage('champs');
-    //greenChampLayer = map.createLayer('GreenChamp', greenChampTiles, 0, 0);
-//
-    //var redChampTiles = map.addTilesetImage('champs');
-    //redChampLayer = map.createLayer('RedChamp', redChampTiles, 0, 0);
+    var greenChampTiles = map.addTilesetImage('champs');
+    greenChampLayer = map.createLayer('GreenChamp', greenChampTiles, 0, 0);
+
+    var redChampTiles = map.addTilesetImage('champs');
+    redChampLayer = map.createLayer('RedChamp', redChampTiles, 0, 0);
 
     /********************************/
     /*                              */
@@ -172,7 +171,7 @@ function update (time, delta)
     if (this.cursors.left.isDown)
     {
         if(etatChampRouge == 0){
-            this.player.setVelocityX(-100);
+            this.player.setVelocityX(-200);
         }
         else{
             this.player.setVelocityX(-200);
@@ -185,7 +184,7 @@ function update (time, delta)
     else if (this.cursors.right.isDown)
     {
         if(etatChampRouge == 0){
-            this.player.setVelocityX(100);
+            this.player.setVelocityX(200);
         }
         else{
             this.player.setVelocityX(200);
@@ -261,8 +260,8 @@ function hitCoin (sprite, tile)
 
 function hitDoor (sprite, tile)
 {
-    if(coinsCollected >= 0){
-        doorLayer.removeTileAt(tile.x, tile.y);
+    if(coinsCollected == 30){
+        doorLayer.removeTileAt(tile.x, tile.y);     
         //coinsCollected = 0;
         newText.setText('');
     }
