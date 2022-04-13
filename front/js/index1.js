@@ -9,3 +9,6 @@ document.getElementById("bh").addEventListener("click", event => {
 document.getElementById("cg").addEventListener("click", event => {
     window.location.href = "../html/choice-game.html";
 });
+document.getElementById("fp").addEventListener("click", event => {
+    window.location.href = "../html/free-play.html";
+});
