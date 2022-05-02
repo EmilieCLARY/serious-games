@@ -9,3 +9,7 @@ document.getElementById("bh").addEventListener("click", event => {
 document.getElementById("cg").addEventListener("click", event => {
     window.location.href = "../html/choice-game.html";
 });
+
+document.getElementById("ho").addEventListener("click", event => {
+    window.location.href = "../html/home.html";
+});
