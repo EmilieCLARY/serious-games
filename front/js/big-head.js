@@ -42,9 +42,11 @@ function preload (){
     this.load.image('champB', '../img/big_head/champB.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('champG', '../img/big_head/champG.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('champR', '../img/big_head/champR.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.image('chest', '../img/big_head/chest.png', { frameWidth: 32, frameHeight: 32 });
 
     this.load.atlas('player', '../img/big_head/player.png', '../JSON/big_head/player.json');
-    this.load.image("sky","../img/big_head/sky.png" );
+    this.load.image("skyBack","../img/big_head/backSky.png" );
+    this.load.image("room","../img/big_head/sky.png" );
 
     this.load.image('melon', '../img/big_head/melon.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('cadenas', '../img/big_head/door.png', { frameWidth: 32, frameHeight: 32 });
@@ -60,13 +62,21 @@ function create (){
     /* --  Création de la carte --  */
     /*                              */
     /********************************/
-    
+
+    var backgroundImage = this.add.sprite(0, 0, 'skyBack');
+
+    backgroundImage.setScale(2.20);
+
+
     const map = this.make.tilemap({ key: "map", tileWidth: 1400, tileHeight: 40});
     const tileset = map.addTilesetImage("tileset","tiles");
 
-    var background = map.addTilesetImage("sky", "sky", 16, 16);
-    const backgroundLayer = map.createLayer('sky', background, 0, 0);
 
+    var background = map.addTilesetImage("sky", "room", 16, 16);
+    const backgroundLayer = map.createLayer('room', background, 0, 0);
+
+    var chest = map.addTilesetImage("chest", "chest", 16, 16);
+    const chestLayer = map.createLayer('chest', chest, 0, 0);
 
     /************************************/
     /*                                  */
@@ -118,6 +128,7 @@ function create (){
     greenChampLayer.setTileIndexCallback(223, hitGreenChamp);
     blueChampLayer.setTileIndexCallback(224, hitBlueChamp);
     redChampLayer.setTileIndexCallback(225, hitRedChamp);
+    chestLayer.setTileIndexCallback(226, hitChest);
 
 
     this.physics.add.overlap(this.player, coinLayer);
@@ -125,6 +136,7 @@ function create (){
     this.physics.add.overlap(this.player, redChampLayer);
     this.physics.add.overlap(this.player, greenChampLayer);
     this.physics.add.overlap(this.player, blueChampLayer);
+    this.physics.add.overlap(this.player, chestLayer);
 
     /********************************/
     /*                              */
@@ -292,6 +304,13 @@ function hitDoor (sprite, tile)
         //coinsCollected = 0;
         newText.setText('');
     }
+    return true;
+}
+
+function hitChest (sprite, tile)
+{
+
+    console.log("JEUX FINI");
     return true;
 }
 
