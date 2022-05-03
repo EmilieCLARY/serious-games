@@ -2,9 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Pixelise";
+    src: url("../fonts/Minecraft.ttf");
+  }
+/*##########################################################*/
+/*##########################################################*/
+                /*----   Home.html   ----*/
+/*##########################################################*/
+/*##########################################################*/
 
-
-.parent {
+/*les divs de la page*/
+.parenthome{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -12,20 +21,75 @@
     grid-row-gap: 0px;
     }
     
-.div1 { grid-area: 1 / 11 / 13 / 13; 
-    background-color: red; }
+.followers { grid-area: 1 / 11 / 13 / 13; }
 
-.div2 { grid-area: 1 / 4 / 6 / 11; 
-    background-color: yellow; }
+.Player { grid-area: 1 / 4 / 6 / 11;}
 
-.div3 { grid-area: 1 / 1 / 6 / 5; 
-    background-color: pink; }
+.Profilepicture { grid-area: 1 / 1 / 6 / 5; }
 
-.div4 { grid-area: 5 / 6 / 12 / 11; 
-    background-color: grey; }
+.Posts { grid-area: 5 / 6 / 12 / 11;}
 
-.div5 { grid-area: 6 / 1 / 13 / 6; 
-    background-color: green; }
+.Ethical { grid-area: 6 / 1 / 13 / 6;}
 
-.div6 { grid-area: 12 / 3 / 13 / 11;
-} 
+.Navbarhome { grid-area: 12 / 3 / 13 / 11; } 
+
+.flex{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+
+.triangle-code{
+    display : inline-block;
+    height : 0;
+    width : 0;
+    border-top : 150px solid red;
+    border-right : 150px solid transparent;
+}
+   
+
+
+
+
+
+
+
+/*---------------------free play----------------------------*/
+.parent2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) repeat(3, 3fr) 1fr repeat(3, 3fr) repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr) repeat(3, 3fr) 1fr repeat(3, 3fr) repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div11 { grid-area: 1 / 1 / 12 / 2; 
+        background-color : red;
+    }
+    .div12 { grid-area: 11 / 1 / 12 / 12; 
+        background-color : red;
+    }
+    .div13 { grid-area: 1 / 11 / 12 / 12; 
+        background-color : red;
+    }
+    .div14 { grid-area: 1 / 1 / 2 / 12; 
+        background-color : red;
+    }
+    .div15 { grid-area: 1 / 10 / 11 / 13; 
+        background-color : red;
+    }
+    .div16 { grid-area: 3 / 3 / 6 / 6; 
+        background-color: yellow;
+    }
+    .div17 { grid-area: 3 / 7 / 6 / 10;  
+        background-color: yellow;
+    }
+    .div18 { grid-area: 7 / 3 / 10 / 6;  
+        background-color: yellow;
+    }
+    .div19 { grid-area: 7 / 7 / 10 / 10;  
+        background-color: yellow;
+    }
+    .div110 { grid-area: 11 / 1 / 12 / 12; } 
+
