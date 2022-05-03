@@ -23,30 +23,68 @@
     
 .followers { grid-area: 1 / 11 / 13 / 13; }
 
+
 .Player { grid-area: 1 / 4 / 6 / 11;}
 
 .Profilepicture { grid-area: 1 / 1 / 6 / 5; }
 
-.Posts { grid-area: 5 / 6 / 12 / 11;}
+
 
 .Ethical { grid-area: 6 / 1 / 13 / 6;}
 
-.Navbarhome { grid-area: 12 / 3 / 13 / 11; } 
-
-.flex{
-    display: flex;
-    justify-content: space-around;
-    color: white;
-}
+.Zonenavbarhome { 
+    grid-area: 12 / 3 / 13 / 11; 
+} 
 
 
-.triangle-code{
+.Navbarhome{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+} 
+.bouton1 { grid-area: 1 / 1 / 2 / 2; }
+.bouton2 { grid-area: 1 / 2 / 2 / 3; }
+.bouton3 { grid-area: 1 / 3 / 2 / 4; }
+.bouton4 { grid-area: 1 / 4 / 2 / 5; } 
+
+.bouton5 { grid-area: 1 / 5 / 2 / 6; }
+
+
+
+/*.triangle-code{
     display : inline-block;
     height : 0;
     width : 0;
     border-top : 150px solid red;
     border-right : 150px solid transparent;
 }
+*/
+
+.Posts { 
+    grid-area: 5 / 6 / 13 / 11;
+}
+
+
+.allPosts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+}
+.Post1 { grid-area: 1 / 1 / 2 / 2;}
+.Post2 { grid-area: 1 / 2 / 2 / 3; }
+.Post3 { grid-area: 1 / 3 / 2 / 4; }
+
+.Post4 { grid-area: 2 / 1 / 3 / 2; }
+.Post5 { grid-area: 2 / 2 / 3 / 3; }
+.Post6 { grid-area: 2 / 3 / 3 / 4; }
+
+.Post7 { grid-area: 3 / 1 / 4 / 2; }
+.Post8 { grid-area: 3 / 2 / 4 / 3; }
+.Post9 { grid-area: 3 / 3 / 4 / 4; }
    
 
 
@@ -58,38 +96,48 @@
 /*---------------------free play----------------------------*/
 .parent2 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr) repeat(3, 3fr) 1fr repeat(3, 3fr) repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr) repeat(3, 3fr) 1fr repeat(3, 3fr) repeat(2, 1fr);
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(24, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     }
     
-    .div11 { grid-area: 1 / 1 / 12 / 2; 
-        background-color : red;
-    }
-    .div12 { grid-area: 11 / 1 / 12 / 12; 
-        background-color : red;
-    }
-    .div13 { grid-area: 1 / 11 / 12 / 12; 
-        background-color : red;
-    }
-    .div14 { grid-area: 1 / 1 / 2 / 12; 
-        background-color : red;
-    }
-    .div15 { grid-area: 1 / 10 / 11 / 13; 
-        background-color : red;
-    }
-    .div16 { grid-area: 3 / 3 / 6 / 6; 
-        background-color: yellow;
-    }
-    .div17 { grid-area: 3 / 7 / 6 / 10;  
-        background-color: yellow;
-    }
-    .div18 { grid-area: 7 / 3 / 10 / 6;  
-        background-color: yellow;
-    }
-    .div19 { grid-area: 7 / 7 / 10 / 10;  
-        background-color: yellow;
-    }
-    .div110 { grid-area: 11 / 1 / 12 / 12; } 
+    .div11 { grid-area: 1 / 1 / 2 / 25; }
+    .div12 { grid-area: 1 / 1 / 25 / 2; }
+    .div13 { grid-area: 24 / 1 / 25 / 25; }
+    .div14 { grid-area: 1 / 24 / 25 / 25; }
 
+    .div16 { 
+        grid-area: 3 / 3 / 9 / 9; 
+        font-size: 25px;
+        background-image: url("../img/freeplay/turtle_play.PNG" );
+        background-size: cover;
+        background-repeat: no-repeat
+    }    
+    .div17 { grid-area: 3 /10 / 9 / 16; 
+        font-size: 25px;
+        background-image: url("../img/freeplay/big_head.PNG" );
+        background-size: cover;
+        background-repeat: no-repeat
+    }
+    .div18 { grid-area: 3 / 17 / 9 / 23; }
+
+    .div19 { grid-area: 10 / 3 / 16 / 9; }
+    .div110 { grid-area: 10 / 10 / 16 / 16; }
+    .div111 { grid-area: 10 / 17 / 16 / 23; }
+
+    .div112 { grid-area: 17 / 3 / 23 / 9; }
+    .div113 { grid-area: 17 / 10 / 23 / 16; }
+    .div114 { grid-area: 17 / 17 / 23 / 23; }  
+
+    .div115 { grid-area: 1 / 8 / 3 / 18; } 
+    .div15 { grid-area: 23 / 6 / 25 / 20; }
+
+    .div115 h1{
+        font-size: 65px;
+    }
+
+
+    .click:hover{
+        cursor:pointer;
+    }

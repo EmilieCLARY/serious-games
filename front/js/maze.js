@@ -26,9 +26,10 @@ var CPA;
 var gridSize = 80;
 var map = new Array(mapWidth);
 
-var mapHeight = 10;
-var mapWidth = 10;
-var maze;
+var mapHeight = 11;
+var mapWidth = 11;
+
+var bush;
 
 for(let i = 0; i < mapHeight; i++){
     map[i] = new Array(mapWidth);
@@ -44,7 +45,22 @@ function preload ()
 {
     this.load.image('bush', '../img/maze/bush.png');
 
+    this.load.image('bush', '../img/maze/bush.png');
+    this.load.image('cross', '../img/maze/cross.png');
+    this.load.image('horizontal', '../img/maze/horizontal.png');
+    this.load.image('T0', '../img/maze/T0.png');
+    this.load.image('T90', '../img/maze/T90.png');
+    this.load.image('T180', '../img/maze/T180.png');
+    this.load.image('T270', '../img/maze/T270.png');
+    this.load.image('turnBL', '../img/maze/turnBL.png');
+    this.load.image('turnTL', '../img/maze/turnTL.png');
+    this.load.image('turnTR', '../img/maze/turnTR.png');
+    this.load.image('turnBR', '../img/maze/turnBR.png');
+    this.load.image('vertical', '../img/maze/vertical.png');
+
+
     this.load.image('player', '../img/big_head/champR.png');
+    this.load.image('barrel', '../img/maze/barrel.png');
 
 }
 
@@ -60,80 +76,98 @@ function create ()
     let PosX = 100;
     let PosY = 50;
 
-    //maze = newMaze(mapHeight, mapWidth);
-
-    for(let j = 0; j < mapHeight; j++){
-        for(let k = 0; k < mapWidth; k++){
-            
-            if(k == 0 % 2 && j == 1 %2){
-                map[j][k] = 0;
-            }
-            else{
-                map[j][k] = 1;
-            }
-        }
-    }
-    //if (disp[i][j][0] == 0) { $('#'+selector).css('border-top', '2px solid black'); }
-    //if (disp[i][j][1] == 0) { $('#'+selector).css('border-right', '2px solid black'); }
-    //if (disp[i][j][2] == 0) { $('#'+selector).css('border-bottom', '2px solid black'); }
-    //if (disp[i][j][3] == 0) { $('#'+selector).css('border-left', '2px solid black'); }
-
-    // top, right, left, bottom
-    // 0 = wall, 1 = rien
+    generateMazeTemp(map);
 
     for(let i = 0; i < mapHeight; i++){
         for(let j = 0; j < mapWidth; j++){
 
+
             if(map[i][j] == 1){
-                this.add.image(PosX, PosY, "bush").setScale(0.25);
+                bush = this.add.sprite(PosX, PosY, "bush").setScale(0.25);
                 PosX += 80; 
-            }else{
-                this.add.image(PosX, PosY, "player").setScale(0.8);
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 0 && map[i][j+1] == 0 && map[i+1][j] == 1 && map[i][j-1] == 1 ){
+                this.add.sprite(PosX, PosY, "turnTR").setScale(2.3);
                 PosX += 80;
             }
-
-            //if(maze[i][j][0] == 0){
-            //    this.add.image(PosX, PosY-80, "vert").setScale(6);
-            //    PosX += 80;
-            //}
-            //else if(maze[i][j][1] == 0){
-            //    this.add.image(PosX+80, PosY, "vert").setScale(6);
-            //    PosX += 80;
-            //}
-            //else if(maze[i][j][2] == 0){
-            //    this.add.image(PosX-80, PosY, "vert").setScale(6);
-            //    PosX += 80;
-            //}
-            //else if(maze[i][j][3] == 0){
-            //    this.add.image(PosX, PosY+80, "vert").setScale(6);
-            //    PosX += 80;
-            //}
-            //else{
-            //    this.add.image(PosX, PosY, "player").setScale(8);
-            //    PosX += 80; 
-            //}
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i][j-1] == 0 && map[i][j+1] == 0 && map[i-1][j] == 1 && map[i+1][j] == 1 ){
+                this.add.sprite(PosX, PosY, "horizontal").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i][j-1] == 0 && map[i][j+1] == 0 && map[i-1][j] == 1 && map[i+1][j] == 0 ){
+                this.add.sprite(PosX, PosY, "T0").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 0 && map[i+1][j] == 0 && map[i][j+1] == 1 && map[i][j-1] == 1 ){
+                this.add.sprite(PosX, PosY, "vertical").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 1 && map[i+1][j] == 0 && map[i][j+1] == 1 && map[i][j-1] == 0 ){
+                this.add.sprite(PosX, PosY, "turnBL").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 0 && map[i+1][j] == 1 && map[i][j+1] == 1 && map[i][j-1] == 0 ){
+                this.add.sprite(PosX, PosY, "turnTL").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 1 && map[i+1][j] == 0 && map[i][j+1] == 0 && map[i][j-1] == 1 ){
+                this.add.sprite(PosX, PosY, "turnBR").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 0 && map[i+1][j] == 0 && map[i][j+1] == 0 && map[i][j-1] == 1 ){
+                this.add.sprite(PosX, PosY, "T90").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 0 && map[i+1][j] == 1 && map[i][j+1] == 0 && map[i][j-1] == 0 ){
+                this.add.sprite(PosX, PosY, "T180").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 0 && map[i+1][j] == 0 && map[i][j+1] == 1 && map[i][j-1] == 0 ){
+                this.add.sprite(PosX, PosY, "T270").setScale(2.3);
+                PosX += 80;
+            }
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= 10 && j+1 <= 10  && map[i-1][j] == 0 && map[i+1][j] == 0 && map[i][j+1] == 0 && map[i][j-1] == 0 ){
+                this.add.sprite(PosX, PosY, "cross").setScale(2.3);
+                PosX += 80;
+            }
+            else if(map[i][j] == 0){
+                this.add.sprite(PosX, PosY, "player").setScale(0.25);
+                PosX += 80; 
+            }
+            
+    
+            // J horizontal, I vertical
+     
 
         }
         PosX = 100;
         PosY += 80;
     }
+ 
 
-    //for(let i = 0; i < mapHeight; i++){
-    //    for(let j = 0; j < mapWidth; j++){
+    for(let i = 0; i < 3; i++){
+
         
-    
-    while(map[positionX][positionY] != 1){
+        let positionX = Phaser.Math.Between(1, 9);
+        let positionY = Phaser.Math.Between(1, 9); 
 
-        let positionX = Phaser.Math.Between(0, 9*80);
-        let positionY = Phaser.Math.Between(0, 9*100);        
-       
-    
+        while(map[positionY][positionX] == 1 && map[positionY+1][positionX] != 3 && map[positionY][positionX+1] != 3 && map[positionY+1][positionX+1] != 3 && map[positionY-1][positionX] != 3 && map[positionY][positionX-1] != 3 && map[positionY-1][positionX-1] != 3){
+        
+            positionX = Phaser.Math.Between(1, 9);
+            positionY = Phaser.Math.Between(1, 9); 
+            
+        }
+
+        map[positionX][positionY] = 3;
+
+        positionX = positionX*80 + 100;
+        positionY = positionY*80 + 50;
+
+        this.add.sprite(positionX, positionY, "barrel").setScale(0.2);
+
+        delete positionX;
+        delete positionY;
     }
-
-
-
-
-
 
     this.player = this.physics.add.sprite(600, 350, 'player').setCollideWorldBounds(true);
     this.player.setScale(4);
@@ -172,64 +206,163 @@ function update (time, delta)
     else if (this.cursors.down.isDown){
         this.player.setVelocityY(400);
     }
+
+
+    this.physics.add.collider(this.player, bush, function (player, bush) {
+        console.log("test")
+    });
+
+
+      
+
       
 }
 
+function generateMazeTemp(maze) {
 
-function newMaze(x, y) {
+    //1 1 1 1 1 1 1 1 1 1 1
+    //0 0 1 0 0 0 0 0 0 0 1
+    //1 0 1 0 1 0 1 1 1 1 1
+    //1 0 0 0 1 0 1 0 0 0 1
+    //1 0 1 1 1 0 1 0 1 0 1
+    //1 0 0 0 1 0 0 0 1 0 1
+    //1 1 1 1 1 0 1 1 1 0 1
+    //1 0 0 0 1 0 1 0 0 0 1
+    //1 1 1 0 1 1 1 0 1 0 1
+    //1 0 0 0 0 0 0 0 1 0 0
+    //1 1 1 1 1 1 1 1 1 1 1
 
-    // Establish variables and starting grid
-    var totalCells = x*y;
-    var cells = new Array();
-    var unvis = new Array();
-    for (var i = 0; i < y; i++) {
-        cells[i] = new Array();
-        unvis[i] = new Array();
-        for (var j = 0; j < x; j++) {
-            cells[i][j] = [0,0,0,0];
-            unvis[i][j] = true;
-        }
-    }
-    
-    // Set a random position to start from
-    var currentCell = [Math.floor(Math.random()*y), Math.floor(Math.random()*x)];
-    var path = [currentCell];
-    unvis[currentCell[0]][currentCell[1]] = false;
-    var visited = 1;
-    
-    // Loop through all available cell positions
-    while (visited < totalCells) {
-        // Determine neighboring cells
-        var pot = [[currentCell[0]-1, currentCell[1], 0, 2],
-                [currentCell[0], currentCell[1]+1, 1, 3],
-                [currentCell[0]+1, currentCell[1], 2, 0],
-                [currentCell[0], currentCell[1]-1, 3, 1]];
-        var neighbors = new Array();
-        
-        // Determine if each neighboring cell is in game grid, and whether it has already been checked
-        for (var l = 0; l < 4; l++) {
-            if (pot[l][0] > -1 && pot[l][0] < y && pot[l][1] > -1 && pot[l][1] < x && unvis[pot[l][0]][pot[l][1]]) { neighbors.push(pot[l]); }
-        }
-        
-        // If at least one active neighboring cell has been found
-        if (neighbors.length) {
-            // Choose one of the neighbors at random
-            next = neighbors[Math.floor(Math.random()*neighbors.length)];
-            
-            // Remove the wall between the current cell and the chosen neighboring cell
-            cells[currentCell[0]][currentCell[1]][next[2]] = 1;
-            cells[next[0]][next[1]][next[3]] = 1;
-            
-            // Mark the neighbor as visited, and set it as the current cell
-            unvis[next[0]][next[1]] = false;
-            visited++;
-            currentCell = [next[0], next[1]];
-            path.push(currentCell);
-        }
-        // Otherwise go back up a step and keep going
-        else {
-            currentCell = path.pop();
-        }
-    }
-    return cells;
+    maze[0][0] = 1;
+    maze[0][1] = 0;
+    maze[0][2] = 1;
+    maze[0][3] = 1;
+    maze[0][4] = 1;
+    maze[0][5] = 1;
+    maze[0][6] = 1;
+    maze[0][7] = 1;
+    maze[0][8] = 1;
+    maze[0][9] = 1;
+    maze[0][10] = 1;
+
+    maze[1][0] = 1;
+    maze[1][1] = 0;
+    maze[1][2] = 0;
+    maze[1][3] = 0;
+    maze[1][4] = 0;
+    maze[1][5] = 0;
+    maze[1][6] = 1;
+    maze[1][7] = 0;
+    maze[1][8] = 1;
+    maze[1][9] = 0;
+    maze[1][10] = 1;
+
+    maze[2][0] = 1;
+    maze[2][1] = 1;
+    maze[2][2] = 1;
+    maze[2][3] = 0;
+    maze[2][4] = 1;
+    maze[2][5] = 0;
+    maze[2][6] = 1;
+    maze[2][7] = 0;
+    maze[2][8] = 1;
+    maze[2][9] = 0;
+    maze[2][10] = 1;
+
+    maze[3][0] = 1;
+    maze[3][1] = 0;
+    maze[3][2] = 0;
+    maze[3][3] = 0;
+    maze[3][4] = 1;
+    maze[3][5] = 0;
+    maze[3][6] = 1;
+    maze[3][7] = 0;
+    maze[3][8] = 0;
+    maze[3][9] = 0;
+    maze[3][10] = 1;
+
+    maze[4][0] = 1;
+    maze[4][1] = 0;
+    maze[4][2] = 1;
+    maze[4][3] = 1;
+    maze[4][4] = 1;
+    maze[4][5] = 1;
+    maze[4][6] = 1;
+    maze[4][7] = 1;
+    maze[4][8] = 1;
+    maze[4][9] = 0;
+    maze[4][10] = 1;
+
+    maze[5][0] = 1;
+    maze[5][1] = 0;
+    maze[5][2] = 0;
+    maze[5][3] = 0;
+    maze[5][4] = 0;
+    maze[5][5] = 0;
+    maze[5][6] = 0;
+    maze[5][7] = 0;
+    maze[5][8] = 1;
+    maze[5][9] = 0;
+    maze[5][10] = 1;
+
+    maze[6][0] = 1;
+    maze[6][1] = 0;
+    maze[6][2] = 1;
+    maze[6][3] = 1;
+    maze[6][4] = 1;
+    maze[6][5] = 0;
+    maze[6][6] = 1;
+    maze[6][7] = 1;
+    maze[6][8] = 1;
+    maze[6][9] = 0;
+    maze[6][10] = 1;
+
+    maze[7][0] = 1;
+    maze[7][1] = 0;
+    maze[7][2] = 1;
+    maze[7][3] = 0;
+    maze[7][4] = 0;
+    maze[7][5] = 0;
+    maze[7][6] = 1;
+    maze[7][7] = 0;
+    maze[7][8] = 0;
+    maze[7][9] = 0;
+    maze[7][10] = 1;
+
+    maze[8][0] = 1;
+    maze[8][1] = 0;
+    maze[8][2] = 1;
+    maze[8][3] = 0;
+    maze[8][4] = 1;
+    maze[8][5] = 1;
+    maze[8][6] = 1;
+    maze[8][7] = 0;
+    maze[8][8] = 1;
+    maze[8][9] = 1;
+    maze[8][10] = 1;
+
+    maze[9][0] = 1;
+    maze[9][1] = 0;
+    maze[9][2] = 1;
+    maze[9][3] = 0;
+    maze[9][4] = 0;
+    maze[9][5] = 0;
+    maze[9][6] = 0;
+    maze[9][7] = 0;
+    maze[9][8] = 0;
+    maze[9][9] = 0;
+    maze[9][10] = 1; 
+
+    maze[10][0] = 1;
+    maze[10][1] = 1;
+    maze[10][2] = 1;
+    maze[10][3] = 1;
+    maze[10][4] = 1;
+    maze[10][5] = 1;
+    maze[10][6] = 1;
+    maze[10][7] = 1;
+    maze[10][8] = 1;
+    maze[10][9] = 0;
+    maze[10][10] = 1;
+
+    return maze;
 }

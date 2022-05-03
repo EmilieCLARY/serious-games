@@ -1,16 +1,17 @@
 module.exports = {
-  content: ["./front/html/home.html"],
+  content: ["./front/html/home.html","./front/html/free-play.html" ],
   theme: {
    
   //extends{
       colors: {
-        'purple': '#3f3cbb',
         transparent: 'transparent',
         current: 'currentColor',
         fondmain:'#f5e0c4',
         rougeContour : '#911C1a',
         rougebouton: '#660503',
         white: '#FFFFFFFF',
+        fonce: '#303030',
+        gris: '#797676'
       },
       borderWidth: {
         DEFAULT: '1px',
@@ -25,6 +26,14 @@ module.exports = {
       },
       fontFamily: {
         pixelise: ["Pixelise", "cursive"],
+      },
+      backgroundImage:{
+        'BigHeadpng':"url('/front/img/mainPage/BigHead.png')",
+        'Mailpng':"url('/front/img/mainPage/Mail.png')",
+        'treepng':"url('/front/img/mainPage/tree.png')",
+        'homepng':"url('/front/img/mainPage/home.png')",
+        
+
       }
       //spacing : {
         //enorme : "1500px"
