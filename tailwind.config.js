@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./front/html/home.html","./front/html/free-play.html" ],
+  content: ["./front/html/home.html","./front/html/free-play.html","./front/html/accueil.html" ],
   theme: {
    
   //extends{
@@ -27,14 +27,13 @@ module.exports = {
       fontFamily: {
         pixelise: ["Pixelise", "cursive"],
       },
-      backgroundImage:{
+      
+      /*backgroundImage:{
         'BigHeadpng':"url('/front/img/mainPage/BigHead.png')",
         'Mailpng':"url('/front/img/mainPage/Mail.png')",
         'treepng':"url('/front/img/mainPage/tree.png')",
         'homepng':"url('/front/img/mainPage/home.png')",
-        
-
-      }
+      }*/
       //spacing : {
         //enorme : "1500px"
       //}

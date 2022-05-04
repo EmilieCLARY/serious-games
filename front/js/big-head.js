@@ -31,6 +31,8 @@ var etatChampBlue = 0;
 var platforms;
 var platforms2;
 
+var R;
+
 
 function preload (){
 
@@ -56,6 +58,7 @@ function preload (){
 function create (){
     
     this.cursors = this.input.keyboard.createCursorKeys();
+    R = this.input.keyboard.addKeys("R");
 
     /********************************/
     /*                              */
@@ -244,6 +247,21 @@ function update (time, delta)
         coinsCollected = 0;
         currentRoom = 3;
     }
+    if(R.R.isDown){
+        if(currentRoom == 1){
+            this.player.x = 21;
+            this.player.y = 128;
+        }
+        else if(currentRoom == 2){
+            this.player.x = 1600;
+            this.player.y = 432;
+        }
+        else if(currentRoom == 3){
+            this.player.x = 3195;
+            this.player.y = 48;
+        }
+        console.log("Position Reset");
+    }
 
     updateText()
 }
@@ -330,13 +348,15 @@ function updateText ()
     if(tmp !== 0){
         text.setText(
             'Arrow keys to move. Space to jump' +
-            '\nWatermelon remaining: ' +  tmp
+            '\nWatermelon remaining: ' +  tmp +
+            '\nPress R to reset position'
         );
     }
     else{
         text.setText(
             'Arrow keys to move. Space to jump' +
-            '\nThe door is unlocked ! You can go to the next room !'
+            '\nThe door is unlocked ! You can go to the next room !' +
+            '\nPress R to reset position'
         );
     }
 }

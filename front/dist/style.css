@@ -472,6 +472,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: fixed;
 }
 
+.m-3 {
+  margin: 0.75rem;
+}
+
 .m-6 {
   margin: 1.5rem;
 }
@@ -492,6 +496,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 50%;
 }
 
+.h-1\/6 {
+  height: 16.666667%;
+}
+
 .h-1\/3 {
   height: 33.333333%;
 }
@@ -502,10 +510,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-32 {
   width: 8rem;
-}
-
-.items-center {
-  align-items: center;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -524,6 +528,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   overflow-y: auto;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
 .rounded-t-xl {
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
@@ -532,6 +544,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-b-2xl {
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
+}
+
+.rounded-tl-xl {
+  border-top-left-radius: 0.75rem;
+}
+
+.rounded-tr-xl {
+  border-top-right-radius: 0.75rem;
 }
 
 .border {
@@ -558,8 +578,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-right-width: 12px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-t-\[150px\] {
   border-top-width: 150px;
+}
+
+.border-b-contourRouge {
+  border-bottom-width: 23px;
+}
+
+.border-r-contourRouge {
+  border-right-width: 23px;
 }
 
 .border-solid {
@@ -590,48 +622,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: #FFFFFFFF;
 }
 
-.bg-transparent {
-  background-color: transparent;
-}
-
-.bg-rougeContour {
-  --tw-bg-opacity: 1;
-  background-color: rgb(145 28 26 / var(--tw-bg-opacity));
-}
-
 .bg-gris {
   --tw-bg-opacity: 1;
   background-color: rgb(121 118 118 / var(--tw-bg-opacity));
 }
 
-.bg-Mailpng {
-  background-image: url('/front/img/mainPage/Mail.png');
-}
-
-.bg-BigHeadpng {
-  background-image: url('/front/img/mainPage/BigHead.png');
-}
-
-.bg-homepng {
-  background-image: url('/front/img/mainPage/home.png');
-}
-
-.bg-treepng {
-  background-image: url('/front/img/mainPage/tree.png');
-}
-
-.object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.object-scale-down {
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-}
-
 .text-center {
   text-align: center;
+}
+
+.align-baseline {
+  vertical-align: baseline;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .font-pixelise {
@@ -640,6 +645,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-white {
   color: #FFFFFFFF;
+}
+
+.text-gris {
+  --tw-text-opacity: 1;
+  color: rgb(121 118 118 / var(--tw-text-opacity));
 }
 
 @font-face {
@@ -672,6 +682,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 1 / 11 / 13 / 13;
 }
 
+/*.partenaires{
+    background-image: url("../img/mainPage/Mail.png");
+
+}*/
+
 .Player {
   grid-area: 1 / 4 / 6 / 11;
 }
@@ -685,7 +700,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .Zonenavbarhome {
-  grid-area: 12 / 3 / 13 / 11;
+  grid-area: 12 / 4 / 13 / 10;
 }
 
 .Navbarhome{
@@ -696,24 +711,44 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-gap: 0px;
 }
 
-.bouton1 {
+.boutonMail {
   grid-area: 1 / 1 / 2 / 2;
+  background-image: url("../img/mainPage/Mail.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
 }
 
-.bouton2 {
+.boutonFreePlay {
   grid-area: 1 / 2 / 2 / 3;
+  background-image: url("../img/mainPage/FreePlay.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
 }
 
-.bouton3 {
+.boutonHome {
   grid-area: 1 / 3 / 2 / 4;
+  background-image: url("../img/mainPage/home.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
 }
 
-.bouton4 {
+.boutonTreePlanter {
   grid-area: 1 / 4 / 2 / 5;
+  background-image: url("../img/mainPage/tree.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
 }
 
-.bouton5 {
+.boutonBigHead {
   grid-area: 1 / 5 / 2 / 6;
+  background-image: url("../img/mainPage/BigHead.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
 }
 
 /*.triangle-code{
@@ -801,7 +836,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .div16 {
   grid-area: 3 / 3 / 9 / 9;
-  font-size: 25px;
   background-image: url("../img/freeplay/turtle_play.PNG" );
   background-size: cover;
   background-repeat: no-repeat
@@ -809,7 +843,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .div17 {
   grid-area: 3 /10 / 9 / 16;
-  font-size: 25px;
   background-image: url("../img/freeplay/big_head.PNG" );
   background-size: cover;
   background-repeat: no-repeat
@@ -832,22 +865,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .div112 {
-  grid-area: 17 / 3 / 23 / 9;
+  grid-area: 17 / 6 / 23 / 12;
 }
 
 .div113 {
-  grid-area: 17 / 10 / 23 / 16;
-}
-
-.div114 {
-  grid-area: 17 / 17 / 23 / 23;
+  grid-area: 17 / 14 / 23 / 20;
 }
 
 .div115 {
   grid-area: 1 / 8 / 3 / 18;
 }
 
-.div15 {
+.Zonenavbarhome {
   grid-area: 23 / 6 / 25 / 20;
 }
 
@@ -857,4 +886,58 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .click:hover{
   cursor:pointer;
+}
+
+.grostext{
+  font-size: 30px;
+}
+
+/*------------------------------ PAGE ACCUEIL  ----------------------------------*/
+
+.parent3 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div21 {
+  grid-area: 1 / 1 / 13 / 2;
+}
+
+.div22 {
+  grid-area: 12 / 1 / 13 / 13;
+}
+
+.div23 {
+  grid-area: 1 / 12 / 13 / 13;
+}
+
+.div24 {
+  grid-area: 1 / 1 / 2 / 13;
+}
+
+.div25 {
+  grid-area: 9 / 3 / 11 / 5;
+}
+
+.div26 {
+  grid-area: 9 / 6 / 11 / 8;
+}
+
+.div27 {
+  grid-area: 9 / 9 / 11 / 11;
+}
+
+.div28 {
+  grid-area: 4 / 4 / 7 / 10;
+}
+
+.div28 h1{
+  font-size: 7rem;
+}
+
+.div25 h1, .div26 h1, .div27 h1{
+  height: 100%;
 }
