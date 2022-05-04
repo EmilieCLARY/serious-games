@@ -11,7 +11,8 @@ module.exports = {
         rougebouton: '#660503',
         white: '#FFFFFFFF',
         fonce: '#303030',
-        gris: '#797676'
+        gris: '#797676',
+        vertContour : '#175732'
       },
       borderWidth: {
         DEFAULT: '1px',

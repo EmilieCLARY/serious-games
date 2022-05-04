@@ -31,11 +31,18 @@ var map = new Array(mapWidth);
 
 var arbre;
 var tabTree = [];
+var treePlanted = 0;
 var treeFull = 0;
 var newTreeeeeee = true;
 
 var nextXpx;
 var nextYpx;
+
+var background;
+
+var text;
+var text2;
+var textTime;
 
 
 for(let i = 0; i < mapHeight; i++){
@@ -52,12 +59,15 @@ for(let j = 0; j < mapHeight; j++){
 function preload ()
 {
     this.load.image('vert', '../img/tree_planter/vert.png');
+
+    this.load.image('background', '../img/tree_planter/background.png');
+
     this.load.image('trigger', '../img/tree_planter/trigger.png');
-    this.load.image('creusé', '../img/tree_planter/trigger.png');
+    this.load.image('creusé', '../img/tree_planter/creusé.png');
     this.load.image('planté', '../img/tree_planter/planté.png');
     this.load.image('arrosé', '../img/tree_planter/arrosé.png');
     this.load.image('fini', '../img/tree_planter/trigger.png');
-    this.load.image('medium', '../img/tree_planter/trigger.png');
+    this.load.image('medium', '../img/tree_planter/medium.png');
     this.load.image('grand', '../img/tree_planter/fini.png');
 
     this.load.image('player', '../img/big_head/champR.png');
@@ -68,24 +78,27 @@ function preload ()
 
 function create ()
 {
+
+    background = this.add.tileSprite(0, 0, 20000, 10000, "background");
+
     this.cursors = this.input.keyboard.createCursorKeys();
     cursor = this.input.keyboard.createCursorKeys();
     ZQSD = this.input.keyboard.addKeys("Z,Q,S,D");
     CPA = this.input.keyboard.addKeys("C,P,A");
     
-    let PosX = 100;
-    let PosY = 50;
-
-    for(let i = 0; i < mapHeight; i++){
-        for(let j = 0; j < mapWidth; j++){
-            if(map[i][j] == 0){
-                this.add.image(PosX, PosY, "vert").setScale(8);
-                PosX += 80;
-            }
-        }
-        PosX = 100;
-        PosY += 80;
-    }
+    //let PosX = 100;
+    //let PosY = 50;
+//
+    //for(let i = 0; i < mapHeight; i++){
+    //    for(let j = 0; j < mapWidth; j++){
+    //        if(map[i][j] == 0){
+    //            this.add.image(PosX, PosY, "vert").setScale(8);
+    //            PosX += 80;
+    //        }
+    //    }
+    //    PosX = 100;
+    //    PosY += 80;
+    //}
 
     this.player = this.physics.add.sprite(600, 350, 'player').setCollideWorldBounds(true);
     this.player.setScale(4);
@@ -105,7 +118,7 @@ function create ()
 
     //this.add.grid(100, 50, mapWidth * gridSize, mapHeight * gridSize, gridSize, 0x999999, 1, 0x666666).setOrigin(0);
    
-    arbre = this.add.sprite(100, 50, "trigger").setScale(0.05);
+    arbre = this.add.sprite(100, 50, "trigger").setScale(2);
     let array = [arbre, 0, 0];
     tabTree.push(array);
     map[0][0] = 1;
@@ -121,6 +134,32 @@ function create ()
     /********************************/
 
     arrow = this.add.sprite(0 , 0, 'arrow').setScale(0.2);
+
+    /********************************/
+    /*                              */
+    /* --   Gestion des textes  --  */
+    /*                              */
+    /********************************/
+
+
+    text = this.add.text(10, 10, '', {
+        fontSize: '20px',
+        fill: '#000000'
+    });
+    text.setScrollFactor(0);
+
+    text2 = this.add.text(950, 10, '', {
+        fontSize: '20px',
+        fill: '#000000'
+    });
+    text2.setScrollFactor(0);
+
+    textTime = this.add.text(400, 10,"Time : ",{
+        font: "20px",
+        fill : "#000000",
+        align : "center"
+    });
+    textTime.setScrollFactor(0);
 }
 
 function update (time, delta)
@@ -158,7 +197,7 @@ function update (time, delta)
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
                             //console.log(tabTree[k][1], tabTree[k][2], i, j, k)
-                            tabTree[k][0].setTexture("creusé").setScale(0.05);
+                            tabTree[k][0].setTexture("creusé").setScale(1.7);
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "creusé").setScale(0.05);
                             console.log("creusé");
@@ -169,7 +208,7 @@ function update (time, delta)
                 else if(map[i][j] == 2 && CPA.P.isDown){     // Etat creusé à planté
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("planté").setScale(0.25);
+                            tabTree[k][0].setTexture("planté").setScale(0.13);
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "planté").setScale(0.25);
                             console.log("planté");
@@ -180,12 +219,13 @@ function update (time, delta)
                 else if(map[i][j] == 3 && CPA.A.isDown){      // Etat planté à arrosé
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("arrosé").setScale(2.2);
+                            tabTree[k][0].setTexture("arrosé").setScale(1.5);
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "arrosé").setScale(2.2);
                             console.log("arrosé"); 
                             //setTimeout(function() {map[i][j] = 4 }, 3000);   // Attend 7 secondes avant exécution ;
                             map[i][j] = 4;
+                            //treePlanted++;
                             newTreeeeeee = true;
                         }                                
                     }
@@ -198,39 +238,46 @@ function update (time, delta)
                     //arbre.setTexture("fini").setScale(0.05);
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("fini").setScale(0.05);
+                            tabTree[k][0].setTexture("medium").setScale(2);
+                            map[i][j] = 5
                         }                            
                     }
                 }, 3000);
-                setTimeout(function() {map[i][j] = 5 }, 3000);   // Attend 7 secondes avant exécutio
+                //setTimeout(function() { map[i][j] = 5 }, 3000);   // Attend 7 secondes avant exécutio
                 //console.log("fini"); 
             }
             if(map[i][j] == 5){      // Etat fini à medium
-                for(let k = 0; k < tabTree.length; k++){
-                    if(tabTree[k][1] == i && tabTree[k][2] == j){
-                        tabTree[k][0].setTexture("medium").setScale(0.05);
-                        //arbre.destroy();
-                        //tabTree[k] = this.add.sprite(PosX, PosY, "medium").setScale(0.05);
-                        setTimeout(function() {map[i][j] = 6 }, 3000);   // Attend 7 secondes avant exécution 
-                        //console.log("medium");
+                setTimeout(() => {
+                    for(let k = 0; k < tabTree.length; k++){
+                        if(tabTree[k][1] == i && tabTree[k][2] == j){
+                            tabTree[k][0].setTexture("medium").setScale(2);
+                            map[i][j] = 6;
+                            //arbre.destroy();
+                            //tabTree[k] = this.add.sprite(PosX, PosY, "medium").setScale(0.05);
+                            //setTimeout(function() {map[i][j] = 6}, 3000);   // Attend 7 secondes avant exécution 
+                            //console.log("medium");
+                        }   
                     }
-                        
-                }
+                }, 3000);
             }
             if(map[i][j] == 6){      // Etat medium à grand
-                for(let k = 0; k < tabTree.length; k++){
-                    if(tabTree[k][1] == i && tabTree[k][2] == j){
-                        tabTree[k][0].setTexture("grand").setScale(0.28);
-                        //arbre.destroy();
-                        //tabTree[k] = this.add.sprite(PosX, PosY, "grand").setScale(0.28); // Attend 7 secondes avant exécution
-                        //console.log("grand"); 
-                        treeFull++;
-                        map[i][j] = 7;
+                setTimeout(() => {
+                    for(let k = 0; k < tabTree.length; k++){
+                        if(tabTree[k][1] == i && tabTree[k][2] == j){
+                            tabTree[k][0].setTexture("grand").setScale(0.28);
+                            //arbre.destroy();
+                            //tabTree[k] = this.add.sprite(PosX, PosY, "grand").setScale(0.28); // Attend 7 secondes avant exécution
+                            //console.log("grand"); 
+                            map[i][j] = 7;
+                        }
                     }
-                }
+                }, 3000);
             }
         }
     }
+
+    treeFull = countTrees()[0];
+    treePlanted = countTrees()[1];
 
 
     /********************************/
@@ -267,7 +314,7 @@ function update (time, delta)
             console.log("Reroll : ", positionX, positionY);
         }   
         
-        let tree = this.add.sprite(positionX * 80 + 100, positionY * 80 + 50, "trigger").setScale(0.05);
+        let tree = this.add.sprite(positionX * 80 + 100, positionY * 80 + 50, "trigger").setScale(2);
         let array = [tree, positionX, positionY];
         tabTree.push(array);
         map[positionX][positionY] = 1;
@@ -289,4 +336,81 @@ function update (time, delta)
     arrow.angle = angleDeg;
     arrow.x = this.player.x + (150 * Math.cos(angleDeg * Math.PI/180));
     arrow.y = this.player.y + (150 * Math.sin(angleDeg * Math.PI/180));
+
+    //console.log(Phaser.Math.Distance.BetweenPoints(arrow, {x : nextXpx, y : nextYpx}));
+    if(Phaser.Math.Distance.BetweenPoints(this.player, {x : nextXpx, y : nextYpx}) < 180){
+        arrow.visible = false;
+    }
+    else{
+        arrow.visible = true;
+    }
+
+    /********************************/
+    /*                              */
+    /* --   Gestion des textes  --  */
+    /*                              */
+    /********************************/
+
+    text.setText(
+        'Plant as many trees as you can' +
+        '\n  Press C to dig' +
+        '\n  Press P to plant' + 
+        '\n  Press A to water'
+    );
+    text2.setText(
+        'Growing Trees : ' + treePlanted +
+        '\nTrees planted : ' + treeFull
+    );
+
+     /********************************/
+    /*                              */
+    /* --   Gestion du temps    --  */
+    /*                              */
+    /********************************/
+
+    let currentTime = 10 - parseInt(time/1000);
+
+    if(currentTime < 60){  
+        if(currentTime < 10){
+            textTime.setText("Time: 0:0" + currentTime);
+        } 
+        else{
+            textTime.setText("Time: 0:" + currentTime);
+        }
+    }
+    else{
+        let min = Math.floor(currentTime/60);
+        let sec = currentTime - 60*min;
+        if(sec < 10){
+            textTime.setText("Time: "+ min + ":0" + sec);
+        } 
+        else{
+            textTime.setText("Time: "+ min + ":" + sec);
+        }
+    }
+
+    if(currentTime == 0){
+        this.add.text(100, 400, 'Time end, you have ' + countTrees()[0] + ' trees planted', {
+            fontSize: '40px',
+            fill: '#000000'
+        });
+        text.setScrollFactor(0);
+        this.scene.pause();
+    }
 }
+
+function countTrees(){
+    let tmp = 0;
+    let tmp2 = 0;
+    for(let i = 0; i < mapHeight; i++){
+        for(let j = 0; j < mapWidth; j++){
+            if(map[i][j] == 7){
+                tmp++;
+            }
+            else if(map[i][j] > 3 && map[i][j] != 7){
+                tmp2++;
+            }
+        }
+    }
+    return [tmp, tmp2];
+};

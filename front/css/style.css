@@ -29,13 +29,47 @@
 }*/
 
 
-.Player { grid-area: 1 / 4 / 6 / 11;}
+.Player { grid-area: 1 / 5 / 6 / 11;}
 
 .Profilepicture { grid-area: 1 / 1 / 6 / 5; }
 
+.PPsportif{
+    background-image: url("../img/characters/PpSportif.PNG");
+    background-size : contain;
+    background-repeat : no-repeat;
+    background-position: center;
+}
 
 
-.Ethical { grid-area: 6 / 1 / 13 / 6;}
+.Ethical { 
+    grid-area: 6 / 1 / 13 / 6;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.EthicalSection { grid-area: 1 / 2 / 3 / 6; }
+
+.Forest { grid-area: 3 / 1 / 9 / 4; 
+    background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png");
+    background-size : contain;
+    background-repeat : no-repeat;
+    background-position: center;
+}
+.TreeCountertitle { grid-area:  4 / 4 / 5 / 7; }
+.Treecount { grid-area: 5 / 4 / 6 / 7; }
+
+.Gauge{ grid-area: 6 / 4 / 12 / 7; 
+    background-image: url("../img/mainPage/gauge.png");
+    background-size : contain;
+    background-repeat : no-repeat;
+    background-position: center;
+}
+
+.BHGauge { grid-area:  9 / 1 / 10 / 4; }   
+
 
 .Zonenavbarhome { 
     grid-area: 12 / 4 / 13 / 10; 
@@ -158,7 +192,7 @@
     .div113 { grid-area: 17 / 14 / 23 / 20; }
 
     .div115 { grid-area: 1 / 8 / 3 / 18; } 
-    .Zonenavbarhome { grid-area: 23 / 6 / 25 / 20; }
+    .Zonenavbarhome2 { grid-area: 23 / 6 / 25 / 20; }
 
     .div115 h1{
         font-size: 65px;

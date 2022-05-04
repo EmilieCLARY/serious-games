@@ -17,6 +17,8 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+var background;
+
 var cursor;
 var upKey;
 var downKey;
@@ -62,6 +64,8 @@ function preload ()
     this.load.image('player', '../img/big_head/champR.png');
     this.load.image('barrel', '../img/maze/barrel.png');
 
+    this.load.image('background', '../img/maze/back.png')
+
 }
 
 
@@ -72,6 +76,8 @@ function create ()
     cursor = this.input.keyboard.createCursorKeys();
     ZQSD = this.input.keyboard.addKeys("Z,Q,S,D");
     CPA = this.input.keyboard.addKeys("C,P,A");
+
+    background = this.add.tileSprite(0, 0, 8200, 5000, "background");
     
     let PosX = 100;
     let PosY = 50;
@@ -167,7 +173,7 @@ function create ()
                 this.add.sprite(PosX, PosY, "cdsL").setScale(0.9);
                 PosX += 80;
             }
-            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= mapHeight-1 && j+1 <= mapWidth-1  && map[i-1][j] == 1 && map[i+1][j] == 1 && map[i][j+1] == 1 && map[i][j-1] == 0 ){
+            else if(i-1 >= 0 && j-1 >= 0 && i+1 <= mapHeight-1 && j+1 <= mapWidth-1  && map[i-1][j] == 1 && map[i+1][j] == 1 && map[i][j+1] == 1 && map[i][j-1] == 0){
                 this.add.sprite(PosX, PosY, "cdsR").setScale(0.9);
                 PosX += 80;
             }
@@ -184,7 +190,7 @@ function create ()
     }
  
     //console.log(map);
-    for(let i = 0; i < Math.round(mapWidth*0.35); i++){
+    for(let i = 0; i < Math.round(mapWidth*0.4); i++){
 
         
         let positionX = Phaser.Math.Between(1, mapWidth-2);
@@ -193,8 +199,8 @@ function create ()
         //console.log(map);
 
         while(map[positionY][positionX] == 1 && map[positionY+1][positionX] != 3 && map[positionY][positionX+1] != 3 && map[positionY+1][positionX+1] != 3 && map[positionY-1][positionX] != 3 && map[positionY][positionX-1] != 3 && map[positionY-1][positionX-1] != 3 || map[positionY][positionX] == 3){
-            
-            //console.log("Je passe avec",positionY, positionX);
+        
+
             positionX = Phaser.Math.Between(1, mapWidth-2);
             positionY = Phaser.Math.Between(1, mapHeight-2); 
             
@@ -280,6 +286,19 @@ function update (time, delta)
             // Pop une modal box ? avec le nombre restants
         });
     }
+    
+    //console.log(sortieX, sortieY)
+    //console.log(this.player.x/80, this.player.y/80)
+    
+    if(sortieX < (this.player.x + 100)/80 && sortieY < (this.player.y + 50)/80){
+
+        console.log("fini")
+        this.add.text(this.player.x - 200, this.player.y + 50, 'You escaped the maze', {
+            fontSize: '40px',
+            fill: '#000000'
+        });
+        this.scene.pause();
+    }
      
 }
 
@@ -303,7 +322,7 @@ function generateMazeTemp() {
 
     let maze = newMaze.getMaze();
 
-    /*maze[0][0] = 1;
+    /*maze[0][0] = 0
     maze[0][1] = 0;
     maze[0][2] = 1;
     maze[0][3] = 1;

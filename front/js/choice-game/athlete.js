@@ -42,29 +42,29 @@ function selectOption(option) {
 const textNodes = [
     {
         id: 1,
-        text: 'Welcome ! It\'s now time to choose your type of job !',
+        text: '',
         options: [
             {
-                text: 'Athlete',
+                text: '',
                 nextText: 2
             },
             {
-                text: 'Scientist',
+                text: '',
                 nextText: 3
             },
             {
-                text: 'Gaming',
+                text: '',
                 nextText: 4
             },
             {
-                text: 'Comedian',
+                text: '',
                 nextText: 5
             }
         ]
     },
     {
         id: 2,
-        text: 'Now you can choose between multiple appearances :',
+        text: '',
         options: [
             {
                 text: '',

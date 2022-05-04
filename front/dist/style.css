@@ -476,12 +476,32 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 0.75rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .m-6 {
   margin: 1.5rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .inline-block {
   display: inline-block;
+}
+
+.flex {
+  display: flex;
 }
 
 .h-screen {
@@ -504,12 +524,32 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 33.333333%;
 }
 
+.h-1\/5 {
+  height: 20%;
+}
+
+.h-1\/4 {
+  height: 25%;
+}
+
 .h-full {
   height: 100%;
 }
 
 .w-32 {
   width: 8rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-items-center {
+  justify-items: center;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -598,6 +638,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-style: solid;
 }
 
+.border-none {
+  border-style: none;
+}
+
 .border-rougeContour {
   --tw-border-opacity: 1;
   border-color: rgb(145 28 26 / var(--tw-border-opacity));
@@ -631,25 +675,55 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-align: center;
 }
 
-.align-baseline {
-  vertical-align: baseline;
+.text-right {
+  text-align: right;
 }
 
-.align-middle {
-  vertical-align: middle;
+.align-baseline {
+  vertical-align: baseline;
 }
 
 .font-pixelise {
   font-family: Pixelise, cursive;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .text-white {
   color: #FFFFFFFF;
+}
+
+.text-fonce {
+  --tw-text-opacity: 1;
+  color: rgb(48 48 48 / var(--tw-text-opacity));
 }
 
 .text-gris {
   --tw-text-opacity: 1;
   color: rgb(121 118 118 / var(--tw-text-opacity));
+}
+
+.underline {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.decoration-fonce {
+  -webkit-text-decoration-color: #303030;
+          text-decoration-color: #303030;
 }
 
 @font-face {
@@ -688,15 +762,59 @@ Ensure the default browser behavior of the `hidden` attribute.
 }*/
 
 .Player {
-  grid-area: 1 / 4 / 6 / 11;
+  grid-area: 1 / 5 / 6 / 11;
 }
 
 .Profilepicture {
   grid-area: 1 / 1 / 6 / 5;
 }
 
+.PPsportif{
+  background-image: url("../img/characters/PpSportif.PNG");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
+}
+
 .Ethical {
   grid-area: 6 / 1 / 13 / 6;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.EthicalSection {
+  grid-area: 1 / 2 / 3 / 6;
+}
+
+.Forest {
+  grid-area: 3 / 1 / 9 / 4;
+  background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
+}
+
+.TreeCountertitle {
+  grid-area:  4 / 4 / 5 / 7;
+}
+
+.Treecount {
+  grid-area: 5 / 4 / 6 / 7;
+}
+
+.Gauge{
+  grid-area: 6 / 4 / 12 / 7;
+  background-image: url("../img/mainPage/gauge.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
+}
+
+.BHGauge {
+  grid-area:  9 / 1 / 10 / 4;
 }
 
 .Zonenavbarhome {
@@ -876,7 +994,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 1 / 8 / 3 / 18;
 }
 
-.Zonenavbarhome {
+.Zonenavbarhome2 {
   grid-area: 23 / 6 / 25 / 20;
 }
 
