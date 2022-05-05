@@ -47,8 +47,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/front/html/index.html');
 });
 
+var userName;
 var userJob;
 var userAppearance;
+var treesPlanted = 0;
 
 io.on('connection', (socket) => {
 
@@ -64,7 +66,34 @@ io.on('connection', (socket) => {
     socket.on('userAppearance', (appearance) => {
         userAppearance = appearance;
         console.log(userAppearance);
-    })
+    });
+
+    socket.on('treesPlanted', (trees) => {
+        treesPlanted += trees;
+        console.log("TreesPlanted : ", treesPlanted);
+    });
+
+    socket.on('username', (name) => {
+        userName = name;
+        console.log("Username : ", userName);
+    });
+    
+    socket.on('getTreesPlanted', () => {
+        socket.emit('newNumberOfTreesPlanted', treesPlanted);
+    });
+
+    socket.on('getTypeOfInfluencer', () => {
+        socket.emit('newTypeOfInfluencer', userJob);
+    });
+
+    socket.on('getUsername', () => {
+        socket.emit('newUsername', userName);
+    });
+
+    socket.on('getAppearance', () => {
+        socket.emit('newAppearance', userAppearance);
+    });
+
 });
 
 

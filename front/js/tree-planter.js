@@ -305,8 +305,8 @@ function update (time, delta)
 
         //console.log(minX, maxX, minY, maxY);
 
-        let positionX = Phaser.Math.Between(minY, maxY);
-        let positionY = Phaser.Math.Between(minX, maxX);
+        let positionX = Phaser.Math.Between(minX, maxX);
+        let positionY = Phaser.Math.Between(minY, maxY);
 
         console.log(positionX, positionY);
 
@@ -399,6 +399,7 @@ function update (time, delta)
         });
         text.setScrollFactor(0);
         this.scene.pause();
+        socket.emit('treesPlanted', countTrees()[0]);
     }
 }
 

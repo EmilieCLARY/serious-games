@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../dist/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <title>Document</title>
+    <title>Style your character</title>
 
 </head>
 <body>
@@ -39,111 +39,148 @@
     <!-- ##                                      ## -->
     <!-- ########################################## -->
         
-        <div class="choice1 bg-white border-fonce border-3 rounded-xl mx-4"> 
+
+    <!-- ##########      4 cases      ############# -->
+
+        <div class="choice1 bg-white border-fonce border-3 rounded-xl mx-4" id="c14cases"> 
             <div class="choice1title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
                 <h1> Athlete</h1>
             </div>
-            <button id="blackGuy">Photo</button>
 
-
-
-            <button id="athlete" class="h-full w-full"></button>
+            <button id="athlete" class="h-[90%] w-full athletes"></button>
         </div>
-        
-        
 
+    <!-- ##########      6 cases      ############# -->
+
+        <div class="choice1c6 m-2 bg-white border-fonce border-3 rounded-xl mx-4" id="c16cases"> 
+            <div class="choice1title font-pixelise text-center text-3xl text-rougebouton underline-offset-1 mt-4 h-[5%]">
+                <h1> Appearence 1</h1>
+            </div>
+            <button id="whiteGuy" class="h-[90%] w-full mt-2"></button>
+        </div>
 
     <!-- ########################################## -->
     <!-- ##                                      ## -->
-    <!-- ##              OPTION 2-5              ## -->
+    <!-- ##              OPTION 2                ## -->
     <!-- ##                                      ## -->
     <!-- ########################################## -->
+        
 
+    <!-- ##########      4 cases      ############# -->
 
-        <div class="choice2-5 bg-white border-fonce border-3 rounded-xl mx-4">
-            
-            <!-- ################ OPTION 2 ############### -->
-
-            <div class="choice22 h-full w-full">
-                <div class="choicee22title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
-                    <h1> Comedian</h1>
-                </div>
-                <div id="imgC4" class="imgC22"></div>
-                
-                <button id="comedian" class="h-full w-full"></button>
+        <div class="choice2 bg-white border-fonce border-3 rounded-xl mx-4" id="c24cases"> 
+            <div class="choice2title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
+                <h1> Comedian</h1>
             </div>
 
-            <!-- ################ OPTION 5 ############### -->
-            
-            <div class="choice25"></div>
-        
+            <button id="comedian" class="h-[90%] w-full"></button>
         </div>
-        
-        
 
-    <!-- ########################################## -->
-    <!-- ##                                      ## -->
-    <!-- ##              OPTION 3-6              ## -->
-    <!-- ##                                      ## -->
-    <!-- ########################################## -->
-        
-        <div class="choice3-6 bg-white border-fonce border-3 rounded-xl mx-4">
-            
-            <!-- ################ OPTION 3 ############### -->
-            
-            <div class="choice33 h-full w-full"> 
-                <div class="choicee22title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
-                    <h1> Scientific</h1>
-                </div>
-                <div id="imgC4" class="imgC33"></div>
-            
-                <button id="sciences" class="h-full w-full"></button>
+    <!-- ##########      6 cases      ############# -->
+
+        <div class="choice2c6 m-2 bg-white border-fonce border-3 rounded-xl mx-4" id="c26cases"> 
+            <div class="choice2title font-pixelise text-center text-3xl text-rougebouton underline-offset-1 mt-4 h-[5%]">
+                <h1> Appearence 2</h1>
             </div>
-            
-            
-            <!-- ################ OPTION 6 ############### -->
-            
-            <div class="choice36"></div>   
+            <button id="blackGuy" class="h-[90%] w-full mt-2"></button>
         </div>
-        
+
+
+
+
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              OPTION 3                ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
         
 
-    
+    <!-- ##########      4 cases      ############# -->
+
+        <div class="choice3 bg-white border-fonce border-3 rounded-xl mx-4" id="c34cases"> 
+            <div class="choice3title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
+                <h1> Scientific </h1>
+            </div>
+
+            <button id="sciences" class="h-[90%] w-full"></button>
+        </div>
+
+<!--     ##########      6 cases      ############# -->
+
+        <div class="choice3c6 m-2 bg-white border-fonce border-3 rounded-xl mx-4" id="c36cases"> 
+            <div class="choice3title font-pixelise text-center text-3xl text-rougebouton underline-offset-1 mt-4 h-[5%]">
+                <h1> Appearence 3</h1>
+            </div>
+            <button id="yellowGuy" class="h-[90%] w-full mt-2"></button>
+
+        </div>
+
     <!-- ########################################## -->
     <!-- ##                                      ## -->
     <!-- ##              OPTION 4                ## -->
     <!-- ##                                      ## -->
     <!-- ########################################## -->
+        
 
+        <!-- ##########      4 cases      ############# -->
 
-        <div class="choice4 bg-white border-fonce border-3 rounded-xl mx-4 ">  
-            <div class="choicee4title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
+        <div class="choice4 bg-white border-fonce border-3 rounded-xl mx-4" id="c44cases"> 
+            <div class="choice1title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
                 <h1> Gamer</h1>
             </div>
-            <div id="imgC4" class="imgC4"></div>
 
-            <button id="gaming" class="h-full w-full"></button>
+            <button id="gaming" class="h-[90%] w-full"></button>
         </div>
-     
-    
-    
-    <!-- ########################################## -->
-    <!-- ##                                      ## -->
-    <!-- ##               NAVBAR                 ## -->
-    <!-- ##                                      ## -->
-    <!-- ########################################## -->
 
-    
-        <div class="navbarJA"></div>
-    </div> 
-    
-    
-    
-    <button id="yellowGuy">Photo</button>
+        <!-- ##########      6 cases      ############# -->
 
-    <button id="blackWomen">Photo</button>
-    <button id="whiteWomen">Photo</button>
-    <button id="yellowWomen">Photo</button>
+        <div class="choice4c6 m-2 bg-white border-fonce border-3 rounded-xl mx-4" id="c46cases"> 
+            <div class="choice1title font-pixelise text-center text-3xl text-rougebouton underline-offset-1 mt-4 h-[5%]">
+                <h1> Appearence 4</h1>
+            </div>
+            <button id="whiteWomen" class="h-[90%] w-full mt-2"></button>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##              OPTION 5                ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+
+        <!-- ##########      6 cases      ############# -->
+
+        <div class="choice5 m-2 bg-white border-fonce border-3 rounded-xl mx-4" id="c56cases"> 
+            <div class="choice1title font-pixelise text-center text-3xl text-rougebouton underline-offset-1 mt-4 h-[5%]">
+                <h1> Appearence 5</h1>
+            </div>
+            <button id="blackWomen" class="h-[90%] w-full mt-2"></button>
+        </div>
+
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##              OPTION 6                ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+
+        <!-- ##########      6 cases      ############# -->
+
+        <div class="choice6 m-2 bg-white border-fonce border-3 rounded-xl mx-4" id="c66cases"> 
+            <div class="choice1title font-pixelise text-center text-3xl text-rougebouton underline-offset-1 mt-4 h-[5%]">
+                <h1> Appearence 6</h1>
+            </div>
+
+            <button id="yellowWomen" class="h-[90%] w-full mt-2"></button>
+        </div>
+
+
 
 </body>
 <script src="../../js/modules/socketLoading.js"></script>

@@ -488,6 +488,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 0.5rem;
 }
 
+.m-10 {
+  margin: 2.5rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -503,6 +507,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .inline-block {
@@ -543,6 +567,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-full {
   height: 100%;
+}
+
+.h-\[90\%\] {
+  height: 90%;
+}
+
+.h-\[5\%\] {
+  height: 5%;
 }
 
 .w-32 {
@@ -613,6 +645,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .border-4 {
   border-width: 4px;
+}
+
+.border-contourRouge {
+  border-width: 23px;
 }
 
 .border-3 {
@@ -693,14 +729,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(121 118 118 / var(--tw-bg-opacity));
 }
 
-.bg-rougeContour {
-  --tw-bg-opacity: 1;
-  background-color: rgb(145 28 26 / var(--tw-bg-opacity));
-}
-
 .bg-vertContour {
   --tw-bg-opacity: 1;
   background-color: rgb(23 87 50 / var(--tw-bg-opacity));
+}
+
+.bg-rougeContour {
+  --tw-bg-opacity: 1;
+  background-color: rgb(145 28 26 / var(--tw-bg-opacity));
 }
 
 .text-center {
@@ -734,6 +770,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2.5rem;
 }
 
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 .text-white {
   color: #FFFFFFFF;
 }
@@ -761,6 +802,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .decoration-fonce {
   -webkit-text-decoration-color: #303030;
           text-decoration-color: #303030;
+}
+
+.underline-offset-1 {
+  text-underline-offset: 1px;
 }
 
 @font-face {
@@ -798,6 +843,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 }*/
 
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            HOME.html                                                        #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
 .Player {
   grid-area: 1 / 5 / 6 / 11;
 }
@@ -807,7 +860,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .PPsportif{
-  background-image: url("../img/characters/PpSportif.PNG");
+  background-image: url("../img/characters/sportif/bbCourtBG.png");
   background-size : contain;
   background-repeat : no-repeat;
   background-position: center;
@@ -843,7 +896,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .Gauge{
-  grid-area: 6 / 4 / 12 / 7;
+  grid-area: 6 / 4 / 11 / 7;
   background-image: url("../img/mainPage/gauge.png");
   background-size : contain;
   background-repeat : no-repeat;
@@ -963,9 +1016,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 3 / 3 / 4 / 4;
 }
 
-/*---------------------free play----------------------------*/
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            FREEPLAY.html                                                    #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
-.parent2 {
+.parentfp {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   grid-template-rows: repeat(24, 1fr);
@@ -973,61 +1032,67 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-gap: 0px;
 }
 
-.div11 {
+.div1fp {
   grid-area: 1 / 1 / 2 / 25;
 }
 
-.div12 {
+.div2fp {
   grid-area: 1 / 1 / 25 / 2;
 }
 
-.div13 {
+.div3fp {
   grid-area: 24 / 1 / 25 / 25;
 }
 
-.div14 {
+.div4fp {
   grid-area: 1 / 24 / 25 / 25;
 }
 
-.div16 {
+.div6fp {
   grid-area: 3 / 3 / 9 / 9;
+}
+
+.tortue{
   background-image: url("../img/freeplay/turtle_play.PNG" );
   background-size: cover;
   background-repeat: no-repeat
 }
 
-.div17 {
+.div7fp {
   grid-area: 3 /10 / 9 / 16;
+}
+
+.bigheat{
   background-image: url("../img/freeplay/big_head.PNG" );
   background-size: cover;
   background-repeat: no-repeat
 }
 
-.div18 {
+.div8fp {
   grid-area: 3 / 17 / 9 / 23;
 }
 
-.div19 {
+.div9fp {
   grid-area: 10 / 3 / 16 / 9;
 }
 
-.div110 {
+.div10fp {
   grid-area: 10 / 10 / 16 / 16;
 }
 
-.div111 {
+.div11fp {
   grid-area: 10 / 17 / 16 / 23;
 }
 
-.div112 {
+.div12fp {
   grid-area: 17 / 6 / 23 / 12;
 }
 
-.div113 {
+.div13fp {
   grid-area: 17 / 14 / 23 / 20;
 }
 
-.div115 {
+.div15fp {
   grid-area: 1 / 8 / 3 / 18;
 }
 
@@ -1035,7 +1100,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 23 / 6 / 25 / 20;
 }
 
-.div115 h1{
+.div15fp h1{
   font-size: 65px;
 }
 
@@ -1047,9 +1112,39 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 30px;
 }
 
-/*modal box*/
+/* modal */
 
-/*------------------------------ PAGE ACCUEIL  ----------------------------------*/
+.modaltour{
+  /*display: "none";   */
+  grid-area: 5 / 5 / 21 / 21;
+}
+
+.petitmodal{
+  /*display: "none";   */
+  grid-area: 6 / 6 / 20 / 20;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+    .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                         ACCUEIL.html                                                        #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
 .parent3 {
   display: grid;
@@ -1099,11 +1194,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100%;
 }
 
-/* ########################################## 
-   ##                                      ##
-   ##            JOB-APPEARANCE            ##
-   ##                                      ##
-   ########################################## */
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            JOB-APPEARANCE.html                                              #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
 .globalJA {
   display: grid;
@@ -1121,23 +1218,102 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 2 / 1 / 12 / 4;
 }
 
-.choice2-5 {
+.choice1c6 {
+  grid-area: 2 / 1 / 7 / 5;
+}
+
+.choice2 {
   grid-area: 2 / 4 / 12 / 7;
 }
 
-.choice3-6 {
+.choice2c6 {
+  grid-area: 2 / 5 / 7 / 9;
+}
+
+.choice3 {
   grid-area: 2 / 7 / 12 / 10;
+}
+
+.choice3c6 {
+  grid-area: 2 / 9 / 7 / 13;
 }
 
 .choice4 {
   grid-area: 2 / 10 / 12 / 13;
 }
 
+.choice4c6 {
+  grid-area: 7 / 1 / 12 / 5;
+}
+
+.choice5 {
+  grid-area: 7 / 5 / 12 / 9;
+}
+
+.choice6 {
+  grid-area: 7 / 9 / 12 / 13;
+}
+
 .navbarJA {
   grid-area: 12 / 4 / 13 / 10;
 }
 
-/* form  */
+.athletes{
+  background-image: url("../img/characters/sportif/sportifs.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.whiteGuy{
+  background-image: url("../img/characters/sportif/sportifW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.blackGuy{
+  background-image: url("../img/characters/sportif/sportifB.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.yellowGuy{
+  background-image: url("../img/characters/sportif/sportifY.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.whiteWomen{
+  background-image: url("../img/characters/sportif/sportiveW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.blackWomen{
+  background-image: url("../img/characters/sportif/sportiveB.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.yellowWomen{
+  background-image: url("../img/characters/sportif/sportiveY.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            FORM.html                                                        #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
 .parentform {
   display: grid;
@@ -1189,4 +1365,45 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .divbtn {
   grid-area: 11 / 6 / 12 / 8;
-} 
+}
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            JOB-APPEARANCE.html                                              #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
+.parentAtlCh {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.atlquestion {
+  grid-area: 1 / 3 / 3 / 11;
+}
+
+.atlallchoice {
+  grid-area: 3 / 1 / 13 / 13;
+}
+
+.atlchoice1 {
+  grid-area: 3 / 1 / 13 / 5;
+}
+
+.atlchoice2 {
+  grid-area: 3 / 5 / 13 / 9;
+}
+
+.atlchoice3 {
+  grid-area: 3 / 9 / 13 / 13;
+}
+
+.atlchoiceNavBar {
+  grid-area: 12 / 4 / 13 / 10;
+}
+   

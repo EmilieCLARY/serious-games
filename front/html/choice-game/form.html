@@ -8,28 +8,46 @@
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="../../dist/style.css">
 
-    <title>FORM</title>
+    <title>Form</title>
 </head>
 <body>
 
     <div class="parentform h-screen bg-fondmain">
+
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##               BORDER                 ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+
         <div class="div111 border-rougeContour border-l-contourRouge "></div>
         <div class="div112 border-rougeContour border-b-contourRouge "></div>
         <div class="div113 border-rougeContour border-r-contourRouge"></div>
         <div class="div114 border-rougeContour border-t-contourRouge"></div>
-        <div class="divbox bg-gris"> </div>
-        <div class="divtitre bg-rougeContour"> 
-            <div class="titre">
+        
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              FORM                    ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+        
+        <!--background-->
+        <div class="divbox bg-gris border-4 rounded-xl"> </div>
+
+        <!--TITRE-->
+        <div class="divtitre border-4 rounded-xl w-full flex text-center items-center justify-items-center bg-rougebouton"> 
+            <div class="titre w-full text-6xl text-white font-pixelise">
                 <h1>Who is your player ?</h1>
             </div>
         </div>
 
-        <div class="divpp bg-vertContour">
-            <p>ppDeQualite</p>
+        <!--PROFILE PICTURE-->
+        <div class="divpp bg-vertContour PPsportif m-10" id="profilPicture">
+            <p></p>
         </div>   
 
-        
-            <div class="divname bg-rougeContour"> 
+        <!--NAME-->
+            <div class="divname bg-rougeContour mr-5"> 
                 <form action="" method="get" class="form">
                     <div class="form">
                         <label for="name">Your name: </label>
@@ -38,7 +56,8 @@
                 </form>              
             </div>
 
-            <div class="divdesc bg-rougeContour"> 
+        <!--DESCRIPTION-->
+            <div class="divdesc bg-rougeContour mr-5"> 
                 <form action="" method="get" class="form">
                     <div class="form">
                         <label for="name">Character description: </label>
@@ -47,11 +66,12 @@
                 </form>
             </div>
 
-            <div class="divadj bg-rougeContour"> 
+            <!--ADJ-->
+            <div class="divadj bg-rougeContour mr-5 mb-5"> 
                 <form action="" method="get" class="form">
                     <div class="adj">
                         <legend>Adjectives</legend>
-                        <label><input type="radio" name="funny">funny</label>
+                        <label><input type="radio" name="funny">Funny</label>
                         <label><input type="radio" name="drole">drole</label>
                         <label><input type="radio" name="beau">beau</label>
                         <label><input type="radio" name="blonde">blonde</label>
@@ -60,9 +80,10 @@
                 </form>
             </div>
         
-        <div class="divbtn bg-rougebouton">             
-            <div class="form">
-                <input type="submit" value="Create Character!">
+        <!--BOUTON-->
+        <div class="divbtn click mt-3 w-full flex text-center items-center justify-items-center bg-rougebouton border-4 rounded-xl">             
+            <div class="form click grostext w-full  text-white font-pixelise">
+                <input type="submit" class="click" id="boutonform" value="Create Character!">
             </div>
         </div> 
     </div> 

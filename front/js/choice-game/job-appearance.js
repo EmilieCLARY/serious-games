@@ -5,6 +5,12 @@ document.getElementById("blackWomen").style.display = "none";
 document.getElementById("whiteWomen").style.display = "none";
 document.getElementById("yellowWomen").style.display = "none";
 document.getElementById("titleAppearance").style.display = "none";
+document.getElementById("c16cases").style.display = "none";
+document.getElementById("c26cases").style.display = "none";
+document.getElementById("c36cases").style.display = "none";
+document.getElementById("c46cases").style.display = "none";
+document.getElementById("c56cases").style.display = "none";
+document.getElementById("c66cases").style.display = "none";
 
 var job;
 
@@ -24,11 +30,28 @@ document.getElementById("athlete").addEventListener("click", event => {
     document.getElementById("yellowWomen").style.display = "block";
     document.getElementById("titleAppearance").style.display = "block";
 
+
     document.getElementById("athlete").style.display = "none";
     document.getElementById("comedian").style.display = "none";
     document.getElementById("sciences").style.display = "none";
     document.getElementById("gaming").style.display = "none";
     document.getElementById("titleJob").style.display = "none";
+
+    document.getElementById("c16cases").style.display = "block";
+    document.getElementById("c26cases").style.display = "block";
+    document.getElementById("c36cases").style.display = "block";
+    document.getElementById("c46cases").style.display = "block";
+    document.getElementById("c56cases").style.display = "block";
+    document.getElementById("c66cases").style.display = "block";
+
+
+    document.getElementById("c14cases").style.display = "none";
+    document.getElementById("c24cases").style.display = "none";
+    document.getElementById("c34cases").style.display = "none";
+    document.getElementById("c44cases").style.display = "none";
+
+
+    
 
     socket.emit("userJob", job);
 
@@ -105,22 +128,30 @@ document.getElementById("gaming").addEventListener("click", event => {
 /********************************/
 
 document.getElementById("blackGuy").addEventListener("click", event => {
-    socket.emit("userAppearance", 0);
+    socket.emit("userAppearance", 1);
+    window.location.href = "../../html/choice-game/form.html";
+
 });
 document.getElementById("whiteGuy").addEventListener("click", event => {
-    socket.emit("userAppearance", 1);
+    socket.emit("userAppearance", 0);
+    window.location.href = "../../html/choice-game/form.html";
+
 });
 document.getElementById("yellowGuy").addEventListener("click", event => {
     socket.emit("userAppearance", 2);
+    window.location.href = "../../html/choice-game/form.html";
 });
 document.getElementById("blackWomen").addEventListener("click", event => {
-    socket.emit("userAppearance", 3);
+    socket.emit("userAppearance", 4);
+    window.location.href = "../../html/choice-game/form.html";
 });
 document.getElementById("whiteWomen").addEventListener("click", event => {
-    socket.emit("userAppearance", 4);
+    socket.emit("userAppearance", 3);
+    window.location.href = "../../html/choice-game/form.html";
 });
 document.getElementById("yellowWomen").addEventListener("click", event => {
     socket.emit("userAppearance", 5);
+    window.location.href = "../../html/choice-game/form.html";
 });
 
 function showAppearance(){
@@ -129,22 +160,22 @@ function showAppearance(){
             //Mettre photos : Prendre chaque buttons et mettre les images correspondants au métier      
         
             var whiteGuyDiv = document.getElementById("whiteGuy");
-            whiteGuyDiv.innerHTML = '<img src="../../img/characters/sportifW.png"/>';
+            whiteGuyDiv.classList.add("whiteGuy");
             
             var blackGuyDiv = document.getElementById("blackGuy");
-            blackGuyDiv.innerHTML = '<img src="../../img/characters/sportifB.png"/>';
+            blackGuyDiv.classList.add("blackGuy");
             
             var yellowGuyDiv = document.getElementById("yellowGuy");
-            yellowGuyDiv.innerHTML = '<img src="../../img/characters/sportifY.png"/>';
+            yellowGuyDiv.classList.add("yellowGuy");
             
             var whiteGirlDiv = document.getElementById("whiteWomen");
-            whiteGirlDiv.innerHTML = '<img src="../../img/characters/sportiveW.png"/>';
+            whiteGirlDiv.classList.add("whiteWomen");
 
             var blackGirlDiv = document.getElementById("blackWomen");
-            blackGirlDiv.innerHTML = '<img src="../../img/characters/sportiveB.png"/>';
+            blackGirlDiv.classList.add("blackWomen");
 
             var yellowGirlDiv = document.getElementById("yellowWomen");
-            yellowGirlDiv.innerHTML = '<img src="../../img/characters/sportiveY.png"/>';
+            yellowGirlDiv.classList.add("yellowWomen");
 
             break;
         

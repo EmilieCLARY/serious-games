@@ -1,5 +1,11 @@
 module.exports = {
-  content: ["./front/html/home.html","./front/html/free-play.html","./front/html/accueil.html","./front/html/choice-game/job-appearance.html","./front/html/choice-game/form.html" ],
+  content: ["./front/html/home.html",
+    "./front/html/free-play.html",
+    "./front/html/accueil.html",
+    "./front/html/choice-game/job-appearance.html",
+    "./front/html/choice-game/form.html",
+    "./front/html/choice-game/athlete.html", 
+  ],
   theme: {
    
   //extends{

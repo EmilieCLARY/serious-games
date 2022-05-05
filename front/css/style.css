@@ -5,7 +5,7 @@
 @font-face {
     font-family: "Pixelise";
     src: url("../fonts/Minecraft.ttf");
-  }
+  } 
 /*##########################################################*/
 /*##########################################################*/
                 /*----   Home.html   ----*/
@@ -29,12 +29,20 @@
 }*/
 
 
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            HOME.html                                                        #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
 .Player { grid-area: 1 / 5 / 6 / 11;}
 
 .Profilepicture { grid-area: 1 / 1 / 6 / 5; }
 
 .PPsportif{
-    background-image: url("../img/characters/PpSportif.PNG");
+    background-image: url("../img/characters/sportif/bbCourtBG.png");
     background-size : contain;
     background-repeat : no-repeat;
     background-position: center;
@@ -61,7 +69,7 @@
 .TreeCountertitle { grid-area:  4 / 4 / 5 / 7; }
 .Treecount { grid-area: 5 / 4 / 6 / 7; }
 
-.Gauge{ grid-area: 6 / 4 / 12 / 7; 
+.Gauge{ grid-area: 6 / 4 / 11 / 7; 
     background-image: url("../img/mainPage/gauge.png");
     background-size : contain;
     background-repeat : no-repeat;
@@ -130,7 +138,6 @@
     grid-area: 5 / 6 / 13 / 11;
 }
 
-
 .allPosts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -156,9 +163,16 @@
 
 
 
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            FREEPLAY.html                                                    #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
-/*---------------------free play----------------------------*/
-.parent2 {
+
+   .parentfp {
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(24, 1fr);
@@ -166,35 +180,40 @@
     grid-row-gap: 0px;
     }
     
-    .div11 { grid-area: 1 / 1 / 2 / 25; }
-    .div12 { grid-area: 1 / 1 / 25 / 2; }
-    .div13 { grid-area: 24 / 1 / 25 / 25; }
-    .div14 { grid-area: 1 / 24 / 25 / 25; }
+    .div1fp { grid-area: 1 / 1 / 2 / 25; }
+    .div2fp { grid-area: 1 / 1 / 25 / 2; }
+    .div3fp { grid-area: 24 / 1 / 25 / 25; }
+    .div4fp { grid-area: 1 / 24 / 25 / 25; }
 
-    .div16 { 
+    .div6fp { 
         grid-area: 3 / 3 / 9 / 9; 
+    }
+    .tortue{
         background-image: url("../img/freeplay/turtle_play.PNG" );
         background-size: cover;
         background-repeat: no-repeat
     }    
-    .div17 { grid-area: 3 /10 / 9 / 16;
+    .div7fp { 
+        grid-area: 3 /10 / 9 / 16;
+    }
+    .bigheat{
         background-image: url("../img/freeplay/big_head.PNG" );
         background-size: cover;
         background-repeat: no-repeat
     }
-    .div18 { grid-area: 3 / 17 / 9 / 23; }
+    .div8fp { grid-area: 3 / 17 / 9 / 23; }
 
-    .div19 { grid-area: 10 / 3 / 16 / 9; }
-    .div110 { grid-area: 10 / 10 / 16 / 16; }
-    .div111 { grid-area: 10 / 17 / 16 / 23; }
+    .div9fp { grid-area: 10 / 3 / 16 / 9; }
+    .div10fp { grid-area: 10 / 10 / 16 / 16; }
+    .div11fp { grid-area: 10 / 17 / 16 / 23; }
 
-    .div112 { grid-area: 17 / 6 / 23 / 12; }
-    .div113 { grid-area: 17 / 14 / 23 / 20; }
+    .div12fp { grid-area: 17 / 6 / 23 / 12; }
+    .div13fp { grid-area: 17 / 14 / 23 / 20; }
 
-    .div115 { grid-area: 1 / 8 / 3 / 18; } 
+    .div15fp { grid-area: 1 / 8 / 3 / 18; } 
     .Zonenavbarhome2 { grid-area: 23 / 6 / 25 / 20; }
 
-    .div115 h1{
+    .div15fp h1{
         font-size: 65px;
     }
     
@@ -208,17 +227,40 @@
     }
 
 
+    /* modal */
+  
+    .modaltour{   
+        /*display: "none";   */
+        grid-area: 5 / 5 / 21 / 21; 
+    }
+    
+    .petitmodal{     
+        /*display: "none";   */
+        grid-area: 6 / 6 / 20 / 20;  
+    }
 
 
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 50px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-
-/*modal box*/
-
-
-
-
-
-    /*------------------------------ PAGE ACCUEIL  ----------------------------------*/
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                         ACCUEIL.html                                                        #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
 
 .parent3 {
@@ -247,11 +289,13 @@
     height: 100%;
 }
 
-/* ########################################## 
-   ##                                      ##
-   ##            JOB-APPEARANCE            ##
-   ##                                      ##
-   ########################################## */
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            JOB-APPEARANCE.html                                              #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
 
 
@@ -263,24 +307,85 @@
     grid-row-gap: 0px;
     }
     
-    .ChoiceQ { grid-area: 1 / 1 / 2 / 13; }
-    .choice1 { grid-area: 2 / 1 / 12 / 4; }
-    .choice2-5 { grid-area: 2 / 4 / 12 / 7; }
-    .choice3-6 { grid-area: 2 / 7 / 12 / 10; }
-    .choice4 { grid-area: 2 / 10 / 12 / 13; }
-    .navbarJA { grid-area: 12 / 4 / 13 / 10; }
+.ChoiceQ { grid-area: 1 / 1 / 2 / 13; }
+
+.choice1 { grid-area: 2 / 1 / 12 / 4; }
+.choice1c6 { grid-area: 2 / 1 / 7 / 5; } 
+
+
+.choice2 { grid-area: 2 / 4 / 12 / 7; }
+.choice2c6 { grid-area: 2 / 5 / 7 / 9; }
+
+
+.choice3 { grid-area: 2 / 7 / 12 / 10; }
+.choice3c6 { grid-area: 2 / 9 / 7 / 13; }
+
+.choice4 { grid-area: 2 / 10 / 12 / 13; }
+.choice4c6 { grid-area: 7 / 1 / 12 / 5; }
+
+.choice5 { grid-area: 7 / 5 / 12 / 9; }
+.choice6 { grid-area: 7 / 9 / 12 / 13; } 
+
+.navbarJA { grid-area: 12 / 4 / 13 / 10; }
+
+
+.athletes{
+    background-image: url("../img/characters/sportif/sportifs.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+
+
+
+.whiteGuy{
+    background-image: url("../img/characters/sportif/sportifW.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.blackGuy{
+    background-image: url("../img/characters/sportif/sportifB.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.yellowGuy{
+    background-image: url("../img/characters/sportif/sportifY.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
     
+}
+.whiteWomen{
+    background-image: url("../img/characters/sportif/sportiveW.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.blackWomen{
+    background-image: url("../img/characters/sportif/sportiveB.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.yellowWomen{
+    background-image: url("../img/characters/sportif/sportiveY.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
 
 
 
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            FORM.html                                                        #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
-
-
-
-
-
-
-/* form  */
 
 .parentform {
     display: grid;
@@ -288,7 +393,7 @@
     grid-template-rows: repeat(12, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    }
+}
     
     .div111 { grid-area: 1 / 1 / 13 / 2; }
     .div112 { grid-area: 12 / 1 / 13 / 13; }
@@ -301,3 +406,31 @@
     .divdesc { grid-area: 7 / 7 / 8 / 10; }
     .divadj { grid-area: 9 / 7 / 11 / 10; } 
     .divbtn { grid-area: 11 / 6 / 12 / 8; } 
+
+
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                            JOB-APPEARANCE.html                                              #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
+
+.parentAtlCh {
+ display: grid;
+ grid-template-columns: repeat(12, 1fr);
+ grid-template-rows: repeat(12, 1fr);
+ grid-column-gap: 0px;
+ grid-row-gap: 0px;
+ }
+
+ 
+.atlquestion { grid-area: 1 / 3 / 3 / 11; }
+.atlallchoice { grid-area: 3 / 1 / 13 / 13; } 
+.atlchoice1 { grid-area: 3 / 1 / 13 / 5; }
+.atlchoice2 { grid-area: 3 / 5 / 13 / 9; }
+.atlchoice3 { grid-area: 3 / 9 / 13 / 13; }
+.atlchoiceNavBar { grid-area: 12 / 4 / 13 / 10; }
+   

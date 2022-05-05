@@ -9,7 +9,9 @@
     <script src="//cdn.jsdelivr.net/npm/phaser@3.51.0/dist/phaser.js"></script>
     <!--<script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>-->
     <!--<script type="text/javascript" src="../js/turtlesaver.js"></script>-->
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Home</title>
 </head>
 
 <body class="h-screen "> <!--bg-fondmain-->
@@ -60,8 +62,8 @@
     <!--  ######################################### -->
 
             <div class="Player bg-fondmain border-rougeContour border-t-contourRouge border-l-10">
-                <div class="font-pixelise text-fonce underline h-1/5 text-3xl m-4"> Name : </div>
-                <div class="font-pixelise text-fonce underline h-1/5 text-3xl m-4"> Type of influencer : </div>
+                <div class="font-pixelise text-fonce underline h-1/5 text-3xl m-4" id="username"> Name : </div>
+                <div class="font-pixelise text-fonce underline h-1/5 text-3xl m-4" id="typeOfInfluencer"> Type of influencer : </div>
                 <div class="font-pixelise h-1/2 text-7xl ml-4"> Total Followers : </div>
                 <!--<div class="h-1/4 font-pixelise text-white">Type of influencer</div>
                 <div class="h-1/2 font-pixelise">
@@ -86,7 +88,7 @@
                 <div class="fixed h-16 w-32 bg-rougebouton border-rougeContour border-b-12 border-r-12">
                     <h1 class="text-white text-center font-pixelise">Profile picture d3</h1>
                 </div>
-                <div class="PPsportif h-full m-6"></div>
+                <div class="PPsportif h-full m-6" id="profilPicture"></div>
             </div>
 
 
@@ -136,9 +138,9 @@
                 </div>
                 <div class="Forest ForestPng_jsf" > </div>
                 <div class="TreeCountertitle text-4xl text-center mt-4">Trees planted :</div>
-                <div class="Treecount TreeCounter_jsf text-center text-4xl"> ...</div>
+                <div class="Treecount TreeCounter_jsf text-center text-4xl" id="treesPlanted"> ...</div>
                 <div class="Gauge Gauge_jsf"></div>
-                <div class="BHGauge text-center text-4xl text-right mt-4"> Big-head Gauge :</div>
+                <div class="BHGauge text-4xl text-right mt-4"> Big-head Gauge :</div>
             </div>
 
 
@@ -184,5 +186,6 @@
         </div> 
 
 </body>
+<script src="../js/modules/socketLoading.js"></script>
 <script src="../js/home.js"></script>
 </html>
