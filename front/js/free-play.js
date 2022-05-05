@@ -51,7 +51,7 @@ span.addEventListener("click", event => {
 //}
 
 window.onclick = function(event) {
-    if (event.target == modaltour) {
+    if (event.target == modaltour && event.target == petitmodal) {
       modaltour.style.display = "none";
     }
 }
