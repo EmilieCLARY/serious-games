@@ -4,24 +4,141 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../dist/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <title>Document</title>
 
 </head>
 <body>
+    <div class="h-screen globalJA bg-fondmain">
+      
+        
 
-    <h1 id="titleJob">Choose your job !</h1>
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              QUESTION                ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+        
+        <div class="ChoiceQ text-center font-pixelise text-7xl"> 
+            <div class="m-2 EnonceQ text-3xl bg-rougebouton text-center text-white font-pixelise rounded-2xl">
+                <h1 id="titleJob">Choose your job !</h1>
+                <h1 id="titleAppearance">Choose your appearence !</h1>
+                 
+         
+            </div>
+          
 
-    <!-- Photo de tous les persos du métier en mode photo de classe ?-->
+        </div>
+        
 
-    <button id="athlete">Athlete</button>
-    <button id="comedian">Comedian</button>
-    <button id="sciences">Sciences</button>
-    <button id="gaming">Gaming</button>
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              OPTION 1                ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+        
+        <div class="choice1 bg-white border-fonce border-3 rounded-xl mx-4"> 
+            <div class="choice1title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
+                <h1> Athlete</h1>
+            </div>
+            <button id="blackGuy">Photo</button>
 
-    <h1 id="titleAppearance">Choose your appearence !</h1>
 
-    <button id="blackGuy">Photo</button>
-    <button id="whiteGuy">Photo</button>
+
+            <button id="athlete" class="h-full w-full"></button>
+        </div>
+        
+        
+
+
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              OPTION 2-5              ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+
+
+        <div class="choice2-5 bg-white border-fonce border-3 rounded-xl mx-4">
+            
+            <!-- ################ OPTION 2 ############### -->
+
+            <div class="choice22 h-full w-full">
+                <div class="choicee22title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
+                    <h1> Comedian</h1>
+                </div>
+                <div id="imgC4" class="imgC22"></div>
+                
+                <button id="comedian" class="h-full w-full"></button>
+            </div>
+
+            <!-- ################ OPTION 5 ############### -->
+            
+            <div class="choice25"></div>
+        
+        </div>
+        
+        
+
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              OPTION 3-6              ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+        
+        <div class="choice3-6 bg-white border-fonce border-3 rounded-xl mx-4">
+            
+            <!-- ################ OPTION 3 ############### -->
+            
+            <div class="choice33 h-full w-full"> 
+                <div class="choicee22title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
+                    <h1> Scientific</h1>
+                </div>
+                <div id="imgC4" class="imgC33"></div>
+            
+                <button id="sciences" class="h-full w-full"></button>
+            </div>
+            
+            
+            <!-- ################ OPTION 6 ############### -->
+            
+            <div class="choice36"></div>   
+        </div>
+        
+        
+
+    
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              OPTION 4                ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+
+
+        <div class="choice4 bg-white border-fonce border-3 rounded-xl mx-4 ">  
+            <div class="choicee4title font-pixelise text-center text-3xl text-rougebouton border-b-2 m-4">
+                <h1> Gamer</h1>
+            </div>
+            <div id="imgC4" class="imgC4"></div>
+
+            <button id="gaming" class="h-full w-full"></button>
+        </div>
+     
+    
+    
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##               NAVBAR                 ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+
+    
+        <div class="navbarJA"></div>
+    </div> 
+    
+    
+    
     <button id="yellowGuy">Photo</button>
 
     <button id="blackWomen">Photo</button>
@@ -29,5 +146,6 @@
     <button id="yellowWomen">Photo</button>
 
 </body>
+<script src="../../js/modules/socketLoading.js"></script>
 <script type="text/javascript" src="../../js/choice-game/job-appearance.js"></script>  
 </html>

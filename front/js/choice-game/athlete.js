@@ -42,23 +42,19 @@ function selectOption(option) {
 const textNodes = [
     {
         id: 1,
-        text: '',
+        text: 'Welcome ! It\s now time to do your first post. Remember to tell futures followers what you love. Choose between three posts !',
         options: [
             {
-                text: '',
+                text: 'Post 1',
                 nextText: 2
             },
             {
-                text: '',
+                text: 'Post 2',
                 nextText: 3
             },
             {
-                text: '',
+                text: 'Post 3',
                 nextText: 4
-            },
-            {
-                text: '',
-                nextText: 5
             }
         ]
     },

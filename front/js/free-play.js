@@ -6,9 +6,9 @@ document.getElementById("bh").addEventListener("click", event => {
     window.location.href = "../html/big-head.html";
 });
 
-document.getElementById("tp").addEventListener("click", event => {
+/*document.getElementById("tp").addEventListener("click", event => {
     window.location.href = "../html/tree-planter.html";
-});
+});*/
 
 document.getElementById("ma").addEventListener("click", event => {
     window.location.href = "../html/maze.html";
@@ -17,3 +17,5 @@ document.getElementById("ma").addEventListener("click", event => {
 document.getElementById("hm").addEventListener("click", event => {
     window.location.href = "../html/home.html";
 });
+
+

@@ -484,6 +484,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 1.5rem;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .ml-4 {
   margin-left: 1rem;
 }
@@ -576,6 +585,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 1rem;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .rounded-t-xl {
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
@@ -600,6 +613,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .border-4 {
   border-width: 4px;
+}
+
+.border-3 {
+  border-width: 3px;
 }
 
 .border-l-contourRouge {
@@ -647,6 +664,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(145 28 26 / var(--tw-border-opacity));
 }
 
+.border-fonce {
+  --tw-border-opacity: 1;
+  border-color: rgb(48 48 48 / var(--tw-border-opacity));
+}
+
 .bg-fondmain {
   --tw-bg-opacity: 1;
   background-color: rgb(245 224 196 / var(--tw-bg-opacity));
@@ -669,6 +691,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-gris {
   --tw-bg-opacity: 1;
   background-color: rgb(121 118 118 / var(--tw-bg-opacity));
+}
+
+.bg-rougeContour {
+  --tw-bg-opacity: 1;
+  background-color: rgb(145 28 26 / var(--tw-bg-opacity));
+}
+
+.bg-vertContour {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 87 50 / var(--tw-bg-opacity));
 }
 
 .text-center {
@@ -714,6 +746,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gris {
   --tw-text-opacity: 1;
   color: rgb(121 118 118 / var(--tw-text-opacity));
+}
+
+.text-rougebouton {
+  --tw-text-opacity: 1;
+  color: rgb(102 5 3 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1010,6 +1047,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 30px;
 }
 
+/*modal box*/
+
 /*------------------------------ PAGE ACCUEIL  ----------------------------------*/
 
 .parent3 {
@@ -1059,3 +1098,95 @@ Ensure the default browser behavior of the `hidden` attribute.
 .div25 h1, .div26 h1, .div27 h1{
   height: 100%;
 }
+
+/* ########################################## 
+   ##                                      ##
+   ##            JOB-APPEARANCE            ##
+   ##                                      ##
+   ########################################## */
+
+.globalJA {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.ChoiceQ {
+  grid-area: 1 / 1 / 2 / 13;
+}
+
+.choice1 {
+  grid-area: 2 / 1 / 12 / 4;
+}
+
+.choice2-5 {
+  grid-area: 2 / 4 / 12 / 7;
+}
+
+.choice3-6 {
+  grid-area: 2 / 7 / 12 / 10;
+}
+
+.choice4 {
+  grid-area: 2 / 10 / 12 / 13;
+}
+
+.navbarJA {
+  grid-area: 12 / 4 / 13 / 10;
+}
+
+/* form  */
+
+.parentform {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div111 {
+  grid-area: 1 / 1 / 13 / 2;
+}
+
+.div112 {
+  grid-area: 12 / 1 / 13 / 13;
+}
+
+.div113 {
+  grid-area: 1 / 12 / 13 / 13;
+}
+
+.div114 {
+  grid-area: 1 / 1 / 2 / 13;
+}
+
+.divbox {
+  grid-area: 3 / 4 / 11 / 10;
+}
+
+.divtitre {
+  grid-area: 2 / 5 / 4 / 9;
+}
+
+.divpp {
+  grid-area: 4 / 4 / 11 / 7;
+}
+
+.divname {
+  grid-area: 5 / 7 / 6 / 10;
+}
+
+.divdesc {
+  grid-area: 7 / 7 / 8 / 10;
+}
+
+.divadj {
+  grid-area: 9 / 7 / 11 / 10;
+}
+
+.divbtn {
+  grid-area: 11 / 6 / 12 / 8;
+} 

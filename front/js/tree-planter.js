@@ -17,6 +17,9 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+// TIME IN SECONDS
+var timeToPlay = 120;
+
 var cursor;
 var upKey;
 var downKey;
@@ -79,7 +82,7 @@ function preload ()
 function create ()
 {
 
-    background = this.add.tileSprite(0, 0, 20000, 10000, "background");
+    background = this.add.tileSprite(4100, 2500, 8200, 5000, "background");
 
     this.cursors = this.input.keyboard.createCursorKeys();
     cursor = this.input.keyboard.createCursorKeys();
@@ -118,7 +121,7 @@ function create ()
 
     //this.add.grid(100, 50, mapWidth * gridSize, mapHeight * gridSize, gridSize, 0x999999, 1, 0x666666).setOrigin(0);
    
-    arbre = this.add.sprite(100, 50, "trigger").setScale(2);
+    arbre = this.add.sprite(100, 50, "trigger").setScale(0.2);
     let array = [arbre, 0, 0];
     tabTree.push(array);
     map[0][0] = 1;
@@ -302,10 +305,10 @@ function update (time, delta)
 
         //console.log(minX, maxX, minY, maxY);
 
-        let positionX = Phaser.Math.Between(minX, maxX);
-        let positionY = Phaser.Math.Between(minY, maxY);
+        let positionX = Phaser.Math.Between(minY, maxY);
+        let positionY = Phaser.Math.Between(minX, maxX);
 
-        //console.log(positionX, positionY);
+        console.log(positionX, positionY);
 
         if(map[positionX][positionY] != 0 || (positionX - 1 >= 0 && map[positionX-1][positionY] != 0) || (positionX + 1 < 100 && map[positionX+1][positionY] != 0) || (positionY - 1 >= 0 && map[positionX][positionY-1] != 0) || (positionX + 1 < 60 && map[positionX][positionY+1] != 0)){
 
@@ -314,7 +317,7 @@ function update (time, delta)
             console.log("Reroll : ", positionX, positionY);
         }   
         
-        let tree = this.add.sprite(positionX * 80 + 100, positionY * 80 + 50, "trigger").setScale(2);
+        let tree = this.add.sprite(positionX * 80 + 100, positionY * 80 + 50, "trigger").setScale(0.2);
         let array = [tree, positionX, positionY];
         tabTree.push(array);
         map[positionX][positionY] = 1;
@@ -368,7 +371,7 @@ function update (time, delta)
     /*                              */
     /********************************/
 
-    let currentTime = 10 - parseInt(time/1000);
+    let currentTime = timeToPlay - parseInt(time/1000);
 
     if(currentTime < 60){  
         if(currentTime < 10){
@@ -390,7 +393,7 @@ function update (time, delta)
     }
 
     if(currentTime == 0){
-        this.add.text(100, 400, 'Time end, you have ' + countTrees()[0] + ' trees planted', {
+        this.add.text(this.player.x - 400, this.player.y + 100, 'Time end, you have ' + countTrees()[0] + ' trees planted', {
             fontSize: '40px',
             fill: '#000000'
         });

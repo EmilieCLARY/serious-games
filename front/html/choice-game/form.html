@@ -4,24 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../../dist/style.css">
 
-
-    <title>Details</title>
+    <title>FORM</title>
 </head>
 <body>
 
-    <form>
+    <div class="parentform h-screen bg-fondmain">
+        <div class="div111 border-rougeContour border-l-contourRouge "></div>
+        <div class="div112 border-rougeContour border-b-contourRouge "></div>
+        <div class="div113 border-rougeContour border-r-contourRouge"></div>
+        <div class="div114 border-rougeContour border-t-contourRouge"></div>
+        <div class="divbox bg-gris"> </div>
+        <div class="divtitre bg-rougeContour"> 
+            <div class="titre">
+                <h1>Who is your player ?</h1>
+            </div>
+        </div>
 
-        <input type="text" id="name" name="name"><br>
+        <div class="divpp bg-vertContour">
+            <p>ppDeQualite</p>
+        </div>   
+
+        
+            <div class="divname bg-rougeContour"> 
+                <form action="" method="get" class="form">
+                    <div class="form">
+                        <label for="name">Your name: </label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                </form>              
+            </div>
+
+            <div class="divdesc bg-rougeContour"> 
+                <form action="" method="get" class="form">
+                    <div class="form">
+                        <label for="name">Character description: </label>
+                        <input type="text" name="description" id="description" required>
+                     </div>
+                </form>
+            </div>
+
+            <div class="divadj bg-rougeContour"> 
+                <form action="" method="get" class="form">
+                    <div class="adj">
+                        <legend>Adjectives</legend>
+                        <label><input type="radio" name="funny">funny</label>
+                        <label><input type="radio" name="drole">drole</label>
+                        <label><input type="radio" name="beau">beau</label>
+                        <label><input type="radio" name="blonde">blonde</label>
+                        <label><input type="radio" name="timide">timide</label>
+                    </div>
+                </form>
+            </div>
+        
+        <div class="divbtn bg-rougebouton">             
+            <div class="form">
+                <input type="submit" value="Create Character!">
+            </div>
+        </div> 
+    </div> 
 
 
-
-
-    </form>
     
+        
+        
 
+      
 </body>
 
+<script src="../../js/modules/socketLoading.js"></script>
 <script type="text/javascript" src="../../js/choice-game/form.js"></script>  
 
 </html>
