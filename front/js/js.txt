@@ -36,12 +36,11 @@
     - Boeuf 8€
     - Poulet 4€
 
--6 Féculents : VN : 5
+-5 Féculents : VN : 5
     - Pommes de Terre 1.5€
     - Pâtes 2€
     - Riz 2€
     - Blé 2€
-    - Semoule 2€
     - Maïs 2€
 
 -5 Biscuits sucrés : VN : 1

@@ -1,3 +1,5 @@
+//const { spawn } = require("child_process");
+
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('option-buttons');
 
@@ -10,18 +12,75 @@ function startGame() {
 
 function showTextNode(textNodeIndex) {
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
-    textElement.innerText = textNode.text;
+    textElement.innerText = textNode.text;  
     while (optionButtonsElement.firstChild) {
         optionButtonsElement.removeChild(optionButtonsElement.firstChild);
     }
+    
+    let compt = 0;
 
     textNode.options.forEach(option => {
+
+        //console.log(textNode.option)
+        
+        compt++;
+        
         if (showOption(option)) {
-            const button = document.createElement('button');
-            button.innerText = option.text;
-            button.classList.add('btn');
-            button.addEventListener('click', () => selectOption(option));
-            optionButtonsElement.appendChild(button);
+            
+            console.log(compt);
+            
+            if(compt == 1){ // Premier bouton
+                const button = document.createElement('button');
+                var span = document.createElement('span');
+                
+                button.innerText = option.text;
+                button.classList.add('btn'); // Ajouter une classe c'est comme ça
+                
+                button.appendChild(span);
+                
+                button.addEventListener('click', () => selectOption(option));
+                optionButtonsElement.appendChild(button); 
+            }
+            
+            if(compt == 2){ // Deuxième bouton
+                const button = document.createElement('button');
+                var span = document.createElement('span');
+                
+                button.innerText = option.text;
+                button.classList.add('btn');
+                
+                button.appendChild(span);
+                
+                button.addEventListener('click', () => selectOption(option));
+                optionButtonsElement.appendChild(button); 
+            }
+
+            if(compt == 3){ // Troisième bouton
+                const button = document.createElement('button');
+                var span = document.createElement('span');
+                
+                button.innerText = option.text;
+                button.classList.add('btn');
+                
+                button.appendChild(span);
+
+                button.addEventListener('click', () => selectOption(option));
+                optionButtonsElement.appendChild(button); 
+            }
+
+            if(compt == 4){ // Quatrième bouton
+                const button = document.createElement('button');
+                var span = document.createElement('span');
+                
+                button.innerText = option.text;
+                button.classList.add('btn');
+                
+                button.appendChild(span);
+                
+                button.addEventListener('click', () => selectOption(option));
+                optionButtonsElement.appendChild(button);  
+            }
+
         }
     });
 }

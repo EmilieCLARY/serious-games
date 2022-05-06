@@ -10,9 +10,10 @@ var config = {
     physics : {
         default : "arcade",
         arcade : {
-            //debug : true,
+            debug : true,
         }
-    }
+    },
+    parent: 'turtleSaver'
 };
 
 var game = new Phaser.Game(config);
@@ -42,6 +43,12 @@ var nbrDechet = 0;
 var tabTurtle = [];
 var tabDechet = [];
 
+
+
+
+
+
+
 function preload ()
 {
     this.load.image('background', '../img/turtle_saver/background.png');
@@ -62,6 +69,13 @@ function preload ()
     this.load.image('zero-life', '../img/turtle_saver/zero-heart.png')
 
     //this.load.image('zero-life', '../img/turtle_saver/gameover.png')
+
+    //pour le non affichage des modaux
+    document.getElementById("modaltortuewin").style.display = "none";
+    document.getElementById("modaltortueloose").style.display = "none";
+    document.getElementById("modaltortueloosetime").style.display = "none";
+    //document.getElementById("modaltortueinfo").style.display = "none";
+
 }
 
 
@@ -74,7 +88,7 @@ function create ()
     var backgroundImage = this.add.sprite(600,500, 'background');
     backgroundImage.setScale(0.7);
     ship = this.physics.add.sprite(600, 90, 'ship');
-    ship.setScale(0.15);
+    ship.setScale(0.85);
     ship.body.collideWorldBounds = true;
 
     /********************************/
@@ -97,9 +111,9 @@ function create ()
         compteur += 1;
         
         turtle = this.physics.add.sprite(positionX, positionY, 'turtle');
-        turtle.setScale(0.025);
+        turtle.setScale(0.20);
         turtle.setFlip(true, false);
-        turtle.setBodySize(2000, 1500)
+        turtle.setBodySize(300, 300)
         //turtle.body.setOffset(20,20);
         turtle.body.collideWorldBounds = true;
         
@@ -137,7 +151,7 @@ function create ()
         
         if(typeDechets % 3 == 2){
             masque = this.physics.add.sprite(positionXDechets, positionYDechets, 'masque');
-            masque.setScale(0.040);
+            masque.setScale(0.15);
             let vitesse = Phaser.Math.Between(20, 75);
 
             masque.setVelocityX(vitesse);
@@ -161,7 +175,7 @@ function create ()
         else if(typeDechets % 3 == 1){
             bouteille = this.physics.add.sprite(positionXDechets, positionYDechets, 'bouteille');
             bouteille.setBodySize(300, 300)
-            bouteille.setScale(0.125);
+            bouteille.setScale(0.14);
 
             let vitesse = Phaser.Math.Between(20, 75);
             bouteille.setVelocityX(vitesse);
@@ -183,8 +197,8 @@ function create ()
         }
         else{
             sacPlastique = this.physics.add.sprite(positionXDechets, positionYDechets, 'sac-plastique');
-            sacPlastique.setBodySize(900, 900);
-            sacPlastique.setScale(0.035);
+            sacPlastique.setBodySize(300, 300);
+            sacPlastique.setScale(0.179);
 
             let vitesse = Phaser.Math.Between(20, 75);
             sacPlastique.setVelocityX(vitesse);
@@ -217,11 +231,11 @@ function create ()
     /*                              */
     /********************************/
 
-    handle = this.physics.add.sprite(ship.x, ship.y + 60, 'grappin');
+    handle = this.physics.add.sprite(ship.x, ship.y+60, 'grappin');
     handle.setBodySize(400, 200);
-    handle2 = this.physics.add.sprite(ship.x, ship.y + 20);
+    handle2 = this.physics.add.sprite(ship.x, ship.y + 40);
     handle.setScale(0.08);
-    handle.body.setOffset(70, 270);
+    handle.body.setOffset(30, 270);
     handle.body.collideWorldBounds = true;
     rope = new Phaser.Geom.Line(handle2.x - 2, handle2.y, handle.x - 2, handle.y - 12);
     graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x000000 } });
@@ -345,7 +359,7 @@ function update (time, delta)
 
 
     for(let i = 0; i < tabDechet.length; i++){
-        if(tabDechet[i].x > this.game.config.width-50){
+        if(tabDechet[i].x > this.game.config.width-47){
             //console.log(tabTurtle[i].x);
             tabDechet[i].setFlip(false, false);
             let vitesse = Phaser.Math.Between(20, 75);
@@ -419,13 +433,26 @@ function update (time, delta)
     let currentTime = parseInt(time/1000)
 
     if(currentTime >= 120){
-        textGAMEOVER.setText("GAME OVER\nTime is over, turtles are dead because of you !");
+        //textGAMEOVER.setText("GAME OVER\nTime is over, turtles are dead because of you !");
+        document.getElementById("modaltortueloosetime").style.display = "block";
+
+        
     }
     else if(nbrDechet == 0){
-        textGAMEOVER.setText("You win !\n You Get all the waste");
+        //textGAMEOVER.setText("You win !\n You Get all the waste");
+        document.getElementById("modaltortuewin").style.display = "block";
+
+        //pour le point info
+        document.getElementById("btnmodaltortue").addEventListener("click", event => {
+            document.getElementById("modaltortuewin").style.display = "none";
+            document.getElementById("modaltortueinfo").style.display = "block";
+        });
         
     }else if(player_health == 0){
-        textGAMEOVER.setText("GAME OVER \n No more lifes, turtles are dead because of you !");
+        //textGAMEOVER.setText("GAME OVER \n No more lifes, turtles are dead because of you !");
+        document.getElementById("modaltortueloose").style.display = "block";
+
+        
     }
 
     if(currentTime < 60){  

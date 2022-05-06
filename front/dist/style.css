@@ -484,6 +484,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 1.5rem;
 }
 
+.m-8 {
+  margin: 2rem;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
@@ -517,16 +521,32 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.75rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
+.mr-10 {
+  margin-right: 2.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mr-5 {
   margin-right: 1.25rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
 }
 
 .inline-block {
@@ -589,6 +609,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-items-center {
   justify-items: center;
 }
@@ -603,6 +627,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.justify-self-center {
+  justify-self: center;
 }
 
 .overflow-y-auto {
@@ -734,14 +762,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(154 145 145 / var(--tw-bg-opacity));
 }
 
+.bg-rougeContour {
+  --tw-bg-opacity: 1;
+  background-color: rgb(145 28 26 / var(--tw-bg-opacity));
+}
+
 .bg-vertContour {
   --tw-bg-opacity: 1;
   background-color: rgb(23 87 50 / var(--tw-bg-opacity));
 }
 
-.bg-rougeContour {
-  --tw-bg-opacity: 1;
-  background-color: rgb(145 28 26 / var(--tw-bg-opacity));
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .text-center {
@@ -1428,20 +1461,29 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 12 / 4 / 13 / 10;
 }
 
+.optionspossiblepourrepondreauqcmpcqenfaitclejeuquoi {
+  grid-area: 3 / 1 / 11 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
 .choicenum1 {
-  grid-area: 3 / 1 / 7 / 7;
+  grid-area: 1 / 1 / 5 / 7;
 }
 
 .choicenum2 {
-  grid-area: 3 / 7 / 7 / 13;
+  grid-area: 1 / 7 / 5 / 13;
 }
 
 .choicenum3 {
-  grid-area: 7 / 1 / 11 / 7;
+  grid-area: 5 / 1 / 9 / 7;
 }
 
 .choicenum4 {
-  grid-area: 7 / 7 / 11 / 13;
+  grid-area: 5 / 7 / 9 / 13;
 }
 
 /*
@@ -1488,154 +1530,166 @@ Ensure the default browser behavior of the `hidden` attribute.
     border-color: black;
 }*/
 
-/*
-$thick : 3px;
-$pad : 0.7em;
-calc(0.7em*1.2) : calc(#{$pad} * 1.2);
-$color : #f26522;
-
-
 .portfolio-experiment {
-    background: #2d2d2d;
-  
-    a {
-        color: white;
-        padding: calc(0.7em*1,2);
-        display: inline-block;
-        border: 3px solid transparent;
-        position: relative;
-        font-size: 1.5em;
-        cursor: pointer;
-        letter-spacing: 0.07em;
+  background: #ffffffff;
+}
 
-        .text {
-          // padding: 0 0.3em;
-          transform: translate3d(0,0.7em,0);
-          display: block;
-          transition: transform 0.4s cubic-bezier(.2,0,0,1) 0.4s;
-    }
+.portfolio-experiment button {
+  padding: 0.7em calc(4em * 1.2);
+  display: inline-block;
+  border: 3px solid transparent;
+  position: relative;
+  font-size: 1.5em;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+}
 
-    a:after {
-      position: absolute;
-      content: '';
-      bottom: -3px;
-      left: calc(0.7em*1.2);
-      right: calc(0.7em*1.2);
-      height: 3px;
-      background: #f26522;
-      // z-index: -1;
-      transition: 
-        transform 0.8s cubic-bezier(1,0,.37,1) 0.2s,
-        right 0.2s cubic-bezier(.04,.48,0,1) 0.6s,
-        left 0.4s cubic-bezier(.04,.48,0,1) 0.6s;
-      transform-origin: left;
-    }
+.portfolio-experiment button .texte {
+  font-family: proxima-nova, monospace;
+  transform: translate3d(0, 0.7em, 0);
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
 
+.portfolio-experiment button:after {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: calc(0.7em * 1.2);
+  right: calc(0.7em * 1.2);
+  height: 5px;
+  background: #911C1A;
+  transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s, right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s, left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
+  transform-origin: left;
+}
 
+.portfolio-experiment .line {
+  position: absolute;
+  background: #911C1A;
+}
 
-    .line {
-        position: absolute;
-        background: #f26522;
-    }
+.portfolio-experiment .line.-right, .portfolio-experiment .line.-left {
+  width: 5px;
+  bottom: -3px;
+  top: -3px;
+  transform: scale3d(1, 0, 1);
+}
 
-    .-right{        
-        width: 3px;
-        bottom: -3px;
-        top: -3px;
-        transform: scale3d(1,0,1);
-    }
-    .-left {
-        width: 3px;
-        bottom: -3px;
-        top: -3px;
-        transform: scale3d(1,0,1);
-    }
+.portfolio-experiment .line.-top, .portfolio-experiment .line.-bottom {
+  height: 5px;
+  left: -3px;
+  right: -3px;
+  transform: scale3d(0, 1, 1);
+}
 
-    .-top{
-        height: 3px;
-        left: -3px;
-        right: -3px;
-        transform: scale3d(0,1,1);
-    }
-    .-bottom {
-        height: 3px;
-        left: -3px;
-        right: -3px;
-        transform: scale3d(0,1,1);
-    }
+.portfolio-experiment .line.-right {
+  right: -3px;
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
+  transform-origin: top;
+}
 
-    .-right {
-        right: -3px;
-        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.23s;
-        transform-origin: top;
-    }
+.portfolio-experiment .line.-top {
+  top: -3px;
+  transition: transform 0.08s linear 0.43s;
+  transform-origin: left;
+}
 
-    .-top {
-        top: -3px;
-        transition: transform 0.08s linear 0.43s;
-        transform-origin: left;
-    }
+.portfolio-experiment .line.-left {
+  left: -3px;
+  transition: transform 0.08s linear 0.51s;
+  transform-origin: bottom;
+}
 
-    .-left {
-        left: -3px;
-        transition: transform 0.08s linear 0.51s;
-        transform-origin: bottom;
-    }
+.portfolio-experiment .line.-bottom {
+  bottom: -3px;
+  transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
+  transform-origin: right;
+}
 
-    .-bottom {
-        bottom: -3px;
-        transition: transform 0.3s cubic-bezier(1,0,.65,1.01);
-        transform-origin: right;
-    }  
+.portfolio-experiment button:hover .texte, .portfolio-experiment button:active .texte {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+
+.portfolio-experiment button:hover:after, .portfolio-experiment button:active:after {
+  transform: scale3d(0, 1, 1);
+  right: -3px;
+  left: -3px;
+  transform-origin: right;
+  transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s, right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
+}
+
+.portfolio-experiment button:hover .line, .portfolio-experiment button:active .line {
+  transform: scale3d(1, 1, 1);
+}
+
+.portfolio-experiment button:hover .line.-right, .portfolio-experiment button:active .line.-right {
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
+  transform-origin: bottom;
+}
+
+.portfolio-experiment button:hover .line.-top, .portfolio-experiment button:active .line.-top {
+  transition: transform 0.08s linear 0.4s;
+  transform-origin: right;
+}
+
+.portfolio-experiment button:hover .line.-left, .portfolio-experiment button:active .line.-left {
+  transition: transform 0.08s linear 0.48s;
+  transform-origin: top;
+}
+
+.portfolio-experiment button:hover .line.-bottom, .portfolio-experiment button:active .line.-bottom {
+  transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
+  transform-origin: left;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    transform: rotate(1turn);
   }
+}
 
-  a:hover,
-  a:active {
-
-    .text {
-      transform: translate3d(0,0,0);
-      transition: transform 0.6s cubic-bezier(.2,0,0,1) 0.4s;
-    }
-
-    &:after {
-      transform: scale3d(0,1,1);
-      right: -3px;
-      left: -3px;
-      transform-origin: right;
-      transition: 
-        transform 0.2s cubic-bezier(1,0,.65,1.01) 0.17s,
-        right 0.2s cubic-bezier(1,0,.65,1.01),
-        left 0s 0.3s;
-    }
-
-    .line {
-      transform: scale3d(1,1,1);
-
-      &.-right {
-        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.2s;
-        transform-origin: bottom;
-      }
-
-      &.-top {
-        transition: transform 0.08s linear 0.4s;
-        transform-origin: right;
-      }
-
-      &.-left {
-        transition: transform 0.08s linear 0.48s;
-        transform-origin: top;
-      }
-
-      &.-bottom {
-        transition: transform 0.5s cubic-bezier(0,.53,.29,1) 0.56s;
-        transform-origin: left;
-      }
-    }
-
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
   }
-}/*
+}
 
+.rainbow {
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 2rem;
+}
 
+.rainbow::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -473%;
+  width: 200%;
+  height: 1050%;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: linear-gradient(#303030, #303030), linear-gradient(#c4b39c,#c4b39c),linear-gradient(#303030, #303030),  linear-gradient(#c4b39c, #c4b39c);
+  -webkit-animation: rotate 20s linear infinite;
+          animation: rotate 20s linear infinite;
+}
+
+.rainbow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 6px;
+  top: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  background: white;
+  border-radius: 5px;
+}
 
 /* #######################################################################################################################
    #######################################################################################################################
@@ -1645,10 +1699,80 @@ $color : #f26522;
    #######################################################################################################################
    ####################################################################################################################### */
 
+.arrow{
+  background-image: url("../img/freeplay/arrow.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
 .divtortue{
   grid-area: 4 / 4 / 22 / 22;
 }
 
 .divretourfree{
   grid-area: 22 / 1 / 25 / 4;
+}
+
+.modaltortuewin{
+  grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modaltortueloose{
+  grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modaltortueloosetime{
+  grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modaltortueinfo{
+  grid-area: 6 / 7 / 20 / 19 ;
+}
+
+.modalinfoparent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.modalinfoparenttitre {
+  grid-area: 1 / 4 / 3 / 10;
+}
+
+.modalinfoparentprofessor {
+  grid-area: 3 / 2 / 12 / 7;
+}
+
+.modalinfoparentblabla {
+  grid-area: 4 / 8 / 10 / 12;
+}
+
+.modalinfoparentbtn {
+  grid-area: 11 / 8 / 13 / 12;
+}
+
+.professor{
+  background-image: url("../img/characters/scientist/scientistLight.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.modaltortuewin{
+  display:none;
+}
+
+.modaltortueloose{
+  display:none;
+}
+
+.modaltortueloosetime{
+  display:none;
+}
+
+.modaltortueinfo{
+  display: none;
 }

@@ -5,6 +5,7 @@ module.exports = {
     "./front/html/choice-game/job-appearance.html",
     "./front/html/choice-game/form.html",
     "./front/html/choice-game/athlete.html", 
+    "./front/html/turtle-saver.html", 
   ],
   theme: {
    

@@ -1,0 +1,99 @@
+digraph G {
+
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		node [style=filled,color=white];
+		label = "Athlete";
+	}
+
+    node [shape = box]; ChoixAlimentation Terrain;
+
+
+	start -> ChoixPrésentation_PostSport;
+	ChoixPrésentation_PostSport -> Terrain;
+	//ChoixPrésentation_PostSport -> Football;
+	//ChoixPrésentation_PostSport -> Natation;
+	//ChoixPrésentation_PostSport -> Musculation;
+	
+	Terrain -> TerrainFavoriSeul [color = "green"]
+	Terrain -> TerrainFavoriEtPetiteTêtePerso [color = "green"]
+	Terrain -> TerrainFavoriEtGrosseTêtePerso [color = "red"]
+	
+	TerrainFavoriEtPetiteTêtePerso -> LégèreMontéeFollowers[color = "blue", penwidth="0.5"];
+
+    TerrainFavoriEtPetiteTêtePerso -> MarquesBallon[penwidth="3"];
+
+    TerrainFavoriEtGrosseTêtePerso -> GrandeBaisseFollowers[color = "blue", penwidth="0.5"];
+    
+    TerrainFavoriEtGrosseTêtePerso -> MarquesBallon[penwidth="3"];
+    
+
+    TerrainFavoriSeul -> GrandeMontéeFollowers[color = "blue", penwidth="0.5"];
+    TerrainFavoriSeul -> MarquesBallon[penwidth="3"];
+    MarquesBallon -> MarqueNégative[color = "red"];
+    MarquesBallon -> MarqueNeutre[color = "orange"];
+    MarquesBallon -> MarqueEngagée[color = "green"];
+    
+    MarqueNégative -> GrandeBaisseFollowers2[color = "blue", penwidth="0.5"];
+
+    MarqueNeutre -> LégèreMontéeFollowers2[color = "blue", penwidth="0.5"];
+
+    MarqueEngagée -> GrandeMontéeFollowers2[color = "blue", penwidth="0.5"];
+
+
+
+    MarqueNégative -> ChoixAlimentation[penwidth="3"];
+    MarqueNeutre -> ChoixAlimentation[penwidth="3"];
+    MarqueEngagée -> ChoixAlimentation[penwidth="3"];
+    
+    ChoixAlimentation -> HamburgerMalbouffe[color = "red"];
+    ChoixAlimentation -> PâtesCarbo[color = "orange"];
+    ChoixAlimentation -> SaladeProtéinée[color = "green"];
+    
+    HamburgerMalbouffe -> GrandeBaisseFollowers3[color = "blue", penwidth="0.5"];
+
+    PâtesCarbo -> LégèreBaisseFollowers3[color = "blue", penwidth="0.5"];
+
+    SaladeProtéinée -> GrandeMontéeFollowers3[color = "blue", penwidth="0.5"];
+
+
+    HamburgerMalbouffe -> PhotoGroupe[penwidth="3"];
+    PâtesCarbo -> PhotoGroupe[penwidth="3"];
+    SaladeProtéinée-> PhotoGroupe[penwidth="3"];
+    
+    PhotoGroupe -> PersoAuMilieuDevantEnGros[color = "red"];
+    PhotoGroupe -> PersoNeutre[color = "green"];
+    PhotoGroupe -> PersoDerrière[color = "red",];
+    
+    PersoAuMilieuDevantEnGros -> GrandeBaisseFollowers4[color = "blue"];
+    
+    PersoDerrière -> LégèreBaisseFollowers4[color = "blue", penwidth="0.5"];
+    
+    PersoNeutre -> LégèreMontéeFollowers4[color = "blue", penwidth="0.5"];
+    
+    PersoAuMilieuDevantEnGros -> ChoixSuivant[penwidth="3"];
+    PersoDerrière -> ChoixSuivant[penwidth="3"];
+    PersoNeutre -> ChoixSuivant[penwidth="3"];
+    
+	//Football -> TerrainFootFavoriSeul
+	//Football -> TerrainFootFavoriEtPetiteTêtePerso
+	//Football -> TerrainFootFavoriEtGrosseTêtePerso
+	
+	//Natation -> PiscineFavorieSeul
+	//Natation -> PiscineFavorieEtPetiteTêtePerso
+	//Natation -> PiscineFavorieEtGrosseTêtePerso
+	
+	//Musculation -> SalleFavorieSeul
+	//Musculation -> SalleFavorieEtPetiteTêtePerso
+	//Musculation -> SalleFavorieEtGrosseTêtePerso
+	
+	
+	
+
+	
+	ChoixFinal -> end;
+
+	start [shape=Mdiamond];
+	end [shape=Msquare];
+}
