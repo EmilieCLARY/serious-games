@@ -9,6 +9,9 @@ module.exports = {
   theme: {
    
   //extends{
+      maxWidth:{
+        exempleCG:'80%'
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -18,7 +21,9 @@ module.exports = {
         white: '#FFFFFFFF',
         fonce: '#303030',
         gris: '#797676',
-        vertContour : '#175732'
+        vertContour : '#175732',
+        grisfonce: '#333',
+        grisclair: '#9a9191'
       },
       borderWidth: {
         DEFAULT: '1px',

@@ -50,7 +50,12 @@ socket.on('newTypeOfInfluencer', (job) => {
 
 socket.on('newUsername', (name) => {
     //console.log(name);
-    document.getElementById("username").textContent = "Name : " + name;
+    if(name == null){
+        document.getElementById("username").textContent = "Name : NONONONO";
+    }
+    else{
+        document.getElementById("username").textContent = "Name : " + name;
+    }
 });
 
 socket.on('newAppearance', (appearance) => {
