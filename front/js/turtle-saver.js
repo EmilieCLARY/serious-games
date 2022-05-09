@@ -10,7 +10,7 @@ var config = {
     physics : {
         default : "arcade",
         arcade : {
-            debug : true,
+            //debug : true,
         }
     },
     parent: 'turtleSaver'
@@ -234,6 +234,7 @@ function create ()
     handle = this.physics.add.sprite(ship.x, ship.y+60, 'grappin');
     handle.setBodySize(400, 200);
     handle2 = this.physics.add.sprite(ship.x, ship.y + 40);
+    handle2.body.setSize(60, 60);
     handle.setScale(0.08);
     handle.body.setOffset(30, 270);
     handle.body.collideWorldBounds = true;
@@ -265,7 +266,7 @@ function create ()
         this.physics.add.overlap(handle, tabDechet[j], function(){
             if(dechetGrappiné == null) dechetGrappiné = j;
         });
-        this.physics.add.overlap(ship, tabDechet[j], function(){
+        this.physics.add.overlap(handle2, tabDechet[j], function(){
             tabDechet[j].destroy();
             nbrDechet-=1;
             dechetGrappiné = null;

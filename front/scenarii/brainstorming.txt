@@ -1,0 +1,61 @@
+Scénario :
+
+    - Athlete
+    - Comedian
+    - Tech guy
+    - Chief
+
+    
+Plusieurs divergences, mais rejointes rapidement
+
+Choisir sponsors
+
+Idées post :
+    - Choix photo / texte
+    
+    - Mégalo (grosse tête)
+    - Vie privée
+    - Environnement
+    - Harcèlement
+    - Égalité Homme-Femme
+    - Don du sang
+    - Énergie Renouvelables
+    - Nourriture
+    - Transports
+    - Océans propre : séance ramassage d'ordures sur plage
+    
+    Système de commentaires préfaits et choix réaction (passif ou agressif)
+    
+
+Idées ambassadeur :
+    - Association +- bien
+    - Choix sponsor
+    
+
+Cartes chances/malchances :
+    - A la fin de chaque mini-jeu, choix entre 5 cartes (4 et 1)
+    - A réfléchir
+    - Toutes les 2/3 minutes menu qui apparaît
+
+    Cartes chances : + Le journal du coin parle de vous et de vos talents dans son dernier numéros, vous gagnez XXX abonnés
+                     + Un de vos sponsors vous fait dons de XXX arbres
+                     + Une riche personne anonyme apprécie grandement votre action et a décidé de vous faire un don afin que vous plantiez des arbres. Vous gagnez XXX arbres
+                     + Votre investissement au sein d'une association d'aide aux sans-abris porte ses fruits (+ abonnés, diminution jauge big-head)
+                     +  vous etes hospitalisé et vous ne pouvez rien poster pendant quelques jours , néamoins, votre communauté vous soutiens et vous permet de continuer de planter des arbres à distance : +20 arbres
+                     + vous avez gagné une semaine de vacances tous frais payés et vous postez beaucoup de photos : vous gagnez 100 abonnés par jours : vous gagnez 700 abonnés
+                     + vous gagnez 10% d'abonnés en plus
+                     + vous avez gagné 100 abonnés
+                     + vous avez gagné 10000 abonnés
+                     + votre ville vous fait une promotion et vous offre un local: vous gagnez 1000 abonnés grace à votre meilleur contenue
+                     + vous vous lancez dans votre première boutique en ligne, vous gagnez 100 abonnés
+                     + vous avez gagné du matériel pour votre entreprise et vous gagnez 200 abonnés
+                    
+                    - incendie sur la parcelle, il faut détruire toute la parcelle : vous avez perdu 10 arbres  
+                    - vous avez perdu votre compte instagram, vous retombez à 100 abonés mais vous avez toujours vos arbres
+                    - vos salariés font grève depuis une semaine et réclament plus de salaires, aucun contenu n'a été posté durant cette période et vous avez perdu 100 abonnés
+                    - vous etes victime d'un cambriolage et vous ne pouvez rien poster pendant 2 semaines : vous perdez 200 abonnés
+                    - vous avez pris la grosse tete: vous perdez des points de jauge
+
+
+* Adresse form, mauvaise idée -> Scientifique
+

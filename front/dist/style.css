@@ -1519,6 +1519,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-gap: 0px;
 }
 
+.macLessgoch{
+  grid-area: 1 / 1 / 9 / 13
+};
+
 .choicenum1c4 {
   grid-area: 1 / 1 / 5 / 7;
 }

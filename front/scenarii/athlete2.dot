@@ -1,0 +1,57 @@
+digraph G {
+
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		node [style=filled,color=white];
+		label = "Athlete";
+	}
+
+    //node [shape = box]; ChoixAlimentation Terrain;
+
+	start -> MacLessgyBlabla
+    MacLessgyBlabla -> ChoixJobAppearance
+    ChoixJobAppearance -> Sport; // Choose your first post
+    
+    // Image compétition
+    Sport -> ChampionArrogant[color = "red"];
+    Sport -> PalmaresExperiencesSimples[color = "green"];
+    Sport -> LebasketCchouette[color = "orange"];
+
+    ChampionArrogant -> FollowerNeutre[color = "blue"];
+    ChampionArrogant -> BigHeadMontée[color = "blue"];
+    
+	PalmaresExperiencesSimples -> FollowerMontéeBcp[color = "blue"];
+	
+	LebasketCchouette -> FollowerMontéeMdm[color = "blue"];
+
+
+    ChampionArrogant -> PremierPost;
+	PalmaresExperiencesSimples -> PremierPost;
+    LebasketCchouette -> PremierPost;
+
+    PremierPost -> Choix1;
+    PremierPost -> Choix2;
+    PremierPost -> Choix3;
+
+    Choix1 -> BigHeadMontée1[color = "blue"];
+    BigHeadMontée1 -> MacLessgy2
+    MacLessgy2 -> BigHead[color = "purple"];
+
+    Choix2 -> MacLessgy3[color = "blue"];
+    MacLessgy3 -> TreePlanter[color = "purple"];
+
+    BigHead -> PostExcuses;
+    TreePlanter -> PostExcuses;
+
+    PostExcuses -> Discussion3;
+
+    Discussion3 -> end;
+
+    
+    
+    //ChoixFinal -> end;
+
+	start [shape=Mdiamond];
+	end [shape=Msquare];
+}
