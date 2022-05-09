@@ -205,6 +205,64 @@ function create ()
         this.physics.add.collider(this.player, shelf[i]);
     }
 
+    this.add.text(1048, 40, "FROZEN FOOD",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+    this.add.text(1048, 392, "FRUITS",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+    this.add.text(1048, 744, "VEGETABLES",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+    this.add.text(1048, 1096, "FISH & MEAT",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+    this.add.text(1048, 1448, "STARCH & PRESERVES",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+    this.add.text(1048, 1800, "SWEET & SAVOURY BISCUITS",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+    this.add.text(1048, 2152, "DRINKS",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+    this.add.text(1048, 2504, "BAKERY & DAIRY PRODUCTS",{
+        fontFamily: "Concert One",
+        font: "22px",
+        fill : "#000000",
+        align : "center"
+    });
+
+
+
     /********************************/
     /*                              */
     /* --  Gestion des articles --  */
@@ -297,9 +355,9 @@ function create ()
     // Boulangerie
     articles.push(new Article('Baguette', 1, 5, 'baguette', 0.1, 530, 2371));
     articles.push(new Article('Loaf of bread', 2.5, 5, 'painmie', 0.2, 786, 2371));
-    articles.push(new Article('Sandwich', 3.4, 5, 'sandwich', 0.1, 1042, 2371));
-    articles.push(new Article('Pain au chocolat', 1.2, 5, 'painchocolat', 0.5, 1298, 2371));
-    articles.push(new Article('Chocolatine', 2.4, 5, 'chocolatine', 0.5, 1554, 2371));
+    articles.push(new Article('Sandwich', 3.5, 5, 'sandwich', 0.1, 1042, 2371));
+    articles.push(new Article('Pain au chocolat', 1.5, 5, 'painchocolat', 0.5, 1298, 2371));
+    articles.push(new Article('Chocolatine', 2.5, 5, 'chocolatine', 0.5, 1554, 2371));
 
     // Produits laitiers
     articles.push(new Article('Butter', 4, 3, 'butter', 0.12, 530, 2659));
@@ -337,7 +395,7 @@ function create ()
             });
         }            
     }
-    text = this.add.text(10, 10, "Take the most nutritional cart for a donation to an association \nMoney remaining : 100 €",{
+    text = this.add.text(10, 10, "Take the most nutritional cart for a donation to an association \nTwo articles of each maximum\nMoney remaining : 100 €",{
         font: "18px",
         fill : "#000000",
     }).setScrollFactor(0);
@@ -392,48 +450,71 @@ function update (time, delta)
     if(Phaser.Input.Keyboard.JustDown(space)){
         let whatArticleIsIt;
         for(let i = 0; i < articles.length; i++){
-            if(articles[i].y == 195 || articles[i].y == 547 || articles[i].y == 899 || articles[i].y == 1251 || articles[i].y == 1603 || articles[i].y == 1955 || articles[i].y == 2307 || articles[i].y == 2659){
-                if(this.player.x > articles[i].x + 10 && this.player.x < articles[i].x + 130 && this.player.y > articles[i].y - 116 && this.player.y < articles[i].y + 32){
-                    let tmp = 100 - currentPrice - articles[i].price;
-                    if(tmp >= 0){
-                        whatArticleIsIt = i;
-                        currentPrice += articles[i].price;
-                        listOfArticles.push(i);
-                        console.log(articles[i].name, " price now : ", currentPrice);
-                        text.setText("Take the most nutritional cart for a donation to an association \nMoney remaining : " + tmp + " €");
-                        listWTFLUL += "\n- " + articles[i].name;
-                        textList.setText(listWTFLUL);
-                        numberOfArticles++;
-                        if(tmp == 0){
-                            console.log("Panier terminé")
-                            this.add.text(this.player.x - 200, this.player.y + 50, 'Your cart is end', {
-                                fontSize: '40px',
-                                fill: '#000000'
-                            });
-                            this.scene.pause();
+            var numberTmp = 0;
+            listOfArticles.forEach(element => {if(element == i){
+                numberTmp++;
+            }
+            });
+            if(/*!listOfArticles.some(element => element == i)*/numberTmp < 2){
+                if(articles[i].y == 195 || articles[i].y == 547 || articles[i].y == 899 || articles[i].y == 1251 || articles[i].y == 1603 || articles[i].y == 1955 || articles[i].y == 2307 || articles[i].y == 2659){
+                    if(this.player.x > articles[i].x + 10 && this.player.x < articles[i].x + 130 && this.player.y > articles[i].y - 116 && this.player.y < articles[i].y + 32){
+                        let tmp = 100 - currentPrice - articles[i].price;
+                        if(tmp >= 0){
+                            whatArticleIsIt = i;
+                            currentPrice += articles[i].price;
+                            listOfArticles.push(i);
+                            console.log(articles[i].name, " price now : ", currentPrice);
+                            text.setText("Take the most nutritional cart for a donation to an association \nTwo articles of each maximum \nMoney remaining : " + tmp + " €");
+                            listWTFLUL += "\n- " + articles[i].name;
+                            textList.setText(listWTFLUL);
+                            numberOfArticles++;
+                            if(tmp == 0){
+                                console.log("Panier terminé");
+                                let score = 0;
+                                let vnAdd = 0;
+                                let vnMed = 0;
+                                for(let it = 0; it < articles.length; it++){
+                                    vnAdd += articles[it].nv;
+                                }
+                                nvMed = vnAdd / listOfArticles.length;
+                                score = (100 / nvMed) * 100;
+                                this.add.text(this.player.x - 200, this.player.y + 50, 'Your cart is finished \nScore : ' + Math.round(score), {
+                                    fontSize: '40px',
+                                    fill: '#000000'
+                                });
+                                //this.scene.pause();
+                            }
                         }
                     }
                 }
-            }
-            else if(articles[i].y == 259 || articles[i].y == 611 || articles[i].y == 963 || articles[i].y == 1315 || articles[i].y == 1667 || articles[i].y == 2019 || articles[i].y == 2371){
-                if(this.player.x > articles[i].x + 10 && this.player.x < articles[i].x + 130 && this.player.y > articles[i].y + 32 && this.player.y < articles[i].y + 126){
-                    let tmp = 100 - currentPrice - articles[i].price;
-                    if(tmp >= 0){
-                        whatArticleIsIt = i;
-                        currentPrice += articles[i].price;
-                        listOfArticles.push(i);
-                        console.log(articles[i].name, " price now : ", currentPrice);
-                        text.setText("Take the most nutritional cart for a donation to an association \nMoney remaining : " + tmp + " €");
-                        listWTFLUL += "\n- " + articles[i].name;
-                        textList.setText(listWTFLUL);
-                        numberOfArticles++;
-                        if(tmp == 0){
-                            console.log("Panier terminé")
-                            this.add.text(this.player.x - 200, this.player.y + 50, 'Your cart is end', {
-                                fontSize: '40px',
-                                fill: '#000000'
-                            });
-                            this.scene.pause();
+                else if(articles[i].y == 259 || articles[i].y == 611 || articles[i].y == 963 || articles[i].y == 1315 || articles[i].y == 1667 || articles[i].y == 2019 || articles[i].y == 2371){
+                    if(this.player.x > articles[i].x + 10 && this.player.x < articles[i].x + 130 && this.player.y > articles[i].y + 32 && this.player.y < articles[i].y + 126){
+                        let tmp = 100 - currentPrice - articles[i].price;
+                        if(tmp >= 0){
+                            whatArticleIsIt = i;
+                            currentPrice += articles[i].price;
+                            listOfArticles.push(i);
+                            console.log(articles[i].name, " price now : ", currentPrice);
+                            text.setText("Take the most nutritional cart for a donation to an association \nTwo articles of each maximum \nMoney remaining : " + tmp + " €");
+                            listWTFLUL += "\n- " + articles[i].name;
+                            textList.setText(listWTFLUL);
+                            numberOfArticles++;
+                            if(tmp == 0){
+                                console.log("Panier terminé");
+                                let score = 0;
+                                let vnAdd = 0;
+                                let vnMed = 0;
+                                for(let it = 0; it < articles.length; it++){
+                                    vnAdd += articles[it].nv;
+                                }
+                                nvMed = vnAdd / articles.length;
+                                score = (100 / nvMed) * 100;
+                                this.add.text(this.player.x - 200, this.player.y + 50, 'Your cart is finished \nScore : ' + Math.round(score), {
+                                    fontSize: '40px',
+                                    fill: '#000000'
+                                });
+                                //this.scene.pause();
+                            }
                         }
                     }
                 }

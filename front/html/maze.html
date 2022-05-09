@@ -6,11 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="//cdn.jsdelivr.net/npm/phaser@3.51.0/dist/phaser.js"></script>
     <!--<script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>-->
-    <script type="text/javascript" src="../js/maze.js"></script>  
+    
+    <link rel="stylesheet" href="../dist/style.css">
 
     <title>Maze</title>
+
 </head>
 <body>
+    <div class="parentfp h-screen bg-fondmain">
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##              BORDURE                 ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+    
+       
+            <div class="div1fp border-rougeContour border-t-contourRouge "></div>
+            <div class="div2fp border-rougeContour border-l-contourRouge "></div>
+            <div class="div3fp border-rougeContour border-b-contourRouge"></div>
+            <div class="div4fp border-rougeContour border-r-contourRouge"></div>
+
+            <!--titre-->
+            <div class="div15fp click grostext bg-rougebouton text-center text-white font-pixelise rounded-b-2xl"> 
+                <h1>LEAVE THE MAZE</h1>
+            </div> 
+
+
+            <a class="w-full divretourfree arrow h-full border-contourRouge border-rougeContour bg-rougebouton" href="free-play.html">
+                <div class="click"></div>
+            </a>
+
+
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##                JEU                   ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+
+
+        <div class="divtortue flex items-center justify-center w-full " id="leavethemaze">                
+            <script type="text/javascript" src="../js/maze.js"></script> 
+        </div>
+
+
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##                MODAL                 ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+
+        <!--victory-->
+        <div class="modalmazewin text-center  bg-rougeContour rounded-xl" id="modalmazewin">
+            <h1 class="text-6xl mt-10 font-pixelise text-white">Victory</h1>
+            <p class="text-3xl mt-10 font-pixelise text-white" >You clean all the forest</p>
+
+            <div  class="modalmazewinbtn  mt-8 ml-10 mr-10 text-center bg-rougebouton border-4 rounded-xl" id="btnmodaltortue">
+                    <h1 class="text-4xl py-6 text-white font-pixelise click">Continue</h1>
+            </div>
+        </div>
+
+
+        <!--defaite tortue-->
+        <div class="modalmazeloose text-center  bg-rougeContour rounded-xl" id="modalmazeloose">
+            <h1 class="text-6xl mt-10 font-pixelise text-white">Fail</h1>
+            <p class="text-3xl mt-10 font-pixelise text-white" >You didn't clean all the forest</p>
+            
+            <div  class="modalmazeloosebtn mt-8 ml-10 mr-10 text-center bg-rougebouton border-4 rounded-xl" >
+                <a href="maze.html">
+                    <h1 class="text-4xl py-6 text-white font-pixelise click">Retry</h1>
+                </a>
+            </div>
+        </div>
+        
+
+        <!--point info time-->
+        <div class="modalmazeinfo text-center  bg-rougeContour rounded-xl" id="modalmazeinfo">
+            <div class="modalinfoparent w-full h-full">
+                <div class=" flex items-center justify-center w-full modalinfoparenttitre">
+                    <h1 class="text-6xl mt-10 font-pixelise text-white">Point info</h1>     
+                </div>
+
+                <div class="modalinfoparentprofessor professor"> </div>
+
+                <div class="flex items-center justify-center modalinfoparentblabla bg-grisclair rounded-xl"> 
+                    <p class="m-8 text-center text-black font-pixelise">oz eibu cbziu bcizubr icuzb cruzb  uzeb cu zbiu cbze uibcrzi eub ciuzeb cuze bcuz cbzeuibcuze bci uze bciuz ebh criuze bcize cubcuze zer ciu ce cuciu ezbcuz erc bub</p>
+                </div>
+
+                <div  class="flex items-center mb-5 justify-center w-full modalinfoparentbtn text-center bg-rougebouton border-4 rounded-xl" >
+                    <a href="free-play.html">
+                        <h1 class="text-4xl  text-white font-pixelise click">Continue</h1>
+                    </a>
+                </div>
+            </div> 
+        </div>
+
+
+
+
+    </div>
+
+
     
 </body>
 </html>

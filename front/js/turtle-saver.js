@@ -74,7 +74,7 @@ function preload ()
     document.getElementById("modaltortuewin").style.display = "none";
     document.getElementById("modaltortueloose").style.display = "none";
     document.getElementById("modaltortueloosetime").style.display = "none";
-    //document.getElementById("modaltortueinfo").style.display = "none";
+    document.getElementById("modaltortueinfo").style.display = "none";
 
 }
 

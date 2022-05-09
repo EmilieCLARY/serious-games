@@ -355,47 +355,88 @@
     background-position : center;
 }
 
-
-
-.whiteGuy{
+.whiteGuyAthlete{
     background-image: url("../img/characters/sportif/sportifW.png" );
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
 }
-.blackGuy{
+.blackGuyAthlete{
     background-image: url("../img/characters/sportif/sportifB.png" );
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
 }
-.yellowGuy{
+.yellowGuyAthlete{
     background-image: url("../img/characters/sportif/sportifY.png" );
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
     
 }
-.whiteWomen{
+.whiteWomenAthlete{
     background-image: url("../img/characters/sportif/sportiveW.png" );
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
 }
-.blackWomen{
+.blackWomenAthlete{
     background-image: url("../img/characters/sportif/sportiveB.png" );
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
 }
-.yellowWomen{
+.yellowWomenAthlete{
     background-image: url("../img/characters/sportif/sportiveY.png" );
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
 }
 
+.comedians{
+    background-image: url("../img/characters/comedian/Comedians.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
 
+.whiteGuyComedian{
+    background-image: url("../img/characters/comedian/comedianWG.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.blackGuyComedian{
+    background-image: url("../img/characters/comedian/comedianBG.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.yellowGuyComedian{
+    background-image: url("../img/characters/comedian/comedianYG.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+    
+}
+.whiteWomenComedian{
+    background-image: url("../img/characters/comedian/comedianWW.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.blackWomenComedian{
+    background-image: url("../img/characters/comedian/comedianBW.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.yellowWomenComedian{
+    background-image: url("../img/characters/comedian/comedianYW.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
 
 /* #######################################################################################################################
    #######################################################################################################################
@@ -454,10 +495,18 @@
     grid-row-gap: 0px;
     
 }
-.choicenum1 { grid-area: 1 / 1 / 5 / 7; }
-.choicenum2 { grid-area: 1 / 7 / 5 / 13; }
-.choicenum3 { grid-area: 5 / 1 / 9 / 7; }
+.choicenum1c4 { grid-area: 1 / 1 / 5 / 7; }
+.choicenum2c4 { grid-area: 1 / 7 / 5 / 13; }
+.choicenum3c4 { grid-area: 5 / 1 / 9 / 7; }
+.choicenum4c4 { grid-area: 5 / 7 / 9 / 13;}
+
+
+.choicenum1 { grid-area: 1 / 1 / 9 / 5; }
+.choicenum2 { grid-area: 1 / 5 / 9 / 9; }
+.choicenum3 { grid-area: 1 / 9 / 9 / 13; }
 .choicenum4 { grid-area: 5 / 7 / 9 / 13;}
+
+
 /*
 .bodyathlete{
     padding:0;
@@ -719,3 +768,83 @@
 .modaltortueinfo{
     display: none;
 }
+
+
+
+
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                        MAZE.html                                                            #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
+
+
+.modalmazewin{
+    display:none;
+}
+
+.modalmazeloose{
+    display:none;
+}
+
+.modalmazeinfo{
+    display:none;
+}
+
+.modalmazewin{
+    grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modalmazeloose{
+    grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modalmazeinfo{
+    grid-area: 6 / 7 / 20 / 19 ;    
+    
+}
+
+
+
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                        big head.html                                                        #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
+
+
+.modalbhwin{
+    display:none;
+}
+
+.modalbhloose{
+    display:none;
+}
+
+.modalbhinfo{
+    display:none;
+}
+
+.modalbhwin{
+    grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modalbhloose{
+    grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modalbhinfo{
+    grid-area: 6 / 7 / 20 / 19 ;    
+    
+}
+
+
+

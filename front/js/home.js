@@ -18,6 +18,8 @@ var usernames = ["DanleyJade","SnowberYaws","Platysma","Snorkel","Osteophone","O
 
 ]
 
+var myJob;
+
 socket.emit('getTreesPlanted');
 socket.emit('getTypeOfInfluencer');
 socket.emit('getAppearance');
@@ -30,15 +32,19 @@ socket.on('newNumberOfTreesPlanted', (trees) =>{
 socket.on('newTypeOfInfluencer', (job) => {
     switch (job) {
         case 0:
+            myJob = job;
             document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Athlete";
             break;
         case 1:
+            myJob = job;
             document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Comedian";
             break;
         case 2:
+            myJob = job;
             document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Scientific";
             break;
         case 3:
+            myJob = job;
             document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Gamer";
             break;
 
@@ -61,22 +67,113 @@ socket.on('newUsername', (name) => {
 socket.on('newAppearance', (appearance) => {
     switch (appearance) {
         case 0:
-            document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWG.png")';
+            switch (myJob) {
+                case 0:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWG.png")';
+                    break;
+                case 1:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneWG.png")';
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+        
+                default:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWG.png")';
+                    break;
+            }
             break;
         case 1:
-            document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
+            switch (myJob) {
+                case 0:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
+                    break;
+                case 1:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneBG.png")';
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+        
+                default:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
+                    break;
+            }
             break;
         case 2:
-            document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYG.png")';
+            switch (myJob) {
+                case 0:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYG.png")';
+                    break;
+                case 1:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneYG.png")';
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+        
+                default:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYG.png")';
+                    break;
+            }
             break;
         case 3:
-            document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWW.png")';
+            switch (myJob) {
+                case 0:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWW.png")';
+                    break;
+                case 1:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneWW.png")';
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+        
+                default:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWW.png")';
+                    break;
+            }
             break;
         case 4:
-            document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBW.png")';
+            switch (myJob) {
+                case 0:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBW.png")';
+                    break;
+                case 1:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneBW.png")';
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+        
+                default:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBW.png")';
+                    break;
+            }
             break;
         case 5:
-            document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYW.png")';
+            switch (myJob) {
+                case 0:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYW.png")';
+                    break;
+                case 1:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneYW.png")';
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+        
+                default:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYW.png")';
+                    break;
+            }
+            
             break;
 
         default:

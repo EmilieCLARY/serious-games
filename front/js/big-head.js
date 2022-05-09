@@ -13,7 +13,8 @@ var config = {
             debug: false,
             gravity: { y: 1000 },
         }
-    }
+    },
+    parent : 'big-head'
 };
 
 var game = new Phaser.Game(config);
@@ -52,6 +53,9 @@ function preload (){
 
     this.load.image('melon', '../img/big_head/melon.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('cadenas', '../img/big_head/door.png', { frameWidth: 32, frameHeight: 32 });
+
+    document.getElementById("modalbhwin").style.display = "none";
+    document.getElementById("modalbhinfo").style.display = "none";
 
 }
 
@@ -327,8 +331,15 @@ function hitDoor (sprite, tile)
 
 function hitChest (sprite, tile)
 {
-
+    document.getElementById("modalbhwin").style.display = "block";
     console.log("JEUX FINI");
+
+    document.getElementById("btnmodalbh").addEventListener("click", event => {
+        document.getElementById("modalbhwin").style.display = "none";
+        document.getElementById("modalbhinfo").style.display = "block";
+    });
+
+    
     return true;
 }
 

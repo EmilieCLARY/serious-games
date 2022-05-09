@@ -74,6 +74,19 @@ document.getElementById("comedian").addEventListener("click", event => {
     document.getElementById("gaming").style.display = "none";
     document.getElementById("titleJob").style.display = "none";
 
+    document.getElementById("c16cases").style.display = "block";
+    document.getElementById("c26cases").style.display = "block";
+    document.getElementById("c36cases").style.display = "block";
+    document.getElementById("c46cases").style.display = "block";
+    document.getElementById("c56cases").style.display = "block";
+    document.getElementById("c66cases").style.display = "block";
+
+
+    document.getElementById("c14cases").style.display = "none";
+    document.getElementById("c24cases").style.display = "none";
+    document.getElementById("c34cases").style.display = "none";
+    document.getElementById("c44cases").style.display = "none";
+
     socket.emit("userJob", job);
 
     showAppearance();
@@ -95,6 +108,19 @@ document.getElementById("sciences").addEventListener("click", event => {
     document.getElementById("gaming").style.display = "none";
     document.getElementById("titleJob").style.display = "none";
 
+    document.getElementById("c16cases").style.display = "block";
+    document.getElementById("c26cases").style.display = "block";
+    document.getElementById("c36cases").style.display = "block";
+    document.getElementById("c46cases").style.display = "block";
+    document.getElementById("c56cases").style.display = "block";
+    document.getElementById("c66cases").style.display = "block";
+
+
+    document.getElementById("c14cases").style.display = "none";
+    document.getElementById("c24cases").style.display = "none";
+    document.getElementById("c34cases").style.display = "none";
+    document.getElementById("c44cases").style.display = "none";
+
     socket.emit("userJob", job);
 
     showAppearance();
@@ -115,6 +141,19 @@ document.getElementById("gaming").addEventListener("click", event => {
     document.getElementById("sciences").style.display = "none";
     document.getElementById("gaming").style.display = "none";
     document.getElementById("titleJob").style.display = "none";
+
+    document.getElementById("c16cases").style.display = "block";
+    document.getElementById("c26cases").style.display = "block";
+    document.getElementById("c36cases").style.display = "block";
+    document.getElementById("c46cases").style.display = "block";
+    document.getElementById("c56cases").style.display = "block";
+    document.getElementById("c66cases").style.display = "block";
+
+
+    document.getElementById("c14cases").style.display = "none";
+    document.getElementById("c24cases").style.display = "none";
+    document.getElementById("c34cases").style.display = "none";
+    document.getElementById("c44cases").style.display = "none";
 
     socket.emit("userJob", job);
 
@@ -160,27 +199,44 @@ function showAppearance(){
             //Mettre photos : Prendre chaque buttons et mettre les images correspondants au métier      
         
             var whiteGuyDiv = document.getElementById("whiteGuy");
-            whiteGuyDiv.classList.add("whiteGuy");
+            whiteGuyDiv.classList.add("whiteGuyAthlete");
             
             var blackGuyDiv = document.getElementById("blackGuy");
-            blackGuyDiv.classList.add("blackGuy");
+            blackGuyDiv.classList.add("blackGuyAthlete");
             
             var yellowGuyDiv = document.getElementById("yellowGuy");
-            yellowGuyDiv.classList.add("yellowGuy");
+            yellowGuyDiv.classList.add("yellowGuyAthlete");
             
             var whiteGirlDiv = document.getElementById("whiteWomen");
-            whiteGirlDiv.classList.add("whiteWomen");
+            whiteGirlDiv.classList.add("whiteWomenAthlete");
 
             var blackGirlDiv = document.getElementById("blackWomen");
-            blackGirlDiv.classList.add("blackWomen");
+            blackGirlDiv.classList.add("blackWomenAthlete");
 
             var yellowGirlDiv = document.getElementById("yellowWomen");
-            yellowGirlDiv.classList.add("yellowWomen");
+            yellowGirlDiv.classList.add("yellowWomenAthlete");
 
             break;
         
         case 1:
+
+            var whiteGuyDiv = document.getElementById("whiteGuy");
+            whiteGuyDiv.classList.add("whiteGuyComedian");
             
+            var blackGuyDiv = document.getElementById("blackGuy");
+            blackGuyDiv.classList.add("blackGuyComedian");
+            
+            var yellowGuyDiv = document.getElementById("yellowGuy");
+            yellowGuyDiv.classList.add("yellowGuyComedian");
+            
+            var whiteGirlDiv = document.getElementById("whiteWomen");
+            whiteGirlDiv.classList.add("whiteWomenComedian");
+
+            var blackGirlDiv = document.getElementById("blackWomen");
+            blackGirlDiv.classList.add("blackWomenComedian");
+
+            var yellowGirlDiv = document.getElementById("yellowWomen");
+            yellowGirlDiv.classList.add("yellowWomenComedian");
             break;
 
         case 2:

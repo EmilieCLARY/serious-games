@@ -12,7 +12,8 @@ var config = {
         arcade : {
             //debug : true,
         }
-    }
+    },
+    parent: 'leavethemaze'
 };
 
 var game = new Phaser.Game(config);
@@ -66,6 +67,13 @@ function preload ()
 
     this.load.image('background', '../img/maze/back.png')
 
+
+
+
+    /*affichage des modaux*/
+    document.getElementById("modalmazewin").style.display = "none";
+    document.getElementById("modalmazeloose").style.display = "none";
+    document.getElementById("modalmazeinfo").style.display = "none";
 }
 
 
@@ -293,10 +301,18 @@ function update (time, delta)
     if(sortieX < (this.player.x + 100)/80 && sortieY < (this.player.y + 50)/80){
 
         console.log("fini")
-        this.add.text(this.player.x - 200, this.player.y + 50, 'You escaped the maze', {
+        /*this.add.text(this.player.x - 200, this.player.y + 50, 'You escaped the maze', {
             fontSize: '40px',
             fill: '#000000'
+        });*/
+        document.getElementById("modalmazewin").style.display = "block";
+
+        //pour le point info
+        document.getElementById("btnmodaltortue").addEventListener("click", event => {
+            document.getElementById("modalmazewin").style.display = "none";
+            document.getElementById("modalmazeinfo").style.display = "block";
         });
+
         this.scene.pause();
     }
      
