@@ -484,6 +484,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 1.5rem;
 }
 
+.m-1 {
+  margin: 0.25rem;
+}
+
 .m-8 {
   margin: 2rem;
 }
@@ -617,18 +621,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-items: center;
 }
 
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
 .justify-self-center {
   justify-self: center;
 }
@@ -647,6 +639,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .rounded-2xl {
   border-radius: 1rem;
+}
+
+.rounded-3xl {
+  border-radius: 1.5rem;
 }
 
 .rounded-t-xl {
@@ -733,6 +729,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(48 48 48 / var(--tw-border-opacity));
 }
 
+.border-rougebouton {
+  --tw-border-opacity: 1;
+  border-color: rgb(102 5 3 / var(--tw-border-opacity));
+}
+
 .bg-fondmain {
   --tw-bg-opacity: 1;
   background-color: rgb(245 224 196 / var(--tw-bg-opacity));
@@ -772,6 +773,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(23 87 50 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#FCF5ED\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 245 237 / var(--tw-bg-opacity));
+}
+
+.p-5 {
+  padding: 1.25rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -783,6 +793,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-right {
   text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 .align-baseline {
@@ -1052,6 +1066,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .Post9 {
   grid-area: 3 / 3 / 4 / 4;
+}
+
+/*modal post*/
+
+.popuppost {
+  grid-area: 2 / 2 / 12 / 12;
 }
 
 /* #######################################################################################################################
@@ -1554,6 +1574,28 @@ Ensure the default browser behavior of the `hidden` attribute.
 .choicenum4 {
   grid-area: 5 / 7 / 9 / 13;
 }
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                              COMEDIAN.html                                                  #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
+.MLphoto {
+  grid-area: 1 / 1 / 9 / 5;
+}
+
+.MLtext {
+  grid-area: 1 / 5 / 9 / 13;
+}
+
+.btnML {
+  grid-area: 7 / 7 / 9 / 11;
+}
+
+/* DEMO-SPECIFIC STYLES */
 
 /*
 .bodyathlete{
