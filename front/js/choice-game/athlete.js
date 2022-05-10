@@ -4,15 +4,22 @@ const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('option-buttons');
 
 let state = {}
+let nextTxt;
+
+socket.emit('getNextText');
+socket.on('leProchainTexte', (text) => {
+    nextTxt = text;
+    startGame();
+});
 
 function startGame() {
     state = {}
-    showTextNode(1)
+    showTextNode(nextTxt);
 }
 
 function showTextNode(textNodeIndex) {
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
-    textElement.innerText = textNode.text;  
+    textElement.innerText = textNode.text;
     while (optionButtonsElement.firstChild) {
         optionButtonsElement.removeChild(optionButtonsElement.firstChild);
     }
@@ -37,7 +44,81 @@ function showTextNode(textNodeIndex) {
             
             console.log(compt);
             if(nbChoix===1){
-                    var newDivML = document.createElement("div");
+                
+                /*la photo de ML*/
+                    var newDivMLphoto = document.createElement("div");
+                    newDivMLphoto.classList.add('MLphoto','professor','bg-rougeContour','rounded-3xl','m-4');
+
+                    optionButtonsElement.appendChild(newDivMLphoto);
+                    
+                /* le texte */
+                    var newDivMLtext = document.createElement("div");
+                    newDivMLtext.classList.add('MLtext','flex','items-center','text-justify','m-4');
+                    
+                    /* la bulle */
+                    var newDivBcoin1 = document.createElement("div");
+                    newDivBcoin1.classList.add('BcoinTR','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin1);
+                    
+                    var newDivBcoin2 = document.createElement("div");
+                    newDivBcoin2.classList.add('BcoinTL','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin2);
+                    
+                    var newDivBcoin3 = document.createElement("div");
+                    newDivBcoin3.classList.add('BcoinBL','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin3);
+                    
+                    var newDivBcoin4 = document.createElement("div");
+                    newDivBcoin4.classList.add('BcoinBR','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin4);
+
+                    
+                    var newDivBcoteT = document.createElement("div");
+                    newDivBcoteT.classList.add('BcoteT','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteT);
+                    
+                    var newDivBcoteL = document.createElement("div");
+                    newDivBcoteL.classList.add('BcoteL','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteL);
+                    
+                    var newDivBcoteR = document.createElement("div");
+                    newDivBcoteR.classList.add('BcoteR','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteR);
+                    
+                    var newDivBcoteB = document.createElement("div");
+                    newDivBcoteB.classList.add('BcoteB','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteB);
+                    
+                    var newDivBO1 = document.createElement("div");
+                    newDivBO1.classList.add('BO1','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO1);
+                    
+                    var newDivBO2 = document.createElement("div");
+                    newDivBO2.classList.add('BO2','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO2);
+                    
+                    var newDivBO3 = document.createElement("div");
+                    newDivBO3.classList.add('BO3','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO3);
+                    
+                    var newDivBO4 = document.createElement("div");
+                    newDivBO4.classList.add('BO4','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO4);
+                    
+                    var newDivBO5 = document.createElement("div");
+                    newDivBO5.classList.add('BO5','bg-[#FCF5ED]','h-full');
+                    newDivMLtext.appendChild(newDivBO5);
+                    
+                    var newDivBtext = document.createElement("div");
+                    newDivBtext.classList.add('Btext');
+                    newDivBtext.innerText = textElement.innerText;
+                    newDivMLtext.appendChild(newDivBtext);
+
+                    optionButtonsElement.appendChild(newDivMLtext);
+
+
+
+                    var newDivMLbtn = document.createElement("div")
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
                     var span1 = document.createElement('span');
@@ -52,7 +133,7 @@ function showTextNode(textNodeIndex) {
                     span1.innerText = option.text;
                     button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
                     section.classList.add('portfolio-experiment', 'h-full');
-                    newDivML.classList.add('macLessgoch', 'm-4');
+                    newDivMLbtn.classList.add('btnML', 'm-4');
                     
                     
                     
@@ -69,22 +150,11 @@ function showTextNode(textNodeIndex) {
                     button.appendChild(span5);
     
                     section.appendChild(button);
-                    newDiv1.appendChild(section);
+                    newDivMLbtn.appendChild(section);
                     button.addEventListener('click', () => selectOption(option));
-                    optionButtonsElement.appendChild(newDivML);
+                    optionButtonsElement.appendChild(newDivMLbtn);
                 
-                /* <div class="choicenum1 bg-fonce m-4">
-                <section class="portfolio-experiment  h-full">
-                    <button  class="w-full h-full btn">
-                        <span class="texte text-fonce">Option 1</span>
-                        <span class="line -right"></span>
-                        <span class="line -top"></span>
-                        <span class="line -left"></span>
-                        <span class="line -bottom"></span>
-                    </button>
-                </section>
-            </div>
-*/
+                
             } else if (nbChoix===3){
                 if(compt == 1){ // Premier bouton
                     var newDiv1 = document.createElement("div");
@@ -154,10 +224,11 @@ function showTextNode(textNodeIndex) {
                     button.appendChild(span3);
                     button.appendChild(span4);
                     button.appendChild(span5);
-    
                     section.appendChild(button);
                     newDiv2.appendChild(section);
                     button.addEventListener('click', () => selectOption(option));
+                    
+                    
                     optionButtonsElement.appendChild(newDiv2);   
                 }
     
@@ -354,14 +425,52 @@ function showOption(option) {
     return option.requiredState == null || option.requiredState(state);
 }
 
+class Post{
+    constructor(text_, commentaries_, fol_, folPS_, bh_){
+        this.text = text_;
+        this.commentaries = commentaries_;
+        let min = Math.ceil(fol_[0]);
+        let max = Math.floor(fol_[1]);
+        this.fol = Math.floor(Math.random() * (max - min)) + min;
+        this.folPS = folPS_;
+        this.bh = bh_;
+    }
+}
+
 function selectOption(option) {
     const nextTextNodeId = option.nextText;
+    socket.emit('leProchainTextCLui', nextTextNodeId);
     if (nextTextNodeId <= 0) {
         return startGame();
     }
     state = Object.assign(state, option.setState);
+    
+    if(option.commentaries != undefined){
+        let newPost = new Post(option.text, option.commentaries, option.fol, option.folPS, option.bh);
+        console.log("New post incoming", newPost);
+        socket.emit('newPost', newPost);
+        showTextNode(nextTextNodeId);
+    }
+    else{
+        console.log('C MCLESGO');
+        if(option.goBackToHome){
+            window.location.href = "../html/home.html";
+        }
+        else if(option.mj == 1){
+            window.location.href = "../html/turtle-saver.html";
+        }
+        else if(option.mj == 1){
+            window.location.href = "../html/turtle-saver.html";
+        }
+        else if(option.mj == 2){
+            window.location.href = "../html/maze.html";
+        }
+        else if(option.mj == 3){
+            window.location.href = "../html/supermarket.html";
+        }
+    }
     //Récupérer les infos de l'option et les envoyer par socket
-    showTextNode(nextTextNodeId);
+    
 }
 
 const textNodes = [
@@ -441,39 +550,43 @@ const textNodes = [
         text: 'It\s now time to explain to your followers your training !  ',
         options: [
             {
-                text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I woke up early and I go to the gym. In the afternoon, I go to the basketball room with my teammate.\nThe training start with a warm up, then the coach make some exercices specific of basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises.',
+                text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I wake up early and I go to the gym. In the afternoon, I go to the basketball room with my teammate.\nThe training start with a warm up, then the coach make some exercices specific of basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises.',
                 commentaries : ['That\'s a very hard training !', 'Nice training ! Do you have some advices to progress in basketball ?'],
                 fol : [800, 1500],
                 folPS : 10,
                 bh : 5,
-                nextText: 8
+                nextText: 8,
+                mj: 0
             },            
             {
-                text: 'I\'ll explain you my daily training because mine is the best one !\n First, I wake up early to go to the gym, because the world is in the hands of people who are waking up early, and I am :)\n Next, I\m going to the terrain to smash some noobs. I always win it all !',
+                text: 'I\'ll explain you my daily training because mine is the best one !\n First, I wake up early to go to the gym, because the world is in the hands of people who are waking up early, and I am :)\n Next, I\'m going to the terrain to smash some noobs. I always win it all !',
                 commentaries : ['That\'s a very hard training !', 'Nice training ! Do you have some advices to progress in basketball ?'],
                 fol : [100, 500],
                 folPS : 4,
                 bh : 35,
-                nextText: 7
+                nextText: 7,
+                mj : 0
             },            
             {
-                text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I woke up early and I go to the gym. Then I go to the basketball room with my teammate.\n I personnaly do not warm up because I find it useless, I\'m always in condition to do some basketball. So my training start with some exercices specific of basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises.',
+                text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I wake up early and I go to the gym. Then I go to the basketball room with my teammate.\n I personnaly do not warm up because I find it useless, I\'m always in condition to do some basketball. So my training start with some exercices specific of basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises.',
                 commentaries : ['That\'s a very hard training !', 'Nice training ! Do you have some advices to progress in basketball ?'],
                 fol : [600, 1000],
                 folPS : 8,
                 bh : 15,
-                nextText: 9
+                nextText: 9,
+                mj : 0
             }
         ]
     },
     {
         id: 7,
-        text: 'Good morning say it back !\n I may have already said it but you need to be kind and cool with your followers ! They\re here to progress or just to chill.\n You just gained BigHead.',
+        text: 'Good morning say it back !\n I may have already said it but you need to be kind and cool with your followers ! They\'re here to progress or just to chill.\n You just gained BigHead.',
         options: [
             {
                 text: 'I\ll try to be better next time, I\'m ready to go next !',
                 nextText: 10,
-                goBackToHome : true
+                goBackToHome : true,
+                mj : 0
             },
         ]
     },
@@ -484,7 +597,8 @@ const textNodes = [
             {
                 text: 'Thank you, I\'m ready to go next !',
                 nextText: 10,
-                goBackToHome : true
+                goBackToHome : true,
+                mj : 0
             },
         ]
     },
@@ -495,7 +609,8 @@ const textNodes = [
             {
                 text: 'I\ll try to be better next time, I\'m ready to go next !',
                 nextText: 10,
-                goBackToHome : true
+                goBackToHome : true,
+                mj : 0
             },
         ]
     },
@@ -510,7 +625,8 @@ const textNodes = [
                 fol : [800, 1500],
                 folPS : 10,
                 bh : 15,
-                nextText: 11
+                nextText: 11,
+                mj : 0
             },            
             {
                 //Photo fruit et légumes
@@ -519,7 +635,8 @@ const textNodes = [
                 fol : [3000, 5000],
                 folPS : 20,
                 bh : 5,
-                nextText: 12
+                nextText: 12,
+                mj : 0
             },            
             {
                 //Photo burger frites
@@ -528,7 +645,8 @@ const textNodes = [
                 fol : [600, 1000],
                 folPS : 8,
                 bh : 10,
-                nextText: 13
+                nextText: 13,
+                mj : 0
             },
             {
                 //Photo sandwitch
@@ -537,7 +655,8 @@ const textNodes = [
                 fol : [600, 1000],
                 folPS : 8,
                 bh : 10,
-                nextText: 14
+                nextText: 14,
+                mj : 0
             }
         ]
     },
@@ -548,7 +667,8 @@ const textNodes = [
             {
                 text: 'I understand, I\'m ready to go next !',
                 nextText: 15,
-                goBackToHome : true
+                goBackToHome : false,
+                mj : 0
             },
         ]
     },
@@ -558,8 +678,8 @@ const textNodes = [
         options: [
             {
                 text: 'Thank you, I\'m ready to go next !',
-                nextText: 15,
-                goBackToHome : true
+                nextText: 60,
+                goBackToHome : false
             },
         ]
     },
@@ -569,8 +689,9 @@ const textNodes = [
         options: [
             {
                 text: 'Sorry, I\'ll try to do better next time !',
-                nextText: 15,
-                goBackToHome : true
+                nextText: 60,
+                goBackToHome : false,
+                mj : 0
             },
         ]
     },
@@ -580,14 +701,26 @@ const textNodes = [
         options: [
             {
                 text: 'I\'l try to be better next time, I\'m ready to go next !',
+                nextText: 60,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 60,
+        text: 'I have a challenge for you ! Now that you know which food is better than another, you can help people with it !\n You\'ve been given 100€ to buy food to help reduce the hunger in the world. Everything you\'ll buy will be given to one association.\n Ready ?',
+        options: [
+            {
+                text: 'Ready !',
                 nextText: 15,
-                goBackToHome : true
+                mj : 3
             },
         ]
     },
     {
         id: 15,
-        text: 'Your community is growing up and some sponsors wants to collaborate with you. Choose what sponsor you want !',
+        text: 'Your community is growing up and some sponsors wants to collaborate with you. Choose which sponsor you want !',
         options: [
             {
                 //BouclierFéroce
@@ -596,7 +729,8 @@ const textNodes = [
                 fol : [3000, 5000],
                 folPS : 20,
                 bh : 10,
-                nextText: 16
+                nextText: 16,
+                mj : 0
             },            
             {
                 //BlueLightLegend
@@ -605,17 +739,55 @@ const textNodes = [
                 fol : [3000, 5000],
                 folPS : 20,
                 bh : 20,
-                nextText: 17
+                nextText: 17,
+                mj : 0
             },            
             {
                 //Adadas
                 text: 'What\'s up guys ? I have my first sponsor ! Check out their online shop and use the CODE : BASKETBALL20',
-                commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
+                commentaries : ['So cool ! Good job !', 'Exactly what I was expecting...'],
                 fol : [6000, 10000],
                 folPS : 40,
                 bh : 12,
-                nextText: 18
+                nextText: 18,
+                mj : 0
             }
+        ]
+    },
+    {
+        id: 70,
+        text: 'Hi ! Did you know that Adadas just created sneakers based on plastic pollution ?\n I have a new challenge for you !\n Help them to collect plastic wastes. It will be useful for the planet !\n Goodluck ! ',
+        options: [
+            {
+                text: 'Going for it !',
+                nextText: 19,
+                goBackToHome : false,
+                mj : 1
+            },
+        ]
+    },
+    {
+        id: 71,
+        text: 'Hi ! Did you know that RhinoFéroce has no bad impact on environment ?\n I have a new challenge for you !\n Help them to collect plastic wastes. It will be useful for the planet !\n Goodluck !',
+        options: [
+            {
+                text: 'Going for it !',
+                nextText: 19,
+                goBackToHome : false,
+                mj : 1
+            },
+        ]
+    },
+    {
+        id: 72,
+        text: 'Hi ! Did you know that BlueLightLegend has some impact on environment ?\n I have a new challenge for you !\n Help them to collect plastic wastes. It will be useful for the planet !\n Goodluck ! ',
+        options: [
+            {
+                text: 'Going for it !',
+                nextText: 19,
+                goBackToHome : false,
+                mj : 1
+            },
         ]
     },
     {
@@ -624,8 +796,9 @@ const textNodes = [
         options: [
             {
                 text: 'Sorry, I\'ll try to do better next time !',
-                nextText: 19,
-                goBackToHome : true
+                nextText: 71,
+                goBackToHome : false,
+                mj : 0
             },
         ]
     },
@@ -635,8 +808,9 @@ const textNodes = [
         options: [
             {
                 text: 'I\'l try to be better next time, I\'m ready to go next ',
-                nextText: 19,
-                goBackToHome : true
+                nextText: 72,
+                goBackToHome : false,
+                mj : 0
             },
         ]
     },
@@ -646,8 +820,9 @@ const textNodes = [
         options: [
             {
                 text: 'Thank you, I\'m ready to go next !',
-                nextText: 19,
-                goBackToHome : true
+                nextText: 70,
+                goBackToHome : false,
+                mj : 0
             },
         ]
     },
@@ -662,7 +837,8 @@ const textNodes = [
                 fol : [10000, 20000],
                 folPS : 300,
                 bh : 20,
-                nextText: 20
+                nextText: 20,
+                mj : 0
             },            
             {
                 // PHOTO PODIUM COMPLET
@@ -671,7 +847,8 @@ const textNodes = [
                 fol : [30000, 50000],
                 folPS : 400,
                 bh : 5,
-                nextText: 21
+                nextText: 21,
+                mj : 0
             },            
             {
                 // PHOTO SEUL
@@ -680,7 +857,8 @@ const textNodes = [
                 fol : [10000, 15000],
                 folPS : 100,
                 bh : 40,
-                nextText: 22
+                nextText: 22,
+                mj : 0
             }
         ]
     },
@@ -691,7 +869,8 @@ const textNodes = [
             {
                 text: 'It\'s good for me, let\'s go ! !',
                 nextText: 23,
-                goBackToHome : true
+                goBackToHome : true,
+                mj : 0
             },
         ]
     },
@@ -702,7 +881,8 @@ const textNodes = [
             {
                 text: 'Thank you ! Let\'s go next !',
                 nextText: 23,
-                goBackToHome : true
+                goBackToHome : true,
+                mj : 0
             },
         ]
     },
@@ -713,7 +893,8 @@ const textNodes = [
             {
                 text: 'Sorry for this one, I\'m ready to go next !',
                 nextText: 23,
-                goBackToHome : true
+                goBackToHome : true,
+                mj : 0
             },
         ]
     },
@@ -727,7 +908,8 @@ const textNodes = [
                 fol : [10000, 15000],
                 folPS : 500,
                 bh : 40,
-                nextText: 24
+                nextText: 24,
+                mj : 0
             },            
             {
                 text: 'Disability is a daily challenge, today i realised how it\'s hard to live with it and was glad to help disabled people through their sport journey',
@@ -735,7 +917,8 @@ const textNodes = [
                 fol : [30000, 50000],
                 folPS : 1000,
                 bh : 5,
-                nextText: 25
+                nextText: 25,
+                mj : 0
             },            
             {
                 text: 'Hey guys, today I helped coaches with a special training for disabled people, it was ok',
@@ -743,10 +926,366 @@ const textNodes = [
                 fol : [10000, 20000],
                 folPS : 600,
                 bh : 20,
-                nextText: 26
+                nextText: 26,
+                mj : 0
             }
         ]
     },
-];
+    {
+        id: 24,
+        text: 'What\'s up ! It\'s McLesgo again ! Your post is too much arrogant ! Be careful for the next one !',
+        options: [
+            {
+                text: 'Sorry for that ! Go next !',
+                nextText: 27,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 25,
+        text: 'What\'s up ! It\'s McLesgo again ! Very great post, your initiative is perfect. Congratulation !',
+        options: [
+            {
+                text: 'Thank you ! Let\'s go next !',
+                nextText: 27,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 26,
+        text: 'What\'s up ! It\'s McLesgo again ! Your choice is not very good, you seems unhappy. Be more attractive for your community !',
+        options: [
+            {
+                text: 'Sorry for this one, I\'m ready to go next !',
+                nextText: 27,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 27,
+        text: 'Your community is growing up and some new sponsors wants to collaborate with you.\n Choose which new sponsor you want !',
+        options: [
+            {   // SudVPN
+                text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
+                commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
+                fol : [10000, 15000],
+                folPS : 600,
+                bh : 10,
+                nextText: 28,
+                mj : 0
+            },            
+            {   // Decat'court
+                text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
+                commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
+                fol : [50000, 70000],
+                folPS : 1500,
+                bh : 10,
+                nextText: 29,
+                mj : 0
+            },            
+            {   // FAFI 22
+                text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
+                commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
+                fol : [10000, 15000],
+                folPS : 600,
+                bh : 10,
+                nextText: 30,
+                mj : 0
+            }
+        ]
+    },
+    {
+        id: 28,
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post.\n You could have explain well to fans why you choosed SudVPN for sponsor. ',
+        options: [
+            {
+                text: 'Sorry for that ! Go next !',
+                nextText: 80,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 80,
+        text: 'Do you know that SudVPN is engaged in reducing their environemental impact ? I have a new challenge for you ! You\'ll be teleported in a maze and you need to collect all the barrels before they poison the forest. \nGood luck !',
+        options: [
+            {
+                text: 'Let\'s go !',
+                nextText: 31,
+                goBackToHome : false,
+                mj : 2
+            },
+        ]
+    },
+    {
+        id: 29,
+        text: 'Hello !\n I\'m back again. You have made the good choice ! Your community will be interested in this type of sponsor because it\'s according to your main activity.',
+        options: [
+            {
+                text: 'Thank you ! Let\'s go next !',
+                nextText: 81,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 81,
+        text: 'Do you know that Decath\'Court is engaged in reducing their environemental impact ? I have a new challenge for you ! You\'ll be teleported in a maze and you need to collect all the barrels before they poison the forest. \nGood luck !',
+        options: [
+            {
+                text: 'Let\'s go !',
+                nextText: 31,
+                goBackToHome : false,
+                mj : 2
+            },
+        ]
+    },
+    {
+        id: 30,
+        text: 'Hello !\n I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post.\n A video games is a pretty cool idea but your community won\'t be interested.',
+        options: [
+            {
+                text: 'Sorry for this one, I\'m ready to go next !',
+                nextText: 82,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 82,
+        text: 'Do you know that FAFI22 is engaged in reducing their environemental impact ? I have a new challenge for you ! You\'ll be teleported in a maze and you need to collect all the barrels before they poison the forest. \nGood luck !',
+        options: [
+            {
+                text: 'Let\'s go !',
+                nextText: 31,
+                goBackToHome : false,
+                mj : 2
+            },
+        ]
+    },
+    {
+        id: 31,
+        text: 'You will make a little tutorial to train at home. Choose the post you want !',
+        options: [
+            {
+                text: 'Hi guys !\n I have done exercices for you but be careful it\'s very difficult, only me can do it easily.\nCheck out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
+                commentaries : ['Thanks a lot I will try them !', 'Cool ! I was looking for exercices like them !'],
+                fol : [20000, 30000],
+                folPS : 600,
+                bh : 40,
+                nextText: 32,
+                mj : 0
+            },            
+            {
+                text: 'Hi guys !\n That\'s not very important to make sport every day but if you want to, check out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
+                commentaries : ['Thanks a lot I will try them !', 'Cool ! I was looking for exercices like them !'],
+                fol : [10000, 30000],
+                folPS : 800,
+                bh : 20,
+                nextText: 33,
+                mj : 0
+            },            
+            {
+                text: 'Hi guys !\n I found perfect exercices for you and your family to train your body and improve your health !\nCheck out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
+                commentaries : ['Thanks a lot I will try them !', 'Cool ! I was looking for exercices like them !'],
+                fol : [50000, 70000],
+                folPS : 2000,
+                bh : 5,
+                nextText: 34,
+                mj : 0
+            }
+        ]
+    },
+    {
+        id: 32,
+        text: 'Here I am again !\n Your post was presumptious and your community will not like that. Be careful to what you post !\n Keep going mate, you can do it !',
+        options: [
+            {
+                text: 'So sorry for that ! Go next !',
+                nextText: 35,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 33,
+        text: 'Here I am again !\n Your post was not really great. You need to motivate people to do sport. Multiple studies have shown that sport is benefic for health.\n But keep going, you can do it ! ',
+        options: [
+            {
+                text: '',
+                nextText: 35,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 34,
+        text: 'Here I am again !\n Very great post, your initiative is perfect.\n Congratulation !',
+        options: [
+            {
+                text: 'Thank you ! Let\'s go next !',
+                nextText: 35,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 35,
+        text: 'You and your team won the cup.\n Choose the post you want to share with your followers !',
+        options: [
+            {
+                //PHOTO TOUTE L'EQUIPE
+                text: 'Hi guys ! I\'m really happy to share you the picture of the cup we won this season. Thanks for all your support !',
+                commentaries : ['Amazing wow ! GG to you and your team !', 'Excellent results !'],
+                fol : [70000, 100000],
+                folPS : 600,
+                bh : 5,
+                nextText: 36,
+                mj : 0
+            },            
+            {
+                //PHOTO SEUL AVEC LA COUPE
+                text: 'Hi guys ! I\'m really happy to share you the picture of the cup we won this season. Thanks for all your support !',
+                commentaries : ['Amazing wow ! GG to you and your team !', 'Excellent results !'],
+                fol : [30000, 50000],
+                folPS : 800,
+                bh : 30,
+                nextText: 37,
+                mj : 0
+            },            
+            {
+                //PHOTO DE LA COUPE
+                text: 'Hi guys ! I\'m really happy to share you the picture of the cup we won this season. Thanks for all your support !',
+                commentaries : ['Amazing wow ! GG to you and your team !', 'Excellent results !'],
+                fol : [50000, 70000],
+                folPS : 2000,
+                bh : 10,
+                nextText: 38,
+                mj : 0
+            }
+        ]
+    },
+    {
+        id: 36,
+        text: 'Here I am again !\n Your post was presumptious and your community will not like that. Be careful to what you post ! You could have added a message for your team or other opponents.\n Keep going mate, you can do it !',
+        options: [
+            {
+                text: 'So sorry for that ! Go next !',
+                nextText: 39,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 37,
+        text: 'Here I am again !\n Your post was okay. Remember to add a message of support for your team !\n But keep going, you can do it ! ',
+        options: [
+            {
+                text: '',
+                nextText: 39,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 38,
+        text: 'Here I am again !\n Very great post, your initiative is perfect.\n Congratulation !',
+        options: [
+            {
+                text: 'Thank you ! Let\'s go next !',
+                nextText: 39,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
 
-startGame();
+    // Fin
+
+    {
+        id: 39,
+        text: 'Hello there ! I\'m still here !\n I just wanted to thank you, you\'ve finished the game !',
+        options: [
+            {
+                text: 'Yes, finally !',
+                nextText: 40,
+                goBackToHome : false,
+                mj : 0
+            },
+            {
+                text: 'Oh really ? I\'m so sad !',
+                nextText: 41,
+                goBackToHome : false,
+                mj : 0
+            }
+        ]
+    },
+    {
+        id: 40,
+        text: 'Calm down, you don\'t need to be this rude, did you forget what you\'ve learned ?! ',
+        options: [
+            {
+                text: 'Yes sorry..',
+                nextText: 42,
+                goBackToHome : false,
+                mj : 0
+            }
+        ]
+    },
+    {
+        id: 41,
+        text: 'I\'m not sure you really mean it.. Can I trust you afterall ?',
+        options: [
+            {
+                text: 'Of course ! Why would I lie to you ?',
+                nextText: 42,
+                goBackToHome : false,
+                mj : 0
+            },
+            {
+                text: 'You\'re smart, this was a joke !',
+                nextText: 42,
+                goBackToHome : false,
+                mj : 0
+            }
+        ]
+    },
+    {
+        id: 42,
+        text: 'Nevermind..\n Okay now let\'s talk about real things !',
+        options: [
+            {
+                text: 'Okay let\'s go !',
+                nextText: 43,
+                goBackToHome : false,
+                mj : 0
+            }
+        ]
+    },
+    {
+        id: 43,
+        text: 'So you\'ve finished our game. I hope that you enjoyed it !\n If you want to play again to all our minigames you can choose "Freeplay" on the main page !\n Goodluck in your next adventure ! And don\'t forget to give us a point !',
+        options: [
+            {
+                text: 'Thank you MacLesgo !',
+                nextText: 43,
+                goBackToHome : true,
+                mj : 0
+            }
+        ]
+    }
+];

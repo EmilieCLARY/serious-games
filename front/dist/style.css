@@ -472,6 +472,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: fixed;
 }
 
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
 .m-3 {
   margin: 0.75rem;
 }
@@ -515,6 +523,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
 }
 
 .mt-0 {
@@ -753,6 +769,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: #FFFFFFFF;
 }
 
+.bg-vertContour {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 87 50 / var(--tw-bg-opacity));
+}
+
 .bg-gris {
   --tw-bg-opacity: 1;
   background-color: rgb(121 118 118 / var(--tw-bg-opacity));
@@ -766,11 +787,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-rougeContour {
   --tw-bg-opacity: 1;
   background-color: rgb(145 28 26 / var(--tw-bg-opacity));
-}
-
-.bg-vertContour {
-  --tw-bg-opacity: 1;
-  background-color: rgb(23 87 50 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#FCF5ED\] {
@@ -822,9 +838,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2.5rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
 }
 
 .text-white {
@@ -836,6 +861,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(48 48 48 / var(--tw-text-opacity));
 }
 
+.text-noir {
+  color: #00000000;
+}
+
 .text-gris {
   --tw-text-opacity: 1;
   color: rgb(121 118 118 / var(--tw-text-opacity));
@@ -844,6 +873,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-rougebouton {
   --tw-text-opacity: 1;
   color: rgb(102 5 3 / var(--tw-text-opacity));
+}
+
+.text-noirr {
+  color: #00000001;
+}
+
+.text-grisfonce {
+  --tw-text-opacity: 1;
+  color: rgb(51 51 51 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -912,7 +950,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .PPsportif{
-  background-image: url("../img/characters/sportif/bbCourtBG.png");
+  //background-image: url("../img/characters/sportif/bbCourtBG.png");
   background-size : contain;
   background-repeat : no-repeat;
   background-position: center;
@@ -1070,8 +1108,36 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 /*modal post*/
 
+.popuppostgd {
+  grid-area: 2 / 3 / 12 / 11;
+}
+
+.parentpopuphome {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
 .popuppost {
-  grid-area: 2 / 2 / 12 / 12;
+  grid-area: 2 / 2 / 12 / 8;
+}
+
+.popuppp {
+  grid-area: 2 / 9 / 3 / 10;
+}
+
+.popupplaze {
+  grid-area: 2 / 10 / 3 / 12;
+}
+
+.popupdescription {
+  grid-area: 3 / 9 / 4 / 12;
+}
+
+.popupcommentaire {
+  grid-area: 5 / 9 / 12 / 12;
 }
 
 /* #######################################################################################################################
@@ -1588,7 +1654,68 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .MLtext {
-  grid-area: 1 / 5 / 9 / 13;
+  grid-area: 1 / 5 / 7 / 13;
+  display: grid;
+  grid-template-columns: repeat(40, 1fr);
+  grid-template-rows: repeat(26, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.BcoinTR {
+  grid-area: 2 / 38 / 4 / 40;
+}
+
+.BcoteT {
+  grid-area: 1 / 4 / 2 / 38;
+}
+
+.BcoinTL {
+  grid-area: 2 / 2 / 4 / 4;
+}
+
+.BcoteL {
+  grid-area: 4 / 1 / 21 / 2;
+}
+
+.BcoteR {
+  grid-area: 4 / 40 / 21 / 41;
+}
+
+.BcoinBL {
+  grid-area: 21 / 2 / 23 / 4;
+}
+
+.BcoinBR {
+  grid-area: 21 / 38 / 23 / 40;
+}
+
+.BcoteB {
+  grid-area: 23 / 7 / 24 / 38;
+}
+
+.BO1 {
+  grid-area: 23 / 6 / 26 / 8;
+}
+
+.BO2 {
+  grid-area: 26 / 6 / 27 / 7;
+}
+
+.BO3 {
+  grid-area: 23 / 8 / 25 / 9;
+}
+
+.BO4 {
+  grid-area: 23/4/24/6;
+}
+
+.BO5 {
+  grid-area: 23/7/24/8;
+}
+
+.Btext {
+  grid-area: 4 / 4 / 21 / 38;
 }
 
 .btnML {

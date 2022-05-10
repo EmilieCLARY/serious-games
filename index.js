@@ -51,6 +51,10 @@ var userName;
 var userJob;
 var userAppearance;
 var treesPlanted = 0;
+var userPosts = [];
+var nextText = 1;
+var userFollowers = 0;
+var followersPerSecond = 1;
 
 io.on('connection', (socket) => {
 
@@ -94,6 +98,31 @@ io.on('connection', (socket) => {
         socket.emit('newAppearance', userAppearance);
     });
 
+    socket.on('getPosts', () => {
+        socket.emit('newPosts', userPosts);
+    });
+
+    socket.on('newPost', (post) =>{
+        userFollowers += post.fol;
+        followersPerSecond += post.folPS;
+        userPosts.push(post);
+    });
+
+    socket.on('leProchainTextCLui', (next) => {
+        nextText = next;
+    });
+
+    socket.on('getNextText', () => {
+        socket.emit('leProchainTexte', nextText);
+    });
+
+    socket.on('getFollowers', () => {
+        socket.emit('newFollowers', userFollowers);
+    });
+    socket.on('getFollowersPerSecond', () => {
+        socket.emit('newFollowersPS', followersPerSecond);
+    });
+    
 });
 
 

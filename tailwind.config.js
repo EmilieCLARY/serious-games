@@ -25,7 +25,9 @@ module.exports = {
         gris: '#797676',
         vertContour : '#175732',
         grisfonce: '#333',
-        grisclair: '#9a9191'
+        grisclair: '#9a9191',
+        noir: '#00000000',
+        noirr: '#00000001',
       },
       borderWidth: {
         DEFAULT: '1px',

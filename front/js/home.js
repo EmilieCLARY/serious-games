@@ -19,11 +19,16 @@ var usernames = ["DanleyJade","SnowberYaws","Platysma","Snorkel","Osteophone","O
 ]
 
 var myJob;
+var followers = 0;
+var followersPS = 1;
 
 socket.emit('getTreesPlanted');
 socket.emit('getTypeOfInfluencer');
 socket.emit('getAppearance');
 socket.emit('getUsername');
+socket.emit('getPosts');
+socket.emit('getFollowers');
+socket.emit('getFollowersPerSecond');
 
 socket.on('newNumberOfTreesPlanted', (trees) =>{
     document.getElementById("treesPlanted").textContent = trees;
@@ -58,9 +63,11 @@ socket.on('newUsername', (name) => {
     //console.log(name);
     if(name == null){
         document.getElementById("username").textContent = "Name : NONONONO";
+        document.getElementById("usernamepopup").textContent = "@NONONONO";
     }
     else{
         document.getElementById("username").textContent = "Name : " + name;
+        document.getElementById("usernamepopup").textContent = "@" + name;
     }
 });
 
@@ -70,9 +77,11 @@ socket.on('newAppearance', (appearance) => {
             switch (myJob) {
                 case 0:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWG.png")';
                     break;
                 case 1:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneWG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneWG.png")';
                     break;
                 case 2:
                     break;
@@ -81,6 +90,7 @@ socket.on('newAppearance', (appearance) => {
         
                 default:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWG.png")';
                     break;
             }
             break;
@@ -88,9 +98,11 @@ socket.on('newAppearance', (appearance) => {
             switch (myJob) {
                 case 0:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
                     break;
                 case 1:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneBG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneBG.png")';
                     break;
                 case 2:
                     break;
@@ -99,6 +111,7 @@ socket.on('newAppearance', (appearance) => {
         
                 default:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
                     break;
             }
             break;
@@ -106,9 +119,11 @@ socket.on('newAppearance', (appearance) => {
             switch (myJob) {
                 case 0:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYG.png")';
                     break;
                 case 1:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneYG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneYG.png")';
                     break;
                 case 2:
                     break;
@@ -117,6 +132,7 @@ socket.on('newAppearance', (appearance) => {
         
                 default:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYG.png")';
                     break;
             }
             break;
@@ -124,9 +140,11 @@ socket.on('newAppearance', (appearance) => {
             switch (myJob) {
                 case 0:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWW.png")';
                     break;
                 case 1:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneWW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneWW.png")';
                     break;
                 case 2:
                     break;
@@ -135,6 +153,7 @@ socket.on('newAppearance', (appearance) => {
         
                 default:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtWW.png")';
                     break;
             }
             break;
@@ -142,9 +161,11 @@ socket.on('newAppearance', (appearance) => {
             switch (myJob) {
                 case 0:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBW.png")';
                     break;
                 case 1:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneBW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneBW.png")';
                     break;
                 case 2:
                     break;
@@ -153,6 +174,7 @@ socket.on('newAppearance', (appearance) => {
         
                 default:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBW.png")';
                     break;
             }
             break;
@@ -160,9 +182,11 @@ socket.on('newAppearance', (appearance) => {
             switch (myJob) {
                 case 0:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYW.png")';
                     break;
                 case 1:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/comedian/sceneYW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneYW.png")';
                     break;
                 case 2:
                     break;
@@ -171,6 +195,7 @@ socket.on('newAppearance', (appearance) => {
         
                 default:
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtYW.png")';
                     break;
             }
             
@@ -178,6 +203,19 @@ socket.on('newAppearance', (appearance) => {
 
         default:
             document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
+            document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/sportif/bbCourtBG.png")';
             break;
     }
+});
+
+socket.on('newPost', (postList) => {
+    console.log(postList);
+});
+
+socket.on('newFollowers', (newFollowers) => {
+    followers = newFollowers;
+});
+
+socket.on('newFollowerPS', (newFollowersPS) => {
+    followersPS = newFollowersPS;
 });

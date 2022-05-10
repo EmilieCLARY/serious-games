@@ -64,7 +64,7 @@
             <div class="Player bg-fondmain border-rougeContour border-t-contourRouge border-l-10">
                 <div class="font-pixelise text-fonce h-1/5 text-3xl m-4" id="username"> Name : </div>
                 <div class="font-pixelise text-fonce h-1/5 text-3xl m-4" id="typeOfInfluencer"> Type of influencer : </div>
-                <div class="font-pixelise h-1/2 text-7xl ml-4"> Total Followers : </div>
+                <div class="font-pixelise h-1/2 text-7xl ml-4" id="followers"> Total Followers : </div>
                 <!--<div class="h-1/4 font-pixelise text-white">Type of influencer</div>
                 <div class="h-1/2 font-pixelise">
                     Total Followers : 
@@ -108,7 +108,7 @@
                     <h1 class="text-white text-center font-pixelise w-full">Posts</h1>
                 </div>
                 
-                <div class="allPosts h-full m-6 p-5">
+                <div class="allPosts h-full m-t-6 p-5">
                     <div class="Post1 m-1 bg-white"> 1</div>
                     <div class="Post2 m-1 bg-fonce"> 2</div>
                     <div class="Post3 m-1 bg-white"> 3</div>
@@ -125,12 +125,8 @@
             
 
                 <!--modal posts-->
-
-                <div class="popuppost bg-rougebouton w-full h-full">
-                
-                </div>
-
             </div>
+                   
 
     <!-- ########################################## -->
     <!-- ##                                      ## -->
@@ -186,6 +182,45 @@
                 </div>
             </div>    
                 
+
+
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              popup post              ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+
+              <div class="popuppostgd z-10 bg-fondmain w-full h-full border-rougeContour border-contourRouge">
+                
+
+                <div class="parentpopuphome z-20 h-full w-full">
+                    <span class="close ">&times;</span>
+
+                    <div class="popuppost bg-vertContour">
+
+                    </div>
+                    <div class="popuppp PPsportif rounded-full ml-3 mr-3 h-full" id="profilPicturepp">
+
+                    </div>
+      
+                    <div class="popupplaze flex items-center justify-items-center ">
+                        <p class="font-pixelise h-1/2 text-xl text-grisfonce tracking-widest" id="usernamepopup"></p>
+                        
+                    </div>
+
+                    <div class="popupdescription ">
+                        <p class="text-xl text-justify text-grisfonce border-b-2 ">Voici la plus belle photo de moi, je pense vraiment que je suis le plus beau de toute la france</p>
+                    </div>
+
+                    <div class="popupcommentaire bg-gris">
+                        <p>Le meilleur des commentaires : 
+                            <br> la crème de la chème   
+                        </p> 
+                    </div>
+
+                    </div> 
+            </div>
+    
         </div> 
 
 </body>
