@@ -794,10 +794,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(252 245 237 / var(--tw-bg-opacity));
 }
 
-.p-5 {
-  padding: 1.25rem;
-}
-
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -861,8 +857,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(48 48 48 / var(--tw-text-opacity));
 }
 
-.text-noir {
-  color: #00000000;
+.text-grisfonce {
+  --tw-text-opacity: 1;
+  color: rgb(51 51 51 / var(--tw-text-opacity));
 }
 
 .text-gris {
@@ -873,15 +870,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-rougebouton {
   --tw-text-opacity: 1;
   color: rgb(102 5 3 / var(--tw-text-opacity));
-}
-
-.text-noirr {
-  color: #00000001;
-}
-
-.text-grisfonce {
-  --tw-text-opacity: 1;
-  color: rgb(51 51 51 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -950,7 +938,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .PPsportif{
-  //background-image: url("../img/characters/sportif/bbCourtBG.png");
+  /*background-image: url("../img/characters/sportif/bbCourtBG.png");*/
   background-size : contain;
   background-repeat : no-repeat;
   background-position: center;
@@ -1108,6 +1096,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 /*modal post*/
 
+.hoverclick:hover{
+  background-color: rgb(0,0,0);
+  /* Fallback color */
+  background-color: rgba(0,0,0,0.3);
+  /* Black w/ opacity */
+}
+
 .popuppostgd {
   grid-area: 2 / 3 / 12 / 11;
 }
@@ -1120,12 +1115,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-gap: 0px;
 }
 
+.popuppp {
+  grid-area: 2 / 9 / 3 / 10;
+}
+
 .popuppost {
   grid-area: 2 / 2 / 12 / 8;
 }
 
-.popuppp {
-  grid-area: 2 / 9 / 3 / 10;
+.popupclose {
+  grid-area: 1 / 11 / 2 / 13;
 }
 
 .popupplaze {
@@ -1133,7 +1132,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .popupdescription {
-  grid-area: 3 / 9 / 4 / 12;
+  grid-area: 3 / 9 / 5 / 12;
 }
 
 .popupcommentaire {
@@ -1605,9 +1604,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-gap: 0px;
 }
 
-.macLessgoch{
-  grid-area: 1 / 1 / 9 / 13
-};
+/*
+.macLessgoch{ grid-area: 1 / 1 / 9 / 13};*/
 
 .choicenum1c4 {
   grid-area: 1 / 1 / 5 / 7;
@@ -1719,7 +1717,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .btnML {
-  grid-area: 7 / 7 / 9 / 11;
+  grid-area: 7 / 5 / 9 / 13;
 }
 
 /* DEMO-SPECIFIC STYLES */
@@ -1777,7 +1775,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: inline-block;
   border: 3px solid transparent;
   position: relative;
-  font-size: 1.5em;
+  font-size: 1.2rem;
   cursor: pointer;
   letter-spacing: 0.07em;
 }

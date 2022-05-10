@@ -55,6 +55,7 @@ var userPosts = [];
 var nextText = 1;
 var userFollowers = 0;
 var followersPerSecond = 1;
+var bigHeadGauge = 0;
 
 io.on('connection', (socket) => {
 
@@ -105,6 +106,7 @@ io.on('connection', (socket) => {
     socket.on('newPost', (post) =>{
         userFollowers += post.fol;
         followersPerSecond += post.folPS;
+        bigHeadGauge += post.bh;
         userPosts.push(post);
     });
 
@@ -121,6 +123,10 @@ io.on('connection', (socket) => {
     });
     socket.on('getFollowersPerSecond', () => {
         socket.emit('newFollowersPS', followersPerSecond);
+    });
+
+    socket.on('getBigHeadGauge', () => {
+        socket.emit('newBigHeadGauge', bigHeadGauge);
     });
     
 });

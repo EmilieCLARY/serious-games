@@ -42,7 +42,7 @@
 .Profilepicture { grid-area: 1 / 1 / 6 / 5; }
 
 .PPsportif{
-    //background-image: url("../img/characters/sportif/bbCourtBG.png");
+    /*background-image: url("../img/characters/sportif/bbCourtBG.png");*/
     background-size : contain;
     background-repeat : no-repeat;
     background-position: center;
@@ -161,9 +161,16 @@
 
 /*modal post*/
 
+.hoverclick:hover{
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.3); /* Black w/ opacity */
+}
+
+
 .popuppostgd { 
     grid-area: 2 / 3 / 12 / 11;
 }
+
 
 .parentpopuphome {
     display: grid;
@@ -173,10 +180,11 @@
     grid-row-gap: 0px;
 }
     
-.popuppost { grid-area: 2 / 2 / 12 / 8; }
 .popuppp { grid-area: 2 / 9 / 3 / 10; }
+.popuppost { grid-area: 2 / 2 / 12 / 8; }
+.popupclose { grid-area: 1 / 11 / 2 / 13; }
 .popupplaze { grid-area: 2 / 10 / 3 / 12; }
-.popupdescription { grid-area: 3 / 9 / 4 / 12; }
+.popupdescription { grid-area: 3 / 9 / 5 / 12; }
 .popupcommentaire { grid-area: 5 / 9 / 12 / 12; } 
 
 
@@ -512,8 +520,8 @@
     grid-row-gap: 0px;
     
 }
-
-.macLessgoch{ grid-area: 1 / 1 / 9 / 13};
+/*
+.macLessgoch{ grid-area: 1 / 1 / 9 / 13};*/
 .choicenum1c4 { grid-area: 1 / 1 / 5 / 7; }
 .choicenum2c4 { grid-area: 1 / 7 / 5 / 13; }
 .choicenum3c4 { grid-area: 5 / 1 / 9 / 7; }
@@ -560,7 +568,7 @@
 .BO5 { grid-area: 23/7/24/8;}
 .Btext { grid-area: 4 / 4 / 21 / 38; }
 
-.btnML { grid-area: 7 / 7 / 9 / 11; }
+.btnML { grid-area: 7 / 5 / 9 / 13; }
 
 
 
@@ -619,7 +627,7 @@
     display: inline-block;
     border: 3px solid transparent;
     position: relative;
-    font-size: 1.5em;
+    font-size: 1.2rem;
     cursor: pointer;
     letter-spacing: 0.07em;
   }

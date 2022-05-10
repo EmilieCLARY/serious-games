@@ -44,7 +44,7 @@ function showTextNode(textNodeIndex) {
             
             console.log(compt);
             if(nbChoix===1){
-                
+                    optionButtonsElement.classList.add('optionspossiblepourrepondreauqcmpcqenfaitclejeuquoi','m-4', 'rounded-3xl', 'border-rougebouton', 'bg-[#FCF5ED]', 'border-4');
                 /*la photo de ML*/
                     var newDivMLphoto = document.createElement("div");
                     newDivMLphoto.classList.add('MLphoto','professor','bg-rougeContour','rounded-3xl','m-4');
@@ -454,19 +454,22 @@ function selectOption(option) {
     else{
         console.log('C MCLESGO');
         if(option.goBackToHome){
-            window.location.href = "../html/home.html";
+            window.location.href = "../home.html";
         }
         else if(option.mj == 1){
-            window.location.href = "../html/turtle-saver.html";
+            window.location.href = "../turtle-saver.html";
         }
         else if(option.mj == 1){
-            window.location.href = "../html/turtle-saver.html";
+            window.location.href = "../turtle-saver.html";
         }
         else if(option.mj == 2){
-            window.location.href = "../html/maze.html";
+            window.location.href = "../maze.html";
         }
         else if(option.mj == 3){
-            window.location.href = "../html/supermarket.html";
+            window.location.href = "../supermarket.html";
+        }
+        else{
+            showTextNode(nextTextNodeId);
         }
     }
     //Récupérer les infos de l'option et les envoyer par socket
@@ -1122,7 +1125,7 @@ const textNodes = [
         text: 'Here I am again !\n Your post was not really great. You need to motivate people to do sport. Multiple studies have shown that sport is benefic for health.\n But keep going, you can do it ! ',
         options: [
             {
-                text: '',
+                text: 'I\'ll think about it next time, thanks !',
                 nextText: 35,
                 goBackToHome : true,
                 mj : 0
