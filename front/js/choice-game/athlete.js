@@ -45,7 +45,7 @@ function showTextNode(textNodeIndex) {
             console.log(compt);
             if(nbChoix===1){
                 textElement.style.display = "none";
-                optionButtonsElement.classList.add('zoneDesReponses','m-4', 'rounded-3xl', 'border-rougebouton', 'bg-darkfond', 'border-4');
+                optionButtonsElement.classList.add('zoneDesReponses','m-4', 'rounded-3xl', 'border-rougebouton', 'bg-lightfond', 'border-4');
                 /*la photo de ML*/
                 var newDivMLphoto = document.createElement("div");
                 newDivMLphoto.classList.add('MLphoto','professor','bg-darkfond','border-rougebouton','border-4','rounded-3xl','m-4');
@@ -290,8 +290,8 @@ function showTextNode(textNodeIndex) {
             } else if(nbChoix===4){
                 if(compt == 1){ // Premier bouton
                     var newDiv1 = document.createElement("div");
-                    var newDiv1photo = document.createElement("div");
-                    var newDiv1text = document.createElement("div");
+                    //var newDiv1photo = document.createElement("div");
+                    //var newDiv1text = document.createElement("div");
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
                     var span1 = document.createElement('span');
@@ -299,7 +299,9 @@ function showTextNode(textNodeIndex) {
                     var span3 = document.createElement('span');
                     var span4 = document.createElement('span');
                     var span5 = document.createElement('span');
-    
+                    var divtoutpost = document.createElement('div')
+                    var divpost = document.createElement('div');
+                    var divtextpost = document.createElement('div')
     
                     //console.log("a")
     
@@ -307,22 +309,28 @@ function showTextNode(textNodeIndex) {
                     button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
                     section.classList.add('portfolio-experiment', 'h-full');
                     newDiv1.classList.add('choicenum1c4', 'm-4');
-                    newDiv1photo.classList.add('choicenum4c4photo');
-                    newDiv1text.classList.add('choicenum4c4text');
+                    //newDiv1photo.classList.add('choicenum4c4photo');
+                    //newDiv1text.classList.add('choicenum4c4text');
                     
-
+                    divpost.classList.add('imageboutontest4c','bg-rougebouton')
+                    divtextpost.classList.add('testextboutontest')
                     span1.classList.add('texte','text-fonce');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
                     span4.classList.add('line','-left');
                     span5.classList.add('line','-bottom');              
+                    divtoutpost.classList.add('divglobalpourbtnaquatrechoix')
                     
-                    button.appendChild(span1);
-                    button.appendChild(span2);
-                    button.appendChild(span3);
-                    button.appendChild(span4);
-                    button.appendChild(span5);
-    
+                    divtextpost.appendChild(span1);
+                    divtextpost.appendChild(span2);
+                    divtextpost.appendChild(span3);
+                    divtextpost.appendChild(span4);
+                    divtextpost.appendChild(span5);
+                    
+
+                    divtoutpost.appendChild(divpost);
+                    divtoutpost.appendChild(divtextpost);
+                    button.appendChild(divtoutpost)
                     section.appendChild(button);
                     newDiv1.appendChild(section);
                     button.addEventListener('click', () => selectOption(option));
@@ -496,6 +504,9 @@ function selectOption(option) {
     }
     //Récupérer les infos de l'option et les envoyer par socket
     
+    if(option.sponsor != undefined){
+        socket.emit('newSponsor', option.sponsor);
+    }
 }
 
 const textNodes = [
@@ -776,7 +787,7 @@ const textNodes = [
                 bh : 10,
                 nextText: 16,
                 mj : 0,
-                sponsor : "BouclierFéroce",
+                sponsor : 'BouclierFéroce',
                 image : '../img/characters/sportif/posts/rhinoshield.png',
                 appearance : false
             },            
@@ -789,6 +800,7 @@ const textNodes = [
                 bh : 20,
                 nextText: 17,
                 mj : 0,
+                sponsor : 'BlueLightLegend',
                 image : '../img/characters/sportif/posts/blueLightLegend.png',
                 appearance : false
             },            
@@ -801,6 +813,7 @@ const textNodes = [
                 bh : 12,
                 nextText: 18,
                 mj : 0,
+                sponsor : 'Adadas',
                 image : '../img/characters/sportif/posts/adadas.png',
                 appearance : false
             }
@@ -968,7 +981,7 @@ const textNodes = [
                 bh : 40,
                 nextText: 24,
                 mj : 0,
-                image : '../img/characters/sportif/posts/handicapé.png'
+                image : '../img/characters/sportif/posts/handicape.png'
             },            
             {
                 text: 'Disability is a daily challenge, today i realised how it\'s hard to live with it and was glad to help disabled people through their sport journey',
@@ -978,7 +991,7 @@ const textNodes = [
                 bh : 5,
                 nextText: 25,
                 mj : 0,
-                image : '../img/characters/sportif/posts/handicapé.png'
+                image : '../img/characters/sportif/posts/handicape.png'
             },            
             {
                 text: 'Hey guys, today I helped coaches with a special training for disabled people, it was ok',
@@ -988,7 +1001,7 @@ const textNodes = [
                 bh : 20,
                 nextText: 26,
                 mj : 0,
-                image : '../img/characters/sportif/posts/handicapé.png'
+                image : '../img/characters/sportif/posts/handicape.png'
             }
         ]
     },
@@ -1040,6 +1053,7 @@ const textNodes = [
                 bh : 10,
                 nextText: 28,
                 mj : 0,
+                sponsor : 'SudVPN',
                 image : '../img/characters/sportif/posts/SudVPN.png',
                 appearance : false
             },            
@@ -1051,6 +1065,7 @@ const textNodes = [
                 bh : 10,
                 nextText: 29,
                 mj : 0,
+                sponsor : 'Decatcour',
                 image : '../img/characters/sportif/posts/decathcour.png',
                 appearance : false
             },            
@@ -1062,6 +1077,7 @@ const textNodes = [
                 bh : 10,
                 nextText: 30,
                 mj : 0,
+                sponsor : 'FAFI 22',
                 image : '../img/characters/sportif/posts/fafi22.png',
                 appearance : false
             }

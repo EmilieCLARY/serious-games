@@ -34,9 +34,15 @@
                 
                 <div class="partenaires h-1/2"> 
                     <div class="partenairesListe bg-fondmain border-b-2 h-1/12 m-3 font-pixelise">Business Partner</div>
-                    <div class="partenaire1_jsf bg-fonce rounded-full h-1/6 m-3"></div>
-                    <div class="partenaire2_jsf bg-white rounded-full h-1/6 m-3"></div>
-                    <div class="partenaire3_jsf bg-fonce rounded-full h-1/6 m-3"></div>
+                    <div class="partenaire1_jsf bg-fonce text-white rounded-full h-1/6 m-3 pt-4 font-pixelise">
+                        <p class="pt-3" id="sponsor1"></p>
+                    </div>
+                    <div class="partenaire2_jsf bg-white text-fonce rounded-full h-1/6 m-3 pt-4 font-pixelise">
+                        <p class="pt-3" id="sponsor2"></p>
+                    </div>
+                    <div class="partenaire3_jsf bg-fonce text-white rounded-full h-1/6 m-3 pt-4 font-pixelise">
+                        <p class="pt-3" id="sponsor3"></p>
+                    </div>
                 </div>
 
                 <div class="abonnes h-1/3"> 
@@ -97,7 +103,7 @@
 
             <div class="Profilepicture bg-fondmain text-center border-rougeContour border-l-contourRouge border-t-contourRouge">
                 <div class="fixed h-16 w-32 bg-rougebouton border-rougeContour border-b-12 border-r-12 flex items-center justify-items-center">
-                    <h1 class="text-white text-center font-pixelise w-full">Profile picture</h1>
+                    <h1 class="text-white text-center font-pixelise w-full">Profile</h1>
                 </div>
                 <div class="PPsportif h-full m-6" id="profilPicture"></div>
             </div>
@@ -225,6 +231,8 @@
 
                     <div class="popupcommentaire">
                         <div class="parentcommentairespost w-full h-full" id="parentcommentairespost">
+
+
                             <div class="bg1 rounded-xl"></div>
                             <div class="titre1 font-bold" id="titre1"></div>
                             <div class="com1 mx-3" id="com1"></div>
@@ -236,20 +244,39 @@
                     </div>
                 </div> 
             </div>
-        </div> 
-
-
-    <!-- ########################################## -->
-    <!-- ##                                      ## -->
-    <!-- ##              popup grosse tete       ## -->
-    <!-- ##                                      ## -->
-    <!-- ########################################## -->
-
-    <div class="popupgrossetetegd z-10 w-full h-full border-rougeContour border-contourRouge" id="popupgrossetetegd">
-        <div class="parentpopuphome bg-fondmain z-20 h-full w-full " >
         
+
+            <!-- ########################################## -->
+            <!-- ##                                      ## -->
+            <!-- ##              popup grosse tete       ## -->
+            <!-- ##                                      ## -->
+            <!-- ########################################## -->
+
+        <div class="popupgrossetetegd bg-fondmain z-10 w-full h-full border-rougeContour border-contourRouge" id="popupgrossetetegd">
+            
+                <div class="parentpopupgrossetete z-20 w-full h-full">
+                    <!--<div class="popupgrosseteteclose" id="popupgrosseteteclose">
+                        <span class="close">&times;</span>
+                    </div>-->
+
+                    <div class="grossetetejauge"></div>
+                    <div class="grossetetetitre font-pixelise text-center text-rougeContour text-6xl">
+                        <h1>Warning : you have Big Head </h1>
+                    </div>
+                    <div class="grossetetecommentaire  bg-gris flex items-center justify-items-center "> 
+                        <p class="w-full text-center">oh lala, c'est pas bien la</p>
+                    </div>
+                    
+
+                    <div  class="flex items-center justify-center w-full grossetetecontinuer text-center bg-rougebouton border-4 rounded-xl" >
+                        <a href="big-head.html">
+                            <h1 class="text-4xl  text-white font-pixelise click">Continue</h1>
+                        </a>
+                    </div>
+                </div>
         </div>
     </div>
+</div>
  
         
     </body>

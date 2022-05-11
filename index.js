@@ -56,11 +56,12 @@ var nextText = 1;
 var userFollowers = 0;
 var followersPerSecond = 1;
 var bigHeadGauge = 0;
+var userSponsors = [];
 
 io.on('connection', (socket) => {
 
     socket.on('login', () => {
-        console.log("User connected")
+        //console.log("User connected")
     });
 
     socket.on('userJob', (job) => {
@@ -139,7 +140,14 @@ io.on('connection', (socket) => {
             bigHeadGauge = 0;
         } 
     });
+
+    socket.on('getSponsors', () => {
+        socket.emit('sendSponsors', userSponsors);
+    });
     
+    socket.on("newSponsor", (sponsor) => {
+        userSponsors.push(sponsor);
+    });
 });
 
 

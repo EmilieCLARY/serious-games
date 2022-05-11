@@ -678,6 +678,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.25rem;
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .rounded-t-xl {
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
@@ -814,6 +818,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(252 245 237 / var(--tw-bg-opacity));
 }
 
+.bg-darkfond {
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 179 156 / var(--tw-bg-opacity));
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -821,6 +830,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pt-3 {
@@ -896,6 +909,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-grisfonce {
   --tw-text-opacity: 1;
   color: rgb(51 51 51 / var(--tw-text-opacity));
+}
+
+.text-rougeContour {
+  --tw-text-opacity: 1;
+  color: rgb(145 28 26 / var(--tw-text-opacity));
 }
 
 .text-gris {
@@ -1246,6 +1264,38 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .popupgrossetetegd{
   grid-area: 2 / 3 / 12 / 11;
+}
+
+.parentpopupgrossetete {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.grossetetejauge {
+  grid-area: 3 / 1 / 8 / 7;
+  background-image: url("../img/mainPage/gauge/gauge1.png" );
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
+}
+
+.grossetetetitre {
+  grid-area: 2 / 2 / 3 / 10;
+}
+
+.grossetetecommentaire {
+  grid-area: 3 / 7 / 6 / 10;
+}
+
+.grossetetecontinuer {
+  grid-area: 7 / 7 / 8 / 10;
+}
+
+.popupgrosseteteclose {
+  grid-area: 1 / 10 / 2 / 11;
 }
 
 /* #######################################################################################################################
@@ -1727,23 +1777,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .choicenum1c4 {
   grid-area: 1 / 1 / 5 / 7;
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(9, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
 }
 
+/*
 .choicenum1c4photo{
-  grid-area: 1 / 1 / 10 / 8;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position : center;
+    grid-area: 1 / 1 / 10 / 8;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
 }
-
 .choicenum1c4text{
-  grid-area: 1 / 8 / 10 / 17;
-}
+    grid-area: 1 / 8 / 10 / 17;
+}*/
 
 .choicenum2c4 {
   grid-area: 1 / 7 / 5 / 13;
@@ -1918,21 +1963,45 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 7 / 5 / 9 / 13;
 }
 
-.btntestML{
+.imageboutontest4c{
+  grid-area: 1 / 1 / 10 / 15;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.boutonpourtesterpostettext{
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
+  grid-template-columns: repeat(29, 1fr);
   grid-template-rows: repeat(9, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 
-.photobtntest{
-  grid-area: 1 / 1 / 10 / 8;
-  background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png" );
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position : center;
+.testtextboutontest{
+  grid-area: 1 / 15    / 10 / 30;
 }
+
+.divglobalpourbtnaquatrechoix{
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+/*.btntestML{
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.photobtntest{
+    background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png" );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}*/
 
 /* DEMO-SPECIFIC STYLES */
 
@@ -1996,8 +2065,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .portfolio-experiment button .texte {
   font-family: proxima-nova, monospace;
+  display:block;
   transform: translate3d(0, 0.7em, 0);
-  display: block;
   transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
 }
 
@@ -2193,11 +2262,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .modalinfoparentprofessor {
-  grid-area: 3 / 2 / 12 / 7;
+  grid-area: 3 / 1 / 12 / 6;
 }
 
 .modalinfoparentblabla {
-  grid-area: 4 / 8 / 10 / 12;
+  grid-area: 3 / 5 / 10 / 12;
 }
 
 .modalinfoparentbtn {

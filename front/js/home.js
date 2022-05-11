@@ -61,9 +61,11 @@ socket.emit('getPosts');
 socket.emit('getFollowers');
 socket.emit('getFollowersPerSecond');
 socket.emit('getBigHeadGauge');
+socket.emit('getSponsors');
 
 
 document.getElementById("popuppostgd").style.display = "none";
+document.getElementById("popupgrossetetegd").style.display = "none";
 document.getElementById("btnpost1").style.display = "none";
 document.getElementById("btnpost2").style.display = "none";
 document.getElementById("btnpost3").style.display = "none";
@@ -403,6 +405,10 @@ socket.on('newBigHeadGauge', (bigHeadGauge) => {
         document.getElementById("Gauge").style.backgroundImage = 'url("../img/mainPage/gauge/gauge9.png")'
         // TRIGGER LA MODAL BOX QUI REDIRIGE VERS BIGHEAD
     }
+    if(bigHeadGauge >= 90){
+        console.log("oui");
+        document.getElementById("popupgrossetetegd").style.display = "block";
+    }
 });
 
 function updateFollowers(){
@@ -573,6 +579,13 @@ function popupWatiTropBO(number){
     }
 }
 
+socket.on('sendSponsors', (userSponsors) => {
+    for(let i = 0; i < userSponsors.length; i++){
+        let tmp = i + 1;
+        document.getElementById('sponsor'+ tmp).textContent = userSponsors[i];
+    }
+});
+
 //post 1
 document.getElementById("btnpost1").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
@@ -635,6 +648,10 @@ document.getElementById("btnpost9").addEventListener("click", event => {
 document.getElementById("popupclose").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "none";
 });
+
+//document.getElementById("popupgrosseteteclose").addEventListener("click", event => {
+//    document.getElementById("popupgrossetetegd").style.display = "none";
+//});
 
 
 

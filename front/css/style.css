@@ -261,6 +261,26 @@
     }
     
 
+    .parentpopupgrossetete {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        }
+        
+        .grossetetejauge { grid-area: 3 / 1 / 8 / 7; 
+            background-image: url("../img/mainPage/gauge/gauge1.png" );
+            background-size : contain;
+            background-repeat : no-repeat;
+            background-position: center;
+        }
+        .grossetetetitre { grid-area: 2 / 2 / 3 / 10; }
+        .grossetetecommentaire { grid-area: 3 / 7 / 6 / 10; }
+        .grossetetecontinuer { grid-area: 7 / 7 / 8 / 10; }     
+        .popupgrosseteteclose { grid-area: 1 / 10 / 2 / 11; }
+
+
 /* #######################################################################################################################
    #######################################################################################################################
    #####                                                                                                             #####
@@ -607,12 +627,7 @@
 /*
 .macLessgoch{ grid-area: 1 / 1 / 9 / 13};*/
 .choicenum1c4 { grid-area: 1 / 1 / 5 / 7;
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
+}/*
 .choicenum1c4photo{
     grid-area: 1 / 1 / 10 / 8;
     background-size: cover;
@@ -621,7 +636,7 @@
 }
 .choicenum1c4text{
     grid-area: 1 / 8 / 10 / 17;
-}
+}*/
 
 .choicenum2c4 { grid-area: 1 / 7 / 5 / 13; 
     display: grid;
@@ -728,7 +743,30 @@
 .btnML { grid-area: 7 / 5 / 9 / 13; }
 
 
-.btntestML{
+.imageboutontest4c{
+    grid-area: 1 / 1 / 10 / 15;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.boutonpourtesterpostettext{
+    display: grid;
+    grid-template-columns: repeat(29, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+.testtextboutontest{
+    grid-area: 1 / 15    / 10 / 30;
+}
+
+.divglobalpourbtnaquatrechoix{
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+} 
+    
+/*.btntestML{
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(9, 1fr);
@@ -737,12 +775,11 @@
 }
 
 .photobtntest{
-    grid-area: 1 / 1 / 10 / 8;
     background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png" );
     background-size: cover;
     background-repeat: no-repeat;
     background-position : center;
-}
+}*/
 
 
 /* DEMO-SPECIFIC STYLES */
@@ -805,8 +842,8 @@
   }
   .portfolio-experiment button .texte {
     font-family: proxima-nova, monospace;
+    display:block;
     transform: translate3d(0, 0.7em, 0);
-    display: block;
     transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
   }
   .portfolio-experiment button:after {
@@ -982,16 +1019,15 @@
     }
         
     .modalinfoparenttitre { grid-area: 1 / 4 / 3 / 10; }
-    .modalinfoparentprofessor { grid-area: 3 / 2 / 12 / 7; }
-    .modalinfoparentblabla { grid-area: 4 / 8 / 10 / 12; }
+    .modalinfoparentprofessor { grid-area: 3 / 1 / 12 / 6; }
+    .modalinfoparentblabla { grid-area: 3 / 5 / 10 / 12; }
     .modalinfoparentbtn { grid-area: 11 / 8 / 13 / 12; }
 
     .professor{
-        
-    background-image: url("../img/characters/scientist/scientistLight.png" );
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position : center;
+        background-image: url("../img/characters/scientist/scientistLight.png" );
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position : center;
     }
         
 
