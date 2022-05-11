@@ -18,6 +18,8 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         fondmain:'#f5e0c4',
+        lightfond: '#FCF5ED',
+        darkfond: '#c4b39c',
         rougeContour : '#911C1a',
         rougebouton: '#660503',
         white: '#FFFFFFFF',

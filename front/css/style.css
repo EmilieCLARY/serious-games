@@ -145,18 +145,56 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px; 
 }
-.Post1 { grid-area: 1 / 1 / 2 / 2; }
-.Post2 { grid-area: 1 / 2 / 2 / 3; }
-.Post3 { grid-area: 1 / 3 / 2 / 4; }
+.Post1 { grid-area: 1 / 1 / 2 / 2; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.Post2 { grid-area: 1 / 2 / 2 / 3; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.Post3 { grid-area: 1 / 3 / 2 / 4; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
 
-.Post4 { grid-area: 2 / 1 / 3 / 2; }
-.Post5 { grid-area: 2 / 2 / 3 / 3; }
-.Post6 { grid-area: 2 / 3 / 3 / 4; }
+.Post4 { grid-area: 2 / 1 / 3 / 2; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.Post5 { grid-area: 2 / 2 / 3 / 3; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.Post6 { grid-area: 2 / 3 / 3 / 4; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
 
-.Post7 { grid-area: 3 / 1 / 4 / 2; }
-.Post8 { grid-area: 3 / 2 / 4 / 3; }
-.Post9 { grid-area: 3 / 3 / 4 / 4; }
+.Post7 { grid-area: 3 / 1 / 4 / 2; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+
+.Post8 { grid-area: 3 / 2 / 4 / 3; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+.Post9 { grid-area: 3 / 3 / 4 / 4; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position : center;
+}
    
+
 
 
 /*modal post*/
@@ -185,8 +223,37 @@
 .popupclose { grid-area: 1 / 11 / 2 / 13; }
 .popupplaze { grid-area: 2 / 10 / 3 / 12; }
 .popupdescription { grid-area: 3 / 9 / 5 / 12; }
-.popupcommentaire { grid-area: 5 / 9 / 12 / 12; } 
+.popupcommentaire { grid-area: 6 / 9 / 12 / 12; } 
 
+
+
+/*commentaire des posts*/
+
+.parentcommentairespost {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    /*.div1 { grid-area: 1 / 1 / 21 / 3; } */
+    .bg1 {grid-area: 1 / 1/ 4 / 3;
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.3)
+     }
+    .titre1 { grid-area: 1 / 1 / 2 / 2; }
+    .com1 { grid-area: 2 / 1 / 4 / 3; }
+
+    .bg2 {grid-area: 5 / 1/ 8 / 3; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.3);
+    }
+    .titre2 { grid-area: 5 / 1 / 6 / 2; }
+    .com2 { grid-area: 6 / 1 / 7 / 3; }
+
+   
+    
 
 /* #######################################################################################################################
    #######################################################################################################################
@@ -486,9 +553,14 @@
     .div114 { grid-area: 1 / 1 / 2 / 13; }
     .divbox { grid-area: 3 / 4 / 11 / 10; }
     .divtitre { grid-area: 2 / 5 / 4 / 9; }
-    .divpp { grid-area: 4 / 4 / 11 / 7; }
+    .divpp { grid-area: 5 / 4 / 10 / 7; 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position : center;
+    
+    }
     .divname { grid-area: 5 / 7 / 6 / 10; }
-    .divdesc { grid-area: 7 / 7 / 8 / 10; }
+    .divdesc { grid-area: 6 / 7 / 9 / 10; }
     .divadj { grid-area: 9 / 7 / 11 / 10; } 
     .divbtn { grid-area: 11 / 6 / 12 / 8; } 
 

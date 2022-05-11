@@ -18,10 +18,39 @@ var usernames = ["DanleyJade","SnowberYaws","Platysma","Snorkel","Osteophone","O
 
 ]
 
+class Queue {
+    constructor() {
+        this.elements = {};
+        this.head = 0;
+        this.tail = 0;
+    }
+    enqueue(element) {
+        this.elements[this.tail] = element;
+        this.tail++;
+    }
+    dequeue() {
+        const item = this.elements[this.head];
+        delete this.elements[this.head];
+        this.head++;
+        return item;
+    }
+    peek() {
+        return this.elements[this.head];
+    }
+    get length() {
+        return this.tail - this.head;
+    }
+    get isEmpty() {
+       return this.length === 0;
+    }
+}
+
 var myJob;
+var myAppearance = 0;
 var followers = 0;
 var followersPS = 1;
 var interval;
+var folQueue = new Queue();
 
 socket.emit('getTreesPlanted');
 socket.emit('getTypeOfInfluencer');
@@ -34,6 +63,15 @@ socket.emit('getBigHeadGauge');
 
 
 document.getElementById("popuppostgd").style.display = "none";
+document.getElementById("btnpost1").style.display = "none";
+document.getElementById("btnpost2").style.display = "none";
+document.getElementById("btnpost3").style.display = "none";
+document.getElementById("btnpost4").style.display = "none";
+document.getElementById("btnpost5").style.display = "none";
+document.getElementById("btnpost6").style.display = "none";
+document.getElementById("btnpost7").style.display = "none";
+document.getElementById("btnpost8").style.display = "none";
+document.getElementById("btnpost9").style.display = "none";
 
 socket.on('newNumberOfTreesPlanted', (trees) =>{
     document.getElementById("treesPlanted").textContent = trees;
@@ -77,6 +115,7 @@ socket.on('newUsername', (name) => {
 });
 
 socket.on('newAppearance', (appearance) => {
+    myAppearance = appearance;
     switch (appearance) {
         case 0:
             switch (myJob) {
@@ -213,12 +252,83 @@ socket.on('newAppearance', (appearance) => {
     }
 });
 
-socket.on('newPost', (postList) => {
-    console.log(postList);
+socket.on('newPosts', (postList) => {
+    //console.log(postList);
+    for(let i = 0; i < postList.length; i++){
+        if(!postList[i].appearance){
+            let tmp = i+1;
+            document.getElementById("btnpost" + tmp).style.display = 'block';
+            document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'")';
+            document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'")';
+        }
+        else{
+            let tmp = i+1;
+            switch (myAppearance) {
+                case 0:
+                    document.getElementById("btnpost" + tmp).style.display = 'block';
+                    document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'WG.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'WG.png")';
+                    
+                    
+                    break;
+                case 1:
+                    document.getElementById("btnpost" + tmp).style.display = 'block';
+                    document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'BG.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'BG.png")';
+                    break;
+                case 2:
+                    document.getElementById("btnpost" + tmp).style.display = 'block';
+                    document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'YG.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'YG.png")';
+                    break;
+                case 3:
+                    document.getElementById("btnpost" + tmp).style.display = 'block';
+                    document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'WW.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'WW.png")';
+                    break;
+                case 4:
+                    document.getElementById("btnpost" + tmp).style.display = 'block';
+                    document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'BW.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'BW.png")';
+                    break;
+                case 5:
+                    document.getElementById("btnpost" + tmp).style.display = 'block';
+                    document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'YW.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'YM.png")';
+                    break;
+                                
+                default:
+                    document.getElementById("btnpost" + tmp).style.display = 'block';
+                    document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'WG.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'WG.png")';
+                    break;
+            }
+        }
+
+        for (let index = 1; index <= 2; index++) {
+    
+            var titre= 'titre'+index;
+            var pseudo = getRandomUsername();
+            document.getElementById(titre).textContent = "@" + pseudo;
+            
+            var com = 'com' + index;  
+            document.getElementById(com).textContent = postList[i].commentaries[index-1];
+
+            document.getElementById("leTexteDuPost").textContent = postList[i].text;
+        }
+
+    }
 });
 
 socket.on('newFollowers', (newFollowers) => {
     followers = newFollowers;
+    if(followers >= 5){
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+    }
     updateFollowers();
 });
 
@@ -261,9 +371,127 @@ socket.on('newBigHeadGauge', (bigHeadGauge) => {
 function updateFollowers(){
     followers += followersPS;
     document.getElementById("followers").textContent = "Total Followers : " + followers;
+    updateFollowersList(followersPS);
     console.log('Your followers :', followers);
 }
 
+function updateFollowersList(nbOfNewFol){
+    if(nbOfNewFol == 1){
+        if(folQueue.length <= 4){
+            folQueue.enqueue(getRandomUsername());
+        }
+        else{
+            folQueue.dequeue();
+            folQueue.enqueue(getRandomUsername());
+        }
+    }
+    else if(nbOfNewFol == 2){
+        if(folQueue.length <= 3){
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+        }
+        else{
+            folQueue.dequeue();
+            folQueue.dequeue();
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+        }
+    }
+    else if(nbOfNewFol == 3){
+        if(folQueue.length <= 2){
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+        }
+        else{
+            folQueue.dequeue();
+            folQueue.dequeue();
+            folQueue.dequeue();
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+        }
+    }
+    else if(nbOfNewFol == 4){
+        if(folQueue.length <= 1){
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+        }
+        else{
+            folQueue.dequeue();
+            folQueue.dequeue();
+            folQueue.dequeue();
+            folQueue.dequeue();
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+            folQueue.enqueue(getRandomUsername());
+        }
+    }
+    else{
+        folQueue.dequeue();
+        folQueue.dequeue();
+        folQueue.dequeue();
+        folQueue.dequeue();
+        folQueue.dequeue();
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+        folQueue.enqueue(getRandomUsername());
+    }
+    console.log(folQueue.length);
+    showNewFollowers(folQueue);
+}
+
+function showNewFollowers(queue){
+    if(queue.length == 5){
+        let ind = 5;
+        for(let i = queue.head; i < queue.tail; i++){
+            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            ind--;
+        }
+    }
+    else if(queue.length == 4){
+        let ind = 4;
+        for(let i = queue.head; i < queue.tail; i++){
+            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            ind--;
+        }
+    }
+    else if(queue.length == 3){
+        let ind = 3;
+        for(let i = queue.head; i < queue.tail; i++){
+            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            ind--;
+        }
+    }
+    else if(queue.length == 2){
+        let ind = 2;
+        for(let i = queue.head; i < queue.tail; i++){
+            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            ind--;
+        }
+    }
+    else if(queue.length == 1){
+        let ind = 1;
+        for(let i = queue.head; i < queue.tail; i++){
+            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            ind--;
+        }
+    }
+    //while(!queue.isEmpty){
+    //    console.log(queue.dequeue());
+    //    //document.getElementById("folName" + ind).textContent = tmpQueue.dequeue();
+    //    ind--;
+    //}
+}
+
+function getRandomUsername(){
+    return(usernames[Math.floor(Math.random() * usernames.length)]);
+}
 
 //post 1
 document.getElementById("btnpost1").addEventListener("click", event => {
@@ -313,8 +541,13 @@ document.getElementById("btnpost9").addEventListener("click", event => {
 
 
 
+
 //fermeture
 document.getElementById("popupclose").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "none";
 });
+
+
+
+
 

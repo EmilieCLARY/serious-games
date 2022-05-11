@@ -508,6 +508,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 2.5rem;
 }
 
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -515,6 +520,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .ml-4 {
   margin-left: 1rem;
+}
+
+.mt-11 {
+  margin-top: 2.75rem;
+}
+
+.mb-11 {
+  margin-bottom: 2.75rem;
 }
 
 .mt-6 {
@@ -565,10 +578,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.5rem;
 }
 
-.mr-5 {
-  margin-right: 1.25rem;
-}
-
 .inline-block {
   display: inline-block;
 }
@@ -617,6 +626,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 5%;
 }
 
+.h-\[150px\] {
+  height: 150px;
+}
+
 .w-32 {
   width: 8rem;
 }
@@ -657,6 +670,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 1rem;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-3xl {
   border-radius: 1.5rem;
 }
@@ -693,6 +714,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .border-3 {
   border-width: 3px;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-l-contourRouge {
@@ -750,6 +775,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(102 5 3 / var(--tw-border-opacity));
 }
 
+.border-white {
+  border-color: #FFFFFFFF;
+}
+
 .bg-fondmain {
   --tw-bg-opacity: 1;
   background-color: rgb(245 224 196 / var(--tw-bg-opacity));
@@ -769,11 +798,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: #FFFFFFFF;
 }
 
-.bg-vertContour {
-  --tw-bg-opacity: 1;
-  background-color: rgb(23 87 50 / var(--tw-bg-opacity));
-}
-
 .bg-gris {
   --tw-bg-opacity: 1;
   background-color: rgb(121 118 118 / var(--tw-bg-opacity));
@@ -789,14 +813,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(145 28 26 / var(--tw-bg-opacity));
 }
 
+.bg-lightfond {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 245 237 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#FCF5ED\] {
   --tw-bg-opacity: 1;
   background-color: rgb(252 245 237 / var(--tw-bg-opacity));
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
 }
 
 .text-center {
@@ -844,8 +881,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
 }
 
 .text-white {
@@ -1060,38 +1105,65 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .Post1 {
   grid-area: 1 / 1 / 2 / 2;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post2 {
   grid-area: 1 / 2 / 2 / 3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post3 {
   grid-area: 1 / 3 / 2 / 4;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post4 {
   grid-area: 2 / 1 / 3 / 2;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post5 {
   grid-area: 2 / 2 / 3 / 3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post6 {
   grid-area: 2 / 3 / 3 / 4;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post7 {
   grid-area: 3 / 1 / 4 / 2;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post8 {
   grid-area: 3 / 2 / 4 / 3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .Post9 {
   grid-area: 3 / 3 / 4 / 4;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 /*modal post*/
@@ -1136,7 +1208,47 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .popupcommentaire {
-  grid-area: 5 / 9 / 12 / 12;
+  grid-area: 6 / 9 / 12 / 12;
+}
+
+/*commentaire des posts*/
+
+.parentcommentairespost {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+/*.div1 { grid-area: 1 / 1 / 21 / 3; } */
+
+.bg1 {
+  grid-area: 1 / 1/ 4 / 3;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.3)
+}
+
+.titre1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.com1 {
+  grid-area: 2 / 1 / 4 / 3;
+}
+
+.bg2 {
+  grid-area: 5 / 1/ 8 / 3;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.3);
+}
+
+.titre2 {
+  grid-area: 5 / 1 / 6 / 2;
+}
+
+.com2 {
+  grid-area: 6 / 1 / 7 / 3;
 }
 
 /* #######################################################################################################################
@@ -1552,7 +1664,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .divpp {
-  grid-area: 4 / 4 / 11 / 7;
+  grid-area: 5 / 4 / 10 / 7;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 .divname {
@@ -1560,7 +1675,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .divdesc {
-  grid-area: 7 / 7 / 8 / 10;
+  grid-area: 6 / 7 / 9 / 10;
 }
 
 .divadj {

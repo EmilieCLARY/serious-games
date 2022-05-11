@@ -32,56 +32,56 @@
     <!-- ########################################## -->
         
         <!--background-->
-        <div class="divbox bg-gris border-4 rounded-xl"> </div>
+        <div class="divbox bg-lightfond border-rougebouton border-4 rounded-xl"> </div>
 
         <!--TITRE-->
-        <div class="divtitre border-4 rounded-xl w-full flex text-center items-center justify-items-center bg-rougebouton"> 
+        <div class="divtitre border-white border-4 rounded-xl w-full flex text-center items-center justify-items-center bg-rougebouton"> 
             <div class="titre w-full text-6xl text-white font-pixelise">
                 <h1>Who is your player ?</h1>
             </div>
         </div>
 
         <!--PROFILE PICTURE-->
-        <div class="divpp bg-vertContour PPsportif m-10" id="profilPicture">
+        <div class="divpp border-rougebouton border-2 rounded-lg PPsportif m-10" id="profilPicture">
             <p></p>
         </div>   
 
         <!--NAME-->
-            <div class="divname bg-rougeContour mr-5"> 
+            <div class="divname bg-rougeContour m-2 border-rougebouton border-4 rounded flex items-center"> 
                 <form action="" method="get" class="form">
-                    <div class="form">
-                        <label for="name">Your name: </label>
+                    <div class="form ml-4 tracking-wider">
+                        <label for="name" class="font-pixelise text-white">Your name: </label>
                         <input type="text" name="name" id="name" required>
                     </div>
                 </form>              
             </div>
 
         <!--DESCRIPTION-->
-            <div class="divdesc bg-rougeContour mr-5"> 
+            <div class="divdesc bg-rougeContour border-rougebouton border-4 rounded flex items-center m-2"> 
                 <form action="" method="get" class="form">
-                    <div class="form">
-                        <label for="name">Character description: </label>
-                        <input type="text" name="description" id="description" required>
+                    <div class="form m-4 tracking-wider flex items-center">
+                        <label for="name" class="text-white font-pixelise">Character description: </label>
+                        <input class="text-fonce h-[150px] text-justify"type="text" name="description" id="description" required>
                      </div>
                 </form>
             </div>
 
             <!--ADJ-->
-            <div class="divadj bg-rougeContour mr-5 mb-5"> 
+            <div class="divadj bg-rougeContour m-2 border-rougebouton border-4 rounded flex items-center"> 
                 <form action="" method="get" class="form">
-                    <div class="adj">
+                    <div class="adj font-pixelise text-white ml-4 tracking-widest">
                         <legend>Adjectives</legend>
-                        <label><input type="radio" name="funny">Funny</label>
-                        <label><input type="radio" name="drole">drole</label>
-                        <label><input type="radio" name="beau">beau</label>
-                        <label><input type="radio" name="blonde">blonde</label>
-                        <label><input type="radio" name="timide">timide</label>
+                        <label class="ml-4"><input type="radio" name="funny">Funny</label>
+                        <label class="ml-4"><input type="radio" name="drole">Adjectif2</label>
+                        <label class="ml-4"><input type="radio" name="beau">Beautiful / Handsome</label>
+                        <label class="ml-4"><input type="radio" name="blonde">Blond</label>
+                        <label class="ml-4"><input type="radio" name="timide">Shy</label>
                     </div>
                 </form>
             </div>
         
         <!--BOUTON-->
-        <div class="divbtn click mt-3 w-full flex text-center items-center justify-items-center bg-rougebouton border-4 rounded-xl">             
+        <div class="divbtn click mt-3 w-full flex text-center items-center justify-items-center bg-rougebouton border-white border-4 rounded-xl">             
             <div class="form click grostext w-full  text-white font-pixelise">
                 <input type="submit" class="click" id="boutonform" value="Create Character!">
             </div>

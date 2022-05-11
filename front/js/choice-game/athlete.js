@@ -44,6 +44,7 @@ function showTextNode(textNodeIndex) {
             
             console.log(compt);
             if(nbChoix===1){
+                textElement.style.display = "none";
                     optionButtonsElement.classList.add('optionspossiblepourrepondreauqcmpcqenfaitclejeuquoi','m-4', 'rounded-3xl', 'border-rougebouton', 'bg-[#FCF5ED]', 'border-4');
                 /*la photo de ML*/
                     var newDivMLphoto = document.createElement("div");
@@ -426,7 +427,7 @@ function showOption(option) {
 }
 
 class Post{
-    constructor(text_, commentaries_, fol_, folPS_, bh_){
+    constructor(text_, commentaries_, fol_, folPS_, bh_, img_, appearance_){
         this.text = text_;
         this.commentaries = commentaries_;
         let min = Math.ceil(fol_[0]);
@@ -434,6 +435,8 @@ class Post{
         this.fol = Math.floor(Math.random() * (max - min)) + min;
         this.folPS = folPS_;
         this.bh = bh_;
+        this.img = img_;
+        this.appearance = appearance_;
     }
 }
 
@@ -446,7 +449,7 @@ function selectOption(option) {
     state = Object.assign(state, option.setState);
     
     if(option.commentaries != undefined){
-        let newPost = new Post(option.text, option.commentaries, option.fol, option.folPS, option.bh);
+        let newPost = new Post(option.text, option.commentaries, option.fol, option.folPS, option.bh, option.image, option.appearance);
         console.log("New post incoming", newPost);
         socket.emit('newPost', newPost);
         showTextNode(nextTextNodeId);
@@ -487,7 +490,9 @@ const textNodes = [
                 fol : [20, 80],
                 folPS : 2,
                 bh : 30,
-                nextText: 2
+                nextText: 2,
+                image : '../img/characters/sportif/Carre/bbCourt',
+                appearance : true
             },
             {
                 text: 'Welcome to my new account on Ethical Network !\n I am currently a professional basketball player and I love this sport. I plan to share my adventures with you via this account.\n Have fun !',
@@ -495,7 +500,9 @@ const textNodes = [
                 fol : [200, 400],
                 folPS : 7,
                 bh : 5,
-                nextText: 3
+                nextText: 3,
+                image : '../img/characters/sportif/Carre/bbCourt',
+                appearance : true
             },
             {
                 text: 'Welcome to my new account on Ethical Network !\n In life, I love basketball but I\'m not very good at it. But basketball is cool ! I plan to share my adventures with you via this account.',
@@ -503,7 +510,9 @@ const textNodes = [
                 fol : [200, 300],
                 folPS : 5,
                 bh : 5,
-                nextText: 4
+                nextText: 4,
+                image : '../img/characters/sportif/Carre/bbCourt',
+                appearance : true
             }
         ]
     },
@@ -559,7 +568,9 @@ const textNodes = [
                 folPS : 10,
                 bh : 5,
                 nextText: 8,
-                mj: 0
+                mj: 0,
+                image : '../img/characters/sportif/posts/training/dailytraining',
+                appearance : true
             },            
             {
                 text: 'I\'ll explain you my daily training because mine is the best one !\n First, I wake up early to go to the gym, because the world is in the hands of people who are waking up early, and I am :)\n Next, I\'m going to the terrain to smash some noobs. I always win it all !',
@@ -568,7 +579,9 @@ const textNodes = [
                 folPS : 4,
                 bh : 35,
                 nextText: 7,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/training/dailytraining',
+                appearance : true
             },            
             {
                 text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I wake up early and I go to the gym. Then I go to the basketball room with my teammate.\n I personnaly do not warm up because I find it useless, I\'m always in condition to do some basketball. So my training start with some exercices specific of basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises.',
@@ -577,7 +590,9 @@ const textNodes = [
                 folPS : 8,
                 bh : 15,
                 nextText: 9,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/training/dailytraining',
+                appearance : true
             }
         ]
     },
@@ -629,7 +644,9 @@ const textNodes = [
                 folPS : 10,
                 bh : 15,
                 nextText: 11,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/saladProt.png',
+                appearance : false
             },            
             {
                 //Photo fruit et légumes
@@ -639,7 +656,9 @@ const textNodes = [
                 folPS : 20,
                 bh : 5,
                 nextText: 12,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/fruits.png',
+                appearance : false
             },            
             {
                 //Photo burger frites
@@ -649,7 +668,9 @@ const textNodes = [
                 folPS : 8,
                 bh : 10,
                 nextText: 13,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/hamburger.png',
+                appearance : false
             },
             {
                 //Photo sandwitch
@@ -659,7 +680,9 @@ const textNodes = [
                 folPS : 8,
                 bh : 10,
                 nextText: 14,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/sandwich.png',
+                appearance : false
             }
         ]
     },
@@ -670,7 +693,7 @@ const textNodes = [
             {
                 text: 'I understand, I\'m ready to go next !',
                 nextText: 15,
-                goBackToHome : false,
+                goBackToHome : true,
                 mj : 0
             },
         ]
@@ -733,7 +756,9 @@ const textNodes = [
                 folPS : 20,
                 bh : 10,
                 nextText: 16,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/rhinoshield.png',
+                appearance : false
             },            
             {
                 //BlueLightLegend
@@ -743,7 +768,9 @@ const textNodes = [
                 folPS : 20,
                 bh : 20,
                 nextText: 17,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/blueLightLegend.png',
+                appearance : false
             },            
             {
                 //Adadas
@@ -753,7 +780,9 @@ const textNodes = [
                 folPS : 40,
                 bh : 12,
                 nextText: 18,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/adadas.png',
+                appearance : false
             }
         ]
     },
@@ -841,7 +870,9 @@ const textNodes = [
                 folPS : 300,
                 bh : 20,
                 nextText: 20,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/podiumTeam.png',
+                appearance : false
             },            
             {
                 // PHOTO PODIUM COMPLET
@@ -851,7 +882,9 @@ const textNodes = [
                 folPS : 400,
                 bh : 5,
                 nextText: 21,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/podiumComplet.png',
+                appearance : false
             },            
             {
                 // PHOTO SEUL
@@ -861,7 +894,9 @@ const textNodes = [
                 folPS : 100,
                 bh : 40,
                 nextText: 22,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/winner/',
+                appearance : true
             }
         ]
     },
@@ -912,7 +947,7 @@ const textNodes = [
                 folPS : 500,
                 bh : 40,
                 nextText: 24,
-                mj : 0
+                mj : 0,
             },            
             {
                 text: 'Disability is a daily challenge, today i realised how it\'s hard to live with it and was glad to help disabled people through their sport journey',
@@ -981,7 +1016,9 @@ const textNodes = [
                 folPS : 600,
                 bh : 10,
                 nextText: 28,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/SudVPN.png',
+                appearance : false
             },            
             {   // Decat'court
                 text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
@@ -990,7 +1027,9 @@ const textNodes = [
                 folPS : 1500,
                 bh : 10,
                 nextText: 29,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/decathCourt.png',
+                appearance : false
             },            
             {   // FAFI 22
                 text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
@@ -999,7 +1038,9 @@ const textNodes = [
                 folPS : 600,
                 bh : 10,
                 nextText: 30,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/fafi22.png',
+                appearance : false
             }
         ]
     },
@@ -1058,7 +1099,7 @@ const textNodes = [
             {
                 text: 'Sorry for this one, I\'m ready to go next !',
                 nextText: 82,
-                goBackToHome : true,
+                goBackToHome : false,
                 mj : 0
             },
         ]
@@ -1086,7 +1127,9 @@ const textNodes = [
                 folPS : 600,
                 bh : 40,
                 nextText: 32,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/prog.png',
+                appearance : false
             },            
             {
                 text: 'Hi guys !\n That\'s not very important to make sport every day but if you want to, check out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
@@ -1095,7 +1138,9 @@ const textNodes = [
                 folPS : 800,
                 bh : 20,
                 nextText: 33,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/prog.png',
+                appearance : false
             },            
             {
                 text: 'Hi guys !\n I found perfect exercices for you and your family to train your body and improve your health !\nCheck out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
@@ -1104,7 +1149,9 @@ const textNodes = [
                 folPS : 2000,
                 bh : 5,
                 nextText: 34,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/prog.png',
+                appearance : false
             }
         ]
     },
@@ -1156,7 +1203,9 @@ const textNodes = [
                 folPS : 600,
                 bh : 5,
                 nextText: 36,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/podiumTeam.png',
+                appearance : false
             },            
             {
                 //PHOTO SEUL AVEC LA COUPE
@@ -1166,7 +1215,9 @@ const textNodes = [
                 folPS : 800,
                 bh : 30,
                 nextText: 37,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/winner/sportifMedal',
+                appearance : true
             },            
             {
                 //PHOTO DE LA COUPE
@@ -1176,7 +1227,9 @@ const textNodes = [
                 folPS : 2000,
                 bh : 10,
                 nextText: 38,
-                mj : 0
+                mj : 0,
+                image : '../img/characters/sportif/posts/podiumComplet.png',
+                appearance : false
             }
         ]
     },
@@ -1197,7 +1250,7 @@ const textNodes = [
         text: 'Here I am again !\n Your post was okay. Remember to add a message of support for your team !\n But keep going, you can do it ! ',
         options: [
             {
-                text: '',
+                text: 'Ok ! I will do better next time ! Go next !',
                 nextText: 39,
                 goBackToHome : false,
                 mj : 0
