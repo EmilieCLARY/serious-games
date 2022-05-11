@@ -114,7 +114,7 @@
     <!-- ##               POSTS                  ## -->
     <!-- ##                                      ## -->
     <!-- ########################################## -->
-            <div class="Posts bg-fondmain border-rougeContour border-l-contourRouge border-t-contourRouge overflow-y-auto">
+            <div class="Posts bg-fondmain border-rougeContour border-l-contourRouge border-t-contourRouge overflow-y-auto" id="tousLesPosts">
                 <div class="fixed h-16 w-32 bg-rougebouton border-rougeContour border-b-12 border-r-12 flex items-center justify-items-center">
                     <h1 class="text-white text-center font-pixelise w-full">Posts</h1>
                 </div>
@@ -149,7 +149,7 @@
                 <div class="Forest ForestPng_jsf" > </div>
                 <div class="TreeCountertitle text-4xl text-center mt-4">Trees planted :</div>
                 <div class="Treecount TreeCounter_jsf text-center text-4xl" id="treesPlanted"> ...</div>
-                <div class="Gauge Gauge_jsf" id="Gauge"></div>
+                <div class="Gauge Gauge_jsf" id="Gauge"></div>  
                 <div class="BHGauge text-4xl text-right mt-4"> Big-head Gauge :</div>
             </div>
 
@@ -172,7 +172,7 @@
                         <div class="click"></div>
                     </a>
     
-                    <a class="w-full h-full boutonFreePlay border-4" href="free-play.html">
+                    <a class="w-full h-full boutonFreePlay border-4 click" id="choiceBtn">
                         <div class="click border-none" ></div>
                     </a>
                 
@@ -214,7 +214,7 @@
 
                     </div>
       
-                    <div class="popupplaze flex items-center justify-items-center ">
+                    <div class="popupblaze flex items-center justify-items-center ">
                         <p class="font-pixelise h-1/2 text-xl text-grisfonce tracking-widest" id="usernamepopup"></p>
                         
                     </div>
@@ -225,21 +225,35 @@
 
                     <div class="popupcommentaire">
                         <div class="parentcommentairespost w-full h-full" id="parentcommentairespost">
-                            <div class="bg1"></div>
+                            <div class="bg1 rounded-xl"></div>
                             <div class="titre1 font-bold" id="titre1"></div>
                             <div class="com1 mx-3" id="com1"></div>
                             
-                            <div class="bg2"></div>
+                            <div class="bg2 rounded-xl"></div>
                             <div class="titre2 font-bold" id="titre2"></div>
-                            <div class="com2 mlr-3" id="com2"></div>
-                            
+                            <div class="com2 mx-3" id="com2"></div>
                         </div> 
                     </div>
                 </div> 
             </div>
         </div> 
 
-</body>
-<script src="../js/modules/socketLoading.js"></script>
+
+    <!-- ########################################## -->
+    <!-- ##                                      ## -->
+    <!-- ##              popup grosse tete       ## -->
+    <!-- ##                                      ## -->
+    <!-- ########################################## -->
+
+    <div class="popupgrossetetegd z-10 w-full h-full border-rougeContour border-contourRouge" id="popupgrossetetegd">
+        <div class="parentpopuphome bg-fondmain z-20 h-full w-full " >
+        
+        </div>
+    </div>
+ 
+        
+    </body>
+    <script src="../js/modules/socketLoading.js"></script>
+   
 <script src="../js/home.js"></script>
 </html>

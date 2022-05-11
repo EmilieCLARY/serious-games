@@ -14,7 +14,7 @@
 //    window.location.href = "../html/maze.html";
 //});
 
-var usernames = ["DanleyJade","SnowberYaws","Platysma","Snorkel","Osteophone","OggacFlume","LilialDolee","Scirocco","Oryctomancy","Sassafras","Famulus","Apprehend","Benediction","ComfykelsCuckoo","Contemper","BroncokZoom","CorehUmlaut","Bouffant","Ploitering","Razzmatazz","SonsiaMoot","Pettifogger","Decorticate","Pancreas","PccheatKyloe","JidezJiggle","Passacaglia","Moocher","Monoideism","BlaidSnooty","PleocZonoid","Mawkish","Georgic","Kahikatea","DannerGenet","Moniker","Paradisiacal","Quinzee","Reticella","LadynoobMoue","Verilysoul327","Pilcrow","Furunculoid","Dirf","Agnation","Platapie","Preconize","Virtuoso","Lunulate","Hootenanny","BlindPig","Dithyramb","Cannelure","Widdershins","Forfaiting","Serendipity","Malarknight123","Dillydally","Cryptic","Persnickety","Brimborion","Cockatoo","Humgruffin","Flapdoodle","Apsidal","Calabash","Leprosarium","Guttersnipe","Webcast","Drizzle","Nasonquid66","Tchotchke","Zamarra","Shart","Impleach","Tarboosh","Pterylology","Crumple","Atpatruus","Nincompoop","Mutualism","HandstandFizgig","Nutmeg1Spiral","DaftpigCuckoo","DarseyChichi","Succubus","Alveromancy","Sprinkles","Athymia","Spendthrift","CuricElapid","Oxymoron","Caduceator","Crudivore","Fumiduct","Yellowbelly","Dysphagia","AfearJetsam","GeruGlogg","Almoner","Obsidian","CeliacVerve","Kalimba","Filibuster","Merdurinous","Slipshod","PingouiQuant","Firebrand","Stomatolalia","Kittiwake","Cosmism","Phantonym","Scandalitis","DeweyYahoo","Spermophile","Slapdash","Anhidrosis","Sassitude","MaxhunAncon","Wolfman8Quack","Banderilla","Fussbudget","Nestitherapy","Kahuna","Fossde200210","Halfwit","Fumarole","Gasbag","Divisiger151","Swish","Alee6tanng","Virtuoso","Eviscerate","Gongoozle","Juttylair","Fishwife","Dipnoous","Parapet","Telmatology","Calaboose","Mithridatism","Oakum","Dosimetry","Spelunker","Piscicide","Snool","Threnodic","Jubilee","Celsitude","Rambunctious","Perukereyc321","Zeugma","Sorbile","Landlubber","Librate","Couscous","Lyncean","Plethora","Picotgetx","Headlong","Recrement","Antimacassar","Tastevin","Preposterous","Solivagant","Gangway","Oxytocic","Pugnacious","Cultriform","Gibbosity","Necrolatry","Vermicious","Chyliferous","Shebang","Femerall","DirectWhorl","Epithelium","E_libQuokka","SwordmasRound","Skedaddle","Erotophobia","Cocksure","Mammose","Dummkopf","Organza","BaiphPogey","Inappetent","Nambypamby","Annodated","BuddiefPrimp","Zeitgeber","NidefPogo","Phubbing","Borborygmus","Magistral","Popliteal","Opisthograph","SiikJiffy","Phosphene","Salpiglossis","Cryptarchy","Peeve","Slavocracy","Jalopy","Ickleseict","Discalceate","Bedaggle","Cockatoo","Groupuscule","Lothario","Cyllosis","Firkin","Virtunitymc","Raconteur","Nithing","Zeppelin","Grinagog","Calash","Echinuliform","Jamboree","Eponymdbm99","Scootch","Gersentstats","Shalwar","Monoliteral","Philtrum","Soubrette","Fatuous","Promethean","Berserker","Duikerdax107","Whimsical","Pelmatogram","Rumpus","Jaseran","Hurlyburly","Getagu98","Hijinks","Circumjacent","Outlandish"
+var usernames = ["DanleyJade","SnowberYaws","Platysma","Snorkel","Osteophone","OggacFlume","LilialDolee","Scirocco","Oryctomancy","Sassafras","Famulus","Apprehend","Benediction","ComfykelsCuckoo","Contemper","BroncokZoom","CorehUmlaut","Bouffant","Ploitering","Razzmatazz","SonsiaMoot","Pettifogger","Decorticate","Pancreas","PccheatKyloe","JidezJiggle","Passacaglia","Moocher","Monoideism","BlaidSnooty","PleocZonoid","Mawkish","Georgic","Kahikatea","DannerGenet","Moniker","Paradisiacal","Quinzee","Reticella","LadynoobMoue","Verilysoul327","Pilcrow","Furunculoid","Dirf","Agnation","Platapie","Preconize","Virtuoso","Lunulate","Hootenanny","BlindPig","Dithyramb","Cannelure","Widdershins","Forfaiting","Serendipity","Malarknight123","Dillydally","Cryptic","Persnickety","Brimborion","Cockatoo","Humgruffin","Flapdoodle","Apsidal","Calabash","Leprosarium","Guttersnipe","Webcast","Drizzle","Nasonquid66","Tchotchke","Zamarra","Shart","Impleach","Tarboosh","Pterylology","Crumple","Atpatruus","Nincompoop","Mutualism","HandstandFizgig","Nutmeg1Spiral","DaftpigCuckoo","DarseyChichi","Succubus","Alveromancy","Sprinkles","Athymia","Spendthrift","CuricElapid","Oxymoron","Caduceator","Crudivore","Fumiduct","Yellowbelly","Dysphagia","AfearJetsam","GeruGlogg","Almoner","Obsidian","CeliacVerve","Kalimba","Filibuster","Merdurinous","Slipshod","PingouiQuant","Firebrand","Stomatolalia","Kittiwake","Cosmism","Phantonym","Scandalitis","DeweyYahoo","Spermophile","Slapdash","Anhidrosis","Sassitude","MaxhunAncon","Wolfman8Quack","Banderilla","Fussbudget","Nestitherapy","Kahuna","Fossde200210","Halfwit","Fumarole","Gasbag","Divisiger151","Swish","Alee6tanng","Virtuoso","Eviscerate","Gongoozle","Juttylair","Fishwife","Dipnoous","Parapet","Telmatology","Calaboose","Mithridatism","Oakum","Dosimetry","Spelunker","Piscicide","Snool","Threnodic","Jubilee","Celsitude","Rambunctious","Perukereyc321","Zeugma","Sorbile","Landlubber","Librate","Couscous","Lyncean","Plethora","Picotgetx","Headlong","Recrement","Antimacassar","Tastevin","Preposterous","Solivagant","Gangway","Oxytocic","Pugnacious","Cultriform","Gibbosity","Necrolatry","Vermicious","Chyliferous","Shebang","Femerall","DirectWhorl","Epithelium","E_libQuokka","SwordmasRound","Skedaddle","Erotophobia","Cocksure","Mammose","Dummkopf","Organza","BaiphPogey","Inappetent","Nambypamby","Annodated","BuddiefPrimp","Zeitgeber","NidefPogo","Phubbing","Borborygmus","Magistral","Popliteal","Opisthograph","SiikJiffy","Phosphene","Salpiglossis","Cryptarchy","Peeve","Slavocracy","Jalopy","Ickleseict","Discalceate","Bedaggle","Cockatoo","Groupuscule","Lothario","Cyllosis","Firkin","Virtunitymc","Raconteur","Nithing","Zeppelin","Grinagog","Calash","Echinuliform","Jamboree","Eponymdbm99","Scootch","Gersentstats","Shalwar","Monoliteral","Philtrum","Soubrette","Fatuous","Promethean","Berserker","Duikerdax107","Whimsical","Pelmatogram","Rumpus","Jaseran","Hurlyburly","Getagu98","Hijinks","Circumjacent","Outlandish", "Alexouille", "Grodore", "Yuniemos", "Mme Tamia", "Gojyrm", "Mr Tamia", "Thraff", "Thomas Le GOAT"
 
 ]
 
@@ -51,6 +51,7 @@ var followers = 0;
 var followersPS = 1;
 var interval;
 var folQueue = new Queue();
+var postListDansLaPage;
 
 socket.emit('getTreesPlanted');
 socket.emit('getTypeOfInfluencer');
@@ -89,18 +90,48 @@ socket.on('newTypeOfInfluencer', (job) => {
             break;
         case 2:
             myJob = job;
-            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Scientific";
+            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Tech";
             break;
         case 3:
             myJob = job;
-            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Gamer";
+            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Chief";
             break;
 
         default:
+            myJob = 0;
             document.getElementById("typeOfInfluencer").textContent = "Type of influencer : NONONONO";
             break;
     }
+
+    switch (myJob) {
+        case 0:
+            document.getElementById("choiceBtn").addEventListener("click", event => {
+                window.location.href = "../html/choice-game/athlete.html";
+            });       
+            break;
+        case 1 :
+            document.getElementById("choiceBtn").addEventListener("click", event => {
+                window.location.href = "../html/choice-game/comedian.html";
+            });
+            break;
+        case 2 :
+            document.getElementById("choiceBtn").addEventListener("click", event => {
+                window.location.href = "../html/choice-game/tech.html";
+            });
+            break;
+    
+        case 3 :
+            document.getElementById("choiceBtn").addEventListener("click", event => {
+                window.location.href = "../html/choice-game/chief.html";
+            });
+            break;
+    
+        default:
+            break;
+}
 });
+
+
 
 socket.on('newUsername', (name) => {
     //console.log(name);
@@ -254,15 +285,16 @@ socket.on('newAppearance', (appearance) => {
 
 socket.on('newPosts', (postList) => {
     //console.log(postList);
+    postListDansLaPage = postList;
     for(let i = 0; i < postList.length; i++){
         if(!postList[i].appearance){
-            let tmp = i+1;
+            let tmp = postList.length - i;
             document.getElementById("btnpost" + tmp).style.display = 'block';
             document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'")';
             document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'")';
         }
         else{
-            let tmp = i+1;
+            let tmp = postList.length - i;
             switch (myAppearance) {
                 case 0:
                     document.getElementById("btnpost" + tmp).style.display = 'block';
@@ -305,6 +337,10 @@ socket.on('newPosts', (postList) => {
             }
         }
 
+        /*if(postList.length >= 7){
+            document.getElementById("tousLesPosts").style.display = 'overflow-y-auto';
+        }*/
+
         for (let index = 1; index <= 2; index++) {
     
             var titre= 'titre'+index;
@@ -338,7 +374,7 @@ socket.on('newFollowersPS', (newFollowersPS) => {
 });
 
 socket.on('newBigHeadGauge', (bigHeadGauge) => {
-    console.log(bigHeadGauge); 
+    console.log('Big Head Gauge :', bigHeadGauge); 
     if(bigHeadGauge <= 10){
         document.getElementById("Gauge").style.backgroundImage = 'url("../img/mainPage/gauge/gauge1.png")'
     }
@@ -365,6 +401,7 @@ socket.on('newBigHeadGauge', (bigHeadGauge) => {
     }
     else if(bigHeadGauge <= 90){
         document.getElementById("Gauge").style.backgroundImage = 'url("../img/mainPage/gauge/gauge9.png")'
+        // TRIGGER LA MODAL BOX QUI REDIRIGE VERS BIGHEAD
     }
 });
 
@@ -373,6 +410,7 @@ function updateFollowers(){
     document.getElementById("followers").textContent = "Total Followers : " + followers;
     updateFollowersList(followersPS);
     console.log('Your followers :', followers);
+    socket.emit('addFollowers', followers);
 }
 
 function updateFollowersList(nbOfNewFol){
@@ -442,7 +480,7 @@ function updateFollowersList(nbOfNewFol){
         folQueue.enqueue(getRandomUsername());
         folQueue.enqueue(getRandomUsername());
     }
-    console.log(folQueue.length);
+    //console.log(folQueue.length);
     showNewFollowers(folQueue);
 }
 
@@ -493,49 +531,100 @@ function getRandomUsername(){
     return(usernames[Math.floor(Math.random() * usernames.length)]);
 }
 
+function popupWatiTropBO(number){
+    if(!postListDansLaPage[postListDansLaPage.length - number].appearance){
+        document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'")';
+    }
+    else{
+        switch (myAppearance) {
+            case 0:
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'WG.png")';
+                break;
+            case 1:
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'BG.png")';
+                break;
+            case 2:
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'YG.png")';
+                break;
+            case 3:
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'WW.png")';
+                break;
+            case 4:
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'BW.png")';
+                break;
+            case 5:
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'YM.png")';
+                break;
+                            
+            default:
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'WG.png")';
+                break;
+        }
+    }
+    for (let index = 1; index <= 2; index++) {
+    
+        var titre= 'titre'+index;
+        var pseudo = getRandomUsername();
+        document.getElementById(titre).textContent = "@" + pseudo;
+        
+        var com = 'com' + index;  
+        document.getElementById(com).textContent = postListDansLaPage[postListDansLaPage.length - number].commentaries[index-1];
+        document.getElementById("leTexteDuPost").textContent = postListDansLaPage[postListDansLaPage.length - number].text;
+    }
+}
+
 //post 1
 document.getElementById("btnpost1").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(1);
 });
 
 //post 2
 document.getElementById("btnpost2").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(2);
 });
 
 //post 3
 document.getElementById("btnpost3").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(3);
 });
 
 //post 4
 document.getElementById("btnpost4").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(4);
 });
 
 //post 5
 document.getElementById("btnpost5").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(5);
 });
 
 //post 6
 document.getElementById("btnpost6").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(6);
 });
 
 //post 7
 document.getElementById("btnpost7").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(7);
 });
 
 //post 8
 document.getElementById("btnpost8").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(8);
 });
 
 //post 9
 document.getElementById("btnpost9").addEventListener("click", event => {
     document.getElementById("popuppostgd").style.display = "block";
+    popupWatiTropBO(9);
 });
 
 

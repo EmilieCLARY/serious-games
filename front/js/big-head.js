@@ -339,6 +339,8 @@ function hitChest (sprite, tile)
         document.getElementById("modalbhinfo").style.display = "block";
     });
 
+    socket.emit('newBigHeadGauge', 45);
+
     
     return true;
 }

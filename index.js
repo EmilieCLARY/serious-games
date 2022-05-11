@@ -110,6 +110,10 @@ io.on('connection', (socket) => {
         userPosts.push(post);
     });
 
+    socket.on('addFollowers', (nbr) => {
+        userFollowers = nbr;
+    });
+
     socket.on('leProchainTextCLui', (next) => {
         nextText = next;
     });
@@ -127,6 +131,13 @@ io.on('connection', (socket) => {
 
     socket.on('getBigHeadGauge', () => {
         socket.emit('newBigHeadGauge', bigHeadGauge);
+    });
+
+    socket.on('newBigHeadGauge', (minus) => {
+        bigHeadGauge -= minus;
+        if(bigHeadGauge < 0){
+            bigHeadGauge = 0;
+        } 
     });
     
 });

@@ -10,6 +10,10 @@ document.getElementById("petitmodalbh").addEventListener("click", event => {
     window.location.href = "../html/big-head.html";
 });
 
+document.getElementById("petitmodalsupermarket").addEventListener("click", event => {
+    window.location.href = "../html/supermarket.html";
+});
+
 /*document.getElementById("tp").addEventListener("click", event => {
     window.location.href = "../html/tree-planter.html";
 });
@@ -28,6 +32,7 @@ document.getElementById("modaltour").style.display = "none";
 document.getElementById("petitmodaltts").style.display = "none";
 document.getElementById("petitmodalbh").style.display = "none";
 document.getElementById("petitmodalmaze").style.display = "none";
+document.getElementById("petitmodalsupermarket").style.display = "none";
 
 
 //turtle
@@ -49,6 +54,13 @@ document.getElementById("btnmaze").addEventListener("click", event => {
     document.getElementById("petitmodalmaze").style.display = "block";
 });
 
+//supermarket
+document.getElementById("btnsupermarket").addEventListener("click", event => {
+    document.getElementById("modaltour").style.display = "block";
+    document.getElementById("petitmodalsupermarket").style.display = "block";
+});
+
+
 
 
 
@@ -61,6 +73,7 @@ span.addEventListener("click", event => {
     document.getElementById("petitmodaltts").style.display = "none";    
     document.getElementById("petitmodalbh").style.display = "none";
     document.getElementById("petitmodalmaze").style.display = "none";
+    document.getElementById("petitmodalsupermarket").style.display = "none";
 })
 
 

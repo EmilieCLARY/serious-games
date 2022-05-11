@@ -678,10 +678,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 0.25rem;
 }
 
-.rounded-3xl {
-  border-radius: 1.5rem;
-}
-
 .rounded-t-xl {
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
@@ -814,11 +810,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .bg-lightfond {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 245 237 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#FCF5ED\] {
   --tw-bg-opacity: 1;
   background-color: rgb(252 245 237 / var(--tw-bg-opacity));
 }
@@ -1199,7 +1190,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 1 / 11 / 2 / 13;
 }
 
-.popupplaze {
+.popupblaze {
   grid-area: 2 / 10 / 3 / 12;
 }
 
@@ -1208,7 +1199,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .popupcommentaire {
-  grid-area: 6 / 9 / 12 / 12;
+  grid-area: 8 / 9 / 12 / 12;
 }
 
 /*commentaire des posts*/
@@ -1216,7 +1207,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 .parentcommentairespost {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -1249,6 +1240,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .com2 {
   grid-area: 6 / 1 / 7 / 3;
+}
+
+/*pop up grosse tete*/
+
+.popupgrossetetegd{
+  grid-area: 2 / 3 / 12 / 11;
 }
 
 /* #######################################################################################################################
@@ -1345,6 +1342,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .maze{
   background-image: url("../img/freeplay/maze.png" );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.supermarche{
+  background-image: url("../img/freeplay/supermarket.png" );
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1710,7 +1713,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 12 / 4 / 13 / 10;
 }
 
-.optionspossiblepourrepondreauqcmpcqenfaitclejeuquoi {
+.zoneDesReponses {
   grid-area: 3 / 1 / 11 / 13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -1724,18 +1727,82 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .choicenum1c4 {
   grid-area: 1 / 1 / 5 / 7;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.choicenum1c4photo{
+  grid-area: 1 / 1 / 10 / 8;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.choicenum1c4text{
+  grid-area: 1 / 8 / 10 / 17;
 }
 
 .choicenum2c4 {
   grid-area: 1 / 7 / 5 / 13;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.choicenum2c4photo{
+  grid-area: 1 / 1 / 10 / 8;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.choicenum2c4text{
+  grid-area: 1 / 8 / 10 / 17;
 }
 
 .choicenum3c4 {
   grid-area: 5 / 1 / 9 / 7;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.choicenum3c4photo{
+  grid-area: 1 / 1 / 10 / 8;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.choicenum3c4text{
+  grid-area: 1 / 8 / 10 / 17;
 }
 
 .choicenum4c4 {
   grid-area: 5 / 7 / 9 / 13;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.choicenum4c4photo{
+  grid-area: 1 / 1 / 10 / 8;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.choicenum4c4text{
+  grid-area: 1 / 8 / 10 / 17;
 }
 
 .choicenum1 {
@@ -1779,12 +1846,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 2 / 38 / 4 / 40;
 }
 
-.BcoteT {
-  grid-area: 1 / 4 / 2 / 38;
-}
-
 .BcoinTL {
   grid-area: 2 / 2 / 4 / 4;
+}
+
+.BcoinBR {
+  grid-area: 21 / 38 / 23 / 40;
+}
+
+.BcoinBL {
+  grid-area: 21 / 2 / 23 / 4;
 }
 
 .BcoteL {
@@ -1795,16 +1866,28 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 4 / 40 / 21 / 41;
 }
 
-.BcoinBL {
-  grid-area: 21 / 2 / 23 / 4;
-}
-
-.BcoinBR {
-  grid-area: 21 / 38 / 23 / 40;
+.BcoteT {
+  grid-area: 1 / 4 / 2 / 38;
 }
 
 .BcoteB {
   grid-area: 23 / 7 / 24 / 38;
+}
+
+.BWT {
+  grid-area: 2 / 4 / 5 / 38;
+}
+
+.BWB {
+  grid-area: 20 / 4 / 23 / 38;
+}
+
+.BWL {
+  grid-area: 4 / 2 / 21 / 4;
+}
+
+.BWR {
+  grid-area: 4 / 38 / 21 / 40;
 }
 
 .BO1 {
@@ -1828,11 +1911,27 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .Btext {
-  grid-area: 4 / 4 / 21 / 38;
+  grid-area: 4/ 4 / 21 / 38;
 }
 
 .btnML {
   grid-area: 7 / 5 / 9 / 13;
+}
+
+.btntestML{
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.photobtntest{
+  grid-area: 1 / 1 / 10 / 8;
+  background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png" );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
 /* DEMO-SPECIFIC STYLES */
