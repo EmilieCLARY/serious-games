@@ -642,6 +642,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .items-center {
   align-items: center;
 }
@@ -932,10 +936,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-rougebouton {
   --tw-text-opacity: 1;
   color: rgb(102 5 3 / var(--tw-text-opacity));
-}
-
-.text-noir {
-  color: #00000000;
 }
 
 .underline {
@@ -1784,6 +1784,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-gap: 0px;
 }
 
+.choice1in4 {
+  grid-area: 1 / 1 / 5 / 7;
+}
+
+.choice2in4 {
+  grid-area: 1 / 7 / 5 / 13;
+}
+
+.choice3in4 {
+  grid-area: 5 / 1 / 9 / 7;
+}
+
+.choice4in4 {
+  grid-area: 5 / 7 / 9 / 13;
+}
+
 /*
 .macLessgoch{ grid-area: 1 / 1 / 9 / 13};*/
 
@@ -1953,10 +1969,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 1 / 15  / 10 / 30;
 }
 
-.divglobalpourbtnaquatrechoix{
+.choicexin4struct{
   display: flex;
   justify-content: space-around;
   align-items: stretch;
+}
+
+.choicexin4photo{
+  background-size: contain;
+  background-position: center;
+  background-repeat:no-repeat;
+}
+
+.choicexin3photo{
+  background-size: contain;
+  background-position: center;
+  background-repeat:no-repeat;
 }
 
 /*.btntestML{
@@ -2030,7 +2058,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: inline-block;
   border: 3px solid transparent;
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   letter-spacing: 0.07em;
 }
@@ -2340,17 +2368,41 @@ Ensure the default browser behavior of the `hidden` attribute.
    #######################################################################################################################
    ####################################################################################################################### */
 
-.card-container {
+.parentdelachance {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.contoursChance {
+  grid-area: 1 / 1 / 21 / 21;
+}
+
+.titrechance {
+  grid-area: 1 / 6 / 4 / 16;
+}
+
+.cartesChanceChoix {
+  grid-area: 4 / 2 / 15 / 20;
+}
+
+.validerChance {
+  grid-area: 16 / 9 / 18 / 13;
+}
+
+.card1-container, .card2-container, .card3-container, .card4-container, .card5-container {
   position: relative;
-  height: 500px;
-  width: 300px;
+  /*height: 400px;
+    width: 240px;*/
 }
 
 /*.card-container:hover .card {
     transform: rotateY(180deg);
 }*/
 
-.card {
+.card1, .card2, .card3, .card4, .card5 {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -2358,16 +2410,15 @@ Ensure the default browser behavior of the `hidden` attribute.
     transform-style: preserve-3d;*/
 }
 
-.card-front {
+.card1-front, .card2-front, .card3-front, .card4-front, .card5-front {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: lightgreen;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
 
-.card-back {
+.card1-back, .card2-back, .card3-back, .card4-back, .card5-back {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -2381,35 +2432,30 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-position : center;
 }
 
-/*.card-container {
-    position: relative;
-    height: 500px;
-    width: 300px;
+.cartesChanceChoix {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
-.card-container:hover .card {
-    transform: rotateY(180deg);
-}
-.card {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    transition: all 0.3s ease;
-    transform-style: preserve-3d;
-}
-.card-front {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: lightgreen;
-    backface-visibility: hidden;
-}
-.card-back {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: skyblue;
-    backface-visibility: hidden;
-    transform: rotateY(-180deg);
-}*/
 
+.cartes1ChanceChoix {
+  grid-area: 3 / 1 / 15 / 5;
+}
 
+.cartes2ChanceChoix {
+  grid-area: 3 / 6 / 15 / 10;
+}
+
+.cartes3ChanceChoix {
+  grid-area: 3 / 11 / 15 / 15;
+}
+
+.cartes4ChanceChoix {
+  grid-area: 3 / 16 / 15 / 20;
+}
+
+.cartes5ChanceChoix {
+  grid-area: 3 / 21 / 15 / 25;
+} 

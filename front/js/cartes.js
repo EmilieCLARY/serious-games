@@ -70,29 +70,146 @@ document.getElementById("card-container").addEventListener("click", event => {
 });
 */
 
+var dejaRetournee = 0;
+var carteChoisis = 0;
 
-let test = document.getElementById("card");
-
-test.addEventListener("click", function( event ) {
-
+//premiere carte
+document.getElementById("card1").addEventListener("click", function( event ) {
+if (dejaRetournee ===0 ){
+  dejaRetournee =1;
+  carteChoisis = 1;
   //event.target.style.color = "orange";
   //event.target.style.transform = "rotateY(180deg)"; 
-  document.getElementById("card").style.transition = "all 0.6s ease";
-  document.getElementById("card").style.transform = "preserve-3d";
+  document.getElementById("card1").style.transition = "all 0.6s ease";
+  document.getElementById("card1").style.transform = "preserve-3d";
 
+  document.getElementById("card1-container").style.transform = "rotateY(180deg)";
+  document.getElementById("card1").style.transform = "rotateY(180deg)";
+  document.getElementById("card1-back").style.transform = "rotateY(-180deg)";
 
-  document.getElementById("card-container").style.transform = "rotateY(180deg)";
-  document.getElementById("card").style.transform = "rotateY(180deg)";
-  document.getElementById("card-back").style.transform = "rotateY(-180deg)";
-
-
-
-
-  // on réinitialise 
-  setTimeout(function() {
+  //on réinitialise 
+  /*setTimeout(function() {
     event.target.style.color = "";
     event.target.style.transform = "";
-    document.getElementById("card-container").style.transform = "";
-    document.getElementById("card").style.transform = "";
-  }, 2000 );
+    document.getElementById("card1-container").style.transform = "";
+    document.getElementById("card1").style.transform = "";
+  }, 2000 );*/
+
+}
+}, false);
+
+
+
+//2eme carte
+document.getElementById("card2").addEventListener("click", function( event ) {
+  if (dejaRetournee ===0 ){
+    dejaRetournee = 1;
+    carteChoisis = 2 ;
+  //event.target.style.color = "orange";
+  //event.target.style.transform = "rotateY(180deg)"; 
+  document.getElementById("card2").style.transition = "all 0.6s ease";
+  document.getElementById("card2").style.transform = "preserve-3d";
+
+  document.getElementById("card2-container").style.transform = "rotateY(180deg)";
+  document.getElementById("card2").style.transform = "rotateY(180deg)";
+  document.getElementById("card2-back").style.transform = "rotateY(-180deg)"
+
+  // on réinitialise 
+  /*setTimeout(function() {
+    event.target.style.color = "";
+    event.target.style.transform = "";
+    document.getElementById("card2-container").style.transform = "";
+    document.getElementById("card2").style.transform = "";
+  }, 2000 );*/
+}
+}, false);
+
+
+
+//3eme carte
+document.getElementById("card3").addEventListener("click", function( event ) {
+  if (dejaRetournee ===0 ){
+    dejaRetournee = 1;
+    carteChoisis = 3;
+  //event.target.style.color = "orange";
+  //event.target.style.transform = "rotateY(180deg)"; 
+  document.getElementById("card3").style.transition = "all 0.6s ease";
+  document.getElementById("card3").style.transform = "preserve-3d";
+
+  document.getElementById("card3-container").style.transform = "rotateY(180deg)";
+  document.getElementById("card3").style.transform = "rotateY(180deg)";
+  document.getElementById("card3-back").style.transform = "rotateY(-180deg)";
+
+  // on réinitialise 
+  /*setTimeout(function() {
+    event.target.style.color = "";
+    event.target.style.transform = "";
+    document.getElementById("card3-container").style.transform = "";
+    document.getElementById("card3").style.transform = "";
+  }, 2000 );*/
+}
+}, false);
+
+
+
+
+//card 4
+document.getElementById("card4").addEventListener("click", function( event ) {
+  if (dejaRetournee ===0 ){
+    dejaRetournee =1;
+    carteChoisis = 4;
+  //event.target.style.color = "orange";
+  //event.target.style.transform = "rotateY(180deg)"; 
+  document.getElementById("card4").style.transition = "all 0.6s ease";
+  document.getElementById("card4").style.transform = "preserve-3d";
+
+  document.getElementById("card4-container").style.transform = "rotateY(180deg)";
+  document.getElementById("card4").style.transform = "rotateY(180deg)";
+  document.getElementById("card4-back").style.transform = "rotateY(-180deg)";
+
+  // on réinitialise 
+  /*setTimeout(function() {
+    event.target.style.color = "";
+    event.target.style.transform = "";
+    document.getElementById("card4-container").style.transform = "";
+    document.getElementById("card4").style.transform = "";
+  }, 2000 );*/
+}
+}, false);
+
+
+
+
+//carte 5
+document.getElementById("card5").addEventListener("click", function( event ) {
+  if (dejaRetournee ===0 ){
+    dejaRetournee = 1;
+    carteChoisis = 5;
+  //event.target.style.color = "orange";
+  //event.target.style.transform = "rotateY(180deg)"; 
+  document.getElementById("card5").style.transition = "all 0.6s ease";
+  document.getElementById("card5").style.transform = "preserve-3d";
+
+  document.getElementById("card5-container").style.transform = "rotateY(180deg)";
+  document.getElementById("card5").style.transform = "rotateY(180deg)";
+  document.getElementById("card5-back").style.transform = "rotateY(-180deg)";
+
+  // on réinitialise 
+  /*setTimeout(function() {
+    event.target.style.color = "";
+    event.target.style.transform = "";
+    document.getElementById("card5-container").style.transform = "";
+    document.getElementById("card5").style.transform = "";
+  }, 2000 );*/
+}
+}, false);
+
+
+
+
+
+
+
+document.getElementById("btnvaliderChance").addEventListener("click", function( event ) {
+  alert(carteChoisis);
 }, false);

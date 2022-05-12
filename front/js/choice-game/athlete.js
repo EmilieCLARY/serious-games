@@ -179,9 +179,12 @@ function showTextNode(textNodeIndex) {
                 
             } else if (nbChoix===3){
                 if(compt == 1){ // Premier bouton
-                    var newDiv1 = document.createElement("div");
+                    var newDivchoice = document.createElement("div");
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
+                    var newDivchoicexstruct = document.createElement("div");
+                    var newDivchoicexphoto = document.createElement("div");
+                    var newDivchoicextext = document.createElement("div");
                     var span1 = document.createElement('span');
                     var span2 = document.createElement('span');
                     var span3 = document.createElement('span');
@@ -194,32 +197,68 @@ function showTextNode(textNodeIndex) {
                     span1.innerText = option.text;
                     button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
                     section.classList.add('portfolio-experiment', 'h-full');
-                    newDiv1.classList.add('choicenum1', 'm-4');
+                    newDivchoice.classList.add('choicenum1', 'm-4');
                     
                     
                     
-                    span1.classList.add('texte','text-fonce');
+                    span1.classList.add('texte','text-fonce','text-justify','m-4');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
                     span4.classList.add('line','-left');
                     span5.classList.add('line','-bottom');              
-                    
-                    button.appendChild(span1);
-                    button.appendChild(span2);
-                    button.appendChild(span3);
-                    button.appendChild(span4);
-                    button.appendChild(span5);
-    
+                    newDivchoicexstruct.classList.add('choicexin3struct','h-full','w-full');
+                    newDivchoicextext.appendChild(span1);
+                    newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
+                    if(option.appearance){
+                        switch (userAppearance) {
+                            case 0:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                            case 1:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                break;
+                            case 2:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                break;
+                            case 3:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                break;
+                            case 4:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                break;
+                            case 5:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                break;
+                        
+                            default:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                        }
+                    }
+                    else{
+                        console.log("oui");
+                        newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
+                    }
+                    newDivchoicexstruct.appendChild(newDivchoicexphoto);
+                    newDivchoicexstruct.appendChild(newDivchoicextext);
+                    newDivchoicexstruct.appendChild(span2);
+                    newDivchoicexstruct.appendChild(span3);
+                    newDivchoicexstruct.appendChild(span4);
+                    newDivchoicexstruct.appendChild(span5);
+                    button.appendChild(newDivchoicexstruct);
                     section.appendChild(button);
-                    newDiv1.appendChild(section);
+                    newDivchoice.appendChild(section);
                     button.addEventListener('click', () => selectOption(option));
-                    optionButtonsElement.appendChild(newDiv1); 
+                    optionButtonsElement.appendChild(newDivchoice); 
                 }
                 
                 if(compt == 2){ // Deuxième bouton
-                    var newDiv2 = document.createElement("div");
+                    var newDivchoice = document.createElement("div");
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
+                    var newDivchoicexstruct = document.createElement("div");
+                    var newDivchoicexphoto = document.createElement("div");
+                    var newDivchoicextext = document.createElement("div");
                     var span1 = document.createElement('span');
                     var span2 = document.createElement('span');
                     var span3 = document.createElement('span');
@@ -232,32 +271,68 @@ function showTextNode(textNodeIndex) {
                     span1.innerText = option.text;
                     button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
                     section.classList.add('portfolio-experiment', 'h-full');
-                    newDiv2.classList.add('choicenum2', 'm-4');
+                    newDivchoice.classList.add('choicenum2', 'm-4');
                     
                     
-                    span1.classList.add('texte','text-fonce');
+                    
+                    span1.classList.add('texte','text-fonce','text-justify','m-4');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
                     span4.classList.add('line','-left');
-                    span5.classList.add('line','-bottom');              
-                    
-                    button.appendChild(span1);
-                    button.appendChild(span2);
-                    button.appendChild(span3);
-                    button.appendChild(span4);
-                    button.appendChild(span5);
+                    span5.classList.add('line','-bottom');           
+                    newDivchoicexstruct.classList.add('choicexin3struct','h-full','w-full');   
+                    newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
+                    newDivchoicextext.appendChild(span1);
+                    if(option.appearance){
+                        switch (userAppearance) {
+                            case 0:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                            case 1:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                break;
+                            case 2:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                break;
+                            case 3:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                break;
+                            case 4:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                break;
+                            case 5:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                break;
+                        
+                            default:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                        }
+                    }
+                    else{
+                        console.log("oui");
+                        newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
+                    }
+                    newDivchoicexstruct.appendChild(newDivchoicexphoto);
+                    newDivchoicexstruct.appendChild(newDivchoicextext);
+                    newDivchoicexstruct.appendChild(span2);
+                    newDivchoicexstruct.appendChild(span3);
+                    newDivchoicexstruct.appendChild(span4);
+                    newDivchoicexstruct.appendChild(span5);
+                    button.appendChild(newDivchoicexstruct);
                     section.appendChild(button);
-                    newDiv2.appendChild(section);
+                    newDivchoice.appendChild(section);
                     button.addEventListener('click', () => selectOption(option));
-                    
-                    
-                    optionButtonsElement.appendChild(newDiv2);   
+                    optionButtonsElement.appendChild(newDivchoice);
                 }
     
                 if(compt == 3){ // Troisième bouton
-                    var newDiv = document.createElement("div");
+                    var newDivchoice = document.createElement("div");
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
+                    var newDivchoicexstruct = document.createElement("div");
+                    var newDivchoicexphoto = document.createElement("div");
+                    var newDivchoicextext = document.createElement("div");
                     var span1 = document.createElement('span');
                     var span2 = document.createElement('span');
                     var span3 = document.createElement('span');
@@ -270,31 +345,66 @@ function showTextNode(textNodeIndex) {
                     span1.innerText = option.text;
                     button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
                     section.classList.add('portfolio-experiment', 'h-full');
-                    newDiv.classList.add('choicenum3', 'm-4');
-                   
+                    newDivchoice.classList.add('choicenum3', 'm-4');
                     
                     
-                    span1.classList.add('texte','text-fonce');
+                    
+                    span1.classList.add('texte','text-fonce','text-justify','m-4');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
                     span4.classList.add('line','-left');
+                    newDivchoicexstruct.classList.add('choicexin3struct','h-full','w-full');
                     span5.classList.add('line','-bottom');              
-                    
-                    button.appendChild(span1);
-                    button.appendChild(span2);
-                    button.appendChild(span3);
-                    button.appendChild(span4);
-                    button.appendChild(span5);
-    
+                    newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
+                    newDivchoicextext.appendChild(span1);
+                    if(option.appearance){
+                        switch (userAppearance) {
+                            case 0:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                            case 1:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                break;
+                            case 2:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                break;
+                            case 3:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                break;
+                            case 4:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                break;
+                            case 5:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                break;
+                        
+                            default:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                        }
+                    }
+                    else{
+                        console.log("oui");
+                        newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
+                    }
+                    newDivchoicexstruct.appendChild(newDivchoicexphoto);
+                    newDivchoicexstruct.appendChild(newDivchoicextext);
+                    newDivchoicexstruct.appendChild(span2);
+                    newDivchoicexstruct.appendChild(span3);
+                    newDivchoicexstruct.appendChild(span4);
+                    newDivchoicexstruct.appendChild(span5);
+                    button.appendChild(newDivchoicexstruct);
                     section.appendChild(button);
-                    newDiv.appendChild(section);
-    
+                    newDivchoice.appendChild(section);
                     button.addEventListener('click', () => selectOption(option));
-                    optionButtonsElement.appendChild(newDiv);   
+                    optionButtonsElement.appendChild(newDivchoice);   
                 }
             } else if(nbChoix===4){
                 if(compt == 1){ // Premier bouton
-                    var newDiv1 = document.createElement("div");
+                    var newDivchoice = document.createElement("div");
+                    var newDivchoicexstruct = document.createElement("div");
+                    var newDivchoicexphoto = document.createElement("div");
+                    var newDivchoicextext = document.createElement("div");
                     //var newDiv1photo = document.createElement("div");
                     //var newDiv1text = document.createElement("div");
                     const button = document.createElement('button');
@@ -304,76 +414,81 @@ function showTextNode(textNodeIndex) {
                     var span3 = document.createElement('span');
                     var span4 = document.createElement('span');
                     var span5 = document.createElement('span');
-                    var divtoutpost = document.createElement('div')
-                    var divpost = document.createElement('div');
-                    var divtextpost = document.createElement('div')
     
                     //console.log("a")
-    
+                    newDivchoice.classList.add('choice1in4','m-2');
+                    section.classList.add('portfolio-experiment','h-full');
+                    button.classList.add('h-full','w-full');
+                    newDivchoicexstruct.classList.add('choicexin4struct','h-full','w-full','flex');
+                    newDivchoicexphoto.classList.add('choicexin4photo','h-full','w-1/2');
+                    newDivchoicextext.classList.add('choicexin4text','h-full','w-1/2','flex','items-center');
                     span1.innerText = option.text;
-                    button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
-                    section.classList.add('portfolio-experiment', 'h-full');
-                    newDiv1.classList.add('choicenum1c4', 'm-4');
+                    span1.classList.add('texte','text-fonce', 'text-justify');
+                    span2.classList.add('line','-right');
+                    span3.classList.add('line','-top');
+                    span4.classList.add('line','-left');
+                    span5.classList.add('line','-bottom');
+                    //button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
+                    //section.classList.add('portfolio-experiment', 'h-full');
+                    //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
-                    
-                    divpost.classList.add('imageboutontest4c','bg-rougebouton');
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
-                                divpost.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
                                 break;
                             case 1:
-                                divpost.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BG.png")';
                                 break;
                             case 2:
-                                divpost.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YG.png")';
                                 break;
                             case 3:
-                                divpost.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WW.png")';
                                 break;
                             case 4:
-                                divpost.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BW.png")';
                                 break;
                             case 5:
-                                divpost.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YW.png")';
                                 break;
                         
                             default:
-                                divpost.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
                                 break;
                         }
                     }
                     else{
                         console.log("oui");
-                        divpost.style.backgroundImage = 'url("../'+option.image+'")';
+                        newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
-                    divtextpost.classList.add('testextboutontest');
-                    span1.classList.add('texte','text-fonce');
-                    span2.classList.add('line','-right');
-                    span3.classList.add('line','-top');
-                    span4.classList.add('line','-left');
-                    span5.classList.add('line','-bottom');              
-                    divtoutpost.classList.add('divglobalpourbtnaquatrechoix')
+                                  
+                    newDivchoicextext.appendChild(span1)
+                    newDivchoicexstruct.appendChild(newDivchoicexphoto);
+                    newDivchoicexstruct.appendChild(newDivchoicextext);
                     
-                    divtextpost.appendChild(span1);
-                    divtextpost.appendChild(span2);
-                    divtextpost.appendChild(span3);
-                    divtextpost.appendChild(span4);
-                    divtextpost.appendChild(span5);
-                    
+                    newDivchoicexstruct.appendChild(span2);
+                    newDivchoicexstruct.appendChild(span3);
+                    newDivchoicexstruct.appendChild(span4);
+                    newDivchoicexstruct.appendChild(span5);
 
-                    divtoutpost.appendChild(divpost);
-                    divtoutpost.appendChild(divtextpost);
-                    button.appendChild(divtoutpost)
+                    button.appendChild(newDivchoicexstruct);
                     section.appendChild(button);
-                    newDiv1.appendChild(section);
+                    newDivchoice.appendChild(section);
+
+
                     button.addEventListener('click', () => selectOption(option));
-                    optionButtonsElement.appendChild(newDiv1); 
+                    optionButtonsElement.appendChild(newDivchoice); 
                 }
                 
                 if(compt == 2){ // Deuxième bouton
-                    var newDiv2 = document.createElement("div");
+                    var newDivchoice = document.createElement("div");
+                    var newDivchoicexstruct = document.createElement("div");
+                    var newDivchoicexphoto = document.createElement("div");
+                    var newDivchoicextext = document.createElement("div");
+                    //var newDiv1photo = document.createElement("div");
+                    //var newDiv1text = document.createElement("div");
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
                     var span1 = document.createElement('span');
@@ -382,35 +497,80 @@ function showTextNode(textNodeIndex) {
                     var span4 = document.createElement('span');
                     var span5 = document.createElement('span');
     
-    
                     //console.log("a")
-    
+                    newDivchoice.classList.add('choice2in4','m-2');
+                    section.classList.add('portfolio-experiment','h-full');
+                    button.classList.add('h-full','w-full');
+                    newDivchoicexstruct.classList.add('choicexin4struct','h-full','w-full','flex');
+                    newDivchoicexphoto.classList.add('choicexin4photo','h-full','w-1/2');
+                    newDivchoicextext.classList.add('choicexin4text','h-full','w-1/2','flex','items-center');
                     span1.innerText = option.text;
-                    button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
-                    section.classList.add('portfolio-experiment', 'h-full');
-                    newDiv2.classList.add('choicenum2c4', 'm-4');
-                    
-                    
-                    span1.classList.add('texte','text-fonce');
+                    span1.classList.add('texte','text-fonce', 'text-justify');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
                     span4.classList.add('line','-left');
-                    span5.classList.add('line','-bottom');              
+                    span5.classList.add('line','-bottom');
+                    //button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
+                    //section.classList.add('portfolio-experiment', 'h-full');
+                    //newDiv1.classList.add('choicenum1c4', 'm-4');
+                    //newDiv1photo.classList.add('choicenum4c4photo');
+                    //newDiv1text.classList.add('choicenum4c4text');
+                    if(option.appearance){
+                        switch (userAppearance) {
+                            case 0:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                            case 1:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                break;
+                            case 2:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                break;
+                            case 3:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                break;
+                            case 4:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                break;
+                            case 5:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                break;
+                        
+                            default:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                        }
+                    }
+                    else{
+                        console.log("oui");
+                        newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
+                    }
+                                  
+                    newDivchoicextext.appendChild(span1)
+                    newDivchoicexstruct.appendChild(newDivchoicexphoto);
+                    newDivchoicexstruct.appendChild(newDivchoicextext);
                     
-                    button.appendChild(span1);
-                    button.appendChild(span2);
-                    button.appendChild(span3);
-                    button.appendChild(span4);
-                    button.appendChild(span5);
-    
+                    newDivchoicexstruct.appendChild(span2);
+                    newDivchoicexstruct.appendChild(span3);
+                    newDivchoicexstruct.appendChild(span4);
+                    newDivchoicexstruct.appendChild(span5);
+
+                    button.appendChild(newDivchoicexstruct);
                     section.appendChild(button);
-                    newDiv2.appendChild(section);
+                    newDivchoice.appendChild(section);
+
+
                     button.addEventListener('click', () => selectOption(option));
-                    optionButtonsElement.appendChild(newDiv2);   
+                    optionButtonsElement.appendChild(newDivchoice);
                 }
     
                 if(compt == 3){ // Troisième bouton
-                    var newDiv = document.createElement("div");
+                    var newDivchoice = document.createElement("div");
+                    var newDivchoicexstruct = document.createElement("div");
+                    var newDivchoicexphoto = document.createElement("div");
+                    var newDivchoicextext = document.createElement("div");
+                    //var newDiv1photo = document.createElement("div");
+                    //var newDiv1text = document.createElement("div");
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
                     var span1 = document.createElement('span');
@@ -418,35 +578,80 @@ function showTextNode(textNodeIndex) {
                     var span3 = document.createElement('span');
                     var span4 = document.createElement('span');
                     var span5 = document.createElement('span');
-    
     
                     //console.log("a")
-    
+                    newDivchoice.classList.add('choice3in4','m-2');
+                    section.classList.add('portfolio-experiment','h-full');
+                    button.classList.add('h-full','w-full');
+                    newDivchoicexstruct.classList.add('choicexin4struct','h-full','w-full','flex');
+                    newDivchoicexphoto.classList.add('choicexin4photo','h-full','w-1/2');
+                    newDivchoicextext.classList.add('choicexin4text','h-full','w-1/2','flex','items-center');
                     span1.innerText = option.text;
-                    button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
-                    section.classList.add('portfolio-experiment', 'h-full');
-                    newDiv.classList.add('choicenum3c4', 'm-4');
-                    
-                    span1.classList.add('texte','text-fonce');
+                    span1.classList.add('texte','text-fonce', 'text-justify');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
                     span4.classList.add('line','-left');
-                    span5.classList.add('line','-bottom');              
+                    span5.classList.add('line','-bottom');
+                    //button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
+                    //section.classList.add('portfolio-experiment', 'h-full');
+                    //newDiv1.classList.add('choicenum1c4', 'm-4');
+                    //newDiv1photo.classList.add('choicenum4c4photo');
+                    //newDiv1text.classList.add('choicenum4c4text');
+                    if(option.appearance){
+                        switch (userAppearance) {
+                            case 0:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                            case 1:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                break;
+                            case 2:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                break;
+                            case 3:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                break;
+                            case 4:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                break;
+                            case 5:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                break;
+                        
+                            default:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                        }
+                    }
+                    else{
+                        console.log("oui");
+                        newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
+                    }
+                                  
+                    newDivchoicextext.appendChild(span1)
+                    newDivchoicexstruct.appendChild(newDivchoicexphoto);
+                    newDivchoicexstruct.appendChild(newDivchoicextext);
                     
-                    button.appendChild(span1);
-                    button.appendChild(span2);
-                    button.appendChild(span3);
-                    button.appendChild(span4);
-                    button.appendChild(span5);
-    
+                    newDivchoicexstruct.appendChild(span2);
+                    newDivchoicexstruct.appendChild(span3);
+                    newDivchoicexstruct.appendChild(span4);
+                    newDivchoicexstruct.appendChild(span5);
+
+                    button.appendChild(newDivchoicexstruct);
                     section.appendChild(button);
-                    newDiv.appendChild(section);
-    
+                    newDivchoice.appendChild(section);
+
+
                     button.addEventListener('click', () => selectOption(option));
-                    optionButtonsElement.appendChild(newDiv);   
+                    optionButtonsElement.appendChild(newDivchoice);
                 }
-                if(compt == 4){ // Troisième bouton
-                    var newDiv = document.createElement("div");
+                if (compt==4){
+                    var newDivchoice = document.createElement("div");
+                    var newDivchoicexstruct = document.createElement("div");
+                    var newDivchoicexphoto = document.createElement("div");
+                    var newDivchoicextext = document.createElement("div");
+                    //var newDiv1photo = document.createElement("div");
+                    //var newDiv1text = document.createElement("div");
                     const button = document.createElement('button');
                     var section = document.createElement("SECTION");
                     var span1 = document.createElement('span');
@@ -454,29 +659,72 @@ function showTextNode(textNodeIndex) {
                     var span3 = document.createElement('span');
                     var span4 = document.createElement('span');
                     var span5 = document.createElement('span');
-        
+    
+                    //console.log("a")
+                    newDivchoice.classList.add('choice4in4','m-2');
+                    section.classList.add('portfolio-experiment','h-full');
+                    button.classList.add('h-full','w-full');
+                    newDivchoicexstruct.classList.add('choicexin4struct','h-full','w-full','flex');
+                    newDivchoicexphoto.classList.add('choicexin4photo','h-full','w-1/2');
+                    newDivchoicextext.classList.add('choicexin4text','h-full','w-1/2','flex','items-center');
                     span1.innerText = option.text;
-                    button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
-                    section.classList.add('portfolio-experiment', 'h-full');
-                    newDiv.classList.add('choicenum4c4', 'm-4');
-                    
-                    span1.classList.add('texte','text-fonce');
+                    span1.classList.add('texte','text-fonce', 'text-justify');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
                     span4.classList.add('line','-left');
-                    span5.classList.add('line','-bottom');              
+                    span5.classList.add('line','-bottom');
+                    //button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
+                    //section.classList.add('portfolio-experiment', 'h-full');
+                    //newDiv1.classList.add('choicenum1c4', 'm-4');
+                    //newDiv1photo.classList.add('choicenum4c4photo');
+                    //newDiv1text.classList.add('choicenum4c4text');
+                    if(option.appearance){
+                        switch (userAppearance) {
+                            case 0:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                            case 1:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                break;
+                            case 2:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                break;
+                            case 3:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                break;
+                            case 4:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                break;
+                            case 5:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                break;
+                        
+                            default:
+                                newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                        }
+                    }
+                    else{
+                        console.log("oui");
+                        newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
+                    }
+                                  
+                    newDivchoicextext.appendChild(span1)
+                    newDivchoicexstruct.appendChild(newDivchoicexphoto);
+                    newDivchoicexstruct.appendChild(newDivchoicextext);
                     
-                    button.appendChild(span1);
-                    button.appendChild(span2);
-                    button.appendChild(span3);
-                    button.appendChild(span4);
-                    button.appendChild(span5);
-    
+                    newDivchoicexstruct.appendChild(span2);
+                    newDivchoicexstruct.appendChild(span3);
+                    newDivchoicexstruct.appendChild(span4);
+                    newDivchoicexstruct.appendChild(span5);
+
+                    button.appendChild(newDivchoicexstruct);
                     section.appendChild(button);
-                    newDiv.appendChild(section);
-    
+                    newDivchoice.appendChild(section);
+
+
                     button.addEventListener('click', () => selectOption(option));
-                    optionButtonsElement.appendChild(newDiv);   
+                    optionButtonsElement.appendChild(newDivchoice);
                 }
             }
 
@@ -963,7 +1211,7 @@ const textNodes = [
                 bh : 40,
                 nextText: 22,
                 mj : 0,
-                image : '../img/characters/sportif/posts/winner/',
+                image : '../img/characters/sportif/posts/winner/sportifMedal',
                 appearance : true
             }
         ]

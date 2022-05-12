@@ -10,7 +10,7 @@ var config = {
     physics : {
         default : "arcade",
         arcade : {
-            debug : true,
+            //debug : true,
         }
     }
 };
@@ -18,7 +18,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 // TIME IN SECONDS
-var timeToPlay = 120000;
+var timeToPlay = 12000;
 
 var cursor;
 var upKey;
@@ -47,6 +47,8 @@ var text;
 var text2;
 var textTime;
 
+var pointJoueur;
+
 
 for(let i = 0; i < mapHeight; i++){
     map[i] = new Array(mapWidth);
@@ -57,6 +59,9 @@ for(let j = 0; j < mapHeight; j++){
         map[j][k] = 0;
     }
 }
+
+chemins();
+
 
 
 function preload ()
@@ -90,19 +95,26 @@ function create ()
     ZQSD = this.input.keyboard.addKeys("Z,Q,S,D");
     CPA = this.input.keyboard.addKeys("C,P,A");
     
-    let PosX = 120;
-    let PosY = 220;
-
+    //let PosX = 120;
+    //let PosY = 220;
+//
+    let tmpCounter = 0;
     for(let i = 0; i < mapHeight; i++){
         for(let j = 0; j < mapWidth; j++){
             if(map[i][j] == 0){
-                this.add.image(PosX, PosY, "vert").setScale(4);
-                PosX += 40;
+                //this.add.image(PosX, PosY, "vert").setScale(4);
+                tmpCounter++;
             }
+            //this.add.text(PosX, PosY, j, {
+            //    fontSize: '13px',
+            //    fill: '#000000'
+            //});
+            //PosX += 40
         }
-        PosX = 120;
-        PosY += 40;
+    //    PosX = 120;
+    //    PosY += 40;
     }
+    console.log(tmpCounter / 2)
 
     this.player = this.physics.add.sprite(300, 200, 'player').setCollideWorldBounds(true);
     this.player.setScale(2);
@@ -119,6 +131,17 @@ function create ()
     this.cameras.main.setZoom(1.6);
 
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
+
+    /********************************/
+    /*                              */
+    /* --  Gestion de la minimap -- */
+    /*                              */
+    /********************************/
+
+    this.minimap = this.cameras.add(870, 500, 330, 220).setZoom(0.1).setName('mini');
+    this.minimap.setBackgroundColor(0x002244);
+    this.minimap.scrollX = 1365;
+    this.minimap.scrollY = 922;
 
     //this.add.grid(100, 50, mapWidth * gridSize, mapHeight * gridSize, gridSize, 0x999999, 1, 0x666666).setOrigin(0);
    
@@ -193,8 +216,9 @@ function update (time, delta)
     /********************************/
     for(let i = 0; i < mapHeight; i++){
         for(let j = 0; j < mapWidth; j++){
-            let PosX = i * 40 + 120;
-            let PosY = j * 40 + 220;
+            let PosX = j * 40 + 120;
+            let PosY = i * 40 + 220;
+            //console.log(PosX, PosY);
 
             if(PosX - 20 <= Math.round(this.player.x) && Math.round(this.player.x) <= PosX + 20 && PosY - 20 <= Math.round(this.player.y) && Math.round(this.player.y) <= PosY + 20){
                 if(map[i][j] == 1 && CPA.C.isDown ){     // Etat trigger à creusé
@@ -283,7 +307,7 @@ function update (time, delta)
     treeFull = countTrees()[0];
     treePlanted = countTrees()[1];
 
-    //console.log(map[36][18]);
+    //console.log(map[35][69]);
     /********************************/
     /*                              */
     /*Génération d'un nouvel endroit*/
@@ -292,15 +316,15 @@ function update (time, delta)
 
     if(newTreeeeeee === true){
 
-        let posPlayerX = Math.round((this.player.x-120) / 40);
-        let posPlayerY = Math.round((this.player.y-220) / 40);
+        let posPlayerY = Math.round((this.player.x-120) / 40);
+        let posPlayerX = Math.round((this.player.y-220) / 40);
 
         let maxX = posPlayerX + 10;
-        if(maxX >= 70) maxX = 69;
+        if(maxX >= 36) maxX = 35;
         let minX = posPlayerX - 10;
         if(minX < 0) minX = 0;
         let maxY = posPlayerY + 10;
-        if(maxY >= 36) maxY = 35;
+        if(maxY >= 70) maxY = 69;
         let minY = posPlayerY - 10;
         if(minY < 0) minY = 0;
 
@@ -311,20 +335,20 @@ function update (time, delta)
 
         console.log(positionX, positionY);
 
-        if(map[positionX][positionY] != 0 || (positionX - 1 >= 0 && map[positionX-1][positionY] != 0) || (positionX + 1 < 70 && map[positionX+1][positionY] != 0) || (positionY - 1 >= 0 && map[positionX][positionY-1] != 0) || (positionX + 1 < 36 && map[positionX][positionY+1] != 0)){
+        while(map[positionX][positionY] != 0 || (positionX - 1 >= 0 && map[positionX-1][positionY] > 0) || (positionX+1 < 36 && map[positionX+1][positionY] > 0) || (positionY - 1 >= 0 && map[positionX][positionY-1] > 0) || (positionY + 1 < 70 && map[positionX][positionY+1] > 0)){
 
             positionX = Phaser.Math.Between(minX, maxX);
             positionY = Phaser.Math.Between(minY, maxY);
             console.log("Reroll : ", positionX, positionY);
         }   
         
-        let tree = this.add.sprite(positionX * 40 + 120, positionY * 40 + 220, "trigger").setScale(0.07);
+        let tree = this.add.sprite(positionY * 40 + 120, positionX * 40 + 220, "trigger").setScale(0.07);
         let array = [tree, positionX, positionY];
         tabTree.push(array);
         map[positionX][positionY] = 1;
 
-        nextXpx = positionX * 40 + 120 + 40;
-        nextYpx = positionY * 40 + 220 + 40;
+        nextXpx = positionY * 40 + 120 + 40;
+        nextYpx = positionX * 40 + 220 + 40;
 
         newTreeeeeee = false;
         
@@ -403,6 +427,11 @@ function update (time, delta)
         this.scene.pause();
         socket.emit('treesPlanted', countTrees()[0]);
     }
+
+    this.minimap.ignore(text);
+    this.minimap.ignore(text2);
+    this.minimap.ignore(textTime);
+    this.minimap.ignore(arrow);
 }
 
 function countTrees(){
@@ -420,3 +449,371 @@ function countTrees(){
     }
     return [tmp, tmp2];
 };
+
+function chemins(){
+
+    map[0][63] = -1;
+    map[0][62] = -1;
+    map[0][61] = -1;
+    map[0][60] = -1;
+    map[0][59] = -1;
+    map[0][58] = -1;
+    map[0][57] = -1;
+    map[0][56] = -1;
+    map[0][55] = -1;
+    map[0][54] = -1;
+    map[0][50] = -1;
+    map[0][49] = -1;
+    map[0][48] = -1;
+    map[0][47] = -1;
+    map[0][46] = -1;
+
+    map[1][55] = -1;
+    map[1][54] = -1;
+    map[1][53] = -1;
+    map[1][52] = -1;
+    map[1][51] = -1;
+    map[1][50] = -1;
+    map[1][49] = -1;
+    map[1][47] = -1;
+    map[1][46] = -1;
+    map[1][45] = -1;
+
+    map[2][55] = -1;
+    map[2][54] = -1;
+    map[2][53] = -1;
+    map[2][52] = -1;
+    map[2][51] = -1;
+    map[2][50] = -1;
+    map[2][49] = -1;
+    map[2][47] = -1;
+    map[2][46] = -1;
+    map[2][45] = -1;
+
+    map[3][45] = -1;
+    map[3][44] = -1;
+    map[3][43] = -1;
+
+    map[4][44] = -1;
+    map[4][43] = -1;
+    map[4][37] = -1;
+    map[4][36] = -1;
+    map[4][35] = -1;
+    map[4][34] = -1;
+    map[4][33] = -1;
+    map[4][32] = -1;
+    map[4][31] = -1;
+    map[4][30] = -1;
+    map[4][29] = -1;
+
+    map[5][44] = -1;
+    map[5][43] = -1;
+    map[5][38] = -1;
+    map[5][37] = -1;
+    map[5][36] = -1;
+    map[5][35] = -1;
+    map[5][34] = -1;
+    map[5][33] = -1;
+    map[5][32] = -1;
+    map[5][31] = -1;
+    map[5][30] = -1;
+    map[5][29] = -1;
+
+    map[6][44] = -1;
+    map[6][43] = -1;
+    map[6][39] = -1;
+    map[6][38] = -1;
+    map[6][37] = -1;
+    map[6][29] = -1;
+    map[6][28] = -1;
+    map[6][27] = -1;
+    map[6][26] = -1;
+
+    map[7][43] = -1;
+    map[7][44] = -1;
+    map[7][39] = -1;
+    map[7][38] = -1;
+    map[7][26] = -1;
+
+    map[8][49] = -1;
+    map[8][48] = -1;
+    map[8][47] = -1;
+    map[8][46] = -1;
+    map[8][45] = -1;
+    map[8][44] = -1;
+    map[8][43] = -1;
+    map[8][42] = -1;
+    map[8][41] = -1;
+    map[8][40] = -1;
+    map[8][39] = -1;
+    map[8][38] = -1;
+    map[8][26] = -1;
+    map[8][9] = -1;
+    map[8][8] = -1;
+    map[8][7] = -1;
+    map[8][6] = -1;
+    map[8][5] = -1;
+    map[8][4] = -1;
+    map[8][3] = -1;
+
+    map[9][50] = -1;
+    map[9][49] = -1;
+    map[9][48] = -1;
+    map[9][26] = -1;
+    map[9][25] = -1;
+    map[9][24] = -1;
+    map[9][10] = -1;
+    map[9][9] = -1;
+    map[9][8] = -1;
+    map[9][4] = -1;
+    map[9][3] = -1;
+    map[9][2] = -1;
+
+    map[10][50] = -1;
+    map[10][49] = -1;
+    map[10][48] = -1;
+    map[10][26] = -1;
+    map[10][25] = -1;
+    map[10][24] = -1;
+    map[10][10] = -1;
+    map[10][9] = -1;
+    map[10][8] = -1;
+    map[10][4] = -1;
+    map[10][3] = -1;
+    map[10][2] = -1;
+
+    map[11][50] = -1;
+    map[11][51] = -1;
+    map[11][52] = -1;
+    map[11][53] = -1;
+    map[11][25] = -1;
+    map[11][24] = -1;
+    map[11][15] = -1;
+    map[11][14] = -1;
+    map[11][13] = -1;
+    map[11][12] = -1;
+    map[11][11] = -1;
+    map[11][10] = -1;
+    map[11][2] = -1;
+    map[11][1] = -1;
+    map[11][0] = -1;
+
+    map[12][56] = -1;
+    map[12][55] = -1;
+    map[12][54] = -1;
+    map[12][53] = -1;
+    map[12][25] = -1;
+    map[12][24] = -1;
+    map[12][15] = -1;
+    map[12][14] = -1;
+
+    map[13][14] = -1;
+    map[13][15] = -1;
+    map[13][16] = -1;
+    map[13][17] = -1;
+    map[13][18] = -1;
+    map[13][22] = -1;
+    map[13][23] = -1;
+    map[13][24] = -1;
+    map[13][25] = -1;
+    map[13][53] = -1;
+    map[13][54] = -1;
+    map[13][55] = -1;
+    map[13][56] = -1;
+    map[13][57] = -1;
+
+
+    map[14][56] = -1;
+    map[14][57] = -1;
+    map[14][22] = -1;
+    map[14][23] = -1;
+    map[14][18] = -1;
+    map[14][19] = -1;
+    map[14][20] = -1;
+
+    map[15][19] = -1;
+    map[15][20] = -1;
+    map[15][22] = -1;
+    map[15][23] = -1;
+    map[15][56] = -1;
+    map[15][57] = -1;
+
+    map[16][54] = -1;
+    map[16][55] = -1;
+    map[16][56] = -1;
+    map[16][57] = -1;
+    map[16][23] = -1;
+    map[16][22] = -1;
+    map[16][21] = -1;
+    map[16][20] = -1;
+    map[16][19] = -1;
+
+    map[17][22] = -1;
+    map[17][23] = -1;
+    map[17][53] = -1;
+    map[17][54] = -1;
+    map[17][55] = -1;
+
+    map[18][53] = -1;
+    map[18][54] = -1;
+    map[18][55] = -1;
+    map[18][22] = -1;
+    map[18][23] = -1;
+
+    map[19][53] = -1;
+    map[19][54] = -1;
+    map[19][25] = -1;
+    map[19][24] = -1;
+    map[19][23] = -1;
+    map[19][22] = -1;
+
+    map[20][24] = -1;
+    map[20][25] = -1;
+    map[20][50] = -1;
+    map[20][51] = -1;
+    map[20][52] = -1;
+    map[20][53] = -1;
+    map[20][54] = -1;
+    map[20][55] = -1;
+
+    map[21][24] = -1;
+    map[21][25] = -1;
+    map[21][50] = -1;
+    map[21][51] = -1;
+    map[21][52] = -1;
+    map[21][53] = -1;
+    map[21][54] = -1;
+    map[21][55] = -1;
+
+    map[22][24] = -1;
+    map[22][25] = -1;
+    map[22][26] = -1;
+    map[22][46] = -1;
+    map[22][47] = -1;
+    map[22][48] = -1;
+    map[22][49] = -1;
+    map[22][50] = -1;
+    map[22][54] = -1;
+    map[22][55] = -1;
+    map[22][56] = -1;
+    map[22][57] = -1;
+    map[22][58] = -1;
+
+    map[23][24] = -1;
+    map[23][25] = -1;
+    map[23][26] = -1;
+    map[23][46] = -1;
+    map[23][47] = -1;
+    map[23][48] = -1;
+    map[23][49] = -1;
+    map[23][50] = -1;
+    map[23][54] = -1;
+    map[23][55] = -1;
+    map[23][56] = -1;
+    map[23][57] = -1;
+    map[23][58] = -1;
+
+    map[24][26] = -1;
+    map[24][45] = -1;
+    map[24][46] = -1;
+    map[24][47] = -1;
+    map[24][58] = -1;
+
+    map[25][60] = -1;
+    map[25][59] = -1;
+    map[25][58] = -1;
+    map[25][46] = -1;
+    map[25][45] = -1;
+    map[25][44] = -1;
+    map[25][43] = -1;
+    map[25][42] = -1;
+    map[25][28] = -1;
+    map[25][27] = -1;
+    map[25][26] = -1;
+
+    map[26][60] = -1;
+    map[26][59] = -1;
+    map[26][58] = -1;
+    map[26][45] = -1;
+    map[26][44] = -1;
+    map[26][43] = -1;
+    map[26][42] = -1;
+    map[26][28] = -1;
+    map[26][27] = -1;
+
+    map[27][60] = -1;
+    map[27][59] = -1;
+    map[27][42] = -1;
+    map[27][41] = -1;
+    map[27][40] = -1;
+    map[27][38] = -1;
+    map[27][37] = -1;
+    map[27][36] = -1;
+    map[27][35] = -1;
+    map[27][34] = -1;
+    map[27][30] = -1;
+    map[27][29] = -1;
+    map[27][28] = -1;
+    map[27][27] = -1;
+    
+    map[28][29] = -1;
+    map[28][30] = -1;
+    map[28][31] = -1;
+    map[28][32] = -1;
+    map[28][33] = -1;
+    map[28][34] = -1;
+    map[28][35] = -1;
+    map[28][36] = -1;
+    map[28][37] = -1;
+    map[28][38] = -1;
+    map[28][39] = -1;
+    map[28][40] = -1;
+    map[28][41] = -1;
+    map[28][42] = -1;
+    map[28][59] = -1;
+    map[28][60] = -1;
+    map[28][61] = -1;
+    map[28][62] = -1;
+    map[28][63] = -1;
+
+    map[29][29] = -1;
+    map[29][30] = -1;
+    map[29][31] = -1;
+    map[29][32] = -1;
+    map[29][33] = -1;
+    map[29][34] = -1;
+    map[29][37] = -1;
+    map[29][38] = -1;
+    map[29][39] = -1;
+    map[29][40] = -1;
+    map[29][41] = -1;
+    map[29][59] = -1;
+    map[29][60] = -1;
+    map[29][61] = -1;
+    map[29][62] = -1;
+    map[29][63] = -1;
+
+    map[30][63] = -1;
+    map[30][62] = -1;
+
+    map[31][63] = -1;
+    map[31][62] = -1;
+
+    map[32][63] = -1;
+    map[32][62] = -1;
+    map[32][64] = -1;
+    map[32][65] = -1;
+
+    map[33][66] = -1;
+    map[33][65] = -1;
+    map[33][64] = -1;
+
+    map[34][66] = -1;
+    map[34][65] = -1;
+    map[34][64] = -1;
+
+    map[35][68] = -1;
+    map[35][67] = -1;
+    map[35][66] = -1;
+    map[35][65] = -1;
+}

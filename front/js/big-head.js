@@ -47,7 +47,7 @@ function preload (){
     this.load.image('champR', '../img/big_head/champR.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('chest', '../img/big_head/chest.png', { frameWidth: 32, frameHeight: 32 });
 
-    this.load.atlas('player', '../img/big_head/player.png', '../JSON/big_head/player.json');
+    this.load.atlas('player', '../img/big_head/bigheadPlayer.png', '../JSON/big_head/bigheadPlayer.json');
     this.load.image("skyBack","../img/big_head/backSky.png" );
     this.load.image("room","../img/big_head/sky.png" );
 
@@ -187,7 +187,7 @@ function create (){
 
     this.anims.create({
         key: 'walk',
-        frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2}),
+        frames: this.anims.generateFrameNames('player', {suffix : '.png', start: 1, end: 14, zeroPad: 0}),
         frameRate: 10,
     });
 

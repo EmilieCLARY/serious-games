@@ -1,0 +1,295 @@
+{
+	"frames": {
+		"1.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 75,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 93
+			}
+		},
+		"10.png": {
+			"frame": {
+				"x": 78,
+				"y": 1,
+				"w": 75,
+				"h": 92
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 92
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 92
+			}
+		},
+		"11.png": {
+			"frame": {
+				"x": 155,
+				"y": 1,
+				"w": 75,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 93
+			}
+		},
+		"12.png": {
+			"frame": {
+				"x": 232,
+				"y": 1,
+				"w": 75,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 93
+			}
+		},
+		"13.png": {
+			"frame": {
+				"x": 1,
+				"y": 96,
+				"w": 75,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 93
+			}
+		},
+		"14.png": {
+			"frame": {
+				"x": 78,
+				"y": 96,
+				"w": 75,
+				"h": 94
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 94
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 94
+			}
+		},
+		"2.png": {
+			"frame": {
+				"x": 155,
+				"y": 96,
+				"w": 75,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 93
+			}
+		},
+		"3.png": {
+			"frame": {
+				"x": 232,
+				"y": 96,
+				"w": 76,
+				"h": 94
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 76,
+				"h": 94
+			},
+			"sourceSize": {
+				"w": 76,
+				"h": 94
+			}
+		},
+		"4.png": {
+			"frame": {
+				"x": 1,
+				"y": 192,
+				"w": 75,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 93
+			}
+		},
+		"5.png": {
+			"frame": {
+				"x": 78,
+				"y": 192,
+				"w": 75,
+				"h": 92
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 92
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 92
+			}
+		},
+		"6.png": {
+			"frame": {
+				"x": 155,
+				"y": 192,
+				"w": 76,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 76,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 76,
+				"h": 93
+			}
+		},
+		"7.png": {
+			"frame": {
+				"x": 233,
+				"y": 192,
+				"w": 77,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 77,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 77,
+				"h": 93
+			}
+		},
+		"8.png": {
+			"frame": {
+				"x": 309,
+				"y": 1,
+				"w": 75,
+				"h": 93
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 75,
+				"h": 93
+			},
+			"sourceSize": {
+				"w": 75,
+				"h": 93
+			}
+		},
+		"9.png": {
+			"frame": {
+				"x": 310,
+				"y": 96,
+				"w": 74,
+				"h": 92
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 74,
+				"h": 92
+			},
+			"sourceSize": {
+				"w": 74,
+				"h": 92
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 385,
+			"h": 286
+		},
+		"scale": "1"
+	}
+}
