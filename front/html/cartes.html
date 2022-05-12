@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dist/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Cartes</title>
+</head>
+<body>
+
+    <div class="card-container" id="card-container" >
+        <div class="card " id="card">
+            <div class="card-front " id="card-front">
+                <div class="text-center text-xl font-pixelise flex items-center justify-center h-full w-full">Here is the front !</div>
+            </div>
+            <div class="card-back" id="card-back">
+                <div></div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+<script src="../js/modules/socketLoading.js"></script>
+<script src="../js/cartes.js"></script>
+</html>

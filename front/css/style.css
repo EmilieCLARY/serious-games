@@ -627,6 +627,11 @@
 /*
 .macLessgoch{ grid-area: 1 / 1 / 9 / 13};*/
 .choicenum1c4 { grid-area: 1 / 1 / 5 / 7;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }/*
 .choicenum1c4photo{
     grid-area: 1 / 1 / 10 / 8;
@@ -638,56 +643,7 @@
     grid-area: 1 / 8 / 10 / 17;
 }*/
 
-.choicenum2c4 { grid-area: 1 / 7 / 5 / 13; 
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-.choicenum2c4photo{
-    grid-area: 1 / 1 / 10 / 8;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position : center;
-}
-.choicenum2c4text{
-    grid-area: 1 / 8 / 10 / 17;
-}
-
-.choicenum3c4 { grid-area: 5 / 1 / 9 / 7; 
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-.choicenum3c4photo{
-    grid-area: 1 / 1 / 10 / 8;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position : center;
-}
-.choicenum3c4text{
-    grid-area: 1 / 8 / 10 / 17;
-}
-
-.choicenum4c4 { grid-area: 5 / 7 / 9 / 13;
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-.choicenum4c4photo{
-    grid-area: 1 / 1 / 10 / 8;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position : center;
-}
-.choicenum4c4text{
-    grid-area: 1 / 8 / 10 / 17;
-}
+.choicenum2c4 { grid-area: 1 / 7 / 5 / 13;}
 
 
 
@@ -745,10 +701,21 @@
 
 .imageboutontest4c{
     grid-area: 1 / 1 / 10 / 15;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position : center;
+    /*background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png");*/
+    background-size : contain;
+    background-repeat : no-repeat;
+    background-position: center;
 }
+
+.rempliladivtest{
+    grid-area: 1/1/9/13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
 .boutonpourtesterpostettext{
     display: grid;
     grid-template-columns: repeat(29, 1fr);
@@ -756,8 +723,9 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
+
 .testtextboutontest{
-    grid-area: 1 / 15    / 10 / 30;
+    grid-area: 1 / 15  / 10 / 30;
 }
 
 .divglobalpourbtnaquatrechoix{
@@ -832,7 +800,8 @@
     background: #ffffffff;
   }
   .portfolio-experiment button {
-    padding: 0.7em calc(4em * 1.2);
+    padding-top: 0.7em calc(4em * 1.2);
+    padding-right: 1em;
     display: inline-block;
     border: 3px solid transparent;
     position: relative;
@@ -1122,5 +1091,78 @@
     
 }
 
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                        cartes.html                                                          #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
+.card-container {
+    position: relative;
+    height: 500px;
+    width: 300px;
+}
+/*.card-container:hover .card {
+    transform: rotateY(180deg);
+}*/
+.card {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /*transition: all 0.3s ease;
+    transform-style: preserve-3d;*/
+}
+.card-front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: lightgreen;
+    backface-visibility: hidden;
+}
+.card-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: skyblue;
+    backface-visibility: hidden;
+    /*transform: rotateY(-180deg);*/
+    background-image : url("../img/cartes/pointInterrogation.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+
+/*.card-container {
+    position: relative;
+    height: 500px;
+    width: 300px;
+}
+.card-container:hover .card {
+    transform: rotateY(180deg);
+}
+.card {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+.card-front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: lightgreen;
+    backface-visibility: hidden;
+}
+.card-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: skyblue;
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
+}*/
 
 

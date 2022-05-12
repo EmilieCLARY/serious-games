@@ -7,6 +7,8 @@ module.exports = {
     "./front/html/choice-game/athlete.html", 
     "./front/html/turtle-saver.html", 
     "./front/html/choice-game/comedian.html",
+    "./front/html/cartes.html",
+    "./front/js/choice-game/*.js"
   ],
   theme: {
    

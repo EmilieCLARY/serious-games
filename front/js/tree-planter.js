@@ -18,7 +18,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 // TIME IN SECONDS
-var timeToPlay = 120;
+var timeToPlay = 120000;
 
 var cursor;
 var upKey;
@@ -27,9 +27,9 @@ var ZQSD;
 var CPA;
 var arrow;
 
-var mapHeight = 60;
-var mapWidth = 100;
-var gridSize = 80;
+var mapHeight = 36;
+var mapWidth = 70;
+var gridSize = 40;
 var map = new Array(mapWidth);
 
 var arbre;
@@ -63,7 +63,7 @@ function preload ()
 {
     this.load.image('vert', '../img/tree_planter/vert.png');
 
-    this.load.image('background', '../img/tree_planter/background.png');
+    this.load.image('background', '../img/tree_planter/treeplanter.png');
 
     this.load.image('trigger', '../img/tree_planter/trigger.png');
     this.load.image('creusé', '../img/tree_planter/creusé.png');
@@ -82,29 +82,30 @@ function preload ()
 function create ()
 {
 
-    background = this.add.tileSprite(4100, 2500, 8200, 5000, "background");
+    //background = this.add.tileSprite(4100, 2500, 8200, 5000, "background");
+    background = this.add.sprite(1520, 920, "background");
 
     this.cursors = this.input.keyboard.createCursorKeys();
     cursor = this.input.keyboard.createCursorKeys();
     ZQSD = this.input.keyboard.addKeys("Z,Q,S,D");
     CPA = this.input.keyboard.addKeys("C,P,A");
     
-    //let PosX = 100;
-    //let PosY = 50;
-//
-    //for(let i = 0; i < mapHeight; i++){
-    //    for(let j = 0; j < mapWidth; j++){
-    //        if(map[i][j] == 0){
-    //            this.add.image(PosX, PosY, "vert").setScale(8);
-    //            PosX += 80;
-    //        }
-    //    }
-    //    PosX = 100;
-    //    PosY += 80;
-    //}
+    let PosX = 120;
+    let PosY = 220;
 
-    this.player = this.physics.add.sprite(600, 350, 'player').setCollideWorldBounds(true);
-    this.player.setScale(4);
+    for(let i = 0; i < mapHeight; i++){
+        for(let j = 0; j < mapWidth; j++){
+            if(map[i][j] == 0){
+                this.add.image(PosX, PosY, "vert").setScale(4);
+                PosX += 40;
+            }
+        }
+        PosX = 120;
+        PosY += 40;
+    }
+
+    this.player = this.physics.add.sprite(300, 200, 'player').setCollideWorldBounds(true);
+    this.player.setScale(2);
 
     /********************************/
     /*                              */
@@ -112,23 +113,23 @@ function create ()
     /*                              */
     /********************************/
 
-    this.cameras.main.setBounds(0, 0, 8200, 5000);
-    this.physics.world.setBounds(0, 0, 8200, 5000);
+    this.cameras.main.setBounds(0, 0, 3047, 1845);
+    this.physics.world.setBounds(0, 0, 3047, 1845);
 
-    //this.cameras.main.setZoom(1.6);
+    this.cameras.main.setZoom(1.6);
 
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
 
     //this.add.grid(100, 50, mapWidth * gridSize, mapHeight * gridSize, gridSize, 0x999999, 1, 0x666666).setOrigin(0);
    
-    arbre = this.add.sprite(100, 50, "trigger").setScale(0.2);
+    arbre = this.add.sprite(120, 220, "trigger").setScale(0.07);
     let array = [arbre, 0, 0];
     tabTree.push(array);
     map[0][0] = 1;
     newTreeeeeee = false;
 
-    nextXpx = 100 + 40;
-    nextYpx = 50 + 40;
+    nextXpx = 120 + 40;
+    nextYpx = 220 + 40;
 
     /********************************/
     /*                              */
@@ -136,7 +137,7 @@ function create ()
     /*                              */
     /********************************/
 
-    arrow = this.add.sprite(0 , 0, 'arrow').setScale(0.2);
+    arrow = this.add.sprite(0 , 0, 'arrow').setScale(0.1);
 
     /********************************/
     /*                              */
@@ -145,20 +146,20 @@ function create ()
     /********************************/
 
 
-    text = this.add.text(10, 10, '', {
-        fontSize: '20px',
+    text = this.add.text(240, 140, '', {
+        fontSize: '13px',
         fill: '#000000'
     });
     text.setScrollFactor(0);
 
-    text2 = this.add.text(950, 10, '', {
-        fontSize: '20px',
+    text2 = this.add.text(800, 140, '', {
+        fontSize: '13px',
         fill: '#000000'
     });
     text2.setScrollFactor(0);
 
-    textTime = this.add.text(400, 10,"Time : ",{
-        font: "20px",
+    textTime = this.add.text(600, 140,"Time : ",{
+        font: "13px",
         fill : "#000000",
         align : "center"
     });
@@ -171,18 +172,18 @@ function update (time, delta)
     this.player.setVelocityY(0);
 
     if (this.cursors.left.isDown){
-        this.player.setVelocityX(-400);
+        this.player.setVelocityX(-200);
     }
     else if (this.cursors.right.isDown){
-        this.player.setVelocityX(400);
+        this.player.setVelocityX(200);
     }
     if (this.cursors.up.isDown){
-        this.player.setVelocityY(-400);
+        this.player.setVelocityY(-200);
     }
     else if (this.cursors.down.isDown){
-        this.player.setVelocityY(400);
+        this.player.setVelocityY(200);
     }
-    //console.log(Math.round(this.player.x) + 40, Math.round(this.player.y) + 40);
+    //console.log(Math.round(this.player.x), Math.round(this.player.y));
 
     
     /********************************/
@@ -192,15 +193,15 @@ function update (time, delta)
     /********************************/
     for(let i = 0; i < mapHeight; i++){
         for(let j = 0; j < mapWidth; j++){
-            let PosX = i * 80 + 100;
-            let PosY = j * 80 + 50;
+            let PosX = i * 40 + 120;
+            let PosY = j * 40 + 220;
 
-            if(PosX <= Math.round(this.player.x) + 40 && Math.round(this.player.x) + 40 <= PosX + 80 && PosY <= Math.round(this.player.y) + 40 && Math.round(this.player.y) + 40 <= PosY + 80){
+            if(PosX - 20 <= Math.round(this.player.x) && Math.round(this.player.x) <= PosX + 20 && PosY - 20 <= Math.round(this.player.y) && Math.round(this.player.y) <= PosY + 20){
                 if(map[i][j] == 1 && CPA.C.isDown ){     // Etat trigger à creusé
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
                             //console.log(tabTree[k][1], tabTree[k][2], i, j, k)
-                            tabTree[k][0].setTexture("creusé").setScale(1.7);
+                            tabTree[k][0].setTexture("creusé").setScale(0.85);
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "creusé").setScale(0.05);
                             console.log("creusé");
@@ -211,7 +212,7 @@ function update (time, delta)
                 else if(map[i][j] == 2 && CPA.P.isDown){     // Etat creusé à planté
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("planté").setScale(0.13);
+                            tabTree[k][0].setTexture("planté").setScale(0.065);
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "planté").setScale(0.25);
                             console.log("planté");
@@ -222,7 +223,7 @@ function update (time, delta)
                 else if(map[i][j] == 3 && CPA.A.isDown){      // Etat planté à arrosé
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("arrosé").setScale(1.5);
+                            tabTree[k][0].setTexture("arrosé").setScale(0.75);
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "arrosé").setScale(2.2);
                             console.log("arrosé"); 
@@ -241,7 +242,7 @@ function update (time, delta)
                     //arbre.setTexture("fini").setScale(0.05);
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("medium").setScale(2);
+                            tabTree[k][0].setTexture("medium").setScale(1);
                             map[i][j] = 5
                         }                            
                     }
@@ -253,7 +254,7 @@ function update (time, delta)
                 setTimeout(() => {
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("medium").setScale(2);
+                            tabTree[k][0].setTexture("medium").setScale(1);
                             map[i][j] = 6;
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "medium").setScale(0.05);
@@ -267,7 +268,7 @@ function update (time, delta)
                 setTimeout(() => {
                     for(let k = 0; k < tabTree.length; k++){
                         if(tabTree[k][1] == i && tabTree[k][2] == j){
-                            tabTree[k][0].setTexture("grand").setScale(0.28);
+                            tabTree[k][0].setTexture("grand").setScale(0.14);
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "grand").setScale(0.28); // Attend 7 secondes avant exécution
                             //console.log("grand"); 
@@ -282,7 +283,7 @@ function update (time, delta)
     treeFull = countTrees()[0];
     treePlanted = countTrees()[1];
 
-
+    //console.log(map[36][18]);
     /********************************/
     /*                              */
     /*Génération d'un nouvel endroit*/
@@ -291,15 +292,15 @@ function update (time, delta)
 
     if(newTreeeeeee === true){
 
-        let posPlayerX = Math.round((this.player.x-100) / 80);
-        let posPlayerY = Math.round((this.player.y-50) / 80);
+        let posPlayerX = Math.round((this.player.x-120) / 40);
+        let posPlayerY = Math.round((this.player.y-220) / 40);
 
         let maxX = posPlayerX + 10;
-        if(maxX >= 100) maxX = 99;
+        if(maxX >= 70) maxX = 69;
         let minX = posPlayerX - 10;
         if(minX < 0) minX = 0;
         let maxY = posPlayerY + 10;
-        if(maxY >= 60) maxY = 59;
+        if(maxY >= 36) maxY = 35;
         let minY = posPlayerY - 10;
         if(minY < 0) minY = 0;
 
@@ -310,20 +311,20 @@ function update (time, delta)
 
         console.log(positionX, positionY);
 
-        if(map[positionX][positionY] != 0 || (positionX - 1 >= 0 && map[positionX-1][positionY] != 0) || (positionX + 1 < 100 && map[positionX+1][positionY] != 0) || (positionY - 1 >= 0 && map[positionX][positionY-1] != 0) || (positionX + 1 < 60 && map[positionX][positionY+1] != 0)){
+        if(map[positionX][positionY] != 0 || (positionX - 1 >= 0 && map[positionX-1][positionY] != 0) || (positionX + 1 < 70 && map[positionX+1][positionY] != 0) || (positionY - 1 >= 0 && map[positionX][positionY-1] != 0) || (positionX + 1 < 36 && map[positionX][positionY+1] != 0)){
 
             positionX = Phaser.Math.Between(minX, maxX);
             positionY = Phaser.Math.Between(minY, maxY);
             console.log("Reroll : ", positionX, positionY);
         }   
         
-        let tree = this.add.sprite(positionX * 80 + 100, positionY * 80 + 50, "trigger").setScale(0.2);
+        let tree = this.add.sprite(positionX * 40 + 120, positionY * 40 + 220, "trigger").setScale(0.07);
         let array = [tree, positionX, positionY];
         tabTree.push(array);
         map[positionX][positionY] = 1;
 
-        nextXpx = positionX * 80 + 100 + 40;
-        nextYpx = positionY * 80 + 50 + 40;
+        nextXpx = positionX * 40 + 120 + 40;
+        nextYpx = positionY * 40 + 220 + 40;
 
         newTreeeeeee = false;
         
@@ -335,13 +336,14 @@ function update (time, delta)
     /*                              */
     /********************************/
 
-    let angleDeg = Math.atan2(nextYpx - this.player.y, nextXpx - this.player.x) * 180 / Math.PI;
+    let angleDeg = Math.atan2(nextYpx - 40 - this.player.y, nextXpx - 40 - this.player.x) * 180 / Math.PI;
+    //console.log(angleDeg);
     arrow.angle = angleDeg;
-    arrow.x = this.player.x + (150 * Math.cos(angleDeg * Math.PI/180));
-    arrow.y = this.player.y + (150 * Math.sin(angleDeg * Math.PI/180));
+    arrow.x = this.player.x + (75 * Math.cos(angleDeg * Math.PI/180));
+    arrow.y = this.player.y + (75 * Math.sin(angleDeg * Math.PI/180));
 
     //console.log(Phaser.Math.Distance.BetweenPoints(arrow, {x : nextXpx, y : nextYpx}));
-    if(Phaser.Math.Distance.BetweenPoints(this.player, {x : nextXpx, y : nextYpx}) < 180){
+    if(Phaser.Math.Distance.BetweenPoints(this.player, {x : nextXpx, y : nextYpx}) < 100){
         arrow.visible = false;
     }
     else{
@@ -394,7 +396,7 @@ function update (time, delta)
 
     if(currentTime == 0){
         this.add.text(this.player.x - 400, this.player.y + 100, 'Time end, you have ' + countTrees()[0] + ' trees planted', {
-            fontSize: '40px',
+            fontSize: '20px',
             fill: '#000000'
         });
         text.setScrollFactor(0);

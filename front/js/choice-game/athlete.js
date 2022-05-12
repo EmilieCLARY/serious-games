@@ -5,8 +5,13 @@ const optionButtonsElement = document.getElementById('option-buttons');
 
 let state = {}
 let nextTxt;
+let userAppearance;
 
 socket.emit('getNextText');
+socket.emit('getAppearance');
+socket.on('newAppearance', (Appearance)=>{
+    userAppearance = Appearance;
+});
 socket.on('leProchainTexte', (text) => {
     nextTxt = text;
     startGame();
@@ -312,8 +317,38 @@ function showTextNode(textNodeIndex) {
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
                     
-                    divpost.classList.add('imageboutontest4c','bg-rougebouton')
-                    divtextpost.classList.add('testextboutontest')
+                    divpost.classList.add('imageboutontest4c','bg-rougebouton');
+                    if(option.appearance){
+                        switch (userAppearance) {
+                            case 0:
+                                divpost.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                            case 1:
+                                divpost.style.backgroundImage = 'url("../'+option.image+'BG.png")';
+                                break;
+                            case 2:
+                                divpost.style.backgroundImage = 'url("../'+option.image+'YG.png")';
+                                break;
+                            case 3:
+                                divpost.style.backgroundImage = 'url("../'+option.image+'WW.png")';
+                                break;
+                            case 4:
+                                divpost.style.backgroundImage = 'url("../'+option.image+'BW.png")';
+                                break;
+                            case 5:
+                                divpost.style.backgroundImage = 'url("../'+option.image+'YW.png")';
+                                break;
+                        
+                            default:
+                                divpost.style.backgroundImage = 'url("../'+option.image+'WG.png")';
+                                break;
+                        }
+                    }
+                    else{
+                        console.log("oui");
+                        divpost.style.backgroundImage = 'url("../'+option.image+'")';
+                    }
+                    divtextpost.classList.add('testextboutontest');
                     span1.classList.add('texte','text-fonce');
                     span2.classList.add('line','-right');
                     span3.classList.add('line','-top');
