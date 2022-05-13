@@ -653,7 +653,9 @@ document.getElementById("popupclose").addEventListener("click", event => {
 //    document.getElementById("popupgrossetetegd").style.display = "none";
 //});
 
+document.getElementById("popupMessenger").style.display = "none";
 
-
-
+document.getElementById("mailBtn").addEventListener("click", event => {
+    document.getElementById("popupMessenger").style.display = "block";
+});
 

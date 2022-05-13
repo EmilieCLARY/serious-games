@@ -329,21 +329,26 @@ function hitDoor (sprite, tile)
     return true;
 }
 
+var counter = 0;
 function hitChest (sprite, tile)
-{
-    document.getElementById("modalbhwin").style.display = "block";
-    console.log("JEUX FINI");
-
-    document.getElementById("btnmodalbh").addEventListener("click", event => {
-        document.getElementById("modalbhwin").style.display = "none";
-        document.getElementById("modalbhinfo").style.display = "block";
-    });
-
-    socket.emit('newBigHeadGauge', 45);
-
+{   
+    if(counter == 0){
+        document.getElementById("modalbhwin").style.display = "block";
+        console.log("JEUX FINI");
+    
+        document.getElementById("btnmodalbh").addEventListener("click", event => {
+            document.getElementById("modalbhwin").style.display = "none";
+            document.getElementById("modalbhinfo").style.display = "block";
+        });
+    
+        socket.emit('newBigHeadGauge', 45);
+        counter++;
+    }
     
     return true;
 }
+
+
 
 function updateText ()
 {

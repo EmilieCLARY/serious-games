@@ -177,7 +177,177 @@ function showTextNode(textNodeIndex) {
                 optionButtonsElement.appendChild(newDivMLbtn);
             
                 
-            } else if (nbChoix===3){
+            }if(nbChoix===2){
+                if(compt==1){
+                    textElement.style.display = "none";
+                    optionButtonsElement.classList.add('zoneDesReponses','m-4', 'rounded-3xl', 'border-rougebouton', 'bg-lightfond', 'border-4');
+                    /*la photo de ML*/
+                    var newDivMLphoto = document.createElement("div");
+                    newDivMLphoto.classList.add('MLphoto','professor','bg-darkfond','border-rougebouton','border-4','rounded-3xl','m-4');
+                    optionButtonsElement.appendChild(newDivMLphoto);
+
+                    /* le texte */
+                    var newDivMLtext = document.createElement("div");
+                    newDivMLtext.classList.add('MLtext','flex','items-center','text-justify','m-4');
+
+                        /* la bulle */
+                    var newDivBcoin1 = document.createElement("div");
+                    newDivBcoin1.classList.add('BcoinTR','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin1);
+
+                    var newDivBcoin2 = document.createElement("div");
+                    newDivBcoin2.classList.add('BcoinTL','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin2);
+
+                    var newDivBcoin3 = document.createElement("div");
+                    newDivBcoin3.classList.add('BcoinBL','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin3);
+
+                    var newDivBcoin4 = document.createElement("div");
+                    newDivBcoin4.classList.add('BcoinBR','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoin4);
+
+
+                    var newDivBcoteT = document.createElement("div");
+                    newDivBcoteT.classList.add('BcoteT','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteT);
+
+                    var newDivBcoteL = document.createElement("div");
+                    newDivBcoteL.classList.add('BcoteL','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteL);
+
+                    var newDivBcoteR = document.createElement("div");
+                    newDivBcoteR.classList.add('BcoteR','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteR);
+
+                    var newDivBcoteB = document.createElement("div");
+                    newDivBcoteB.classList.add('BcoteB','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBcoteB);
+                    
+                    var newDivBO1 = document.createElement("div");
+                    newDivBO1.classList.add('BO1','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO1);
+
+                    var newDivBO2 = document.createElement("div");
+                    newDivBO2.classList.add('BO2','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO2);
+
+                    var newDivBO3 = document.createElement("div");
+                    newDivBO3.classList.add('BO3','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO3);
+
+                    var newDivBO4 = document.createElement("div");
+                    newDivBO4.classList.add('BO4','bg-fonce','h-full');
+                    newDivMLtext.appendChild(newDivBO4);
+
+                    var newDivBO5 = document.createElement("div");
+                    newDivBO5.classList.add('BO5','bg-white','h-full');
+                    newDivMLtext.appendChild(newDivBO5);
+                    
+                    var newDivBtext = document.createElement("div");
+                    newDivBtext.classList.add('Btext','bg-white','p-4','h-full','flex','items-center');
+                    newDivBtext.innerText = textElement.innerText;
+                    newDivMLtext.appendChild(newDivBtext);
+
+                    var newDivBWT = document.createElement("div");
+                    newDivBWT.classList.add('BWT','bg-white','h-full');
+                    newDivMLtext.appendChild(newDivBWT);
+
+                    var newDivBWL = document.createElement("div");
+                    newDivBWL.classList.add('BWL','bg-white','h-full');
+                    newDivMLtext.appendChild(newDivBWL);
+
+                    var newDivBWB = document.createElement("div");
+                    newDivBWB.classList.add('BWB','bg-white','h-full');
+                    newDivMLtext.appendChild(newDivBWB);
+
+                    var newDivBWR = document.createElement("div");
+                    newDivBWR.classList.add('BWR','bg-white','h-full');
+                    newDivMLtext.appendChild(newDivBWR);
+
+
+                    optionButtonsElement.appendChild(newDivMLtext);
+
+
+
+                    var newDivMLbtn = document.createElement("div")
+                    const button = document.createElement('button');
+                    var section = document.createElement("SECTION");
+                    var span1 = document.createElement('span');
+                    var span2 = document.createElement('span');
+                    var span3 = document.createElement('span');
+                    var span4 = document.createElement('span');
+                    var span5 = document.createElement('span');
+    
+    
+                        //console.log("a")
+                    
+                    span1.innerText = option.text;
+                    button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
+                    section.classList.add('portfolio-experiment', 'h-full');
+                    newDivMLbtn.classList.add('btnML1', 'm-4');
+                    
+
+
+                    span1.classList.add('texte','text-fonce');
+                    span2.classList.add('line','-right');
+                    span3.classList.add('line','-top');
+                    span4.classList.add('line','-left');
+                    span5.classList.add('line','-bottom');              
+                    
+                    button.appendChild(span1);
+                    button.appendChild(span2);
+                    button.appendChild(span3);
+                    button.appendChild(span4);
+                    button.appendChild(span5);
+                    
+                    section.appendChild(button);
+                    newDivMLbtn.appendChild(section);
+                    button.addEventListener('click', () => selectOption(option));
+                    optionButtonsElement.appendChild(newDivMLbtn);
+            
+                }
+                if(compt==2){
+                    var newDivMLbtn = document.createElement("div")
+                    const button = document.createElement('button');
+                    var section = document.createElement("SECTION");
+                    var span1 = document.createElement('span');
+                    var span2 = document.createElement('span');
+                    var span3 = document.createElement('span');
+                    var span4 = document.createElement('span');
+                    var span5 = document.createElement('span');
+    
+    
+                        //console.log("a")
+                    
+                    span1.innerText = option.text;
+                    button.classList.add('w-full','h-full'); // Ajouter une classe c'est comme ça
+                    section.classList.add('portfolio-experiment', 'h-full');
+                    newDivMLbtn.classList.add('btnML2', 'm-4');
+                    
+
+
+                    span1.classList.add('texte','text-fonce');
+                    span2.classList.add('line','-right');
+                    span3.classList.add('line','-top');
+                    span4.classList.add('line','-left');
+                    span5.classList.add('line','-bottom');              
+                    
+                    button.appendChild(span1);
+                    button.appendChild(span2);
+                    button.appendChild(span3);
+                    button.appendChild(span4);
+                    button.appendChild(span5);
+                    
+                    section.appendChild(button);
+                    newDivMLbtn.appendChild(section);
+                    button.addEventListener('click', () => selectOption(option));
+                    optionButtonsElement.appendChild(newDivMLbtn);
+                }
+                
+                
+            } 
+            else if (nbChoix===3){
                 if(compt == 1){ // Premier bouton
                     var newDivchoice = document.createElement("div");
                     const button = document.createElement('button');
@@ -914,7 +1084,7 @@ const textNodes = [
         text: 'Good morning say it back !\n I may have already said it but you need to be kind and cool with your followers ! They\'re here to progress or just to chill.\n You just gained BigHead.',
         options: [
             {
-                text: 'I\'l try to be better next time, I\'m ready to go next !',
+                text: 'I\'ll try to be better next time, I\'m ready to go next !',
                 nextText: 10,
                 goBackToHome : true,
                 mj : 0
@@ -938,7 +1108,7 @@ const textNodes = [
         text: 'Good morning say it back !\n You were almost right ! You just choosed the rights words to explain your training but there\'s a thing... You said that warm-up is useless, but according to science this is not right. Many studies concluded that warm-up reduce the risks of injuries during effort.\n Be careful to what you say onlne !',
         options: [
             {
-                text: 'I\'l try to be better next time, I\'m ready to go next !',
+                text: 'I\'ll try to be better next time, I\'m ready to go next !',
                 nextText: 10,
                 goBackToHome : true,
                 mj : 0
@@ -1039,7 +1209,7 @@ const textNodes = [
         text: 'Hey ! I\'m here again ! Your post was not that bad but there\'s still a little something.. Sandwiches are not really good for athletes, but don\'t forget to tell people that they need to eat fruits and vegetables.\n You can check why here : https://www.hsph.harvard.edu/nutritionsource/healthy-eating-pyramid/ \n I believe in you !',
         options: [
             {
-                text: 'I\'l try to be better next time, I\'m ready to go next !',
+                text: 'I\'ll try to be better next time, I\'m ready to go next !',
                 nextText: 60,
                 goBackToHome : false,
                 mj : 0
@@ -1155,7 +1325,7 @@ const textNodes = [
         text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post. A video games is a pretty cool idea but your community won\'t be interested.',
         options: [
             {
-                text: 'I\'l try to be better next time, I\'m ready to go next ',
+                text: 'I\'ll try to be better next time, I\'m ready to go next ',
                 nextText: 72,
                 goBackToHome : false,
                 mj : 0

@@ -436,24 +436,35 @@ function update (time, delta)
     if(currentTime >= 120){
         //textGAMEOVER.setText("GAME OVER\nTime is over, turtles are dead because of you !");
         document.getElementById("modaltortueloosetime").style.display = "block";
-
-        
+        this.scene.pause();
+        socket.emit("numberOfMalusCards", 4);
     }
     else if(nbrDechet == 0){
         //textGAMEOVER.setText("You win !\n You Get all the waste");
         document.getElementById("modaltortuewin").style.display = "block";
+
+        if(player_health == 3){
+            socket.emit("numberOfMalusCards", 1);
+        }
+        else if(player_health == 2){
+            socket.emit("numberOfMalusCards", 2);
+        }
+        else if(player_health == 1){
+            socket.emit("numberOfMalusCards", 3);
+        }
 
         //pour le point info
         document.getElementById("btnmodaltortue").addEventListener("click", event => {
             document.getElementById("modaltortuewin").style.display = "none";
             document.getElementById("modaltortueinfo").style.display = "block";
         });
-        
-    }else if(player_health == 0){
+        this.scene.pause();
+    }
+    else if(player_health == 0){
         //textGAMEOVER.setText("GAME OVER \n No more lifes, turtles are dead because of you !");
         document.getElementById("modaltortueloose").style.display = "block";
-
-        
+        this.scene.pause();
+        socket.emit("numberOfMalusCards", 4);
     }
 
     if(currentTime < 60){  

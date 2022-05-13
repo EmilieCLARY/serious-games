@@ -51,12 +51,14 @@ var userName;
 var userJob;
 var userAppearance;
 var treesPlanted = 0;
+var userTreesToPlant = 0;
 var userPosts = [];
 var nextText = 1;
 var userFollowers = 0;
 var followersPerSecond = 1;
 var bigHeadGauge = 0;
 var userSponsors = [];
+var numberOfMalus;
 
 io.on('connection', (socket) => {
 
@@ -138,7 +140,7 @@ io.on('connection', (socket) => {
         bigHeadGauge -= minus;
         if(bigHeadGauge < 0){
             bigHeadGauge = 0;
-        } 
+        }
     });
 
     socket.on('getSponsors', () => {
@@ -147,6 +149,38 @@ io.on('connection', (socket) => {
     
     socket.on("newSponsor", (sponsor) => {
         userSponsors.push(sponsor);
+    });
+
+    socket.on("moreFollowers", (number) =>{
+        userFollowers += number;
+        console.log("Gain de", number, "followers");
+    });
+
+    socket.on("moreTreesToPlant", (number) => {
+        userTreesToPlant += number;
+        console.log("Gain de", number, "arbres à planter");
+    });
+
+    socket.on("moreBigHeadGauge", (number) => {
+        bigHeadGauge += number;
+        console.log("Gain de", number, "jauge de Big Head");
+    });
+
+    socket.on("lessTreesPlanted", (number) => {
+        treesPlanted -= number;
+        console.log("Perte de", number, "arbres");
+    });
+
+    socket.on("numberOfMalusCards", (number) => {
+        if(numberOfMalus == undefined){
+            numberOfMalus = number;
+        }
+        console.log("Number of Malus Cards", numberOfMalus);
+    });
+
+    socket.on("getNumberOfMalusCards", () => {
+        socket.emit("numberOfMalus", numberOfMalus);
+        numberOfMalus = undefined;
     });
 });
 

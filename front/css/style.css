@@ -281,6 +281,63 @@
         .popupgrosseteteclose { grid-area: 1 / 10 / 2 / 11; }
 
 
+        /*pop up message*/
+
+        .popupMessenger{
+            grid-area: 2 / 2 / 12 / 7 ;
+        }
+
+        .parentMessenger{
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(16, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+
+        .messageEntrant{
+            padding: 20px;
+            background-color: red;
+            margin: 5px;
+            text-align: left;
+            margin-right: 30%;
+            border-radius: 20px
+        }
+        .messageSortant{
+            padding: 20px;
+            background-color: green;
+            margin: 5px;
+            text-align: right;
+            margin-left: 30%;
+            border-radius: 20px
+        }
+
+        .messageTetesPerso { 
+            grid-area: 1 / 1 / 12 / 2; 
+        }
+
+        .messages { 
+            grid-area: 1 / 2 / 12 / 7;         
+            display:none;
+        }
+        
+        .choixMessages { 
+            grid-area: 12 / 1 / 17 / 6; 
+        }
+
+        .envoyerMessage { 
+            grid-area: 12 / 6 / 17 / 7; 
+            background-image: url("../img/mainPage/dm/fleche.png");
+            background-size : contain;
+            background-repeat : no-repeat;
+            background-position: center;
+        } 
+
+
+
+    
+
+
 /* #######################################################################################################################
    #######################################################################################################################
    #####                                                                                                             #####
@@ -701,6 +758,9 @@
 .Btext { grid-area: 4/ 4 / 21 / 38; }
 
 .btnML { grid-area: 7 / 5 / 9 / 13; }
+
+.btnML1{ grid-area : 7 / 5 / 9 / 9 ;}
+.btnML2{ grid-area : 7 / 9 / 9 / 13 ;}
 
 
 .imageboutontest4c{
@@ -1176,3 +1236,15 @@
     .cartes3ChanceChoix { grid-area: 3 / 11 / 15 / 15; }
     .cartes4ChanceChoix { grid-area: 3 / 16 / 15 / 20; }
     .cartes5ChanceChoix { grid-area: 3 / 21 / 15 / 25; } 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -590,6 +590,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -752,12 +756,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-top-width: 150px;
 }
 
-.border-b-contourRouge {
-  border-bottom-width: 23px;
-}
-
 .border-r-contourRouge {
   border-right-width: 23px;
+}
+
+.border-b-contourRouge {
+  border-bottom-width: 23px;
 }
 
 .border-solid {
@@ -811,6 +815,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(121 118 118 / var(--tw-bg-opacity));
 }
 
+.bg-lightfond {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 245 237 / var(--tw-bg-opacity));
+}
+
 .bg-grisclair {
   --tw-bg-opacity: 1;
   background-color: rgb(154 145 145 / var(--tw-bg-opacity));
@@ -819,11 +828,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-rougeContour {
   --tw-bg-opacity: 1;
   background-color: rgb(145 28 26 / var(--tw-bg-opacity));
-}
-
-.bg-lightfond {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 245 237 / var(--tw-bg-opacity));
 }
 
 .bg-darkfond {
@@ -1308,6 +1312,59 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .popupgrosseteteclose {
   grid-area: 1 / 10 / 2 / 11;
+}
+
+/*pop up message*/
+
+.popupMessenger{
+  grid-area: 2 / 2 / 12 / 7 ;
+}
+
+.parentMessenger{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.messageEntrant{
+  padding: 20px;
+  background-color: red;
+  margin: 5px;
+  text-align: left;
+  margin-right: 30%;
+  border-radius: 20px
+}
+
+.messageSortant{
+  padding: 20px;
+  background-color: green;
+  margin: 5px;
+  text-align: right;
+  margin-left: 30%;
+  border-radius: 20px
+}
+
+.messageTetesPerso {
+  grid-area: 1 / 1 / 12 / 2;
+}
+
+.messages {
+  grid-area: 1 / 2 / 12 / 7;
+  display:none;
+}
+
+.choixMessages {
+  grid-area: 12 / 1 / 17 / 6;
+}
+
+.envoyerMessage {
+  grid-area: 12 / 6 / 17 / 7;
+  background-image: url("../img/mainPage/dm/fleche.png");
+  background-size : contain;
+  background-repeat : no-repeat;
+  background-position: center;
 }
 
 /* #######################################################################################################################
@@ -1940,6 +1997,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-area: 7 / 5 / 9 / 13;
 }
 
+.btnML1{
+  grid-area : 7 / 5 / 9 / 9 ;
+}
+
+.btnML2{
+  grid-area : 7 / 9 / 9 / 13 ;
+}
+
 .imageboutontest4c{
   grid-area: 1 / 1 / 10 / 15;
   /*background-image: url("../img/mainPage/treecountermodulo8abasculeDclockfrontmontant.png");*/
@@ -2459,3 +2524,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .cartes5ChanceChoix {
   grid-area: 3 / 21 / 15 / 25;
 } 
+
+
+
+
+
+
+
+
+
+
+
+
