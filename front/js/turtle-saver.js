@@ -436,8 +436,8 @@ function update (time, delta)
     if(currentTime >= 120){
         //textGAMEOVER.setText("GAME OVER\nTime is over, turtles are dead because of you !");
         document.getElementById("modaltortueloosetime").style.display = "block";
-        this.scene.pause();
         socket.emit("numberOfMalusCards", 4);
+        this.scene.pause();
     }
     else if(nbrDechet == 0){
         //textGAMEOVER.setText("You win !\n You Get all the waste");
@@ -463,8 +463,8 @@ function update (time, delta)
     else if(player_health == 0){
         //textGAMEOVER.setText("GAME OVER \n No more lifes, turtles are dead because of you !");
         document.getElementById("modaltortueloose").style.display = "block";
-        this.scene.pause();
         socket.emit("numberOfMalusCards", 4);
+        this.scene.pause();
     }
 
     if(currentTime < 60){  

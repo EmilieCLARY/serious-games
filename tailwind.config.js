@@ -1,7 +1,9 @@
 module.exports = {
   content: ["./front/html/home.html",
+    "./front/html/launch.html",
     "./front/html/free-play.html",
     "./front/html/accueil.html",
+    "./front/html/tree-planter.html",
     "./front/html/choice-game/job-appearance.html",
     "./front/html/choice-game/form.html",
     "./front/html/choice-game/athlete.html", 

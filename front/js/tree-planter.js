@@ -12,7 +12,8 @@ var config = {
         arcade : {
             //debug : true,
         }
-    }
+    },
+    parent: 'treePlanter'
 };
 
 var game = new Phaser.Game(config);

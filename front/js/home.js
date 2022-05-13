@@ -653,9 +653,47 @@ document.getElementById("popupclose").addEventListener("click", event => {
 //    document.getElementById("popupgrossetetegd").style.display = "none";
 //});
 
+var messengerEstOuvert = 0;
+
 document.getElementById("popupMessenger").style.display = "none";
 
 document.getElementById("mailBtn").addEventListener("click", event => {
-    document.getElementById("popupMessenger").style.display = "block";
+
+    if(messengerEstOuvert ===0){
+        document.getElementById("popupMessenger").style.display = "block";
+        messengerEstOuvert = 1;
+    }
+    else if(messengerEstOuvert ===1){
+        document.getElementById("popupMessenger").style.display = "none";
+        messengerEstOuvert = 0;
+    }
 });
 
+
+var messageSelected = 0;
+
+document.getElementById("proposition1").addEventListener("click", event => {
+    document.getElementById("proposition1").classList.add("bg-gris");
+    document.getElementById("proposition2").classList.remove("bg-gris");
+    document.getElementById("proposition3").classList.remove("bg-gris");
+    messageSelected =1;
+});
+
+document.getElementById("proposition2").addEventListener("click", event => {
+    document.getElementById("proposition2").classList.add("bg-gris");
+    document.getElementById("proposition1").classList.remove("bg-gris");
+    document.getElementById("proposition3").classList.remove("bg-gris");
+    messageSelected =2;
+});
+
+document.getElementById("proposition3").addEventListener("click", event => {
+    document.getElementById("proposition3").classList.add("bg-gris");
+    document.getElementById("proposition2").classList.remove("bg-gris");
+    document.getElementById("proposition1").classList.remove("bg-gris");
+    messageSelected =3;
+});
+
+
+document.getElementById("btnEnvoyerMessage").addEventListener("click", event => {
+    alert(messageSelected);
+});

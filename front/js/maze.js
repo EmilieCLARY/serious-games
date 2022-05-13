@@ -25,6 +25,8 @@ var upKey;
 var downKey;
 var ZQSD;
 var CPA;
+var text;
+var textTime;
 
 var gridSize = 80;
 
@@ -36,6 +38,8 @@ var bush = [];
 
 var barrel1;
 var barrel = [];
+var nbrBarrelCollected = 0;
+var nbrBarrelTotal;
 
 var entreeX, entreeY = 0;
 var sortieX, sortieY = 0;
@@ -241,11 +245,14 @@ function create ()
     }
 
     this.add.sprite(entreeX*80 + 100, entreeY*80 + 50, "vertical").setScale(0.9);
-    this.add.sprite(sortieX*80 + 100, (sortieY-1)*80 + 50, "vertical").setScale(0.9);
+    bushSortie = this.physics.add.sprite(sortieX*80 + 100, (sortieY-1)*80 + 50, "bush").setScale(0.3);
+    bushSortie.body.immovable = true;
 
 
     this.player = this.physics.add.sprite(entreeX * 80 + 100, entreeY * 80 + 50, 'player').setCollideWorldBounds(true);
     this.player.setScale(4);
+
+    this.physics.add.collider(this.player, bushSortie);
 
     /********************************/
     /*                              */
@@ -265,7 +272,21 @@ function create ()
     for(let i = 0; i < bush.length; i++){
         this.physics.add.collider(this.player, bush[i]);
     }
+
+    nbrBarrelTotal = barrel.length;
    
+    text = this.add.text(10, 10, 'Collect all the oil barrel and escape the maze\nBarrels remaining : ' + nbrBarrelTotal, {
+        fontSize: '20px',
+        fill: '#000000'
+    });
+    text.setScrollFactor(0);
+
+    textTime = this.add.text(700, 10, 'Time :', {
+        fontSize: '20px',
+        fill: '#000000'
+    });
+    textTime.setScrollFactor(0);
+
 }
 
 function update (time, delta)
@@ -291,20 +312,40 @@ function update (time, delta)
         this.physics.add.overlap(this.player, barrel[i], function () {
             //console.log("test")
             barrel[i].destroy();
+            nbrBarrelCollected++;
+            let tmp = nbrBarrelTotal - nbrBarrelCollected;
+            text.setText("Collect all the oil barrel and escape the maze\nBarrels remaining : " + tmp);
             // Pop une modal box ? avec le nombre restants
         });
     }
-    
+
+    let currentTime = parseInt(time/1000)
     //console.log(sortieX, sortieY)
     //console.log(this.player.x/80, this.player.y/80)
+    if(nbrBarrelCollected == nbrBarrelTotal){
+        bushSortie.destroy();
+        this.add.sprite(sortieX*80 + 100, (sortieY-1)*80 + 50, "vertical").setScale(0.9);
+    }
     
-    if(sortieX < (this.player.x + 100)/80 && sortieY < (this.player.y + 50)/80){
+    if(sortieX < (this.player.x + 100)/80 && sortieY < (this.player.y + 50)/80 && nbrBarrelCollected == nbrBarrelTotal){
 
         console.log("fini")
         /*this.add.text(this.player.x - 200, this.player.y + 50, 'You escaped the maze', {
             fontSize: '40px',
             fill: '#000000'
         });*/
+        if(currentTime <= 40){
+            socket.emit("numberOfMalusCards", 1);
+        }
+        else if(currentTime <= 80){
+            socket.emit("numberOfMalusCards", 2);
+        }
+        else if(currentTime <= 120){
+            socket.emit("numberOfMalusCards", 3);
+        }
+        else if(currentTime > 120){
+            socket.emit("numberOfMalusCards", 4);
+        }
         document.getElementById("modalmazewin").style.display = "block";
 
         //pour le point info
@@ -314,6 +355,28 @@ function update (time, delta)
         });
 
         this.scene.pause();
+    }
+
+
+    
+    if(currentTime < 60){  
+        if(currentTime < 10){
+            textTime.setText("Time: 0:0" + currentTime);
+        } 
+        else{
+            textTime.setText("Time: 0:" + currentTime);
+        }
+    }
+    else{
+        let min = Math.floor(currentTime/60);
+        let sec = currentTime - 60*min;
+        if(sec < 10){
+            textTime.setText("Time: "+ min + ":0" + sec);
+        } 
+        else{
+            textTime.setText("Time: "+ min + ":" + sec);
+        }
+        
     }
      
 }
@@ -349,7 +412,6 @@ function generateMazeTemp() {
     maze[0][8] = 1;
     maze[0][9] = 1;
     maze[0][10] = 1;
-
     maze[1][0] = 1;
     maze[1][1] = 0;
     maze[1][2] = 0;
@@ -361,7 +423,6 @@ function generateMazeTemp() {
     maze[1][8] = 1;
     maze[1][9] = 0;
     maze[1][10] = 1;
-
     maze[2][0] = 1;
     maze[2][1] = 1;
     maze[2][2] = 1;
@@ -373,7 +434,6 @@ function generateMazeTemp() {
     maze[2][8] = 1;
     maze[2][9] = 0;
     maze[2][10] = 1;
-
     maze[3][0] = 1;
     maze[3][1] = 0;
     maze[3][2] = 0;
@@ -385,7 +445,6 @@ function generateMazeTemp() {
     maze[3][8] = 0;
     maze[3][9] = 0;
     maze[3][10] = 1;
-
     maze[4][0] = 1;
     maze[4][1] = 0;
     maze[4][2] = 1;
@@ -397,7 +456,6 @@ function generateMazeTemp() {
     maze[4][8] = 1;
     maze[4][9] = 0;
     maze[4][10] = 1;
-
     maze[5][0] = 1;
     maze[5][1] = 0;
     maze[5][2] = 0;
@@ -409,7 +467,6 @@ function generateMazeTemp() {
     maze[5][8] = 1;
     maze[5][9] = 0;
     maze[5][10] = 1;
-
     maze[6][0] = 1;
     maze[6][1] = 0;
     maze[6][2] = 1;
@@ -421,7 +478,6 @@ function generateMazeTemp() {
     maze[6][8] = 1;
     maze[6][9] = 0;
     maze[6][10] = 1;
-
     maze[7][0] = 1;
     maze[7][1] = 0;
     maze[7][2] = 1;
@@ -433,7 +489,6 @@ function generateMazeTemp() {
     maze[7][8] = 0;
     maze[7][9] = 0;
     maze[7][10] = 1;
-
     maze[8][0] = 1;
     maze[8][1] = 0;
     maze[8][2] = 1;
@@ -445,7 +500,6 @@ function generateMazeTemp() {
     maze[8][8] = 1;
     maze[8][9] = 1;
     maze[8][10] = 1;
-
     maze[9][0] = 1;
     maze[9][1] = 0;
     maze[9][2] = 1;
@@ -457,7 +511,6 @@ function generateMazeTemp() {
     maze[9][8] = 0;
     maze[9][9] = 0;
     maze[9][10] = 1; 
-
     maze[10][0] = 1;
     maze[10][1] = 1;
     maze[10][2] = 1;

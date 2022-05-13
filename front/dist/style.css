@@ -500,6 +500,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 2rem;
 }
 
+.m-5 {
+  margin: 1.25rem;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
@@ -511,6 +515,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
+}
+
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 .mx-4 {
@@ -574,8 +583,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.25rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .block {
@@ -777,6 +802,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(145 28 26 / var(--tw-border-opacity));
 }
 
+.border-gris {
+  --tw-border-opacity: 1;
+  border-color: rgb(121 118 118 / var(--tw-border-opacity));
+}
+
 .border-fonce {
   --tw-border-opacity: 1;
   border-color: rgb(48 48 48 / var(--tw-border-opacity));
@@ -818,6 +848,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-lightfond {
   --tw-bg-opacity: 1;
   background-color: rgb(252 245 237 / var(--tw-bg-opacity));
+}
+
+.bg-vertContour {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 87 50 / var(--tw-bg-opacity));
 }
 
 .bg-grisclair {
@@ -954,6 +989,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .underline-offset-1 {
   text-underline-offset: 1px;
+}
+
+body{
+  -moz-user-select: none;
+  /* Firefox */
+  -webkit-user-select: none;
+  /* Chrome, Safari, Opéra depuis la version 15 */
+  -ms-user-select: none;
+  /* Internet explorer depuis la version 10 et Edge */
+  user-select: none;
+  /* Propriété standard */
 }
 
 @font-face {
@@ -1352,7 +1398,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .messages {
   grid-area: 1 / 2 / 12 / 7;
-  display:none;
 }
 
 .choixMessages {
@@ -2459,8 +2504,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .card1-container, .card2-container, .card3-container, .card4-container, .card5-container {
   position: relative;
-  /*height: 400px;
-    width: 240px;*/
+  height: 400px;
+  width: 240px;
 }
 
 /*.card-container:hover .card {
@@ -2471,6 +2516,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+.faceCarte{
+  background-image : url("../img/cartes/facecarte.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
   /*transition: all 0.3s ease;
     transform-style: preserve-3d;*/
 }
@@ -2487,52 +2539,206 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: absolute;
   height: 100%;
   width: 100%;
-  background: skyblue;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   /*transform: rotateY(-180deg);*/
-  background-image : url("../img/cartes/pointInterrogation.png" );
+  background-image : url("../img/cartes/doscarte.png" );
   background-size: contain;
   background-repeat: no-repeat;
   background-position : center;
 }
 
-.cartesChanceChoix {
+.cartesChanceChoix{
+  display:flex;
+  justify-content: space-between;
+}
+
+/*.cartesChanceChoix {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+  /*.cartes1ChanceChoix { grid-area: 3 / 1 / 15 / 5; }
+    .cartes2ChanceChoix { grid-area: 3 / 6 / 15 / 10; }
+    .cartes3ChanceChoix { grid-area: 3 / 11 / 15 / 15; }
+    .cartes4ChanceChoix { grid-area: 3 / 16 / 15 / 20; }
+    .cartes5ChanceChoix { grid-area: 3 / 21 / 15 / 25; } 
+
+*/
+
+.interieurCarteChance {
   display: grid;
-  grid-template-columns: repeat(24, 1fr);
-  grid-template-rows: repeat(15, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 
-.cartes1ChanceChoix {
-  grid-area: 3 / 1 / 15 / 5;
+.interieurTitre {
+  grid-area: 1 / 1 / 2 / 3;
 }
 
-.cartes2ChanceChoix {
-  grid-area: 3 / 6 / 15 / 10;
+.interieurtexte {
+  grid-area: 2 / 1 / 7 / 3;
 }
 
-.cartes3ChanceChoix {
-  grid-area: 3 / 11 / 15 / 15;
+.interieurLogo {
+  grid-area: 7 / 1 / 9 / 2;
+  background-image: url("../img/tree_planter/fini.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
 }
 
-.cartes4ChanceChoix {
-  grid-area: 3 / 16 / 15 / 20;
+.interieurNombre {
+  grid-area: 7 / 2 / 9 / 3;
 }
 
-.cartes5ChanceChoix {
-  grid-area: 3 / 21 / 15 / 25;
-} 
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                        LAUNCH.html                                                          #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
 
+.bodylaunch{
+  font-family: 'montserrat';
+  display: grid;
+  grid-template-columns:auto;
+  grid-template-rows:auto;
+}
 
+.bglaunch, .bglaunch2{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
 
+.bglaunch{
+  -webkit-clip-path: polygon(72% 74%, 100% 27%, 100% 100%, 5% 100%);
+  clip-path: polygon(72% 74%, 100% 27%, 100% 100%, 5% 100%);
+  z-index: -1;
+  background-color: #226dbc;
+}
 
+.bglaunch2{
+  z-index: -2;
+  background-color: #2a5f98;
+  -webkit-clip-path: polygon(64% 100%, 100% 27%, 62% 67%, 4% 100%);
+  clip-path: polygon(64% 100%, 100% 27%, 62% 67%, 4% 100%);
+}
 
+.containerlaunch{
+  display: grid;
+  grid-template-columns: 50% auto;
+  height: auto;
+  align-self: center;
+  margin: 0 50px;
+}
 
+.ullaunch{
+  perspective: 1000px;
+}
 
+.lilaunch{
+  display: grid;
+  grid-template-columns: 20% auto;
+  border-radius:10px;
+  padding: 14px;
+  cursor: pointer;
+  transform: rotateY(-25deg) rotateX(20deg);
+  position: absolute;
+  border-bottom: 4px solid rgba(0,0,0,.2);
+  border-right: 4px solid rgba(0,0,0,.2);
+  transition: 0.7s;
+}
 
+ul li:nth-child(1){
+  color:#fff;
+  background-color: #8063E1;
+  background-image: linear-gradient(135deg, #010101, #8063E1);
+  top: 512px;
+  z-index: 2;
+}
 
+ul li:nth-child(2){
+  background-color: #3F58E3;
+  background-image: linear-gradient(135deg, #7F94FC, #3F58E3);
+  z-index: 1;
+  color:white;
+}
 
+ul li:nth-child(3){
+  color:#fff;
+  background-color: #352F64;
+  background-image: linear-gradient(135deg, #660503, #352F64);
+  top: 115px;
+  z-index: 0;
+}
 
+ul li:hover{
+  transform: translateY(50%)  rotateY(-25deg) rotateX(15deg) scale(1.5);
+  z-index:3;
+}
 
+img{
+  width:70px;
+}
+
+.h1launch{
+  font-size: 3em;
+  margin-top: 0;
+}
+
+#left > p{
+  color:grey;
+  line-height: 1.5em;
+}
+
+/* TRAME JEU*/
+
+.parentJeu {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+/*contours */
+
+.div1Jeu {
+  grid-area: 1 / 1 / 2 / 25;
+}
+
+.div2Jeu {
+  grid-area: 1 / 1 / 25 / 2;
+}
+
+.div3Jeu {
+  grid-area: 24 / 1 / 25 / 25;
+}
+
+.div4Jeu {
+  grid-area: 1 / 24 / 25 / 25;
+}
+
+.div5Jeu {
+  grid-area: 1 / 8 / 3 / 18;
+}
+
+.div5Jeu h1{
+  font-size: 65px;
+}
+
+.divretourhomeJeu{
+  grid-area: 22 / 1 / 25 / 4;
+}
+
+.divJeu{
+  grid-area: 4 / 4 / 22 / 22;
+}

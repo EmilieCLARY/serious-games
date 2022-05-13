@@ -965,10 +965,10 @@ function selectOption(option) {
 const textNodes = [
     {
         id: 1,
-        text: 'Welcome ! You are a professionnal basketball player. It\s now time to do your first post. Remember to tell futures followers what you love. Choose between three posts !',
+        text: 'Welcome ! You are a professionnal basketball player. It\'s now time to do your first post. Remember to tell futures followers what you love. Choose between three posts !',
         options: [
             {
-                text: 'Welcome to my new account on Ethical Network !\n Unlike you I am the best basketball champion in the world. I plan to share my adventures with you via this account.\n Have fun !',
+                text: 'Welcome to my new account on Ethical Network !\n Unlike you I am the best basketball champion in the world. I plan to share my adventures with you through this account.\n Have fun !',
                 commentaries : ['Welcome in Ethical Network !','I\'m interested about your adventures !'],
                 fol : [20, 80],
                 folPS : 2,
@@ -978,7 +978,7 @@ const textNodes = [
                 appearance : true
             },
             {
-                text: 'Welcome to my new account on Ethical Network !\n I am currently a professional basketball player and I love this sport. I plan to share my adventures with you via this account.\n Have fun !',
+                text: 'Welcome to my new account on Ethical Network !\n I am currently a professional basketball player and I love this sport. I plan to share my adventures with you through this account.\n Have fun !',
                 commentaries : ['Welcome in Ethical Network !','I\'m interested about your adventures !'],
                 fol : [200, 400],
                 folPS : 7,
@@ -988,7 +988,7 @@ const textNodes = [
                 appearance : true
             },
             {
-                text: 'Welcome to my new account on Ethical Network !\n In life, I love basketball but I\'m not very good at it. But basketball is cool ! I plan to share my adventures with you via this account.',
+                text: 'Welcome to my new account on Ethical Network !\n In life, I love basketball but I\'m not very good at it. But basketball is cool ! I plan to share my adventures with you through this account.',
                 commentaries : ['Welcome in Ethical Network !','I\'m interested about your adventures !'],
                 fol : [200, 300],
                 folPS : 5,
@@ -1011,7 +1011,7 @@ const textNodes = [
     },
     {
         id: 3,
-        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose an answer, and it is really what we call a "good choice". You explain very clearly your current activity and what is your objectives. Your post were not arrogant and I congratulate you !',
+        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose an answer, and it is really what we call a "good choice". You explain very clearly your current activity and what are your objectives. Your post were not arrogant and I congratulate you !',
         options: [
             {
                 text: 'Thanks, go next !',
@@ -1518,7 +1518,7 @@ const textNodes = [
                 bh : 10,
                 nextText: 29,
                 mj : 0,
-                sponsor : 'Decatcour',
+                sponsor : 'Decathcour',
                 image : '../img/characters/sportif/posts/decathcour.png',
                 appearance : false
             },            
