@@ -1,0 +1,19 @@
+digraph G {
+
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		node [style=filled,color=white];
+		label = "Chief";
+	}
+
+
+
+	start -> ChoixPrésentation_PostSport;
+
+	
+	ChoixFinal -> end;
+
+	start [shape=Mdiamond];
+	end [shape=Msquare];
+}

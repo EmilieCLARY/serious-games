@@ -7,9 +7,10 @@ let state = {}
 let nextTxt;
 let userAppearance;
 
-socket.emit('getNextText');
 socket.emit('getAppearance');
+socket.emit('getNextText');
 socket.on('newAppearance', (Appearance)=>{
+    console.log("oui");
     userAppearance = Appearance;
 });
 socket.on('leProchainTexte', (text) => {
@@ -379,6 +380,7 @@ function showTextNode(textNodeIndex) {
                     newDivchoicexstruct.classList.add('choicexin3struct','h-full','w-full');
                     newDivchoicextext.appendChild(span1);
                     newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
+                    console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -453,6 +455,7 @@ function showTextNode(textNodeIndex) {
                     newDivchoicexstruct.classList.add('choicexin3struct','h-full','w-full');   
                     newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
                     newDivchoicextext.appendChild(span1);
+                    console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -527,6 +530,7 @@ function showTextNode(textNodeIndex) {
                     span5.classList.add('line','-bottom');              
                     newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
                     newDivchoicextext.appendChild(span1);
+                    console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -603,6 +607,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
+                    console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -685,6 +690,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
+                    console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -767,6 +773,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
+                    console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -848,6 +855,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
+                    console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -1696,7 +1704,7 @@ const textNodes = [
                 bh : 5,
                 nextText: 36,
                 mj : 0,
-                image : '../img/characters/sportif/posts/podiumTeam.png',
+                image : '../img/characters/sportif/posts/podiumTeamTrophy.png',
                 appearance : false
             },            
             {
@@ -1708,7 +1716,7 @@ const textNodes = [
                 bh : 30,
                 nextText: 37,
                 mj : 0,
-                image : '../img/characters/sportif/posts/winner/sportifMedal',
+                image : '../img/characters/sportif/posts/winnerseason/sportifTrophy',
                 appearance : true
             },            
             {
@@ -1720,7 +1728,7 @@ const textNodes = [
                 bh : 10,
                 nextText: 38,
                 mj : 0,
-                image : '../img/characters/sportif/posts/podiumComplet.png',
+                image : '../img/characters/sportif/posts/allTeamsTrophy.png',
                 appearance : false
             }
         ]

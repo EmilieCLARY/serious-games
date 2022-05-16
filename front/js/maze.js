@@ -65,6 +65,11 @@ function preload ()
     this.load.image('cdsT', '../img/maze/cdsT.png');
     this.load.image('cdsB', '../img/maze/cdsB.png');
 
+    this.load.image('playerB', '../img/maze/scientistBackMaze.png');
+    this.load.image('playerL', '../img/maze/scientistLMaze.png');
+    this.load.image('playerR', '../img/maze/scientistRMaze.png');
+    this.load.image('playerF', '../img/maze/scientistMaze.png');
+
 
     this.load.image('player', '../img/big_head/champR.png');
     this.load.image('barrel', '../img/maze/barrel.png');
@@ -190,7 +195,7 @@ function create ()
                 PosX += 80;
             }
             else if(map[i][j] == 0){
-                this.add.sprite(PosX, PosY, "player").setScale(0.25);
+                this.add.sprite(PosX, PosY, "playerF").setScale(0.25);
                 PosX += 80; 
             }
             
@@ -249,8 +254,8 @@ function create ()
     bushSortie.body.immovable = true;
 
 
-    this.player = this.physics.add.sprite(entreeX * 80 + 100, entreeY * 80 + 50, 'player').setCollideWorldBounds(true);
-    this.player.setScale(4);
+    this.player = this.physics.add.sprite(entreeX * 80 + 100, entreeY * 80 + 50, 'playerF').setCollideWorldBounds(true);
+    this.player.setScale(0.1);
 
     this.physics.add.collider(this.player, bushSortie);
 
@@ -296,15 +301,19 @@ function update (time, delta)
 
     if (this.cursors.left.isDown){
         this.player.setVelocityX(-400);
+        this.player.setTexture('playerL');
     }
     else if (this.cursors.right.isDown){
         this.player.setVelocityX(400);
+        this.player.setTexture('playerR');
     }
     if (this.cursors.up.isDown){
         this.player.setVelocityY(-400);
+        this.player.setTexture('playerB');
     }
     else if (this.cursors.down.isDown){
         this.player.setVelocityY(400);
+        this.player.setTexture('playerF');
     }
 
     for(let i = 0; i < barrel.length; i++){

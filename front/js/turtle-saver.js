@@ -251,7 +251,7 @@ function create ()
 
     life = this.physics.add.sprite(this.game.config.width - 95, 50, 'full-life');
     life.setScale(0.075);
-    life.setBodySize(2000, 1500) 
+    life.setBodySize(2000, 1500);
 
     for(let i = 0; i < tabTurtle.length; i++){
 
@@ -452,13 +452,14 @@ function update (time, delta)
         else if(player_health == 1){
             socket.emit("numberOfMalusCards", 3);
         }
+        this.scene.pause();
 
         //pour le point info
         document.getElementById("btnmodaltortue").addEventListener("click", event => {
             document.getElementById("modaltortuewin").style.display = "none";
             document.getElementById("modaltortueinfo").style.display = "block";
         });
-        this.scene.pause();
+        
     }
     else if(player_health == 0){
         //textGAMEOVER.setText("GAME OVER \n No more lifes, turtles are dead because of you !");

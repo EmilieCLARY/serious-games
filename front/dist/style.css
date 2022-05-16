@@ -517,14 +517,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 0.75rem;
 }
 
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 .ml-4 {
@@ -583,10 +588,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.25rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .ml-5 {
   margin-left: 1.25rem;
 }
@@ -595,12 +596,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 1.25rem;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .mb-10 {
   margin-bottom: 2.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .block {
@@ -1493,7 +1494,7 @@ body{
 }
 
 .tortue{
-  background-image: url("../img/freeplay/turtle_play.PNG" );
+  background-image: url("../img/freeplay/turtle-saver.png" );
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1512,6 +1513,18 @@ body{
 
 .supermarche{
   background-image: url("../img/freeplay/supermarket.png" );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.treeplanter{
+  background-image: url("../img/freeplay/tree-planter.png" );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.fakeinvaders{
+  background-image: url("../img/freeplay/fake-invaders.png" );
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1748,6 +1761,20 @@ body{
   background-position : center;
 }
 
+.chiefs{
+  background-image: url("../img/characters/chief/chefs.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.gamers{
+  background-image: url("../img/characters/tech/tech.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
 .whiteGuyComedian{
   background-image: url("../img/characters/comedian/comedianWG.png" );
   background-size: contain;
@@ -1785,6 +1812,90 @@ body{
 
 .yellowWomenComedian{
   background-image: url("../img/characters/comedian/comedianYW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.whiteGuyChief{
+  background-image: url("../img/characters/chief/chefWG.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.blackGuyChief{
+  background-image: url("../img/characters/chief/chefBG.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.yellowGuyChief{
+  background-image: url("../img/characters/chief/chefYG.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.whiteWomenChief{
+  background-image: url("../img/characters/chief/chefWW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.blackWomenChief{
+  background-image: url("../img/characters/chief/chefBW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.yellowWomenChief{
+  background-image: url("../img/characters/chief/chefYW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.whiteGuyTech{
+  background-image: url("../img/characters/tech/gamerWG.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.blackGuyTech{
+  background-image: url("../img/characters/tech/gamerBG.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.yellowGuyTech{
+  background-image: url("../img/characters/tech/gamerYG.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.whiteWomenTech{
+  background-image: url("../img/characters/tech/gamerWW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.blackWomenTech{
+  background-image: url("../img/characters/tech/gamerBW.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.yellowWomenTech{
+  background-image: url("../img/characters/tech/gamerYW.png" );
   background-size: contain;
   background-repeat: no-repeat;
   background-position : center;
@@ -2605,6 +2716,55 @@ body{
    #######################################################################################################################
    ####################################################################################################################### */
 
+.divGlobalAccueil {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.nomDuJeu {
+  grid-area: 2 / 1 / 20 / 11;
+}
+
+.choixDuJeu {
+  grid-area: 2 / 11 / 20 / 21;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(18, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.choiceMainAdventure {
+  grid-area: 1 / 1 / 7 / 11;
+  /*display: grid;
+    grid-template-columns: 20% auto;*/
+  border-radius:10px;
+  padding: 14px;
+  cursor: pointer;
+  height: 25vh;
+  /*transform: rotateY(-25deg) rotateX(20deg);*/
+  position: absolute;
+  border-bottom: 4px solid rgba(0,0,0,.2);
+  border-right: 4px solid rgba(0,0,0,.2);
+  transition: 5s;
+}
+
+.choiceMainAdventure:hover{
+  transform: translateY(50%) translateX(-50%)  rotateY(-25deg) rotateX(25deg) scale(1.5);
+  z-index:3;
+}
+
+.choiceFreePlay {
+  grid-area: 7 / 1 / 13 / 11;
+}
+
+.choiceThirdMode {
+  grid-area: 13 / 1 / 19 / 11;
+}
+
 .bodylaunch{
   font-family: 'montserrat';
   display: grid;
@@ -2741,4 +2901,67 @@ img{
 
 .divJeu{
   grid-area: 4 / 4 / 22 / 22;
+}
+
+/* #######################################################################################################################
+   #######################################################################################################################
+   #####                                                                                                             #####
+   #####                                        fakenews.html                                                          #####
+   #####                                                                                                             #####
+   #######################################################################################################################
+   ####################################################################################################################### */
+
+.modalfakewin{
+  grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modalfakeloose{
+  grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modalfakeinfo{
+  grid-area: 6 / 7 / 20 / 19 ;
+}
+
+.modalinfoparentfake {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.modalinfoparenttitrefake {
+  grid-area: 1 / 4 / 3 / 10;
+}
+
+.modalinfoparentprofessorfake {
+  grid-area: 3 / 1 / 12 / 6;
+}
+
+.modalinfoparentblablafake {
+  grid-area: 3 / 6 / 10 / 12;
+}
+
+.modalinfoparentbtnfake {
+  grid-area: 11 / 7 / 13 / 11;
+}
+
+.professorfake{
+  background-image: url("../img/characters/scientist/scientistLight.png" );
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position : center;
+}
+
+.modalfakewin{
+  display:none;
+}
+
+.modalfakeloose{
+  display: none;
+}
+
+.modalfakeinfo{
+  display:none;
 }

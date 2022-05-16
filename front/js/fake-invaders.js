@@ -12,8 +12,8 @@ var config = {
         arcade : {
             //debug : true,
         }
-    }/*,
-    parent: 'turtleSaver'*/
+    },
+    parent: 'fakeinvaders'
 };
 
 var game = new Phaser.Game(config);
@@ -25,9 +25,15 @@ var ZQSD;
 var space;
 
 var player;
+var hitbox;
 var enemyyyyyys = [];
 var enemyFiring;
 var timeEnemy = [];
+var life;
+var player_health = 3;
+var numberOfEnnemies = 30;
+var text;
+var ennemyDestroyed = 0;
 
 var sourceTab = [];
 var fakeTab = [];
@@ -53,6 +59,17 @@ function preload ()
     this.load.image('source3', '../img/fakenews/source4.png');
     this.load.image('source4', '../img/fakenews/source5.png');
     
+    this.load.image('full-life', '../img/turtle_saver/full-life.png')
+    this.load.image('two-life', '../img/turtle_saver/two-heart.png')
+    this.load.image('one-life', '../img/turtle_saver/one-heart.png')
+    this.load.image('zero-life', '../img/turtle_saver/zero-heart.png')
+
+
+    //pour le non affichage des modaux
+    document.getElementById("modalfakewin").style.display = "none";
+    document.getElementById("modalfakeloose").style.display = "none";
+    document.getElementById("modalfakeinfo").style.display = "none";
+
 }
 
 
@@ -67,11 +84,22 @@ function create ()
     player = this.physics.add.sprite(250, 350,'player').setScale(0.2);
     player.body.collideWorldBounds = true;
 
+    hitbox = this.physics.add.sprite(50, 350, 'player').setScale(0.2).setVisible(false).setBodySize(0, 3000);
+
     for(let i = 0; i < 6; i++){
         let enemy = this.add.sprite(1150, i*100 + 80, 'satellite').setScale(0.35);
         enemyyyyyys.push(enemy);
     }
 
+    life = this.physics.add.sprite(200, 35, 'full-life');
+    life.setScale(0.075);
+    life.setBodySize(2000, 1500);
+
+    text = this.add.text(800, 10, "Fake news remaining : " + numberOfEnnemies, {
+        font: "20px Arial",
+        fill : "#FFFFFF",
+        align : "center"
+    });
 }
 
 function update (time, delta)
@@ -89,10 +117,20 @@ function update (time, delta)
     //enemyFiring = Phaser.Math.Between(0, 5);
     //console.log(enemyyyyyys[enemyFiring], this.time.now);
 
-    while(this.time.now > firingTimer){
+    while(this.time.now > firingTimer && numberOfEnnemies != 0){
         enemyFiring = Phaser.Math.Between(0, 5);
-        let tirEnnemis = this.physics.add.sprite(1150, enemyFiring*100 + 80, 'fake').setScale(0.15).setVelocityX(-200);
-        fakeTab.push(tirEnnemis);
+        let rnd = Math.floor(Math.random() * 2);
+        //console.log(rnd);
+        if(rnd == 0){
+            let tirEnnemis = this.physics.add.sprite(1150, enemyFiring*100 + 80, 'fake').setScale(0.15).setVelocityX(-200);
+            fakeTab.push(tirEnnemis);
+        }
+        else{
+            let tirEnnemis = this.physics.add.sprite(1150, enemyFiring*100 + 80, 'fakenewspaper').setScale(0.15).setVelocityX(-200);
+            fakeTab.push(tirEnnemis);
+        }
+        numberOfEnnemies--;
+        text.setText("Fake news remaining : " + numberOfEnnemies);
         //console.log(enemyFiring);
         firingTimer = this.time.now + 2000;
     }
@@ -112,13 +150,69 @@ function update (time, delta)
         SOURCE.setScale(0.4);
         sourceTab.push(SOURCE);
     }
-
+    
     for(let i = 0; i < fakeTab.length; i++){
         for(let j = 0; j < sourceTab.length; j++){
             this.physics.overlap(fakeTab[i], sourceTab[j], () => {
                 fakeTab[i].destroy();
                 sourceTab[j].destroy();
+                ennemyDestroyed++;
             }, null, this);
         }
+        this.physics.overlap(fakeTab[i], hitbox, () => {
+            fakeTab[i].destroy();
+            lifeLess();
+        }, null, this);
     }
+
+    if(player_health == 2){
+        life.destroy()
+        life = this.physics.add.sprite(200, 35, 'two-life');
+        life.setScale(0.075);
+    }
+    if(player_health == 1){
+        life.destroy()
+        life = this.physics.add.sprite(200, 35, 'one-life');
+        life.setScale(0.075);
+    }
+    
+    if(player_health == 0){
+        life.destroy()
+        life = this.physics.add.sprite(200, 35, 'zero-life');
+        life.setScale(0.075);
+        //gameover = this.physics.add.sprite(this.game.config.width/2, this.game.config.height/2, 'gameover');
+        //gameover.setScale(0.5);
+    }
+
+    // Victoire
+    if(ennemyDestroyed == 30){
+
+        document.getElementById("modalfakewin").style.display = "block";
+
+        if(player_health == 3){
+            socket.emit("numberOfMalusCards", 1);
+        }
+        else if(player_health == 2){
+            socket.emit("numberOfMalusCards", 2);
+        }
+        else if(player_health == 1){
+            socket.emit("numberOfMalusCards", 3);
+        }
+        this.scene.pause();
+
+        document.getElementById("btnmodalfake").addEventListener("click", event => {
+            document.getElementById("modalfakewin").style.display = "none";
+            document.getElementById("modalfakeinfo").style.display = "block";
+        });
+    }
+    // Défaite
+    if(player_health == 0){
+        socket.emit("numberOfMalusCards", 4);
+        this.scene.pause();
+        document.getElementById("modalfakeloose").style.display = "block";
+    }
+}
+
+function lifeLess(){
+    player_health--;
 }

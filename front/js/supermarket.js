@@ -12,7 +12,8 @@ var config = {
         arcade : {
             //debug : true,
         }
-    }
+    },
+    parent: 'superemarket'
 };
 
 var game = new Phaser.Game(config);
