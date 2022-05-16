@@ -55,6 +55,13 @@ socket.on("numberOfMalus", (number) => {
       break;
 
     default:
+      rnd = Math.floor(Math.random() * 5);
+      malusCombinaison[rnd] = 1;
+      rnd = Math.floor(Math.random() * 5);
+      while (malusCombinaison[rnd] == 1) {
+        rnd = Math.floor(Math.random() * 5);
+      }
+      malusCombinaison[rnd] = 1;
       break;
   }
   console.log(malusCombinaison);
@@ -79,8 +86,8 @@ bonusCards.push(new Card("You gain 1000 followers", "F", 1000, 0));
 bonusCards.push(new Card("You gain 10000 followers", "F", 10000, 0));
 bonusCards.push(new Card("Your city makes you an offer and gives you a location: you gain 10000 followers with your best content.\nYou gain 10000 followers", "F", 10000, 0));
 bonusCards.push(new Card("You gain material for your company. \nYou gain 2000 followers", "F", 2000, 0));
-//bonusCards.push(new Card("", "", 0, 0));
-//bonusCards.push(new Card("", "", 0, 0));
+bonusCards.push(new Card("A product placement in a story gains you some followers. You gain 5000 followers", "F", 5000, 0));
+bonusCards.push(new Card("A product placement in a story gains you some trees. You gain 20 trees", "T", 20, 0));
 //bonusCards.push(new Card("", "", 0, 0));
 //bonusCards.push(new Card("", "", 0, 0));
 //bonusCards.push(new Card("", "", 0, 0));
@@ -96,12 +103,12 @@ bonusCards.push(new Card("You gain material for your company. \nYou gain 2000 fo
 
 malusCards.push(new Card("Fire on the plot, it must be destroyed. \nYou lose 20 trees", "T", 0, 20));
 malusCards.push(new Card("Your account has been hacked. \nDuring this period you lose 1000 followers", "F", 0, 1000));
-malusCards.push(new Card("You are the victim of a burglary and cannot post anything for 2 weeks. \nYou lose 5000 followers", "", 0, 5000));
+malusCards.push(new Card("You are the victim of a burglary and cannot post anything for 2 weeks. \nYou lose 5000 followers", "F", 0, 5000));
 malusCards.push(new Card("You take the big head \nYou gain 30% of gauge", "B", 0, 30));
 malusCards.push(new Card("You lose 1000 followers", "F", 0, 1000));
 malusCards.push(new Card("You lose 10000 followers", "F", 0, 10000));
-//malusCards.push(new Card("", "", 0, 0));
-//malusCards.push(new Card("", "", 0, 0));
+malusCards.push(new Card("You have some haters in the Ethical Network. You lose 2000 followers", "F", 0, 2000));
+malusCards.push(new Card("Fake accounts steal your identity and harass some of your followers. You lose 5000 followers", "F", 0, 5000));
 //malusCards.push(new Card("", "", 0, 0));
 //malusCards.push(new Card("", "", 0, 0));
 //malusCards.push(new Card("", "", 0, 0));
@@ -167,25 +174,39 @@ document.getElementById("card1").addEventListener("click", function (event) {
 
     document.getElementById("textCard1").textContent = card.text;
     if (bonusOrNot) {
+      document.getElementById("interieurTitre1").textContent = "BONUS";
       if (card.type == "F") {
+        document.getElementById("interieurNombre1").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo1").classList.add("interieurLogoAbo");
         socket.emit("moreFollowers", card.bonus);
       }
       else if (card.type == "T") {
+        document.getElementById("interieurNombre1").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo1").classList.add("interieurLogoArbre");
         socket.emit("moreTreesToPlant", card.bonus);
       }
       else if (card.type == "B") {
+        document.getElementById("interieurNombre1").textContent = "- " + card.bonus + "%";
+        document.getElementById("interieurLogo1").classList.add("interieurLogoJauge");
         socket.emit("moreBigHeadGauge", -card.bonus);
       }
     }
     else {
+      document.getElementById("interieurTitre1").textContent = "MALUS";
       if (card.type == "F") {
         socket.emit("moreFollowers", -card.malus);
+        document.getElementById("interieurNombre1").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo1").classList.add("interieurLogoAbo");
       }
       else if (card.type == "T") {
         socket.emit("lessTreesPlanted", -card.malus);
+        document.getElementById("interieurNombre1").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo1").classList.add("interieurLogoArbre");
       }
       else if (card.type == "B") {
         socket.emit("moreBigHeadGauge", card.malus);
+        document.getElementById("interieurNombre1").textContent = "+ " + card.malus + "%";
+        document.getElementById("interieurLogo1").classList.add("interieurLogoJauge");
       }
     }
 
@@ -215,43 +236,58 @@ document.getElementById("card2").addEventListener("click", function (event) {
       document.getElementById("card2-container").style.transform = "";
       document.getElementById("card2").style.transform = "";
     }, 2000 );*/
-  }
-  let card;
-  let bonusOrNot;
-  if (malusCombinaison[1] == 0) {
-    card = getRandomBonusCard();
-    bonusOrNot = true;
-  }
-  else {
-    card = getRandomMalusCard();
-    bonusOrNot = false;
-  }
+    let card;
+    let bonusOrNot;
+    if (malusCombinaison[1] == 0) {
+      card = getRandomBonusCard();
+      bonusOrNot = true;
+    }
+    else {
+      card = getRandomMalusCard();
+      bonusOrNot = false;
+    }
 
 
-  document.getElementById("textCard2").textContent = card.text;
-  if (bonusOrNot) {
-    if (card.type == "F") {
-      socket.emit("moreFollowers", card.bonus);
-      //console.log("Gain de", card.bonus, "followers");
+    document.getElementById("textCard2").textContent = card.text;
+    if (bonusOrNot) {
+      document.getElementById("interieurTitre2").textContent = "BONUS";
+      if (card.type == "F") {
+        socket.emit("moreFollowers", card.bonus);
+        document.getElementById("interieurNombre2").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo2").classList.add("interieurLogoAbo");
+        //console.log("Gain de", card.bonus, "followers");
+      }
+      else if (card.type == "T") {
+        socket.emit("moreTreesToPlant", card.bonus);
+        document.getElementById("interieurNombre2").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo2").classList.add("interieurLogoArbre");
+      }
+      else if (card.type == "B") {
+        socket.emit("moreBigHeadGauge", -card.bonus);
+        document.getElementById("interieurNombre2").textContent = "- " + card.bonus + "%";
+        document.getElementById("interieurLogo2").classList.add("interieurLogoJauge");
+      }
     }
-    else if (card.type == "T") {
-      socket.emit("moreTreesToPlant", card.bonus);
-    }
-    else if (card.type == "B") {
-      socket.emit("moreBigHeadGauge", -card.bonus);
+    else {
+      document.getElementById("interieurTitre2").textContent = "MALUS";
+      if (card.type == "F") {
+        socket.emit("moreFollowers", -card.malus);
+        document.getElementById("interieurNombre2").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo2").classList.add("interieurLogoAbo");
+      }
+      else if (card.type == "T") {
+        socket.emit("lessTreesPlanted", -card.malus);
+        document.getElementById("interieurNombre2").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo2").classList.add("interieurLogoArbre");
+      }
+      else if (card.type == "B") {
+        socket.emit("moreBigHeadGauge", card.malus);
+        document.getElementById("interieurNombre2").textContent = "+ " + card.malus + "%";
+        document.getElementById("interieurLogo2").classList.add("interieurLogoJauge");
+      }
     }
   }
-  else {
-    if (card.type == "F") {
-      socket.emit("moreFollowers", -card.malus);
-    }
-    else if (card.type == "T") {
-      socket.emit("lessTreesPlanted", -card.malus);
-    }
-    else if (card.type == "B") {
-      socket.emit("moreBigHeadGauge", card.malus);
-    }
-  }
+
 
 }, false);
 
@@ -292,25 +328,39 @@ document.getElementById("card3").addEventListener("click", function (event) {
 
     document.getElementById("textCard3").textContent = card.text;
     if (bonusOrNot) {
+      document.getElementById("interieurTitre3").textContent = "BONUS";
       if (card.type == "F") {
         socket.emit("moreFollowers", card.bonus);
+        document.getElementById("interieurNombre3").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo3").classList.add("interieurLogoAbo");
       }
       else if (card.type == "T") {
         socket.emit("moreTreesToPlant", card.bonus);
+        document.getElementById("interieurNombre3").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo3").classList.add("interieurLogoArbre");
       }
       else if (card.type == "B") {
         socket.emit("moreBigHeadGauge", -card.bonus);
+        document.getElementById("interieurNombre3").textContent = "- " + card.bonus + "%";
+        document.getElementById("interieurLogo3").classList.add("interieurLogoJauge");
       }
     }
     else {
+      document.getElementById("interieurTitre3").textContent = "MALUS";
       if (card.type == "F") {
         socket.emit("moreFollowers", -card.malus);
+        document.getElementById("interieurNombre3").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo3").classList.add("interieurLogoAbo");
       }
       else if (card.type == "T") {
         socket.emit("lessTreesPlanted", -card.malus);
+        document.getElementById("interieurNombre3").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo3").classList.add("interieurLogoArbre");
       }
       else if (card.type == "B") {
         socket.emit("moreBigHeadGauge", card.malus);
+        document.getElementById("interieurNombre3").textContent = "+ " + card.malus + "%";
+        document.getElementById("interieurLogo3").classList.add("interieurLogoJauge");
       }
     }
   }
@@ -318,9 +368,8 @@ document.getElementById("card3").addEventListener("click", function (event) {
 
 
 
-
 //card 4
-document.getElementById("card4").addEventListener("click", function (event) {
+/*document.getElementById("card4").addEventListener("click", function (event) {
   if (dejaRetournee === 0) {
     dejaRetournee = 1;
     carteChoisis = 4;
@@ -340,7 +389,7 @@ document.getElementById("card4").addEventListener("click", function (event) {
       document.getElementById("card4-container").style.transform = "";
       document.getElementById("card4").style.transform = "";
     }, 2000 );*/
-    let card;
+    /*let card;
     let bonusOrNot;
     if (malusCombinaison[3] == 0) {
       card = getRandomBonusCard();
@@ -354,29 +403,119 @@ document.getElementById("card4").addEventListener("click", function (event) {
 
     document.getElementById("textCard4").textContent = card.text;
     if (bonusOrNot) {
+      document.getElementById("interieurTitre4").textContent = "BONUS";
       if (card.type == "F") {
         socket.emit("moreFollowers", card.bonus);
+        document.getElementById("interieurNombre4").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoAbo");
       }
       else if (card.type == "T") {
         socket.emit("moreTreesToPlant", card.bonus);
+        document.getElementById("interieurNombre4").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoArbre");
       }
       else if (card.type == "B") {
         socket.emit("moreBigHeadGauge", -card.bonus);
+        document.getElementById("interieurNombre4").textContent = "- " + card.bonus + "%";
+        document.getElementById("interieurLogo4").classList.add("interieurLogoJauge");
       }
     }
     else {
+      document.getElementById("interieurTitre4").textContent = "MALUS";
       if (card.type == "F") {
         socket.emit("moreFollowers", -card.malus);
+        document.getElementById("interieurNombre4").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoAbo");
       }
       else if (card.type == "T") {
         socket.emit("lessTreesPlanted", -card.malus);
+        document.getElementById("interieurNombre4").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoArbre");
       }
       else if (card.type == "B") {
         socket.emit("moreBigHeadGauge", card.malus);
+        document.getElementById("interieurNombre4").textContent = "+ " + card.malus + "%";
+        document.getElementById("interieurLogo4").classList.add("interieurLogoJauge");
+      }
+    }
+  }
+}, false);*/
+
+
+
+//3eme carte
+document.getElementById("card4").addEventListener("click", function (event) {
+  if (dejaRetournee === 0) {
+    dejaRetournee = 1;
+    carteChoisis = 4;
+    //event.target.style.color = "orange";
+    //event.target.style.transform = "rotateY(180deg)"; 
+    document.getElementById("card4").style.transition = "all 0.6s ease";
+    document.getElementById("card4").style.transform = "preserve-3d";
+
+    document.getElementById("card4-container").style.transform = "rotateY(180deg)";
+    document.getElementById("card4").style.transform = "rotateY(180deg)";
+    document.getElementById("card4-back").style.transform = "rotateY(-180deg)";
+
+    // on réinitialise 
+    /*setTimeout(function() {
+      event.target.style.color = "";
+      event.target.style.transform = "";
+      document.getElementById("card3-container").style.transform = "";
+      document.getElementById("card3").style.transform = "";
+    }, 2000 );*/
+    let card;
+    let bonusOrNot;
+    if (malusCombinaison[2] == 0) {
+      card = getRandomBonusCard();
+      bonusOrNot = true;
+    }
+    else {
+      card = getRandomMalusCard();
+      bonusOrNot = false;
+    }
+
+
+    document.getElementById("textCard4").textContent = card.text;
+    if (bonusOrNot) {
+      document.getElementById("interieurTitre4").textContent = "BONUS";
+      if (card.type == "F") {
+        socket.emit("moreFollowers", card.bonus);
+        document.getElementById("interieurNombre4").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoAbo");
+      }
+      else if (card.type == "T") {
+        socket.emit("moreTreesToPlant", card.bonus);
+        document.getElementById("interieurNombre4").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoArbre");
+      }
+      else if (card.type == "B") {
+        socket.emit("moreBigHeadGauge", -card.bonus);
+        document.getElementById("interieurNombre4").textContent = "- " + card.bonus + "%";
+        document.getElementById("interieurLogo4").classList.add("interieurLogoJauge");
+      }
+    }
+    else {
+      document.getElementById("interieurTitre4").textContent = "MALUS";
+      if (card.type == "F") {
+        socket.emit("moreFollowers", -card.malus);
+        document.getElementById("interieurNombre4").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoAbo");
+      }
+      else if (card.type == "T") {
+        socket.emit("lessTreesPlanted", -card.malus);
+        document.getElementById("interieurNombre4").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo4").classList.add("interieurLogoArbre");
+      }
+      else if (card.type == "B") {
+        socket.emit("moreBigHeadGauge", card.malus);
+        document.getElementById("interieurNombre4").textContent = "+ " + card.malus + "%";
+        document.getElementById("interieurLogo4").classList.add("interieurLogoJauge");
       }
     }
   }
 }, false);
+
 
 
 
@@ -416,25 +555,39 @@ document.getElementById("card5").addEventListener("click", function (event) {
 
     document.getElementById("textCard5").textContent = card.text;
     if (bonusOrNot) {
+      document.getElementById("interieurTitre5").textContent = "BONUS";
       if (card.type == "F") {
         socket.emit("moreFollowers", card.bonus);
+        document.getElementById("interieurNombre5").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo5").classList.add("interieurLogoAbo");
       }
       else if (card.type == "T") {
         socket.emit("moreTreesToPlant", card.bonus);
+        document.getElementById("interieurNombre5").textContent = "+ " + card.bonus;
+        document.getElementById("interieurLogo5").classList.add("interieurLogoArbre");
       }
       else if (card.type == "B") {
         socket.emit("moreBigHeadGauge", -card.bonus);
+        document.getElementById("interieurNombre5").textContent = "- " + card.bonus + "%";
+        document.getElementById("interieurLogo5").classList.add("interieurLogoJauge");
       }
     }
     else {
+      document.getElementById("interieurTitre5").textContent = "MALUS";
       if (card.type == "F") {
         socket.emit("moreFollowers", -card.malus);
+        document.getElementById("interieurNombre5").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo5").classList.add("interieurLogoAbo");
       }
       else if (card.type == "T") {
         socket.emit("lessTreesPlanted", -card.malus);
+        document.getElementById("interieurNombre5").textContent = "- " + card.malus;
+        document.getElementById("interieurLogo5").classList.add("interieurLogoArbre");
       }
       else if (card.type == "B") {
         socket.emit("moreBigHeadGauge", card.malus);
+        document.getElementById("interieurNombre5").textContent = "+ " + card.malus + "%";
+        document.getElementById("interieurLogo5").classList.add("interieurLogoJauge");
       }
     }
   }

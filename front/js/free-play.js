@@ -1,25 +1,25 @@
 document.getElementById("petitmodaltts").addEventListener("click", event => {
-    window.location.href = "../html/turtle-saver.html";
+    window.location.href = "../html/turtle-saver-fp.html";
 });
 
 document.getElementById("petitmodalmaze").addEventListener("click", event => {
-    window.location.href = "../html/maze.html";
+    window.location.href = "../html/maze-fp.html";
 });
 
 document.getElementById("petitmodalbh").addEventListener("click", event => {
-    window.location.href = "../html/big-head.html";
+    window.location.href = "../html/big-head-fp.html";
 });
 
 document.getElementById("petitmodalsupermarket").addEventListener("click", event => {
-    window.location.href = "../html/supermarket.html";
+    window.location.href = "../html/supermarket-fp.html";
 });
 
 document.getElementById("petitmodaltreeplanter").addEventListener("click", event => {
-    window.location.href = "../html/tree-planter.html";
+    window.location.href = "../html/tree-planter-fp.html";
 });
 
 document.getElementById("petitmodalfakeinvaders").addEventListener("click", event => {
-    window.location.href = "../html/fake-invaders.html";
+    window.location.href = "../html/fake-invaders-fp.html";
 });
 
 /*document.getElementById("tp").addEventListener("click", event => {

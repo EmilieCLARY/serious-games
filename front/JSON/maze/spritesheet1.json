@@ -1,0 +1,95 @@
+{
+	"frames": {
+		"scientist1.png": {
+			"frame": {
+				"x": 5,
+				"y": 5,
+				"w": 170,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 170,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 170,
+				"h": 380
+			}
+		},
+		"scientist2.png": {
+			"frame": {
+				"x": 185,
+				"y": 5,
+				"w": 160,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 380
+			}
+		},
+		"scientist3.png": {
+			"frame": {
+				"x": 355,
+				"y": 5,
+				"w": 170,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 170,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 170,
+				"h": 380
+			}
+		},
+		"scientist4.png": {
+			"frame": {
+				"x": 535,
+				"y": 5,
+				"w": 160,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 380
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 700,
+			"h": 390
+		},
+		"scale": "1"
+	}
+}

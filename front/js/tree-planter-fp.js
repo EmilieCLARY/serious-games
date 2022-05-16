@@ -19,13 +19,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 // TIME IN SECONDS
-var timeToPlay = 12000;
-var treesToPlant;
-
-socket.emit('getTreesToPlant');
-socket.on('newTreesToPlant', (nb) => {
-    treesToPlant = nb;
-});
+var timeToPlay = 120;
 
 var cursor;
 var upKey;
@@ -85,17 +79,12 @@ function preload ()
     this.load.image('medium', '../img/tree_planter/medium.png');
     this.load.image('grand', '../img/tree_planter/fini.png');
 
-    this.load.image('player', '../img/tree_planter/lumberjack.png');
+    this.load.image('player', '../img/big_head/champR.png');
 
-    this.load.atlas('playerRight', '../img/tree_planter/spritesheetLumberR.png', '../JSON/tree_planter/spritesheetLumberR.json');
-    this.load.atlas('playerFace', '../img/tree_planter/spritesheetLumberFace.png', '../JSON/tree_planter/spritesheetLumberFace.json');
-    this.load.atlas('playerBack', '../img/tree_planter/spritesheetLumberBack.png', '../JSON/tree_planter/spritesheetLumberBack.json');
+    this.load.atlas('playerRight', '../img/tree-planter/spritesheetLumberR.png', '../JSON/maze/spritesheetLumberR.json');
 
 
     this.load.image('arrow', '../img/tree_planter/arrow.png');
-
-
-    document.getElementById("modalendtree").style.display = "none";
 }
 
 
@@ -132,7 +121,7 @@ function create ()
     console.log(tmpCounter / 2)
 
     this.player = this.physics.add.sprite(300, 200, 'player').setCollideWorldBounds(true);
-    this.player.setScale(0.15);
+    this.player.setScale(2);
 
     /********************************/
     /*                              */
@@ -209,17 +198,7 @@ function create ()
         frameRate: 10,
     });
 
-    this.anims.create({
-        key: 'walkTop',
-        frames: this.anims.generateFrameNames('playerBack', {prefix : 'lumberjack', suffix : '.png', start: 21, end: 24, zeroPad: 1}),
-        frameRate: 10,
-    });
 
-        this.anims.create({
-        key: 'walkBot',
-        frames: this.anims.generateFrameNames('playerFace', {prefix : 'lumberjack', suffix : '.png', start: 11, end: 14, zeroPad: 1}),
-        frameRate: 10,
-    });
 }
 
 function update (time, delta)
@@ -230,23 +209,21 @@ function update (time, delta)
     if (this.cursors.left.isDown){
         this.player.setVelocityX(-200);
 
+
         this.player.flipX = true;
         this.player.anims.play('walkRight', true);
     }
     else if (this.cursors.right.isDown){
         this.player.setVelocityX(200);
+
         this.player.flipX = false;
         this.player.anims.play('walkRight', true);
     }
     if (this.cursors.up.isDown){
         this.player.setVelocityY(-200);
-        this.player.flipX = false;
-        this.player.anims.play('walkTop', true);
     }
     else if (this.cursors.down.isDown){
         this.player.setVelocityY(200);
-        this.player.flipX = false;
-        this.player.anims.play('walkBot', true);
     }
     //console.log(Math.round(this.player.x), Math.round(this.player.y));
 
@@ -349,8 +326,6 @@ function update (time, delta)
     treeFull = countTrees()[0];
     treePlanted = countTrees()[1];
 
-
-
     //console.log(map[35][69]);
     /********************************/
     /*                              */
@@ -358,9 +333,7 @@ function update (time, delta)
     /*                              */
     /********************************/
 
-    //console.log(countTrees()[0] + countTrees()[1], treesToPlant);
-
-    if(newTreeeeeee === true && ((countTrees()[0] + countTrees()[1]) < treesToPlant)){
+    if(newTreeeeeee === true){
 
         let posPlayerY = Math.round((this.player.x-120) / 40);
         let posPlayerX = Math.round((this.player.y-220) / 40);
@@ -437,24 +410,13 @@ function update (time, delta)
         '\nTrees planted : ' + treeFull
     );
 
-    let tmpLUL = treesToPlant - treeFull;
-    textTime.setText('Trees to plant : ' + tmpLUL);
-
-    if(tmpLUL == 0){
-        document.getElementById("modalendtree").style.display = "block";
-        document.getElementById("leBeauBouton").addEventListener("click", event => {
-            socket.emit('treesPlanted', countTrees()[0]);
-            window.location.href = "../html/home.html";
-        });
-    }
-
      /********************************/
     /*                              */
     /* --   Gestion du temps    --  */
     /*                              */
     /********************************/
 
-    /*let currentTime = timeToPlay - parseInt(time/1000);
+    let currentTime = timeToPlay - parseInt(time/1000);
 
     if(currentTime < 60){  
         if(currentTime < 10){
@@ -483,18 +445,13 @@ function update (time, delta)
         text.setScrollFactor(0);
         this.scene.pause();
         socket.emit('treesPlanted', countTrees()[0]);
-    }*/
+    }
 
     this.minimap.ignore(text);
     this.minimap.ignore(text2);
     this.minimap.ignore(textTime);
     this.minimap.ignore(arrow);
 }
-
-document.getElementById("leBouton").addEventListener("click", event => {
-    socket.emit('treesPlanted', countTrees()[0]);
-    window.location.href = "../html/home.html";
-});
 
 function countTrees(){
     let tmp = 0;

@@ -12,6 +12,84 @@ body{
     font-family: "Pixelise";
     src: url("../fonts/Minecraft.ttf");
   } 
+
+
+
+
+
+
+.loader{
+    grid-area: 1 / 1 / 13 / 13;
+    width:100%;
+    height:100%;
+    background: #000;
+    display :flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lettre {
+    color: #909090;
+    font-size:120px;
+    font: Pixelise;
+    letter-spacing: 20px;
+    margin-bottom: 150px;
+    animation: flash 1.2s linear infinite;
+}
+
+@keyframes flash{
+    0%{
+        color: #911C1a;
+        text-shadow: 0 0 7px #911C1a;
+    }
+    90%{
+        color: #909090;
+        text-shadow: none;
+    }
+    100%{
+        color: #911C1a;
+        text-shadow: 0 0 7px #911C1a;
+    }
+}
+
+.lettre:nth-child(1){
+    animation-delay: 0.1s;
+}
+.lettre:nth-child(2){
+    animation-delay: 0.2s;
+}
+.lettre:nth-child(3){
+    animation-delay: 0.3s;
+}
+.lettre:nth-child(4){
+    animation-delay: 0.4s;
+}
+.lettre:nth-child(5){
+    animation-delay: 0.5s;
+}
+.lettre:nth-child(6){
+    animation-delay: 0.6s;
+}
+.lettre:nth-child(7){
+    animation-delay: 0.7s;
+}
+.lettre:nth-child(8){
+    animation-delay: 0.8s;
+}
+.lettre:nth-child(9){
+    animation-delay: 0.9s;
+}
+.lettre:nth-child(10){
+    animation-delay: 1s;
+}
+
+.fondu-out{
+    opacity:0;
+    transition: opacity 0,4s ease-out;
+    display:none;
+}
+
+
 /*##########################################################*/
 /*##########################################################*/
                 /*----   Home.html   ----*/
@@ -98,7 +176,7 @@ body{
     grid-row-gap: 0px;
 } 
 .boutonMail { grid-area: 1 / 1 / 2 / 2; 
-    background-image: url("../img/mainPage/Mail.png");
+    background-image: url("../img/mainPage/bulle.png");
     background-size : contain;
     background-repeat : no-repeat;
     background-position: center;
@@ -1295,6 +1373,7 @@ body{
     .contoursChance { grid-area: 1 / 1 / 21 / 21; }
     .titrechance { grid-area: 1 / 6 / 4 / 16; } 
     .cartesChanceChoix { grid-area: 4 / 2 / 15 / 20; }
+    
     .validerChance { grid-area: 16 / 9 / 18 / 13; }
 
 
@@ -1368,13 +1447,31 @@ body{
 
 .interieurTitre { grid-area: 1 / 1 / 2 / 3; }
 .interieurtexte { grid-area: 2 / 1 / 7 / 3; }
-.interieurLogo { 
+
+.interieurLogoArbre { 
     grid-area: 7 / 1 / 9 / 2; 
     background-image: url("../img/tree_planter/fini.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
 }
+
+.interieurLogoAbo { 
+    grid-area: 7 / 1 / 9 / 2; 
+    background-image: url("../img/logo/profilepictures/logo4.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+
+.interieurLogoJauge { 
+    grid-area: 7 / 1 / 9 / 2; 
+    background-image: url("../img/mainPage/gauge/gauge5.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
+
 .interieurNombre { grid-area: 7 / 2 / 9 / 3; } 
 
 
@@ -1389,14 +1486,122 @@ body{
    ####################################################################################################################### */
 
 .divGlobalAccueil {
- display: grid;
- grid-template-columns: repeat(20, 1fr);
- grid-template-rows: repeat(20, 1fr);
- grid-column-gap: 0px;
- grid-row-gap: 0px;
- }
- 
-.nomDuJeu { grid-area: 2 / 1 / 20 / 11; }
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+} 
+.nomDuJeuCarre{
+    grid-area: 2 / 1 / 12 / 9;
+}
+
+.ChoixModeJeuColonne{
+    grid-area: 2 / 9 / 12 / 19;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+}
+
+.AdventureColonne{
+    grid-area: 5 / 5 / 7 / 15;
+    border-radius:15px;
+    padding: 14px;
+    cursor: pointer;
+    /*transform: rotateY(-25deg) rotateX(20deg);*/
+    /*position: absolute;*/
+    border-bottom: 4px solid rgba(0,0,0);
+    border-right: 4px solid rgba(0,0,0);
+    transition: 1.5s;
+}
+.AdventureColonne:hover{
+    transform: scale(1.5);
+    z-index:3;
+}
+
+.FreePlayColonne{
+    grid-area: 7 / 5 / 9 / 15;
+    border-radius:15px;
+    padding: 14px;
+    cursor: pointer;
+    /*transform: rotateY(-25deg) rotateX(20deg);*/
+    /*position: absolute;*/
+    border-bottom: 4px solid rgba(0,0,0);
+    border-right: 4px solid rgba(0,0,0);
+    transition: 1.5s;
+}
+.FreePlayColonne:hover{
+    transform: scale(1.5);
+    z-index:3;
+}
+
+.ThirdModeColonne{
+    grid-area: 9 / 5 / 11 / 15; 
+    border-radius:15px;
+    padding: 14px;
+    cursor: pointer;
+    /*transform: rotateY(-25deg) rotateX(20deg);*/
+    /*position: absolute;*/
+    border-bottom: 4px solid rgba(0,0,0);
+    border-right: 4px solid rgba(0,0,0);
+    transition: 1.5s;
+}
+.ThirdModeColonne:hover{
+    transform: scale(1.5);
+    z-index:3;
+} 
+
+.logoEN1{
+    grid-area:1/1/6/4;
+    background-image:url("../img/logo/logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logoEN2{
+    grid-area: 1/16/6/19;
+    background-image:url("../img/logo/logo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.nomDuJeu { grid-area: 2 / 4 / 5 / 16; 
+}
+.rainbow2 {
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 2rem;
+}
+.rainbow2::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -473%;
+    width: 200%;
+    height: 1050%;
+    background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(#000,#000), linear-gradient(#ffffffff,#ffffffff),linear-gradient(#000,#000),  linear-gradient(#ffffffff,#ffffffff);
+    animation: rotate 20s linear infinite;
+}
+.rainbow2::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    background: #c4b39c;
+    border-radius: 5px;
+}
 .choixDuJeu { grid-area: 2 / 11 / 20 / 21; 
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -1405,27 +1610,56 @@ body{
     grid-row-gap: 0px;
 }
     
-.choiceMainAdventure { grid-area: 1 / 1 / 7 / 11; 
+.choiceMainAdventure {  grid-area: 6/1/11/7;  
     /*display: grid;
     grid-template-columns: 20% auto;*/
-    border-radius:10px;
+    border-radius:15px;
     padding: 14px;
     cursor: pointer;
-    height: 25vh;
     /*transform: rotateY(-25deg) rotateX(20deg);*/
-    position: absolute;
-    border-bottom: 4px solid rgba(0,0,0,.2);
-    border-right: 4px solid rgba(0,0,0,.2);
-    transition: 5s;     
+    /*position: absolute;*/
+    border-bottom: 4px solid rgba(0,0,0);
+    border-right: 4px solid rgba(0,0,0);
+    transition: 1.5s;
 }
 .choiceMainAdventure:hover{
-    transform: translateY(50%) translateX(-50%)  rotateY(-25deg) rotateX(25deg) scale(1.5);
+    transform: translateY(-50%) translateX(50%) scale(1.5);
     z-index:3;
 }
 
 
-.choiceFreePlay { grid-area: 7 / 1 / 13 / 11; }
-.choiceThirdMode { grid-area: 13 / 1 / 19 / 11; }
+
+.choiceFreePlay { grid-area: 6 / 7 / 11 / 13;
+    border-radius:15px;
+    padding: 14px;
+    cursor: pointer;
+    /*transform: rotateY(-25deg) rotateX(20deg);*/
+    /*position: absolute;*/
+    border-bottom: 4px solid rgba(0,0,0);
+    border-right: 4px solid rgba(0,0,0);
+    transition: 1.5s;
+}
+
+.choiceFreePlay:hover{
+    transform: translateY(-50%) scale(1.5);
+    z-index:3;
+}
+.choiceThirdMode {  grid-area: 6 / 13 / 11 / 19;
+    border-radius:15px;
+    padding: 14px;
+    cursor: pointer;
+    /*transform: rotateY(-25deg) rotateX(20deg);*/
+    /*position: absolute;*/
+    border-bottom: 4px solid rgba(0,0,0);
+    border-right: 4px solid rgba(0,0,0);
+    transition: 1.5s;
+}
+
+.choiceThirdMode:hover{
+    transform: translateY(-50%) translateX(-50%) scale(1.5);
+    z-index:3;
+}
+
     
 
 
@@ -1629,4 +1863,13 @@ body{
 
 .modalfakeinfo{
     display:none;
+}
+
+
+.modalendtree{
+    grid-area: 8 / 10 / 18 / 16 ;
+}
+
+#modalendtree{
+    display:none,
 }

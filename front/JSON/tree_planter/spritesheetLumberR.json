@@ -1,0 +1,95 @@
+{
+	"frames": {
+		"lumberjack1.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 200,
+				"h": 280
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 280
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 280
+			}
+		},
+		"lumberjack2.png": {
+			"frame": {
+				"x": 203,
+				"y": 1,
+				"w": 180,
+				"h": 290
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 180,
+				"h": 290
+			},
+			"sourceSize": {
+				"w": 180,
+				"h": 290
+			}
+		},
+		"lumberjack3.png": {
+			"frame": {
+				"x": 385,
+				"y": 1,
+				"w": 150,
+				"h": 280
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 150,
+				"h": 280
+			},
+			"sourceSize": {
+				"w": 150,
+				"h": 280
+			}
+		},
+		"lumberjack4.png": {
+			"frame": {
+				"x": 537,
+				"y": 1,
+				"w": 180,
+				"h": 290
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 180,
+				"h": 290
+			},
+			"sourceSize": {
+				"w": 180,
+				"h": 290
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 718,
+			"h": 292
+		},
+		"scale": "1"
+	}
+}

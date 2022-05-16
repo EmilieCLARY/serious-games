@@ -11,12 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
-    <title>Big Head</title>
+    <title>Maze</title>
+
 </head>
 <body>
-    
-
-
     <div class="parentfp h-screen bg-fondmain">
 
         <!-- ########################################## -->
@@ -33,27 +31,25 @@
 
             <!--titre-->
             <div class="div15fp click grostext bg-rougebouton text-center text-white font-pixelise rounded-b-2xl"> 
-                <h1>BIG HEAD</h1>
+                <h1>LEAVE THE MAZE</h1>
             </div> 
 
-            <!--<a href="free-play.html" class="divretourfree click border-rougeContour flex border-contourRouge items-center justify-items-center text-3xl bg-rougebouton text-center text-white font-pixelise"> 
-                <h1 class="w-full text-white font-pixelise "></h1>
-            </a>   --> 
 
-            <!--<a class="w-full divretourfree arrow h-full border-contourRouge border-rougeContour bg-rougebouton" href="home.html">
+            <a class="w-full divretourfree arrow h-full border-contourRouge border-rougeContour bg-rougebouton" href="free-play.html">
                 <div class="click"></div>
             </a>
 
 
-     <!-- ########################################## -->
+
+        <!-- ########################################## -->
         <!-- ##                                      ## -->
         <!-- ##                JEU                   ## -->
         <!-- ##                                      ## -->
         <!-- ########################################## -->
 
 
-        <div class="divtortue flex items-center justify-center w-full " id="big-head">                
-            <script type="text/javascript" src="../js/big-head.js"></script> 
+        <div class="divtortue flex items-center justify-center w-full " id="leavethemaze">                
+            <script type="text/javascript" src="../js/maze.js"></script> 
         </div>
 
 
@@ -65,23 +61,23 @@
         <!-- ########################################## -->
 
         <!--victory-->
-        <div class="modalbhwin text-center  bg-rougeContour rounded-xl" id="modalbhwin">
+        <div class="modalmazewin text-center  bg-rougeContour rounded-xl" id="modalmazewin">
             <h1 class="text-6xl mt-10 font-pixelise text-white">Victory</h1>
-            <p class="text-3xl mt-10 font-pixelise text-white" >Congratulation ! You're free from the big head ! But be careful to not catch it again !</p>
+            <p class="text-3xl mt-10 font-pixelise text-white" >You clean all the forest</p>
 
-            <div  class="modalbhwinbtn  mt-8 ml-10 mr-10 text-center bg-rougebouton border-4 rounded-xl" id="btnmodalbh">
+            <div  class="modalmazewinbtn  mt-8 ml-10 mr-10 text-center bg-rougebouton border-4 rounded-xl" id="btnmodaltortue">
                     <h1 class="text-4xl py-6 text-white font-pixelise click">Continue</h1>
             </div>
         </div>
 
 
-        <!--defaite -->
-        <div class="modalbhloose text-center  bg-rougeContour rounded-xl" id="modalbhloose">
+        <!--defaite tortue-->
+        <div class="modalmazeloose text-center  bg-rougeContour rounded-xl" id="modalmazeloose">
             <h1 class="text-6xl mt-10 font-pixelise text-white">Fail</h1>
-            <p class="text-3xl mt-10 font-pixelise text-white" >You still have the big head, you need to retry BigHead. It's for your own sake !</p>
+            <p class="text-3xl mt-10 font-pixelise text-white" >You didn't clean all the forest</p>
             
-            <div  class="modalbhloosebtn mt-8 ml-10 mr-10 text-center bg-rougebouton border-4 rounded-xl" >
-                <a href="big-head.html">
+            <div  class="modalmazeloosebtn mt-8 ml-10 mr-10 text-center bg-rougebouton border-4 rounded-xl" >
+                <a href="maze.html">
                     <h1 class="text-4xl py-6 text-white font-pixelise click">Retry</h1>
                 </a>
             </div>
@@ -89,7 +85,7 @@
         
 
         <!--point info time-->
-        <div class="modalbhinfo text-center  bg-rougeContour rounded-xl" id="modalbhinfo">
+        <div class="modalmazeinfo text-center  bg-rougeContour rounded-xl" id="modalmazeinfo">
             <div class="modalinfoparent w-full h-full">
                 <div class=" flex items-center justify-center w-full modalinfoparenttitre">
                     <h1 class="text-6xl mt-10 font-pixelise text-white">Point info</h1>     
@@ -98,11 +94,11 @@
                 <div class="modalinfoparentprofessor professor"> </div>
 
                 <div class="flex items-center justify-center modalinfoparentblabla bg-grisclair rounded-xl"> 
-                    <p class="m-8 text-center text-black font-pixelise">oz eibu cbziu bcizubr icuzb cruzb  uzeb cu zbiu cbze uibcrzi eub ciuzeb cuze bcuz cbzeuibcuze bci uze bciuz ebh criuze bcize cubcuze zer ciu ce cuciu ezbcuz erc bub</p>
+                    <p class="m-8 text-center text-black font-pixelise"> A growing body of scientific evidence has linked glyphosate to very serious human health problems. High glyphosate exposure is found to lead to a significant increase in specific types of cancer. Consuming foods with so-called “safe” levels of glyphosate kills off beneficial gut bacteria, which can lead to a wide range of health issues including chronic disease and mental health problems. This is why this is so important to protect our forests and raise our voices again this poison !</p>
                 </div>
 
                 <div  class="flex items-center mb-5 justify-center w-full modalinfoparentbtn text-center bg-rougebouton border-4 rounded-xl" >
-                    <a href="home.html">
+                    <a href="cartes.html">
                         <h1 class="text-4xl  text-white font-pixelise click">Continue</h1>
                     </a>
                 </div>
@@ -115,7 +111,7 @@
     </div>
 
 
-
+    
 </body>
 <script src="../js/modules/socketLoading.js"></script>
 </html>

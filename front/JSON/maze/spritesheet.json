@@ -1,0 +1,255 @@
+{
+	"frames": {
+		"scientist.png": {
+			"frame": {
+				"x": 5,
+				"y": 5,
+				"w": 170,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 170,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 170,
+				"h": 380
+			}
+		},
+		"scientistBack.png": {
+			"frame": {
+				"x": 185,
+				"y": 5,
+				"w": 170,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 170,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 170,
+				"h": 380
+			}
+		},
+		"scientistBackWalk1.png": {
+			"frame": {
+				"x": 365,
+				"y": 5,
+				"w": 160,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 380
+			}
+		},
+		"scientistBackWalk2.png": {
+			"frame": {
+				"x": 535,
+				"y": 5,
+				"w": 160,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 380
+			}
+		},
+		"scientistL.png": {
+			"frame": {
+				"x": 705,
+				"y": 5,
+				"w": 140,
+				"h": 370
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 140,
+				"h": 370
+			},
+			"sourceSize": {
+				"w": 140,
+				"h": 370
+			}
+		},
+		"scientistLWalk1.png": {
+			"frame": {
+				"x": 855,
+				"y": 5,
+				"w": 140,
+				"h": 370
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 140,
+				"h": 370
+			},
+			"sourceSize": {
+				"w": 140,
+				"h": 370
+			}
+		},
+		"scientistLWalk2.png": {
+			"frame": {
+				"x": 1005,
+				"y": 5,
+				"w": 140,
+				"h": 370
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 140,
+				"h": 370
+			},
+			"sourceSize": {
+				"w": 140,
+				"h": 370
+			}
+		},
+		"scientistR.png": {
+			"frame": {
+				"x": 1155,
+				"y": 5,
+				"w": 140,
+				"h": 370
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 140,
+				"h": 370
+			},
+			"sourceSize": {
+				"w": 140,
+				"h": 370
+			}
+		},
+		"scientistRWalk1.png": {
+			"frame": {
+				"x": 1305,
+				"y": 5,
+				"w": 140,
+				"h": 370
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 140,
+				"h": 370
+			},
+			"sourceSize": {
+				"w": 140,
+				"h": 370
+			}
+		},
+		"scientistRWalk2.png": {
+			"frame": {
+				"x": 1455,
+				"y": 5,
+				"w": 140,
+				"h": 370
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 140,
+				"h": 370
+			},
+			"sourceSize": {
+				"w": 140,
+				"h": 370
+			}
+		},
+		"scientistWalk1.png": {
+			"frame": {
+				"x": 1605,
+				"y": 5,
+				"w": 160,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 380
+			}
+		},
+		"scientistWalk2.png": {
+			"frame": {
+				"x": 1775,
+				"y": 5,
+				"w": 160,
+				"h": 380
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 380
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 380
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1940,
+			"h": 390
+		},
+		"scale": "1"
+	}
+}

@@ -70,8 +70,13 @@ function preload ()
     this.load.image('playerR', '../img/maze/scientistRMaze.png');
     this.load.image('playerF', '../img/maze/scientistMaze.png');
 
+    this.load.atlas('player', '../img/maze/spritesheet1.png', '../JSON/maze/spritesheet1.json');
 
-    this.load.image('player', '../img/big_head/champR.png');
+    this.load.atlas('playerLeft', '../img/maze/spritesheetLeft.png', '../JSON/maze/spritesheetLeft.json');
+
+    this.load.atlas('playerTop', '../img/maze/spritesheetBack.png', '../JSON/maze/spritesheetBack.json');
+
+    //this.load.image('player', '../img/big_head/champR.png');
     this.load.image('barrel', '../img/maze/barrel.png');
 
     this.load.image('background', '../img/maze/back.png')
@@ -255,7 +260,7 @@ function create ()
 
 
     this.player = this.physics.add.sprite(entreeX * 80 + 100, entreeY * 80 + 50, 'playerF').setCollideWorldBounds(true);
-    this.player.setScale(0.1);
+    this.player.setScale(0.15);
 
     this.physics.add.collider(this.player, bushSortie);
 
@@ -292,6 +297,25 @@ function create ()
     });
     textTime.setScrollFactor(0);
 
+
+    this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNames('player', {prefix : 'scientist', suffix : '.png', start: 1, end: 4, zeroPad: 1}),
+        frameRate: 10,
+    });
+
+    this.anims.create({
+        key: 'walkLeft',
+        frames: this.anims.generateFrameNames('playerLeft', {prefix : 'scientist', suffix : '.png', start: 21, end: 24, zeroPad: 0}),
+        frameRate: 10,
+    });
+
+        this.anims.create({
+        key: 'walkTop',
+        frames: this.anims.generateFrameNames('playerTop', {prefix : 'scientist', suffix : '.png', start: 11, end: 14, zeroPad: 0}),
+        frameRate: 10,
+    });
+
 }
 
 function update (time, delta)
@@ -300,20 +324,27 @@ function update (time, delta)
     this.player.setVelocityY(0);
 
     if (this.cursors.left.isDown){
+
         this.player.setVelocityX(-400);
-        this.player.setTexture('playerL');
+        this.player.flipX = false;
+        this.player.anims.play('walkLeft', true);
+
     }
     else if (this.cursors.right.isDown){
         this.player.setVelocityX(400);
-        this.player.setTexture('playerR');
+        this.player.flipX = true;
+        this.player.anims.play('walkLeft', true);
     }
     if (this.cursors.up.isDown){
         this.player.setVelocityY(-400);
-        this.player.setTexture('playerB');
+        this.player.flipX = false;
+        this.player.anims.play('walkTop', true);
     }
     else if (this.cursors.down.isDown){
         this.player.setVelocityY(400);
-        this.player.setTexture('playerF');
+
+        this.player.flipX = false;
+        this.player.anims.play('walk', true);
     }
 
     for(let i = 0; i < barrel.length; i++){
