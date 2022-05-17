@@ -53,6 +53,15 @@ class Article{
     }
 }
 
+// animation du loader
+
+const loader = document.querySelector('.loader');
+
+window.addEventListener('load', () => {
+    loader.classList.add('fondu-out');
+})
+
+
 function preload ()
 {
     this.load.image('floor', '../img/supermarket/map/floor2.png');
@@ -154,6 +163,14 @@ function preload ()
     this.load.image('cheese', '../img/supermarket/laitiers/cheese.png');
     this.load.image('milk', '../img/supermarket/laitiers/milk.png');
     this.load.image('yahourt', '../img/supermarket/laitiers/yahourt.png');
+
+
+
+
+
+    
+    document.getElementById("modalsuperwin").style.display = "none";
+    document.getElementById("modalsuperinfo").style.display = "none";
 
 }
 
@@ -480,8 +497,16 @@ function update (time, delta)
                                 nvMed = vnAdd / listOfArticles.length;
                                 score = (100 / nvMed) * 100;
                                 this.add.text(this.player.x - 200, this.player.y + 50, 'Your cart is finished \nScore : ' + Math.round(score), {
+
                                     fontSize: '40px',
                                     fill: '#000000'
+                                });
+
+                                document.getElementById("modalsuperwin").style.display = "block";
+
+                                document.getElementById("btnmodalsuper").addEventListener("click", event => {
+                                    document.getElementById("modalsuperwin").style.display = "none";
+                                    document.getElementById("modalsuperinfo").style.display = "block";
                                 });
                                 //this.scene.pause();
                             }
@@ -513,6 +538,13 @@ function update (time, delta)
                                 this.add.text(this.player.x - 200, this.player.y + 50, 'Your cart is finished \nScore : ' + Math.round(score), {
                                     fontSize: '40px',
                                     fill: '#000000'
+                                });
+
+                                document.getElementById("modalsuperwin").style.display = "block";
+
+                                document.getElementById("btnmodalsuper").addEventListener("click", event => {
+                                    document.getElementById("modalsuperwin").style.display = "none";
+                                    document.getElementById("modalsuperinfo").style.display = "block";
                                 });
                                 //this.scene.pause();
                             }

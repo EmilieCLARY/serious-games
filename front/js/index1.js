@@ -25,3 +25,4 @@ document.getElementById("tp").addEventListener("click", event => {
 document.getElementById("ma").addEventListener("click", event => {
     window.location.href = "../html/maze.html";
 });
+

@@ -167,6 +167,23 @@ body{
     grid-area: 12 / 4 / 13 / 10; 
 } 
 
+.cartechance { 
+    grid-area: 2 / 10 / 3 / 11; 
+    background-image : url("../img/cartes/cartes.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+} 
+
+.cartechanceNotif { 
+    grid-area: 2 / 10 / 3 / 11; 
+    background-image : url("../img/cartes/cartesNotif.png" );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+} 
+
+
 
 .Navbarhome{
     display: grid;
@@ -194,7 +211,7 @@ body{
     background-position: center;
 }
 .boutonTreePlanter { grid-area: 1 / 4 / 2 / 5; 
-    background-image: url("../img/mainPage/tree.png");
+    /*background-image: url("../img/mainPage/tree.png");*/
     background-size : contain;
     background-repeat : no-repeat;
     background-position: center;
@@ -401,7 +418,7 @@ body{
         }
 
         .messages { 
-            grid-area: 1 / 2 / 12 / 7; 
+            grid-area: 1 / 1 / 12 / 7; 
         }
         
         .choixMessages { 
@@ -1555,7 +1572,7 @@ body{
 
 .logoEN1{
     grid-area:1/1/6/4;
-    background-image:url("../img/logo/logo.png");
+    background-image:url("../img/logo/logo.gif");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -1563,7 +1580,7 @@ body{
 
 .logoEN2{
     grid-area: 1/16/6/19;
-    background-image:url("../img/logo/logo.png");
+    background-image:url("../img/logo/logo.gif");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -1872,4 +1889,22 @@ body{
 
 #modalendtree{
     display:none,
+}
+
+
+
+.modalsuperwin{
+    grid-area: 8 / 10 / 18 / 16 ;
+}
+
+.modalsuperinfo{
+    grid-area: 6 / 7 / 20 / 19 ;
+}
+
+.modalsuperinfo{
+    display: "none";
+}
+
+.modalsuperwin{
+    display: "none";
 }

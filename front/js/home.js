@@ -72,6 +72,7 @@ socket.emit('getFollowers');
 socket.emit('getFollowersPerSecond');
 socket.emit('getBigHeadGauge');
 socket.emit('getSponsors');
+socket.emit('getTreesToPlant');
 
 
 document.getElementById("popuppostgd").style.display = "none";
@@ -85,6 +86,15 @@ document.getElementById("btnpost6").style.display = "none";
 document.getElementById("btnpost7").style.display = "none";
 document.getElementById("btnpost8").style.display = "none";
 document.getElementById("btnpost9").style.display = "none";
+
+socket.on("newTreesToPlant", (nb) => {
+    if(nb == 0){
+        document.getElementById("btnTreePlanter").style.backgroundImage = 'url("../img/mainPage/tree.png")';
+    }
+    else{
+        document.getElementById("btnTreePlanter").style.backgroundImage = 'url("../img/mainPage/treeNotif.png")';
+    }
+})
 
 socket.on('newNumberOfTreesPlanted', (trees) =>{
     document.getElementById("treesPlanted").textContent = trees;
@@ -663,17 +673,34 @@ document.getElementById("popupclose").addEventListener("click", event => {
 //    document.getElementById("popupgrossetetegd").style.display = "none";
 //});
 
+const P1 = document.getElementById("proposition1");
+const P2 = document.getElementById("proposition2");
+const P3 = document.getElementById("proposition3");
+
+const dmPage = document.getElementById("dmS");
+
+
 var messengerEstOuvert = 0;
+var rnd;
 
 document.getElementById("popupMessenger").style.display = "none";
 
 document.getElementById("mailBtn").addEventListener("click", event => {
 
-    if(messengerEstOuvert ===0){
+    if(messengerEstOuvert === 0){
         document.getElementById("popupMessenger").style.display = "block";
+        rnd = Math.floor(Math.random() * dmTab.length);
+        var div = document.createElement("div");
+        div.classList.add('messageEntrant');
+        div.textContent = dmTab[rnd][0][0];
+        dmPage.appendChild(div);
+
+        P1.textContent = dmTab[rnd][0][1][0];
+        P2.textContent = dmTab[rnd][0][1][2];
+        P3.textContent = dmTab[rnd][0][1][4];
         messengerEstOuvert = 1;
     }
-    else if(messengerEstOuvert ===1){
+    else if(messengerEstOuvert === 1){
         document.getElementById("popupMessenger").style.display = "none";
         messengerEstOuvert = 0;
     }
@@ -686,26 +713,62 @@ document.getElementById("proposition1").addEventListener("click", event => {
     document.getElementById("proposition1").classList.add("bg-gris");
     document.getElementById("proposition2").classList.remove("bg-gris");
     document.getElementById("proposition3").classList.remove("bg-gris");
-    messageSelected =1;
+    messageSelected = 1;
 });
 
 document.getElementById("proposition2").addEventListener("click", event => {
     document.getElementById("proposition2").classList.add("bg-gris");
     document.getElementById("proposition1").classList.remove("bg-gris");
     document.getElementById("proposition3").classList.remove("bg-gris");
-    messageSelected =2;
+    messageSelected = 2;
 });
 
 document.getElementById("proposition3").addEventListener("click", event => {
     document.getElementById("proposition3").classList.add("bg-gris");
     document.getElementById("proposition2").classList.remove("bg-gris");
     document.getElementById("proposition1").classList.remove("bg-gris");
-    messageSelected =3;
+    messageSelected = 3;
 });
-
 
 document.getElementById("btnEnvoyerMessage").addEventListener("click", event => {
-    alert(messageSelected);
+    //alert(messageSelected);
+    var div = document.createElement("div");
+    div.classList.add('messageSortant');
+    if(messageSelected == 1){
+        div.textContent = dmTab[rnd][0][1][0];
+    }
+    else if(messageSelected == 2){
+        div.textContent = dmTab[rnd][0][1][2];
+    }
+    else if(messageSelected == 3){
+        div.textContent = dmTab[rnd][0][1][4];
+    }
+    dmPage.appendChild(div);
+    P1.style.display = "none";
+    P2.style.display = "none";
+    P3.style.display = "none";
+    let tmp = setTimeout(() => {
+        let div = document.createElement("div");
+        div.classList.add('messageEntrant');
+        if(messageSelected == 1){
+            div.textContent = dmTab[rnd][0][1][1];
+        }
+        else if(messageSelected == 2){
+            div.textContent = dmTab[rnd][0][1][3];
+        }
+        else if(messageSelected == 3){
+            div.textContent = dmTab[rnd][0][1][5];
+        }
+        dmPage.appendChild(div);
+    }, 2000);
 });
 
+var dmTab = [];
+var dm = [];
+dm.push(["Hi ! I love your account ! Would you make other posts ?", 
+    ["Thanks a lot, yes I would !", "Nice I can't stand to see them !", 
+    "Yes don't worry posts are coming", "Nice I can't stand to see them !",
+    "No my account will stop :(", "Oh I'm so sad :/"]]);
 
+
+dmTab.push(dm);

@@ -238,15 +238,40 @@ function update (time, delta)
         this.player.flipX = false;
         this.player.anims.play('walkRight', true);
     }
-    if (this.cursors.up.isDown){
+    if (this.cursors.up.isDown && !this.cursors.left.isDown && !this.cursors.right.isDown){
         this.player.setVelocityY(-200);
         this.player.flipX = false;
         this.player.anims.play('walkTop', true);
     }
-    else if (this.cursors.down.isDown){
+    else if (this.cursors.down.isDown && !this.cursors.right.isDown && !this.cursors.left.isDown){
         this.player.setVelocityY(200);
         this.player.flipX = false;
         this.player.anims.play('walkBot', true);
+    }
+
+    if ((this.cursors.up.isDown && this.cursors.left.isDown)){
+        this.player.setVelocityY(-150);
+        this.player.setVelocityX(-150);
+        this.player.flipX = true;
+        this.player.anims.play('walkRight', true);
+    }
+    else if((this.cursors.up.isDown && this.cursors.right.isDown)){
+        this.player.setVelocityY(-150);
+        this.player.setVelocityX(150);
+        this.player.flipX = false;
+        this.player.anims.play('walkRight', true);
+    }
+    else if ((this.cursors.down.isDown && this.cursors.left.isDown)){
+        this.player.setVelocityY(150);
+        this.player.setVelocityX(-150);
+        this.player.flipX = true;
+        this.player.anims.play('walkRight', true);
+    }
+    else if((this.cursors.down.isDown && this.cursors.right.isDown)){
+        this.player.setVelocityY(150);
+        this.player.setVelocityX(150);
+        this.player.flipX = false;
+        this.player.anims.play('walkRight', true);
     }
     //console.log(Math.round(this.player.x), Math.round(this.player.y));
 

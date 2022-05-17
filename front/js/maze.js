@@ -65,14 +65,11 @@ function preload ()
     this.load.image('cdsT', '../img/maze/cdsT.png');
     this.load.image('cdsB', '../img/maze/cdsB.png');
 
-    this.load.image('playerB', '../img/maze/scientistBackMaze.png');
-    this.load.image('playerL', '../img/maze/scientistLMaze.png');
-    this.load.image('playerR', '../img/maze/scientistRMaze.png');
     this.load.image('playerF', '../img/maze/scientistMaze.png');
 
     this.load.atlas('player', '../img/maze/spritesheet1.png', '../JSON/maze/spritesheet1.json');
 
-    this.load.atlas('playerLeft', '../img/maze/spritesheetLeft.png', '../JSON/maze/spritesheetLeft.json');
+    this.load.atlas('playerRight', '../img/maze/spritesheetScientistR.png', '../JSON/maze/spritesheetScientistR.json');
 
     this.load.atlas('playerTop', '../img/maze/spritesheetBack.png', '../JSON/maze/spritesheetBack.json');
 
@@ -305,8 +302,8 @@ function create ()
     });
 
     this.anims.create({
-        key: 'walkLeft',
-        frames: this.anims.generateFrameNames('playerLeft', {prefix : 'scientist', suffix : '.png', start: 21, end: 24, zeroPad: 0}),
+        key: 'walkRight',
+        frames: this.anims.generateFrameNames('playerRight', {prefix : 'scientist', suffix : '.png', start: 21, end: 24, zeroPad: 0}),
         frameRate: 10,
     });
 
@@ -326,14 +323,14 @@ function update (time, delta)
     if (this.cursors.left.isDown){
 
         this.player.setVelocityX(-400);
-        this.player.flipX = false;
-        this.player.anims.play('walkLeft', true);
+        this.player.flipX = true;
+        this.player.anims.play('walkRight', true);
 
     }
     else if (this.cursors.right.isDown){
         this.player.setVelocityX(400);
-        this.player.flipX = true;
-        this.player.anims.play('walkLeft', true);
+        this.player.flipX = false;
+        this.player.anims.play('walkRight', true);
     }
     if (this.cursors.up.isDown){
         this.player.setVelocityY(-400);

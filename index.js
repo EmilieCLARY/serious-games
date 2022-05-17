@@ -44,7 +44,7 @@ if (app.get('env') === 'production') {
 app.use(express.static(__dirname + '/front/'));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/front/html/index.html');
+    res.sendFile(__dirname + '/front/html/accueil.html');
 });
 
 var userName;
@@ -89,7 +89,9 @@ io.on('connection', (socket) => {
 
     socket.on('treesPlanted', (trees) => {
         treesPlanted = trees;
+        userTreesToPlant -= trees;
         console.log("TreesPlanted : ", treesPlanted);
+        console.log("Trees to plant : ", treesPlanted);
     });
 
     socket.on('username', (name) => {
@@ -127,7 +129,9 @@ io.on('connection', (socket) => {
 
     socket.on('addFollowers', (nbr) => {
         userFollowers = nbr;
-        updateTreesToPlant(userFollowers);
+        if(updateTreesToPlant(userFollowers) == true){
+            socket.emit('newTreesToPlant', userTreesToPlant);
+        }
     });
 
     socket.on('leProchainTextCLui', (next) => {
@@ -212,45 +216,54 @@ function updateTreesToPlant(fol){
         userTreesToPlant += 5;
         bool10 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 100 && !bool100){
         userTreesToPlant += 5;
         bool100 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 1000 && !bool1000){
         userTreesToPlant += 5;
         bool1000 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 20000 && !bool20000){
         userTreesToPlant += 10;
         bool20000 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 50000 && !bool50000){
         userTreesToPlant += 10;
         bool50000 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 100000 && !bool100000){
         userTreesToPlant += 10;
         bool100000 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 200000 && !bool200000){
         userTreesToPlant += 10;
         bool200000 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 500000 && !bool500000){
         userTreesToPlant += 10;
         bool500000 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
     if(fol >= 1000000 && !bool1000000){
         userTreesToPlant += 10;
         bool1000000 = true;
         console.log("Trees to Plant : " + userTreesToPlant);
+        return true;
     }
 }
