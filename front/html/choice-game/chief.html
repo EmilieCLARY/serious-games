@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="../../dist/style.css">
-
-    <title>Document</title>
+    <title>Chief Choice</title>
 </head>
-<body>
+<body class="h-screen border-rougeContour border-contourRouge bg-fondmain">
+
     <div class="globaldivathletehtml h-full ">
 
         <!-- ########################################## -->
@@ -17,38 +19,22 @@
         <!-- ##                                      ## -->
         <!-- ########################################## -->
 
-        <div class="QuestionChoice justify-self-center w-full m-4 text-center text-fonce rainbow" id="text"> </div>
+        <div class="QuestionChoice justify-self-center w-full m-4 text-center text-fonce rainbow" id="text"> 
+        </div>
 
 
 
         <div class="zoneDesReponses text-justify" id="option-buttons"></div>
-            <div class="choicenum1c4 m-4">
-                <section class="portfolio-experiment h-full">
-                    <button class="w-full h-full">
-                        <div class="divglobalpourbtnaquatrechoix">
-
-                            <div class="imageboutontest4c bg-rougebouton"></div>
-                            <div class="testtextboutontest">
-                                <span class="texte text-fonce"></span>
-                                <span class="line -right"></span>
-                                <span class="line -top"></span>
-                                <span class="line -left"></span>
-                                <span class="line -bottom"></span>
-                            </div>
-
-                        </div>
-                    </button>
-                </section>
-            </div>
+    
 
 
         <div class="Zonenavbarhome">
-            <div class="Navbarhome h-full bg-rougebouton rounded-t-xl  ">
-                
+            <div class="Navbarhome h-full bg-rougebouton rounded-t-xl  ">             
                 
                 
                 <div class="w-full h-full boutonMail border-4 rounded-tl-xl" ></div>
                 
+
                 <a class="w-full h-full boutonFreePlay border-4 click" id="choiceBtn">
                     <div class="click border-none" ></div>
                 </a>
@@ -57,7 +43,7 @@
                     <div class="click"></div>
                 </a>
             
-                <a class="w-full h-full boutonTreePlanter border-4" href="../tree-planter.html">
+                <a class="w-full h-full boutonTreePlanter border-4" id="btnTreePlanter" href="../tree-planter.html">
                     <div class="click"></div>
                 </a>
 
@@ -70,9 +56,10 @@
             </div>
         </div>
     </div> 
+
 </body>
 
 <script src="../../js/modules/socketLoading.js"></script>
-<script type="text/javascript" src="../../js/choice-game/sciences.js"></script>  
+<script type="text/javascript" src="../../js/choice-game/chief.js"></script>  
 
 </html>

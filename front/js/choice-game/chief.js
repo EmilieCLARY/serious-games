@@ -9,6 +9,7 @@ let userAppearance;
 
 socket.emit('getAppearance');
 socket.emit('getNextText');
+socket.emit('getTreesToPlant');
 socket.on('newAppearance', (Appearance)=>{
     console.log("oui");
     userAppearance = Appearance;
@@ -16,6 +17,15 @@ socket.on('newAppearance', (Appearance)=>{
 socket.on('leProchainTexte', (text) => {
     nextTxt = text;
     startGame();
+});
+
+socket.on("newTreesToPlant", (nb) => {
+    if(nb == 0){
+        document.getElementById("btnTreePlanter").style.backgroundImage = 'url("../../img/mainPage/tree.png")';
+    }
+    else{
+        document.getElementById("btnTreePlanter").style.backgroundImage = 'url("../../img/mainPage/treeNotif.png")';
+    }
 });
 
 function startGame() {
@@ -950,14 +960,14 @@ function selectOption(option) {
         else if(option.mj == 1){
             window.location.href = "../turtle-saver.html";
         }
-        else if(option.mj == 1){
-            window.location.href = "../turtle-saver.html";
-        }
         else if(option.mj == 2){
             window.location.href = "../maze.html";
         }
         else if(option.mj == 3){
             window.location.href = "../supermarket.html";
+        }
+        else if(option.mj == 4){
+            window.location.href = "../fake-invaders.html";
         }
         else{
             showTextNode(nextTextNodeId);
@@ -982,7 +992,7 @@ const textNodes = [
                 folPS : 2,
                 bh : 30,
                 nextText: 2,
-                image : '../img/',
+                image : '../img/characters/chief/kitchen/kitchenCarre',
                 appearance : true
             },
             {
@@ -992,7 +1002,7 @@ const textNodes = [
                 folPS : 7,
                 bh : 5,
                 nextText: 3,
-                image : '../img/',
+                image : '../img/characters/chief/kitchen/kitchenCarre',
                 appearance : true
             },
             {
@@ -1002,7 +1012,7 @@ const textNodes = [
                 folPS : 5,
                 bh : 5,
                 nextText: 4,
-                image : '../img/',
+                image : '../img/characters/chief/kitchen/kitchenCarre',
                 appearance : true
             }
         ]
@@ -1056,34 +1066,34 @@ const textNodes = [
                 // Good food
                 text: 'Here is my favorite food, yum yum !',
                 commentaries : ['It look so good ! Would want to taste !', 'I would not eat that...'],
-                fol : [20, 80],
-                folPS : 2,
-                bh : 30,
+                fol : [800, 1500],
+                folPS : 10,
+                bh : 5,
                 nextText: 7,
-                image : '../img/',
-                appearance : true
+                image : '../img/characters/chiefs/posts/mealNice.jpg',
+                appearance : false
             },
             {
                 // Medium Food
                 text: 'Here is my favorite food, yum yum !',
                 commentaries : ['It look so good ! Would want to taste !', 'I would not eat that...'],
-                fol : [200, 400],
-                folPS : 7,
-                bh : 5,
+                fol : [600, 1000],
+                folPS : 8,
+                bh : 10,
                 nextText: 8,
-                image : '../img/',
-                appearance : true
+                image : '../img/characters/chiefs/posts/mealOk.jpg',
+                appearance : false
             },
             {
                 // Bad food
                 text: 'Here is my favorite food, yum yum !',
                 commentaries : ['It look so good ! Would want to taste !', 'I would not eat that...'],
-                fol : [200, 300],
-                folPS : 5,
-                bh : 5,
+                fol : [100, 500],
+                folPS : 4,
+                bh : 15,
                 nextText: 9,
-                image : '../img/',
-                appearance : true
+                image : '../img/characters/chiefs/posts/badMeal.jpg',
+                appearance : false
             }
         ]
     },
@@ -1124,41 +1134,340 @@ const textNodes = [
         ]
     },
     {
+        // A COMMENTER
         id: 10,
-        text: '',
+        text: 'Now you can help your followers by posting a great recipe !',
         options: [
             {
-                text: '',
-                commentaries : [''],
-                fol : [20, 80],
-                folPS : 2,
-                bh : 30,
-                nextText: 7,
-                image : '../img/',
-                appearance : true
+                // Nickel
+                text: 'Hi everyone ! I thought that it\'ll be useful for you to learn how to cook great crepes ! By the way in this recipe I used ',
+                commentaries : ['Thanks for the recipe ! I\'ll use it soon !', 'I\'ll try it !'],
+                fol : [3000, 5000],
+                folPS : 20,
+                bh : 5,
+                nextText: 11,
+                image : '../img/characters/chief/posts/recipe.png',
+                appearance : false
             },
             {
-                text: '',
-                commentaries : [''],
-                fol : [200, 400],
-                folPS : 7,
-                bh : 5,
-                nextText: 8,
-                image : '../img/',
-                appearance : true
+                // Pas trop d'infos
+                text: 'Hi everyone ! I thought that it\'ll be useful for you to learn how to cook great crepes ! By the way in this recipe I used ',
+                commentaries : ['Thanks for the recipe ! I\'ll use it soon !', 'I\'ll try it !'],
+                fol : [800, 1500],
+                folPS : 10,
+                bh : 15,
+                nextText: 12,
+                image : '../img/characters/chief/posts/recipe.png',
+                appearance : false
             },
             {
-                text: '',
-                commentaries : [''],
-                fol : [200, 300],
-                folPS : 5,
-                bh : 5,
-                nextText: 9,
-                image : '../img/',
-                appearance : true
+                // Information fausse
+                text: 'Hi everyone ! I thought that it\'ll be useful for you to learn how to cook great crepes ! By the way in this recipe I used ',
+                commentaries : ['Thanks for the recipe ! I\'ll use it soon !', 'I\'ll try it !'],
+                fol : [600, 1000],
+                folPS : 8,
+                bh : 10,
+                nextText: 13,
+                image : '../img/characters/chief/posts/recipe.png',
+                appearance : false
             }
         ]
     },
+    {
+        id: 11,
+        text: 'Hi I\'m back ! Just wanted to talk to you about something. Your post was awesome ! You provided a great recipe and good intels about some ingredients, good job mate !',
+        options: [
+            {
+                text: 'Thank you professor ! See you next time !',
+                nextText: 14,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 12,
+        text: 'Hi I\'m back ! Just wanted to talk to you about something. Your post was great, you could have given more intels on which ingredients to use. Was nice tho !',
+        options: [
+            {
+                text: 'Understood, I\'ll try to do better next time !',
+                nextText: 14,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 13,
+        text: 'Hi I\'m back ! Just wanted to talk to you about something. Your recipe is great, but you have to be careful about what you post. The propriety of the ingredient is not true, be careful to fake news !',
+        options: [
+            {
+                text: 'Sorry, I\'ll be better next time !',
+                nextText: 14,
+                goBackToHome : false,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 14,
+        text: 'By the way, concerning fake news, do you know that the spread of fake news is a very dangerous phenomen ? Everyone should help to stop them ! I propose you to help this "quest". You\'ll be launch in Fake Invaders, a game where you need to destroy fake news before they touch Earth. Good luck !',
+        options: [
+            {
+                text: 'I\'m ready',
+                nextText: 15,
+                goBackToHome : true,
+                mj : 4
+            },
+        ]
+    },
+    {
+        id: 15,
+        text: 'Your community is growing up and some sponsors wants to collaborate with you. Choose which sponsor you want !',
+        options: [
+            {
+                //SudVPN
+                text: 'What\'s up guys ? I have my first sponsor ! Check out their online shop and use the CODE : CHIEF20',
+                commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
+                fol : [3000, 5000],
+                folPS : 20,
+                bh : 10,
+                nextText: 16,
+                mj : 0,
+                sponsor : 'SudVPN',
+                image : '../img/characters/sportif/posts/sudVPN.png',
+                appearance : false
+            },            
+            {
+                //Tefol
+                text: 'What\'s up guys ? I have my first sponsor ! Check out their online shop and use the CODE : CHIEF20',
+                commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
+                fol : [6000, 10000],
+                folPS : 40,
+                bh : 5,
+                nextText: 17,
+                mj : 0,
+                sponsor : 'Tefol',
+                image : '../img/characters/chief/posts/tefol.png',
+                appearance : false
+            },            
+            {
+                //Adadas
+                text: 'What\'s up guys ? I have my first sponsor ! Check out their online shop and use the CODE : CHIEF20',
+                commentaries : ['So cool ! Good job !', 'Exactly what I was expecting...'],
+                fol : [3000, 5000],
+                folPS : 20,
+                bh : 12,
+                nextText: 18,
+                mj : 0,
+                sponsor : 'Adadas',
+                image : '../img/characters/sportif/posts/adadas.png',
+                appearance : false
+            }
+        ]
+    },
+    {
+        id: 16,
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post. You could have explain well to fans why you choosed SudVPN for sponsor. ',
+        options: [
+            {
+                text: 'Sorry, I\'ll try to do better next time !',
+                nextText: 19,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 18,
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post. A sport sponsor is a pretty cool idea but your community won\'t be interested.',
+        options: [
+            {
+                text: 'I\'ll try to be better next time, I\'m ready to go next ',
+                nextText: 19,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 17,
+        text: 'Hello ! I\'m back again. You have made the good choice ! Your community will be interested in this type of sponsor because it\'s according to your main activity.',
+        options: [
+            {
+                text: 'Thank you, I\'m ready to go next !',
+                nextText: 19,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 19,
+        text: 'You just did a cooking lesson, show it to your followers !',
+        options: [
+            {
+                text: 'Today I made a special cooking lesson, even if they won\'t ever be as good as me, they were not sooo bad',
+                commentaries : ['Such a nice initiative !', 'Would have loved to be here !'],
+                fol : [10000, 15000],
+                folPS : 100,
+                bh : 30,
+                nextText: 20,
+                mj : 0,
+                image : '../img/characters/chief/posts/groupecuisine.png',
+                appearance : false
+            },            
+            {
+                text: 'Today I made a special cooking lesson, people were quite good.',
+                commentaries : ['Such a nice initiative !', 'Would have loved to be here !'],
+                fol : [10000, 20000],
+                folPS : 300,
+                bh : 15,
+                nextText: 21,
+                mj : 0,
+                image : '../img/characters/chief/posts/groupecuisine.png',
+                appearance : false
+            },            
+            {
+                text: 'Today I made a special cooking lesson, this was really cool to do and everybody seemed to have enjoyed it !',
+                commentaries : ['Such a nice initiative !', 'Would have loved to be here !'],
+                fol : [30000, 50000],
+                folPS : 400,
+                bh : 5,
+                nextText: 22,
+                mj : 0,
+                image : '../img/characters/chief/posts/groupecuisine.png',
+                appearance : false
+            }
+        ]
+    },
+    {
+        id: 20,
+        text: 'What\'s up ! It\'s McLesgo again ! Your post is too much arrogant ! Be careful for the next one !',
+        options: [
+            {
+                text: 'Sorry for that ! Go next !',
+                nextText: 23,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 22,
+        text: 'What\'s up ! It\'s McLesgo again ! Very great post, your initiative is perfect. Congratulation !',
+        options: [
+            {
+                text: 'Thank you ! Let\'s go next !',
+                nextText: 23,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 21,
+        text: 'What\'s up ! It\'s McLesgo again ! Your choice is not very good, you seems unhappy. Be more attractive for your community !',
+        options: [
+            {
+                text: 'Sorry for this one, I\'m ready to go next !',
+                nextText: 23,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 23,
+        text: 'Hey ! Today is the world day of oceans ! To show your interest in this cause, post a picture of a fish !',
+        options: [
+            {
+                text: 'Here is what I\'ll cook today, such a nice opportunity. Protect our oceans ! ',
+                commentaries : ['Good initiative !','It\'s a nice thing to sensibilize everyone !'],
+                fol : [30000, 50000],
+                folPS : 1000,
+                bh : 5,
+                nextText: 24,
+                mj : 0,
+                image : '../img/characters/chief/posts/poisson.png',
+                appearance : false
+            },            
+            {
+                text: 'Here is what I\'ll cook today, such a nice opportunity.',
+                commentaries : ['Good initiative !','It\'s a nice thing to sensibilize everyone !'],
+                fol : [10000, 20000],
+                folPS : 600,
+                bh : 20,
+                nextText: 25,
+                mj : 0,
+                image : '../img/characters/chief/posts/poisson.png',
+                appearance : false
+            },            
+            {
+                text: 'Here is what I\'ll cook today, fish are not that nice.. ',
+                commentaries : ['Good initiative !','It\'s a nice thing to sensibilize everyone !'],
+                fol : [10000, 15000],
+                folPS : 500,
+                bh : 30,
+                nextText: 26,
+                mj : 0,
+                image : '../img/characters/chief/posts/poisson.png',
+                appearance : false
+            }
+        ]
+    },
+    {
+        id: 24,
+        text: 'Hi ! It\'s me again ! You did a really great job, sensibilize everyone about this cause is really good !',
+        options: [
+            {
+                text: 'Let\'s go next !',
+                nextText: 27,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 25,
+        text: 'Hi ! It\'s me again ! Your post was... meh. You did a good job at advertising this cause to people but you could have done more to sensibilize them.\n Keep faith !',
+        options: [
+            {
+                text: 'Thank you ! Let\'s go next !',
+                nextText: 27,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 26,
+        text: 'Hi ! It\'s me again ! Your post wasn\'t good. You did not a good job at advertising this cause to people and you could have done more to sensibilize them.\n But I\'m never gonna give you up !',
+        options: [
+            {
+                text: 'Sorry for this one, I\'m ready to go next !',
+                nextText: 27,
+                goBackToHome : true,
+                mj : 0
+            },
+        ]
+    },
+    {
+        id: 27,
+        text: 'As today is the world ocean day, you could help association to collect plastic trash from the ocean ! Did you know that globally it\'s estimated that approximately 52% of all sea turtles have eaten plastic ? Let\s counter this !',
+        options: [
+            {
+                text: 'Let\s save the turtle !',
+                nextText: 27,
+                goBackToHome : true,
+                mj : 1
+            },
+        ]
+    },
+
+
+
+
 
 
 

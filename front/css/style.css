@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face { 	
+    font-family: "pixelisetxt"; 	
+    src: url('../fonts/Minecraft.ttf'); 
+}
+
 body{
     -moz-user-select: none; /* Firefox */
     -webkit-user-select: none; /* Chrome, Safari, Opéra depuis la version 15 */
@@ -13,7 +18,9 @@ body{
     src: url("../fonts/Minecraft.ttf");
   } 
 
-
+.waiting{
+    cursor: wait;
+}
 
 
 
@@ -371,7 +378,7 @@ body{
         }
         
         .grossetetejauge { grid-area: 3 / 1 / 8 / 7; 
-            background-image: url("../img/mainPage/gauge/gauge1.png" );
+            background-image: url("../img/mainPage/gauge/gauge9.png" );
             background-size : contain;
             background-repeat : no-repeat;
             background-position: center;
@@ -846,14 +853,14 @@ body{
     .div114 { grid-area: 1 / 1 / 2 / 13; }
     .divbox { grid-area: 3 / 4 / 11 / 10; }
     .divtitre { grid-area: 2 / 5 / 4 / 9; }
-    .divpp { grid-area: 5 / 4 / 10 / 7; 
+    .divpp { grid-area: 4 / 5 / 9 / 9;
         background-size: cover;
         background-repeat: no-repeat;
         background-position : center;
     
-    }
-    .divname { grid-area: 5 / 7 / 6 / 10; }
-    .divdesc { grid-area: 6 / 7 / 9 / 10; }
+    }   
+    .divdesc { grid-area: 6 / 7 / 9 / 10;}
+    .divname { grid-area: 9 / 5 / 10 / 9; } 
     .divadj { grid-area: 9 / 7 / 11 / 10; } 
     .divbtn { grid-area: 11 / 6 / 12 / 8; } 
 
@@ -1090,7 +1097,7 @@ body{
     letter-spacing: 0.07em;
   }
   .portfolio-experiment button .texte {
-    font-family: proxima-nova, monospace;
+    font-family: pixelisetxt;
     display:block;
     transform: translate3d(0, 0.7em, 0);
     transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
@@ -1561,6 +1568,7 @@ body{
     cursor: pointer;
     /*transform: rotateY(-25deg) rotateX(20deg);*/
     /*position: absolute;*/
+    border-top: 1px solid rgba(0,0,0,0.1);
     border-bottom: 4px solid rgba(0,0,0);
     border-right: 4px solid rgba(0,0,0);
     transition: 1.5s;
@@ -1635,12 +1643,15 @@ body{
     cursor: pointer;
     /*transform: rotateY(-25deg) rotateX(20deg);*/
     /*position: absolute;*/
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
+
     border-bottom: 4px solid rgba(0,0,0);
     border-right: 4px solid rgba(0,0,0);
     transition: 1.5s;
 }
 .choiceMainAdventure:hover{
-    transform: translateY(-50%) translateX(50%) scale(1.5);
+    transform: translateY(-30%) translateX(30%) scale(1.2);
     z-index:3;
 }
 
@@ -1652,14 +1663,17 @@ body{
     cursor: pointer;
     /*transform: rotateY(-25deg) rotateX(20deg);*/
     /*position: absolute;*/
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
     border-bottom: 4px solid rgba(0,0,0);
     border-right: 4px solid rgba(0,0,0);
     transition: 1.5s;
 }
 
 .choiceFreePlay:hover{
-    transform: translateY(-50%) scale(1.5);
+    transform: translateY(-30%) scale(1.3);
     z-index:3;
+
 }
 .choiceThirdMode {  grid-area: 6 / 13 / 11 / 19;
     border-radius:15px;
@@ -1667,14 +1681,17 @@ body{
     cursor: pointer;
     /*transform: rotateY(-25deg) rotateX(20deg);*/
     /*position: absolute;*/
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
     border-bottom: 4px solid rgba(0,0,0);
     border-right: 4px solid rgba(0,0,0);
     transition: 1.5s;
 }
 
 .choiceThirdMode:hover{
-    transform: translateY(-50%) translateX(-50%) scale(1.5);
+    transform: translateY(-30%) translateX(-30%) scale(1.3);
     z-index:3;
+
 }
 
     
@@ -1907,4 +1924,14 @@ body{
 
 .modalsuperwin{
     display: "none";
+}
+
+
+
+.titrecredits{
+    grid-area: 2 / 7 / 4 / 18 ;
+}
+
+.textcredits{
+    grid-area: 5 / 4 / 22 / 22 ;
 }

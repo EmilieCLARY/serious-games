@@ -11,35 +11,45 @@
 
 
     <div class=" h-full w-full divGlobalAccueil">
-        <div class="logoEN1"></div>
-        <div class="logoEN2"></div>
-        <div class="nomDuJeu bg-fondmain text-9xl flex items-center rainbow2 justify-center text-fonce">
-          <h1 class="font-pixelise"> Ethical Network</h1>
+        <div class="logoEN1 click" id="gocredits1"></div>
+        <div class="logoEN2 click" id="gocredits2"></div>
+        
+        <div class="nomDuJeu bg-fondmain text-9xl flex items-center rainbow2 justify-center text-fonce ">
+          <h1 class="font-pixelise text-[130px]"> Ethical Network</h1>
         </div>
           
-        <div class="choiceMainAdventure bg-lightfond  my-2 mx-4"> 
-          <div class="choiceModeDeJeu flex h-full">
+        <div class="choiceMainAdventure bg-lightfond  my-2 mx-4 "> 
+            <a href="free-play.html">
+            <div class="choiceModeDeJeu flex h-full items-center click w-full font-pixelise text-center">
+              <span>
+                <h1 class="text-4xl"><strong>Free Play</strong></h1>
+                <p class="m-6"> You only have time for a few quick games ? Then the Free Play mode is what you are looking for</p>
+              </span>
+            </div>
+          </a>
+        </div>
+        
+        
+        <div class="choiceFreePlay bg-lightfond my-2 mx-4">   
+          <a href="/html/choice-game/job-appearance.html">  
+            <div class="choiceModeDeJeu flex h-full items-center click font-pixelise text-center">
             <span>
-              <strong>Main Adventure</strong>
-              <p>Impersonate an influencer. Try to get as much followers as you could by chosing wisely while being as ethical as possible</p>
+              <h1 class="text-4xl"><strong>Main Adventure</strong></h1>
+              <p class="m-6">Impersonate an influencer. Try to get as much followers as you could by chosing wisely while being as ethical as possible</p>
             </span>
           </div>
+          </a>
         </div>
-        <div class="choiceFreePlay bg-lightfond my-2 mx-4">     
-          <div class="choiceModeDeJeu flex h-full">
-            <span>
-              <strong>Main Adventure</strong>
-              <p>Impersonate an influencer. Try to get as much followers as you could by chosing wisely while being as ethical as possible</p>
-            </span>
-          </div>
-        </div>
+        
         <div class="choiceThirdMode bg-lightfond my-2 mx-4"> 
-          <div class="choiceModeDeJeu flex h-full">
-            <span>
-              <strong>Main Adventure</strong>
-              <p>Impersonate an influencer. Try to get as much followers as you could by chosing wisely while being as ethical as possible</p>
+          <a href="">  
+            <div class="choiceModeDeJeu flex h-full items-center font-pixelise text-center">
+              <span>
+              <h1 class="text-4xl"><strong>COMING SOON</strong></h1>
+              <p class="m-6"> alors à la base l'idée était de faire un mode speed run mais je ne sait pas ce qu'il en est aujourd'hui</p>
             </span>
           </div>
+          </a>
         </div>
     
       
@@ -47,4 +57,5 @@
       </div>
           
 </body>
+  <script src="../js/accueil.js"></script>
 </html>

@@ -9,6 +9,7 @@ let userAppearance;
 
 socket.emit('getAppearance');
 socket.emit('getNextText');
+socket.emit('getTreesToPlant');
 socket.on('newAppearance', (Appearance)=>{
     console.log("oui");
     userAppearance = Appearance;
@@ -16,6 +17,15 @@ socket.on('newAppearance', (Appearance)=>{
 socket.on('leProchainTexte', (text) => {
     nextTxt = text;
     startGame();
+});
+
+socket.on("newTreesToPlant", (nb) => {
+    if(nb == 0){
+        document.getElementById("btnTreePlanter").style.backgroundImage = 'url("../../img/mainPage/tree.png")';
+    }
+    else{
+        document.getElementById("btnTreePlanter").style.backgroundImage = 'url("../../img/mainPage/treeNotif.png")';
+    }
 });
 
 function startGame() {
@@ -59,7 +69,7 @@ function showTextNode(textNodeIndex) {
                     
                 /* le texte */
                 var newDivMLtext = document.createElement("div");
-                newDivMLtext.classList.add('MLtext','flex','items-center','text-justify','m-4');
+                newDivMLtext.classList.add('MLtext','flex','items-center','text-justify','m-4','font-pixelise','tracking-widest');
                     
                     /* la bulle */
                 var newDivBcoin1 = document.createElement("div");
@@ -959,6 +969,9 @@ function selectOption(option) {
         else if(option.mj == 3){
             window.location.href = "../supermarket.html";
         }
+        else if(option.mj == 4){
+            window.location.href = "../fake-invaders.html";
+        }
         else{
             showTextNode(nextTextNodeId);
         }
@@ -976,7 +989,7 @@ const textNodes = [
         text: 'Welcome ! You are a professionnal basketball player. It\'s now time to do your first post. Remember to tell futures followers what you love. Choose between three posts !',
         options: [
             {
-                text: 'Welcome to my new account on Ethical Network !\n Unlike you I am the best basketball champion in the world. I plan to share my adventures with you through this account.\n Have fun !',
+                text: 'Welcome to my new account on Ethical Network !\n Unlike most of you I am one of the world\'s best basketball player. I plan to share my adventures with you through this account.\n Have fun and follow !',
                 commentaries : ['Welcome in Ethical Network !','I\'m interested about your adventures !'],
                 fol : [20, 80],
                 folPS : 2,
@@ -986,7 +999,7 @@ const textNodes = [
                 appearance : true
             },
             {
-                text: 'Welcome to my new account on Ethical Network !\n I am currently a professional basketball player and I love this sport. I plan to share my adventures with you through this account.\n Have fun !',
+                text: 'Welcome to my new account on Ethical Network !\n I am currently a professional basketball player. My job being the best there is for me, I won\'t forget to share my adventures with you guys ! \n Hope you\'ll enjoy !',
                 commentaries : ['Welcome in Ethical Network !','I\'m interested about your adventures !'],
                 fol : [200, 400],
                 folPS : 7,
@@ -996,7 +1009,7 @@ const textNodes = [
                 appearance : true
             },
             {
-                text: 'Welcome to my new account on Ethical Network !\n In life, I love basketball but I\'m not very good at it. But basketball is cool ! I plan to share my adventures with you through this account.',
+                text: 'Welcome to my new account on Ethical Network !\n I\'m a basketball fan but I\'m not very good at it. However I think basketball is cool ! This account is a way for me to share stuff about basket ball and my life in general.',
                 commentaries : ['Welcome in Ethical Network !','I\'m interested about your adventures !'],
                 fol : [200, 300],
                 folPS : 5,
@@ -1009,7 +1022,7 @@ const textNodes = [
     },
     {
         id: 2,
-        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose an answer, and it is not really what we call a "good choice". With other words, be careful of how to choose your words when you talk to people online. Even if it was a joke, your words were near of presumption and it can hurt some people. Be careful next time, I believe in you and I\'m never gonna give you up !',
+        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose a post, unfortunately it is not really what one would call a "good choice". In the future, do not forget to be thougtful of how to express yourself online. Even if it was meant to be a joke, your words may have been considered as presumptuous, which is, quite often, hurtful. No matter how bad or unwise your choices are I Mc Lessgo can assure you : I\'m never gonna give you up !',
         options: [
             {
                 text: 'I understand, go next !',
@@ -1019,7 +1032,7 @@ const textNodes = [
     },
     {
         id: 3,
-        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose an answer, and it is really what we call a "good choice". You explain very clearly your current activity and what are your objectives. Your post were not arrogant and I congratulate you !',
+        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose a post, congratulations :  it is definitely what one would call a "good choice". You explained very clearly your current activity and what are your goals. Your post can\'t be considered arrogant, once again, congratulations !',
         options: [
             {
                 text: 'Thanks, go next !',
@@ -1029,7 +1042,7 @@ const textNodes = [
     },
     {
         id: 4,
-        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose an answer, and it is very close to what we call a "good choice" ! I\'ll juste give you a new advice : Try to be more active next time, you seemed a little limp. Otherwise it was a great post !',
+        text: 'Hi ! I\'ve been summoned by the master of this game to explain something to you ! You just choose a post, although it is very close to one would call a "good choice" I believe you can do even better ! In order to improve, here is my advice : try to be more active next time, you seemed a little limp. Otherwise it was a great post !',
         options: [
             {
                 text: 'Thanks for the advice, go next !',
@@ -1053,7 +1066,7 @@ const textNodes = [
         text: 'It\s now time to explain to your followers your training !  ',
         options: [
             {
-                text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I wake up early and I go to the gym. In the afternoon, I go to the basketball room with my teammate.\nThe training start with a warm up, then the coach make some exercices specific of basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises.',
+                text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I wake up early and I go to the gym. In the afternoon, I join my teammates for the training.\nThe training starts with a warm up, then the coach give us exercices specific to basketball (shooting, defense, dribbling). After 2 hours of that, we play a quick match with all the team. And finally, we have some recovery exercises.',
                 commentaries : ['That\'s a very hard training !', 'Nice training ! Do you have some advices to progress in basketball ?'],
                 fol : [800, 1500],
                 folPS : 10,
@@ -1064,7 +1077,7 @@ const textNodes = [
                 appearance : true
             },            
             {
-                text: 'I\'ll explain you my daily training because mine is the best one !\n First, I wake up early to go to the gym, because the world is in the hands of people who are waking up early, and I am :)\n Next, I\'m going to the terrain to smash some noobs. I always win it all !',
+                text: 'I\'ll explain to you my daily training because mine is simply the best there is !\n First, I wake up early to go to the gym, because the world is in the hands of people who are waking up early, and I am :)\n Next, I\'m going to the court to smash some noobs. I just can\'t be defeated!',
                 commentaries : ['That\'s a very hard training !', 'Nice training ! Do you have some advices to progress in basketball ?'],
                 fol : [100, 500],
                 folPS : 4,
@@ -1075,7 +1088,7 @@ const textNodes = [
                 appearance : true
             },            
             {
-                text: 'Hi guys ! I\'ll explain you my daily training !\nFirst, I wake up early and I go to the gym. Then I go to the basketball room with my teammate.\n I personnaly do not warm up because I find it useless, I\'m always in condition to do some basketball. So my training start with some exercices specific of basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises.',
+                text: 'Hi guys ! I\'ll explain you my daily training !\nI start the day with a gym session. Then I join my teammates.\n I personnaly do not warm up because, well, I find it useless. I mean, who needs it ? So my training start with some exercices specific to basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises but thos are as useless as the warm up.',
                 commentaries : ['That\'s a very hard training !', 'Nice training ! Do you have some advices to progress in basketball ?'],
                 fol : [600, 1000],
                 folPS : 8,
@@ -1125,7 +1138,7 @@ const textNodes = [
     },
     {
         id: 10,
-        text: 'It\s now time to show your followers your eating habits !',
+        text: 'It\'s now time to show your followers your eating habits !',
         options: [
             {
                 //Photo protéine
@@ -1214,7 +1227,7 @@ const textNodes = [
     },
     {
         id: 14,
-        text: 'Hey ! I\'m here again ! Your post was not that bad but there\'s still a little something.. Sandwiches are not really good for athletes, but don\'t forget to tell people that they need to eat fruits and vegetables.\n You can check why here : https://www.hsph.harvard.edu/nutritionsource/healthy-eating-pyramid/ \n I believe in you !',
+        text: 'Hey ! I\'m here again ! Your post was not that bad but there\'s still a little something off about it.. Sandwiches are not the best good for athletes, but don\'t forget to tell people that they need to eat fruits and vegetables daily.\n You can check why here : https://www.hsph.harvard.edu/nutritionsource/healthy-eating-pyramid/ if you want to learn more about this topic.\n I believe in you !',
         options: [
             {
                 text: 'I\'ll try to be better next time, I\'m ready to go next !',
@@ -1226,7 +1239,7 @@ const textNodes = [
     },
     {
         id: 60,
-        text: 'I have a challenge for you ! Now that you know which food is better than another, you can help people with it !\n You\'ve been given 100€ to buy food to help reduce the hunger in the world. Everything you\'ll buy will be given to one association.\n Ready ?',
+        text: 'I have a challenge for you ! Now that you know which food is better than another, you can help people with it !\n You\'ve been given 100€ to buy food to help reduce the hunger in the world. Everything you\'ll buy will be given to a NGO.\n Ready ?',
         options: [
             {
                 text: 'Ready !',
@@ -1237,7 +1250,7 @@ const textNodes = [
     },
     {
         id: 15,
-        text: 'Your community is growing up and some sponsors wants to collaborate with you. Choose which sponsor you want !',
+        text: 'Your community is growing bigger and some sponsors wants to collaborate with you. Choose which sponsor you would like to work with !',
         options: [
             {
                 //BouclierFéroce
@@ -1282,7 +1295,7 @@ const textNodes = [
     },
     {
         id: 70,
-        text: 'Hi ! Did you know that Adadas just created sneakers based on plastic pollution ?\n I have a new challenge for you !\n Help them to collect plastic wastes. It will be useful for the planet !\n Goodluck ! ',
+        text: 'Hi ! Did you know that Adadas just created sneakers based on plastic pollution ?\n I have a new challenge for you !\n Help them collect plastic wastes. It\'s usefull for them and needed for our planet !\n Goodluck ! ',
         options: [
             {
                 text: 'Going for it !',
@@ -1294,7 +1307,7 @@ const textNodes = [
     },
     {
         id: 71,
-        text: 'Hi ! Did you know that RhinoFéroce has no bad impact on environment ?\n I have a new challenge for you !\n Help them to collect plastic wastes. It will be useful for the planet !\n Goodluck !',
+        text: 'Hi ! Did you know that RhinoFeroce has no bad impact on environment ?\n I have a new challenge for you !\n Help them collect plastic wastes. It will be useful for the planet !\n Goodluck !',
         options: [
             {
                 text: 'Going for it !',
@@ -1318,7 +1331,7 @@ const textNodes = [
     },
     {
         id: 16,
-        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post. You could have explain well to fans why you choosed BouclierFéroce for sponsor. ',
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Chose your sponsor according to your community and what you post. You could have explained well to fans why you choosed BouclierFeroce for sponsor. ',
         options: [
             {
                 text: 'Sorry, I\'ll try to do better next time !',
@@ -1330,7 +1343,7 @@ const textNodes = [
     },
     {
         id: 17,
-        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post. A video games is a pretty cool idea but your community won\'t be interested.',
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Chose your sponsor according to your community and what you post. A video games is a pretty cool idea but considering your community interests, it won\'t a successful deal.',
         options: [
             {
                 text: 'I\'ll try to be better next time, I\'m ready to go next ',
@@ -1342,7 +1355,7 @@ const textNodes = [
     },
     {
         id: 18,
-        text: 'Hello ! I\'m back again. You have made the good choice ! Your community will be interested in this type of sponsor because it\'s according to your main activity.',
+        text: 'Hello ! I\'m back again. You have made the good choice ! Your community will be interested in this type of sponsor because it\'s related to your main activity.',
         options: [
             {
                 text: 'Thank you, I\'m ready to go next !',
@@ -1354,11 +1367,11 @@ const textNodes = [
     },
     {
         id: 19,
-        text: 'You just scored first at a major event ! Congratulation ! Now you need to tell it to your followers, choose your way to do it !',
+        text: 'You just scored first at a major event ! Congratulation ! Now you have to tell it to your followers, choose your way to do it !',
         options: [
             {
                 // PHOTO EQUIPE PODIUM
-                text: 'So happy of the results, thanks for the kinds words ! Proud of my team',
+                text: 'So happy of the results, thanks for the kind words ! Proud of my team',
                 commentaries : ['GG to your team !', 'Amazing !! Good results'],
                 fol : [10000, 20000],
                 folPS : 300,
@@ -1370,7 +1383,7 @@ const textNodes = [
             },            
             {
                 // PHOTO PODIUM COMPLET
-                text: 'So happy of the results, thanks for the kinds words ! Congratulation to everyone competing in the tournament !',
+                text: 'So happy of the results, thanks for the kind words ! Congratulations to everyone competing in the tournament !',
                 commentaries : ['GG to your team !', 'Amazing !! The other team has not been demerited'],
                 fol : [30000, 50000],
                 folPS : 400,
@@ -1382,7 +1395,7 @@ const textNodes = [
             },            
             {
                 // PHOTO SEUL
-                text: 'So happy of the results, thanks for the kinds words ! I played it perfectly and I carried my team !',
+                text: 'So happy of the results, thanks for the kinds words ! I played perfectly and obviously carried my team !',
                 commentaries : ['GG to your team !', 'Congratulation, perfect result just like you !'],
                 fol : [10000, 15000],
                 folPS : 100,

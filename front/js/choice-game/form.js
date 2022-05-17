@@ -45,6 +45,7 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/comedian/sceneWG.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/chief/rectangle/kitchenWG.png")';
                     break;
                 case 3:
                     break;
@@ -63,6 +64,7 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/comedian/sceneBG.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/chief/rectangle/kitchenBG.png")';
                     break;
                 case 3:
                     break;
@@ -81,6 +83,7 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/comedian/sceneYG.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/chief/rectangle/kitchenYG.png")';
                     break;
                 case 3:
                     break;
@@ -99,6 +102,7 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/comedian/sceneWW.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/chief/rectangle/kitchenWW.png")';
                     break;
                 case 3:
                     break;
@@ -117,6 +121,7 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/comedian/sceneBW.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/chief/rectangle/kitchenBW.png")';
                     break;
                 case 3:
                     break;
@@ -135,6 +140,7 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/comedian/sceneYW.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../../img/characters/chief/rectangle/kitchenYW.png")';
                     break;
                 case 3:
                     break;

@@ -94,7 +94,7 @@ socket.on("newTreesToPlant", (nb) => {
     else{
         document.getElementById("btnTreePlanter").style.backgroundImage = 'url("../img/mainPage/treeNotif.png")';
     }
-})
+});
 
 socket.on('newNumberOfTreesPlanted', (trees) =>{
     document.getElementById("treesPlanted").textContent = trees;
@@ -112,11 +112,11 @@ socket.on('newTypeOfInfluencer', (job) => {
             break;
         case 2:
             myJob = job;
-            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Tech";
+            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Chief";
             break;
         case 3:
             myJob = job;
-            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Chief";
+            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Tech";
             break;
 
         default:
@@ -138,13 +138,13 @@ socket.on('newTypeOfInfluencer', (job) => {
             break;
         case 2 :
             document.getElementById("choiceBtn").addEventListener("click", event => {
-                window.location.href = "../html/choice-game/tech.html";
+                window.location.href = "../html/choice-game/chief.html";
             });
             break;
     
         case 3 :
             document.getElementById("choiceBtn").addEventListener("click", event => {
-                window.location.href = "../html/choice-game/chief.html";
+                window.location.href = "../html/choice-game/tech.html";
             });
             break;
     
@@ -181,6 +181,8 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneWG.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenWG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenWG.png")';
                     break;
                 case 3:
                     break;
@@ -202,6 +204,8 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneBG.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenBG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenBG.png")';
                     break;
                 case 3:
                     break;
@@ -223,6 +227,8 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneYG.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenYG.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenYG.png")';
                     break;
                 case 3:
                     break;
@@ -244,6 +250,8 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneWW.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenWW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenWW.png")';
                     break;
                 case 3:
                     break;
@@ -265,6 +273,8 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneBW.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenBW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenBW.png")';
                     break;
                 case 3:
                     break;
@@ -286,6 +296,8 @@ socket.on('newAppearance', (appearance) => {
                     document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/comedian/sceneYW.png")';
                     break;
                 case 2:
+                    document.getElementById("profilPicture").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenYW.png")';
+                    document.getElementById("profilPicturepp").style.backgroundImage = 'url("../img/characters/chief/rectangle/kitchenYW.png")';
                     break;
                 case 3:
                     break;
@@ -688,16 +700,23 @@ document.getElementById("popupMessenger").style.display = "none";
 document.getElementById("mailBtn").addEventListener("click", event => {
 
     if(messengerEstOuvert === 0){
+        P1.style.display = "block";
+        P2.style.display = "block";
+        P3.style.display = "block";
+        
+        while (dmPage.firstChild) {
+            dmPage.removeChild(dmPage.firstChild);
+        }
         document.getElementById("popupMessenger").style.display = "block";
         rnd = Math.floor(Math.random() * dmTab.length);
         var div = document.createElement("div");
         div.classList.add('messageEntrant');
-        div.textContent = dmTab[rnd][0][0];
+        div.textContent = dmTab[rnd][0];
         dmPage.appendChild(div);
 
-        P1.textContent = dmTab[rnd][0][1][0];
-        P2.textContent = dmTab[rnd][0][1][2];
-        P3.textContent = dmTab[rnd][0][1][4];
+        P1.textContent = dmTab[rnd][1][0];
+        P2.textContent = dmTab[rnd][1][2];
+        P3.textContent = dmTab[rnd][1][4];
         messengerEstOuvert = 1;
     }
     else if(messengerEstOuvert === 1){
@@ -735,15 +754,17 @@ document.getElementById("btnEnvoyerMessage").addEventListener("click", event => 
     var div = document.createElement("div");
     div.classList.add('messageSortant');
     if(messageSelected == 1){
-        div.textContent = dmTab[rnd][0][1][0];
+        div.textContent = dmTab[rnd][1][0];
+        dmPage.appendChild(div);
     }
     else if(messageSelected == 2){
-        div.textContent = dmTab[rnd][0][1][2];
+        div.textContent = dmTab[rnd][1][2];
+        dmPage.appendChild(div);
     }
     else if(messageSelected == 3){
-        div.textContent = dmTab[rnd][0][1][4];
+        div.textContent = dmTab[rnd][1][4];
+        dmPage.appendChild(div);
     }
-    dmPage.appendChild(div);
     P1.style.display = "none";
     P2.style.display = "none";
     P3.style.display = "none";
@@ -751,24 +772,52 @@ document.getElementById("btnEnvoyerMessage").addEventListener("click", event => 
         let div = document.createElement("div");
         div.classList.add('messageEntrant');
         if(messageSelected == 1){
-            div.textContent = dmTab[rnd][0][1][1];
+            div.textContent = dmTab[rnd][1][1];
+            dmPage.appendChild(div);
         }
         else if(messageSelected == 2){
-            div.textContent = dmTab[rnd][0][1][3];
+            div.textContent = dmTab[rnd][1][3];
+            dmPage.appendChild(div);
         }
         else if(messageSelected == 3){
-            div.textContent = dmTab[rnd][0][1][5];
+            div.textContent = dmTab[rnd][1][5];
+            dmPage.appendChild(div);
         }
-        dmPage.appendChild(div);
+        messageSelected = 0;
     }, 2000);
+    
 });
 
 var dmTab = [];
 var dm = [];
-dm.push(["Hi ! I love your account ! Would you make other posts ?", 
+dmTab.push(["Hi ! I love your account ! Would you make other posts ?", 
     ["Thanks a lot, yes I would !", "Nice I can't stand to see them !", 
     "Yes don't worry posts are coming", "Nice I can't stand to see them !",
     "No my account will stop :(", "Oh I'm so sad :/"]]);
+dmTab.push(["Hello ! Your account is very fun ! Do you have some sponsors ?", 
+    ["Thanks a lot, yes I have some sponsors look on the right side of my profile page !", "Nice I have never seen them !", 
+    "I'm working to have some sponsors !", "Ok ! Sport sponsor would be cool !",
+    "It's very complicated to have a sponsor feeting with me ! Checkout the right side of my profile page to see them", "Ok ! I know how it's important for you ! Good luck in your carreer !"]]);
+dmTab.push(["Hi ! Your account is great ! What is your followers objective ?", 
+    ["Thanks a lot, I don't have any objectives of followers ! People who likes my account follow me and that's all", "Very good mindset ! You will be famous", 
+    "Thank you ! My followers objective is to have the maximum of followers to get a lot of money !!", "Hum... Ok.",
+    "My objective is achieved so I won't make more content", "That's so sad :/"]]);
+dmTab.push(["Hi ! Your account is amazing ! Can you give some visibility to my account in story ?", 
+    ["No sorry your account is not feeting with my theme of content", "I'm so sad :/", 
+    "Yes I can ! I do it as soon as possible", "Thanks a lot ! I love you <3",
+    "I'm not sure to do it. I'll see it later my friend", "Thanks I would be honoured !"]]);
+//dmTab.push(["Hi ! I love your account ! Would you make other posts ?", 
+//    ["Thanks a lot, yes I would !", "Nice I can't stand to see them !", 
+//    "Yes don't worry posts are coming", "Nice I can't stand to see them !",
+//    "No my account will stop :(", "Oh I'm so sad :/"]]);
+//dmTab.push(["Hi ! I love your account ! Would you make other posts ?", 
+//    ["Thanks a lot, yes I would !", "Nice I can't stand to see them !", 
+//    "Yes don't worry posts are coming", "Nice I can't stand to see them !",
+//    "No my account will stop :(", "Oh I'm so sad :/"]]);
 
-
-dmTab.push(dm);
+// Carte chance
+let leRandomDeLaCarteChanceQuiApparaitQuandCestLeMomentDApparaitreSurLaPageHomeHtmlTouteBelleDeFouEtNonPasQuandCestPasLeMomentDApparaitreParceQueCeSeraitToutDeMemeDommageDApparaitreAlorsQuIlNeFautPasApparaitre = Math.floor(Math.random() * (180000 - 60000) + 60000);
+//console.log(leRandomDeLaCarteChanceQuiApparaitQuandCestLeMomentDApparaitreSurLaPageHomeHtmlTouteBelleDeFouEtNonPasQuandCestPasLeMomentDApparaitreParceQueCeSeraitToutDeMemeDommageDApparaitreAlorsQuIlNeFautPasApparaitre);
+let leTimeoutDeLaCarteChanceQuiApparaitQuandCestLeMomentDApparaitreSurLaPageHomeHtmlTouteBelleDeFouEtNonPasQuandCestPasLeMomentDApparaitreParceQueCeSeraitToutDeMemeDommageDApparaitreAlorsQuIlNeFautPasApparaitre = setTimeout(() => {
+    document.getElementById("notificationCarteChance").classList.add("cartechanceNotif");
+}, leRandomDeLaCarteChanceQuiApparaitQuandCestLeMomentDApparaitreSurLaPageHomeHtmlTouteBelleDeFouEtNonPasQuandCestPasLeMomentDApparaitreParceQueCeSeraitToutDeMemeDommageDApparaitreAlorsQuIlNeFautPasApparaitre);

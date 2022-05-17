@@ -604,6 +604,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.5rem;
 }
 
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -808,6 +820,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(121 118 118 / var(--tw-border-opacity));
 }
 
+.border-white {
+  border-color: #FFFFFFFF;
+}
+
 .border-fonce {
   --tw-border-opacity: 1;
   border-color: rgb(48 48 48 / var(--tw-border-opacity));
@@ -816,10 +832,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-rougebouton {
   --tw-border-opacity: 1;
   border-color: rgb(102 5 3 / var(--tw-border-opacity));
-}
-
-.border-white {
-  border-color: #FFFFFFFF;
 }
 
 .bg-fondmain {
@@ -879,6 +891,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1rem;
 }
 
+.p-9 {
+  padding: 2.25rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -894,10 +910,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-center {
   text-align: center;
-}
-
-.text-right {
-  text-align: right;
 }
 
 .text-justify {
@@ -936,6 +948,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-9xl {
   font-size: 8rem;
   line-height: 1;
+}
+
+.text-\[130px\] {
+  font-size: 130px;
 }
 
 .font-bold {
@@ -988,6 +1004,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-underline-offset: 1px;
 }
 
+@font-face {
+  font-family: "pixelisetxt";
+
+  src: url('../fonts/Minecraft.ttf');
+}
+
 body{
   -moz-user-select: none;
   /* Firefox */
@@ -1003,6 +1025,10 @@ body{
   font-family: "Pixelise";
 
   src: url("../fonts/Minecraft.ttf");
+}
+
+.waiting{
+  cursor: wait;
 }
 
 .loader{
@@ -1461,7 +1487,7 @@ body{
 
 .grossetetejauge {
   grid-area: 3 / 1 / 8 / 7;
-  background-image: url("../img/mainPage/gauge/gauge1.png" );
+  background-image: url("../img/mainPage/gauge/gauge9.png" );
   background-size : contain;
   background-repeat : no-repeat;
   background-position: center;
@@ -2064,18 +2090,18 @@ body{
 }
 
 .divpp {
-  grid-area: 5 / 4 / 10 / 7;
+  grid-area: 4 / 5 / 9 / 9;
   background-size: cover;
   background-repeat: no-repeat;
   background-position : center;
 }
 
-.divname {
-  grid-area: 5 / 7 / 6 / 10;
-}
-
 .divdesc {
   grid-area: 6 / 7 / 9 / 10;
+}
+
+.divname {
+  grid-area: 9 / 5 / 10 / 9;
 }
 
 .divadj {
@@ -2407,7 +2433,7 @@ body{
 }
 
 .portfolio-experiment button .texte {
-  font-family: proxima-nova, monospace;
+  font-family: pixelisetxt;
   display:block;
   transform: translate3d(0, 0.7em, 0);
   transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
@@ -2916,6 +2942,7 @@ body{
   cursor: pointer;
   /*transform: rotateY(-25deg) rotateX(20deg);*/
   /*position: absolute;*/
+  border-top: 1px solid rgba(0,0,0,0.1);
   border-bottom: 4px solid rgba(0,0,0);
   border-right: 4px solid rgba(0,0,0);
   transition: 1.5s;
@@ -3000,13 +3027,15 @@ body{
   cursor: pointer;
   /*transform: rotateY(-25deg) rotateX(20deg);*/
   /*position: absolute;*/
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
   border-bottom: 4px solid rgba(0,0,0);
   border-right: 4px solid rgba(0,0,0);
   transition: 1.5s;
 }
 
 .choiceMainAdventure:hover{
-  transform: translateY(-50%) translateX(50%) scale(1.5);
+  transform: translateY(-30%) translateX(30%) scale(1.2);
   z-index:3;
 }
 
@@ -3017,13 +3046,15 @@ body{
   cursor: pointer;
   /*transform: rotateY(-25deg) rotateX(20deg);*/
   /*position: absolute;*/
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
   border-bottom: 4px solid rgba(0,0,0);
   border-right: 4px solid rgba(0,0,0);
   transition: 1.5s;
 }
 
 .choiceFreePlay:hover{
-  transform: translateY(-50%) scale(1.5);
+  transform: translateY(-30%) scale(1.3);
   z-index:3;
 }
 
@@ -3034,13 +3065,15 @@ body{
   cursor: pointer;
   /*transform: rotateY(-25deg) rotateX(20deg);*/
   /*position: absolute;*/
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
   border-bottom: 4px solid rgba(0,0,0);
   border-right: 4px solid rgba(0,0,0);
   transition: 1.5s;
 }
 
 .choiceThirdMode:hover{
-  transform: translateY(-50%) translateX(-50%) scale(1.5);
+  transform: translateY(-30%) translateX(-30%) scale(1.3);
   z-index:3;
 }
 
@@ -3264,4 +3297,12 @@ img{
 
 .modalsuperwin{
   display: "none";
+}
+
+.titrecredits{
+  grid-area: 2 / 7 / 4 / 18 ;
+}
+
+.textcredits{
+  grid-area: 5 / 4 / 22 / 22 ;
 }

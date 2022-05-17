@@ -58,7 +58,7 @@ document.getElementById("athlete").addEventListener("click", event => {
     showAppearance();
 });
 
-document.getElementById("comedian").addEventListener("click", event => {
+/*document.getElementById("comedian").addEventListener("click", event => {
     job = 1;
     document.getElementById("blackGuy").style.display = "block";
     document.getElementById("whiteGuy").style.display = "block";
@@ -90,7 +90,7 @@ document.getElementById("comedian").addEventListener("click", event => {
     socket.emit("userJob", job);
 
     showAppearance();
-});
+});*/
 
 document.getElementById("chief").addEventListener("click", event => {
     job = 2;
@@ -126,7 +126,7 @@ document.getElementById("chief").addEventListener("click", event => {
     showAppearance();
 });
 
-document.getElementById("gamer").addEventListener("click", event => {
+/*document.getElementById("gamer").addEventListener("click", event => {
     job = 3;
     document.getElementById("blackGuy").style.display = "block";
     document.getElementById("whiteGuy").style.display = "block";
@@ -158,7 +158,7 @@ document.getElementById("gamer").addEventListener("click", event => {
     socket.emit("userJob", job);
 
     showAppearance();
-});
+});*/
 
 /********************************/
 /*                              */
