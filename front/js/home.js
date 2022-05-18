@@ -14,7 +14,8 @@
 //    window.location.href = "../html/maze.html";
 //});
 
-var usernames = ["DanleyJade","SnowberYaws","Platysma","Snorkel","Osteophone","OggacFlume","LilialDolee","Scirocco","Oryctomancy","Sassafras","Famulus","Apprehend","Benediction","ComfykelsCuckoo","Contemper","BroncokZoom","CorehUmlaut","Bouffant","Ploitering","Razzmatazz","SonsiaMoot","Pettifogger","Decorticate","Pancreas","PccheatKyloe","JidezJiggle","Passacaglia","Moocher","Monoideism","BlaidSnooty","PleocZonoid","Mawkish","Georgic","Kahikatea","DannerGenet","Moniker","Paradisiacal","Quinzee","Reticella","LadynoobMoue","Verilysoul327","Pilcrow","Furunculoid","Dirf","Agnation","Platapie","Preconize","Virtuoso","Lunulate","Hootenanny","BlindPig","Dithyramb","Cannelure","Widdershins","Forfaiting","Serendipity","Malarknight123","Dillydally","Cryptic","Persnickety","Brimborion","Cockatoo","Humgruffin","Flapdoodle","Apsidal","Calabash","Leprosarium","Guttersnipe","Webcast","Drizzle","Nasonquid66","Tchotchke","Zamarra","Shart","Impleach","Tarboosh","Pterylology","Crumple","Atpatruus","Nincompoop","Mutualism","HandstandFizgig","Nutmeg1Spiral","DaftpigCuckoo","DarseyChichi","Succubus","Alveromancy","Sprinkles","Athymia","Spendthrift","CuricElapid","Oxymoron","Caduceator","Crudivore","Fumiduct","Yellowbelly","Dysphagia","AfearJetsam","GeruGlogg","Almoner","Obsidian","CeliacVerve","Kalimba","Filibuster","Merdurinous","Slipshod","PingouiQuant","Firebrand","Stomatolalia","Kittiwake","Cosmism","Phantonym","Scandalitis","DeweyYahoo","Spermophile","Slapdash","Anhidrosis","Sassitude","MaxhunAncon","Wolfman8Quack","Banderilla","Fussbudget","Nestitherapy","Kahuna","Fossde200210","Halfwit","Fumarole","Gasbag","Divisiger151","Swish","Alee6tanng","Virtuoso","Eviscerate","Gongoozle","Juttylair","Fishwife","Dipnoous","Parapet","Telmatology","Calaboose","Mithridatism","Oakum","Dosimetry","Spelunker","Piscicide","Snool","Threnodic","Jubilee","Celsitude","Rambunctious","Perukereyc321","Zeugma","Sorbile","Landlubber","Librate","Couscous","Lyncean","Plethora","Picotgetx","Headlong","Recrement","Antimacassar","Tastevin","Preposterous","Solivagant","Gangway","Oxytocic","Pugnacious","Cultriform","Gibbosity","Necrolatry","Vermicious","Chyliferous","Shebang","Femerall","DirectWhorl","Epithelium","E_libQuokka","SwordmasRound","Skedaddle","Erotophobia","Cocksure","Mammose","Dummkopf","Organza","BaiphPogey","Inappetent","Nambypamby","Annodated","BuddiefPrimp","Zeitgeber","NidefPogo","Phubbing","Borborygmus","Magistral","Popliteal","Opisthograph","SiikJiffy","Phosphene","Salpiglossis","Cryptarchy","Peeve","Slavocracy","Jalopy","Ickleseict","Discalceate","Bedaggle","Cockatoo","Groupuscule","Lothario","Cyllosis","Firkin","Virtunitymc","Raconteur","Nithing","Zeppelin","Grinagog","Calash","Echinuliform","Jamboree","Eponymdbm99","Scootch","Gersentstats","Shalwar","Monoliteral","Philtrum","Soubrette","Fatuous","Promethean","Berserker","Duikerdax107","Whimsical","Pelmatogram","Rumpus","Jaseran","Hurlyburly","Getagu98","Hijinks","Circumjacent","Outlandish", "Alexouille", "Grodore", "Yuniemos", "Mme Tamia", "Gojyrm", "Mr Tamia", "Thraffr", "Thomas Le GOAT"
+var usernames = ["DanleyJade","SnowberYaws","Platysma","Snorkel","Osteophone","OggacFlume","LilialDolee","Scirocco","Oryctomancy","Sassafras","Famulus","Apprehend","Benediction","ComfykelsCuckoo","Contemper","BroncokZoom","CorehUmlaut","Bouffant","Ploitering","Razzmatazz","SonsiaMoot","Pettifogger","Decorticate","Pancreas","PccheatKyloe","JidezJiggle","Passacaglia","Moocher","Monoideism","BlaidSnooty","PleocZonoid","Mawkish","Georgic","Kahikatea","DannerGenet","Moniker","Paradisiacal","Quinzee","Reticella","LadynoobMoue","Verilysoul327","Pilcrow","Furunculoid","Dirf","Agnation","Platapie","Preconize","Virtuoso","Lunulate","Hootenanny","BlindPig","Dithyramb","Cannelure","Widdershins","Forfaiting","Serendipity","Malarknight123","Dillydally","Cryptic","Persnickety","Brimborion","Cockatoo","Humgruffin","Flapdoodle","Apsidal","Calabash","Leprosarium","Guttersnipe","Webcast","Drizzle","Nasonquid66","Tchotchke","Zamarra","Shart","Impleach","Tarboosh","Pterylology","Crumple","Atpatruus","Nincompoop","Mutualism","HandstandFizgig","Nutmeg1Spiral","DaftpigCuckoo","DarseyChichi","Succubus","Alveromancy","Sprinkles","Athymia","Spendthrift","CuricElapid","Oxymoron","Caduceator","Crudivore","Fumiduct","Yellowbelly","Dysphagia","AfearJetsam","GeruGlogg","Almoner","Obsidian","CeliacVerve","Kalimba","Filibuster","Merdurinous","Slipshod","PingouiQuant","Firebrand","Stomatolalia","Kittiwake","Cosmism","Phantonym","Scandalitis","DeweyYahoo","Spermophile","Slapdash","Anhidrosis","Sassitude","MaxhunAncon","Wolfman8Quack","Banderilla","Fussbudget","Nestitherapy","Kahuna","Fossde200210","Halfwit","Fumarole","Gasbag","Divisiger151","Swish","Alee6tanng","Virtuoso","Eviscerate","Gongoozle","Juttylair","Fishwife","Dipnoous","Parapet","Telmatology","Calaboose","Mithridatism","Oakum","Dosimetry","Spelunker","Piscicide","Snool","Threnodic","Jubilee","Celsitude","Rambunctious","Perukereyc321","Zeugma","Sorbile","Landlubber","Librate","Couscous","Lyncean","Plethora","Picotgetx","Headlong","Recrement","Antimacassar","Tastevin","Preposterous","Solivagant","Gangway","Oxytocic","Pugnacious","Cultriform","Gibbosity","Necrolatry","Vermicious","Chyliferous","Shebang","Femerall","DirectWhorl","Epithelium","E_libQuokka","SwordmasRound","Skedaddle","Erotophobia","Cocksure","Mammose","Dummkopf","Organza","BaiphPogey","Inappetent","Nambypamby","Annodated","BuddiefPrimp","Zeitgeber","NidefPogo","Phubbing","Borborygmus","Magistral","Popliteal","Opisthograph","SiikJiffy","Phosphene","Salpiglossis","Cryptarchy","Peeve","Slavocracy","Jalopy","Ickleseict","Discalceate","Bedaggle","Cockatoo","Groupuscule","Lothario","Cyllosis","Firkin","Virtunitymc","Raconteur","Nithing","Zeppelin","Grinagog","Calash","Echinuliform","Jamboree","Eponymdbm99","Scootch","Gersentstats","Shalwar","Monoliteral","Philtrum","Soubrette","Fatuous","Promethean","Berserker","Duikerdax107","Whimsical","Pelmatogram","Rumpus","Jaseran","Hurlyburly","Getagu98","Hijinks","Circumjacent","Outlandish", "Alexouille", "Grodore", "Yuniemos", "Mme Tamia", "Gojyrm", "Mr Tamia", "Thraffr", "Thomas Le GOAT","KodiakCowcat","Sacapuntas","SucasMidst","Haberdashery","Lambitive","Mugwump","Panoptic","Fungible","Trichology","Xiphoid","Misbeseem","Xylophone","Ontocyclic","DgmdiamHooey","BuddybudKausia","Defenestrate","Perfunctory","Jactation","Larrigan","Uggernaut","Acroscopic","LondarLoony","XanderbUranic","GammygamVolvox","Waxcloth","JezwalSnafu","Octodont","Squooshy","PrescriptKeck","Dumbfounded","Histology","Hoydenism","JabbuhWamus","FrostestOrt","Omophagy","Mr_zombotCoccyx","Ochroleucous","Jabberwocky","Siserary","Skylord_becGonzo","Haligraphy","Perambulator","Anagalactic","Gymkhana","Yantrayer98","Bevy","Nasicornous","Flippant","Poundage","Gooseflesh","Stevedore","Squabble","Lampadfooly8","Hairpin","Dinicmer87","Bonny","Smazing","Nabob","Brackle","Mastermind","Skullduggery","Petcock","Cribble","Telekinesis","Whodunitry","Smegma","Burnetnu11","Contraband","Acervuline","Donkeyman","Mvulener18499","Rickrack","Beloidlu000","Glom","Nomographer","Rickettsia","Amercehuoh","Doozy","Volation","Spoon"
+
 
 ]
 
@@ -51,7 +52,8 @@ var followers = 0;
 var followersPS = 1;
 var interval;
 var folQueue = new Queue();
-var postListDansLaPage;
+var postListDansLaPage = [];
+var btnMailActive = false;
 
 
 // animation du loader
@@ -86,6 +88,7 @@ document.getElementById("btnpost6").style.display = "none";
 document.getElementById("btnpost7").style.display = "none";
 document.getElementById("btnpost8").style.display = "none";
 document.getElementById("btnpost9").style.display = "none";
+document.getElementById("mailBtn").style.backgroundImage = 'url("../img/mainPage/bulle.png")';
 
 socket.on("newTreesToPlant", (nb) => {
     if(nb == 0){
@@ -116,7 +119,7 @@ socket.on('newTypeOfInfluencer', (job) => {
             break;
         case 3:
             myJob = job;
-            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Tech";
+            document.getElementById("typeOfInfluencer").textContent = "Type of influencer : Tech";s
             break;
 
         default:
@@ -319,6 +322,11 @@ socket.on('newAppearance', (appearance) => {
 
 socket.on('newPosts', (postList) => {
     //console.log(postList);
+    if(postList.length > postListDansLaPage.length){
+        document.getElementById("mailBtn").style.backgroundImage = 'url("../img/mainPage/bulleNotif.png")';
+        btnMailActive = true;
+    }
+
     postListDansLaPage = postList;
     for(let i = 0; i < postList.length; i++){
         if(!postList[i].appearance){
@@ -378,7 +386,7 @@ socket.on('newPosts', (postList) => {
         for (let index = 1; index <= 2; index++) {
     
             var titre= 'titre'+index;
-            var pseudo = getRandomUsername();
+            var pseudo = getRandomUsername()[0];
             document.getElementById(titre).textContent = "@" + pseudo;
             
             var com = 'com' + index;  
@@ -526,35 +534,40 @@ function showNewFollowers(queue){
     if(queue.length == 5){
         let ind = 5;
         for(let i = queue.head; i < queue.tail; i++){
-            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            document.getElementById("folName" + ind).textContent = queue.elements[i][0];
+            document.getElementById("folPic" + ind).style.backgroundImage = "url('../img/logo/profilepictures/logo"+queue.elements[i][1]+".png')";
             ind--;
         }
     }
     else if(queue.length == 4){
         let ind = 4;
         for(let i = queue.head; i < queue.tail; i++){
-            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            document.getElementById("folName" + ind).textContent = queue.elements[i][0];
+            document.getElementById("folPic" + ind).style.backgroundImage = "url('../img/logo/profilepictures/logo"+queue.elements[i][1]+".png')";
             ind--;
         }
     }
     else if(queue.length == 3){
         let ind = 3;
         for(let i = queue.head; i < queue.tail; i++){
-            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            document.getElementById("folName" + ind).textContent = queue.elements[i][0];
+            document.getElementById("folPic" + ind).style.backgroundImage = "url('../img/logo/profilepictures/logo"+queue.elements[i][1]+".png')";
             ind--;
         }
     }
     else if(queue.length == 2){
         let ind = 2;
         for(let i = queue.head; i < queue.tail; i++){
-            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            document.getElementById("folName" + ind).textContent = queue.elements[i][0];
+            document.getElementById("folPic" + ind).style.backgroundImage = "url('../img/logo/profilepictures/logo"+queue.elements[i][1]+".png')";
             ind--;
         }
     }
     else if(queue.length == 1){
         let ind = 1;
         for(let i = queue.head; i < queue.tail; i++){
-            document.getElementById("folName" + ind).textContent = queue.elements[i];
+            document.getElementById("folName" + ind).textContent = queue.elements[i][0];
+            document.getElementById("folPic" + ind).style.backgroundImage = "url('../img/logo/profilepictures/logo"+queue.elements[i][1]+".png')";
             ind--;
         }
     }
@@ -566,7 +579,7 @@ function showNewFollowers(queue){
 }
 
 function getRandomUsername(){
-    return(usernames[Math.floor(Math.random() * usernames.length)]);
+    return([usernames[Math.floor(Math.random() * usernames.length)], Math.floor(Math.random() * 21)]);
 }
 
 function popupWatiTropBO(number){
@@ -602,7 +615,7 @@ function popupWatiTropBO(number){
     for (let index = 1; index <= 2; index++) {
     
         var titre= 'titre'+index;
-        var pseudo = getRandomUsername();
+        var pseudo = getRandomUsername()[0];
         document.getElementById(titre).textContent = "@" + pseudo;
         
         var com = 'com' + index;  
@@ -697,31 +710,33 @@ var rnd;
 
 document.getElementById("popupMessenger").style.display = "none";
 
+
 document.getElementById("mailBtn").addEventListener("click", event => {
-
-    if(messengerEstOuvert === 0){
-        P1.style.display = "block";
-        P2.style.display = "block";
-        P3.style.display = "block";
-        
-        while (dmPage.firstChild) {
-            dmPage.removeChild(dmPage.firstChild);
+    if(btnMailActive){
+        if(messengerEstOuvert === 0){
+            P1.style.display = "block";
+            P2.style.display = "block";
+            P3.style.display = "block";
+            while (dmPage.firstChild) {
+                dmPage.removeChild(dmPage.firstChild);
+            }
+            document.getElementById("popupMessenger").style.display = "block";
+            rnd = Math.floor(Math.random() * dmTab.length);
+            var div = document.createElement("div");
+            div.classList.add('messageEntrant');
+            div.textContent = dmTab[rnd][0];
+            dmPage.appendChild(div);
+            P1.textContent = dmTab[rnd][1][0];
+            P2.textContent = dmTab[rnd][1][2];
+            P3.textContent = dmTab[rnd][1][4];
+            messengerEstOuvert = 1;
         }
-        document.getElementById("popupMessenger").style.display = "block";
-        rnd = Math.floor(Math.random() * dmTab.length);
-        var div = document.createElement("div");
-        div.classList.add('messageEntrant');
-        div.textContent = dmTab[rnd][0];
-        dmPage.appendChild(div);
-
-        P1.textContent = dmTab[rnd][1][0];
-        P2.textContent = dmTab[rnd][1][2];
-        P3.textContent = dmTab[rnd][1][4];
-        messengerEstOuvert = 1;
-    }
-    else if(messengerEstOuvert === 1){
-        document.getElementById("popupMessenger").style.display = "none";
-        messengerEstOuvert = 0;
+        else if(messengerEstOuvert === 1){
+            document.getElementById("popupMessenger").style.display = "none";
+            messengerEstOuvert = 0;
+            btnMailActive = false;
+            document.getElementById("mailBtn").style.backgroundImage = 'url("../img/mainPage/bulle.png")'
+        }
     }
 });
 

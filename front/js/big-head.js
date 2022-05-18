@@ -32,6 +32,11 @@ var etatChampBlue = 0;
 var platforms;
 var platforms2;
 
+var soundChamp;
+var soundCollect;
+var soundJump;
+var soundNextRoom;
+
 var R;
 
 
@@ -53,6 +58,12 @@ function preload (){
 
     this.load.image('melon', '../img/big_head/melon.png', { frameWidth: 32, frameHeight: 32 });
     this.load.image('cadenas', '../img/big_head/door.png', { frameWidth: 32, frameHeight: 32 });
+
+    this.load.audio('champ', [ '../sounds/big-head/champ.ogg', '../sounds/big-head/champ.mp3' ]);
+    this.load.audio('collect', [ '../sounds/big-head/collect.ogg', '../sounds/big-head/collect.mp3' ]);
+    this.load.audio('jump', [ '../sounds/big-head/jump.ogg', '../sounds/big-head/jump.mp3' ]);
+    this.load.audio('nextRoom', [ '../sounds/big-head/nextRoom.ogg', '../sounds/big-head/nextRoom.mp3' ]);
+
 
     document.getElementById("modalbhwin").style.display = "none";
     document.getElementById("modalbhinfo").style.display = "none";
@@ -191,6 +202,11 @@ function create (){
         frameRate: 10,
     });
 
+    soundChamp = this.sound.add('champ');
+    soundCollect = this.sound.add('collect');
+    soundJump = this.sound.add('jump');
+    soundNextRoom = this.sound.add('nextRoom');
+
 }
 
 function update (time, delta)
@@ -226,6 +242,9 @@ function update (time, delta)
     if ((this.cursors.up.isDown || this.cursors.space.isDown) && this.player.body.onFloor() || (this.player.body.onWall() && (this.cursors.up.isDown || this.cursors.space.isDown)))
     {    
         if(cooldown == 0 || time - cooldown >= 600){
+
+            soundJump.play();
+
             if(etatChampGreen == 1){
                 this.player.setVelocityY(-500);
             }
@@ -244,10 +263,12 @@ function update (time, delta)
     }
 
     if(currentRoom == 1 && this.player.x >= 1595){
+        soundNextRoom.play();
         coinsCollected = 0;
         currentRoom = 2;
     }
     if(currentRoom == 2 && this.player.x >= 3048){
+        soundNextRoom.play();
         coinsCollected = 0;
         currentRoom = 3;
     }
@@ -277,6 +298,8 @@ function hitBlueChamp (sprite, tile)
     console.log("champi bleu")
 
     etatChampBlue = 1;
+
+    soundChamp.play();
     
     setTimeout(function() { etatChampBlue = 0 }, 7000);   // Attend 7 secondes avant exécution   
 
@@ -287,7 +310,8 @@ function hitRedChamp (sprite, tile)
 {
     redChampLayer.removeTileAt(tile.x, tile.y);
 
-    console.log("champi rouge")
+    console.log("champi rouge");
+    soundChamp.play();
 
     etatChampRouge = 1;
     
@@ -301,6 +325,7 @@ function hitGreenChamp (sprite, tile)
     greenChampLayer.removeTileAt(tile.x, tile.y);
 
     console.log("champi vert")
+    soundChamp.play();
 
     etatChampGreen = 1;
 
@@ -313,6 +338,8 @@ function hitCoin (sprite, tile)
 {
     coinLayer.removeTileAt(tile.x, tile.y);
     coinsCollected += 1;
+
+    soundCollect.play();
 
     updateText();
 

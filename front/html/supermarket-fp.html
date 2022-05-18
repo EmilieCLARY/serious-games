@@ -9,8 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="../dist/style.css">
-
-    <title>Supermarket</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/logo/logo.png">
+    <title>SUPERMARKET</title>
 </head>
 <body>
     <div class="parentJeu h-screen bg-fondmain">
@@ -28,7 +28,7 @@
     
     <!--titre-->
     <div class="div5Jeu click grostext bg-rougebouton text-center text-white font-pixelise rounded-b-2xl" > 
-        <h1>Supermarket</h1>
+        <h1>SUPERMARKET</h1>
     </div> 
 
     <a class="w-full divretourhomeJeu arrow h-full border-contourRouge border-rougeContour bg-rougebouton" href="free-play.html">
@@ -42,8 +42,55 @@
     <!-- ########################################## -->
 
     <div class="divJeu flex items-center justify-center w-full " id="superemarket">                
-        <script type="text/javascript" src="../js/supermarket.js"></script>
+        <script type="text/javascript" src="../js/supermarket-fp.js"></script>
     </div>
+
+
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##                MODAL                 ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+
+        <!--victory-->
+        <div class="modalsuperwin text-center  bg-rougeContour rounded-xl" id="modalsuperwin">
+            <h1 class="text-6xl mt-10 font-pixelise text-white">Victory</h1>
+            <p class="text-3xl mt-10 font-pixelise text-white" id="textWin">You collect good food</p>
+
+            <div  class="btnmodalsuper  mt-8 ml-10 mr-10 text-center bg-rougebouton border-4 rounded-xl" id="btnmodalsuper">
+                    <h1 class="text-4xl py-6 text-white font-pixelise click">Continue</h1>
+            </div>
+        </div>
+
+
+                
+
+        <!--point info time-->
+        <div class="modalsuperinfo text-center  bg-rougeContour rounded-xl" id="modalsuperinfo">
+            <div class="modalinfoparent w-full h-full">
+                <div class=" flex items-center justify-center w-full modalinfoparenttitre">
+                    <h1 class="text-6xl mt-10 font-pixelise text-white">Point info</h1>     
+                </div>
+
+                <div class="modalinfoparentprofessor professor"> </div>
+
+                <div class="flex items-center justify-center modalinfoparentblabla bg-grisclair rounded-xl"> 
+                    <p class="m-8 text-center text-black font-pixelise">Donating food resources to an association for people in need is a fairly common practice. However, it is important to choose products of great need. Nutritional value is an important factor. It allows consumers to find their way around and choose food according to their needs, dietary constraints or expectations.</p>
+                </div>
+
+                <div  class="flex items-center mb-5 justify-center w-full modalinfoparentbtn text-center bg-rougebouton border-4 rounded-xl" >
+                    <a href="free-play.html">
+                        <h1 class="text-4xl  text-white font-pixelise click">Continue</h1>
+                    </a>
+                </div>
+            </div> 
+        </div>
+
+
+
+
+
 </div>
 
 </body>

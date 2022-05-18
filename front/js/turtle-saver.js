@@ -43,9 +43,10 @@ var nbrDechet = 0;
 var tabTurtle = [];
 var tabDechet = [];
 
+var plastic;
+var lifeLost;
 
-
-
+var soundCollect;
 
 
 
@@ -67,6 +68,10 @@ function preload ()
     this.load.image('two-life', '../img/turtle_saver/two-heart.png')
     this.load.image('one-life', '../img/turtle_saver/one-heart.png')
     this.load.image('zero-life', '../img/turtle_saver/zero-heart.png')
+
+    this.load.audio('plastic', [ '../sounds/turtle-saver/plastic.ogg', '../sounds/turtle-saver/plastic.mp3' ]);
+    this.load.audio('turtle', [ '../sounds/turtle-saver/turtle.ogg', '../sounds/turtle-saver/turtle.mp3' ]);
+    this.load.audio('collect', [ '../sounds/big-head/collect.ogg', '../sounds/big-head/collect.mp3' ]);
 
     //this.load.image('zero-life', '../img/turtle_saver/gameover.png')
 
@@ -249,6 +254,10 @@ function create ()
     /*                              */
     /********************************/
 
+    plastic = this.sound.add('plastic');
+    lifeLost = this.sound.add('turtle');
+    soundCollect = this.sound.add('collect');
+
     life = this.physics.add.sprite(this.game.config.width - 95, 50, 'full-life');
     life.setScale(0.075);
     life.setBodySize(2000, 1500);
@@ -258,16 +267,21 @@ function create ()
         this.physics.add.overlap(handle, tabTurtle[i], function(){
             
             tabTurtle[i].destroy();
+            lifeLost.play();
             player_health = player_health -1;
 
         });
     }
     for(let j = 0; j < tabDechet.length; j++){
         this.physics.add.overlap(handle, tabDechet[j], function(){
-            if(dechetGrappiné == null) dechetGrappiné = j;
+            if(dechetGrappiné == null){
+                dechetGrappiné = j;
+                plastic.play();
+            } 
         });
         this.physics.add.overlap(handle2, tabDechet[j], function(){
             tabDechet[j].destroy();
+            soundCollect.play();
             nbrDechet-=1;
             dechetGrappiné = null;
         });

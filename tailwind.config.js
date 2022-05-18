@@ -10,6 +10,7 @@ module.exports = {
     "./front/html/turtle-saver.html", 
     "./front/html/choice-game/comedian.html",
     "./front/html/cartes.html",
+    "./front/html/score.html",
     "./front/html/credits.html",
     "./front/js/choice-game/*.js"
   ],

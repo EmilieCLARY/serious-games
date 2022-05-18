@@ -59,6 +59,10 @@ var followersPerSecond = 1;
 var bigHeadGauge = 0;
 var userSponsors = [];
 var numberOfMalus;
+var mjPlayed = 0;
+
+var postScore27 = 0;
+var gameScore16 = 0;
 
 var bool10 = false;
 var bool100 = false;
@@ -123,6 +127,7 @@ io.on('connection', (socket) => {
         userFollowers += post.fol;
         followersPerSecond += post.folPS;
         bigHeadGauge += post.bh;
+        postScore27 += post.score;
         userPosts.push(post);
         updateTreesToPlant(userFollowers);
     });
@@ -189,13 +194,15 @@ io.on('connection', (socket) => {
     });
 
     socket.on("lessTreesPlanted", (number) => {
-        treesPlanted -= number;
+        treesPlanted += number;
         console.log("Perte de", number, "arbres");
     });
 
     socket.on("numberOfMalusCards", (number) => {
         if(numberOfMalus == undefined){
             numberOfMalus = number;
+            gameScore16 += number;
+            mjPlayed++;
         }
         console.log("Number of Malus Cards", numberOfMalus);
     });
@@ -203,6 +210,11 @@ io.on('connection', (socket) => {
     socket.on("getNumberOfMalusCards", () => {
         socket.emit("numberOfMalus", numberOfMalus);
         numberOfMalus = undefined;
+    });
+
+    socket.on('getScore', () => {
+        let tmp = gameScore16 + postScore27;
+        socket.emit("theFinalScore", tmp, mjPlayed);
     });
 });
 

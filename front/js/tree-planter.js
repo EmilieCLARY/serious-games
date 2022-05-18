@@ -54,6 +54,10 @@ var text;
 var text2;
 var textTime;
 
+var marche;
+var creuse;
+var arrose;
+
 var pointJoueur;
 
 
@@ -90,6 +94,11 @@ function preload ()
     this.load.atlas('playerRight', '../img/tree_planter/spritesheetLumberR.png', '../JSON/tree_planter/spritesheetLumberR.json');
     this.load.atlas('playerFace', '../img/tree_planter/spritesheetLumberFace.png', '../JSON/tree_planter/spritesheetLumberFace.json');
     this.load.atlas('playerBack', '../img/tree_planter/spritesheetLumberBack.png', '../JSON/tree_planter/spritesheetLumberBack.json');
+
+
+    this.load.audio('marche', [ '../sounds/tree-planter/courirHerbe.ogg', '../sounds/tree-planter/courirHerbe.mp3' ]);
+    this.load.audio('creuse', [ '../sounds/tree-planter/creuse.ogg', '../sounds/tree-planter/creuse.mp3' ]);
+    this.load.audio('arrose', [ '../sounds/tree-planter/arrose.ogg', '../sounds/tree-planter/arrose.mp3' ]);
 
 
     this.load.image('arrow', '../img/tree_planter/arrow.png');
@@ -220,6 +229,10 @@ function create ()
         frames: this.anims.generateFrameNames('playerFace', {prefix : 'lumberjack', suffix : '.png', start: 11, end: 14, zeroPad: 1}),
         frameRate: 10,
     });
+
+    marche = this.sound.add('marche');
+    creuse = this.sound.add('creuse');
+    arrose = this.sound.add('arrose');
 }
 
 function update (time, delta)
@@ -275,6 +288,10 @@ function update (time, delta)
     }
     //console.log(Math.round(this.player.x), Math.round(this.player.y));
 
+    if(!this.cursors.down.isUp || !this.cursors.right.isUp || !this.cursors.up.isUp || !this.cursors.left.isUp){
+        marche.play();
+        console.log("son")
+    }
     
     /********************************/
     /*                              */
@@ -296,6 +313,7 @@ function update (time, delta)
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "creusé").setScale(0.05);
                             console.log("creusé");
+                            creuse.play();
                             map[i][j] = 2;
                         } 
                     }
@@ -318,6 +336,7 @@ function update (time, delta)
                             //arbre.destroy();
                             //tabTree[k] = this.add.sprite(PosX, PosY, "arrosé").setScale(2.2);
                             console.log("arrosé"); 
+                            arrose.play();
                             //setTimeout(function() {map[i][j] = 4 }, 3000);   // Attend 7 secondes avant exécution ;
                             map[i][j] = 4;
                             //treePlanted++;

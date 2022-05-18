@@ -41,6 +41,8 @@ var blanclist;
 var titreTextList;
 var textList;
 
+var soundCollect;
+
 class Article{
     constructor(name_, price_, nv_, picture_, scale_, x_, y_){
         this.name = name_;
@@ -55,11 +57,11 @@ class Article{
 
 // animation du loader
 
-const loader = document.querySelector('.loader');
-
-window.addEventListener('load', () => {
-    loader.classList.add('fondu-out');
-})
+//const loader = document.querySelector('.loader');
+//
+//window.addEventListener('load', () => {
+//    loader.classList.add('fondu-out');
+//});
 
 
 function preload ()
@@ -164,13 +166,12 @@ function preload ()
     this.load.image('milk', '../img/supermarket/laitiers/milk.png');
     this.load.image('yahourt', '../img/supermarket/laitiers/yahourt.png');
 
-
-
-
+    this.load.audio('collect', [ '../sounds/big-head/collect.ogg', '../sounds/big-head/collect.mp3' ]);
 
     
     document.getElementById("modalsuperwin").style.display = "none";
     document.getElementById("modalsuperinfo").style.display = "none";
+   
 
 }
 
@@ -437,6 +438,9 @@ function create ()
         font: "18px",
         fill : "#000000"
     }).setScrollFactor(0).setDepth(101);
+
+    soundCollect = this.sound.add('collect');
+
 }
 
 function update (time, delta)
@@ -486,6 +490,7 @@ function update (time, delta)
                             listWTFLUL += "\n- " + articles[i].name;
                             textList.setText(listWTFLUL);
                             numberOfArticles++;
+                            soundCollect.play();
                             if(tmp == 0){
                                 console.log("Panier terminé");
                                 let score = 0;
@@ -525,6 +530,7 @@ function update (time, delta)
                             listWTFLUL += "\n- " + articles[i].name;
                             textList.setText(listWTFLUL);
                             numberOfArticles++;
+                            soundCollect.play();
                             if(tmp == 0){
                                 console.log("Panier terminé");
                                 let score = 0;
@@ -540,7 +546,21 @@ function update (time, delta)
                                     fill: '#000000'
                                 });
 
+                                if(Math.round(score) <= 600){
+                                    socket.emit("numberOfMalusCards", 4);
+                                }
+                                else if(Math.round(score) <= 1400){
+                                    socket.emit("numberOfMalusCards", 3);
+                                }
+                                else if(Math.round(score) <= 2399){
+                                    socket.emit("numberOfMalusCards", 2);
+                                }
+                                else if(Math.round(score) >= 2400){
+                                    socket.emit("numberOfMalusCards", 1);
+                                }
+
                                 document.getElementById("modalsuperwin").style.display = "block";
+                                document.getElementById("textWin").textContent = "You score is : "+Math.round(score);
 
                                 document.getElementById("btnmodalsuper").addEventListener("click", event => {
                                     document.getElementById("modalsuperwin").style.display = "none";

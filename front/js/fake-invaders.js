@@ -38,6 +38,11 @@ var ennemyDestroyed = 0;
 var sourceTab = [];
 var fakeTab = [];
 
+var shootAstronaut;
+var shootSat;
+var explosion;
+var soundLife;
+
 var firingTimer = 0;
 
 
@@ -63,6 +68,12 @@ function preload ()
     this.load.image('two-life', '../img/turtle_saver/two-heart.png')
     this.load.image('one-life', '../img/turtle_saver/one-heart.png')
     this.load.image('zero-life', '../img/turtle_saver/zero-heart.png')
+
+
+    this.load.audio('shootAstronaut', [ '../sounds/fake-invaders/shootAstronaut.ogg', '../sounds/fake-invaders/shootAstronaut.mp3' ]);
+    this.load.audio('shootSat', [ '../sounds/fake-invaders/shootSat.ogg', '../sounds/fake-invaders/shootSat.mp3' ]);
+    this.load.audio('explosion', [ '../sounds/fake-invaders/explosion.ogg', '../sounds/fake-invaders/explosion.mp3' ]);
+    this.load.audio('life', [ '../sounds/fake-invaders/lifeLost.ogg', '../sounds/fake-invaders/lifeLost.mp3' ]);
 
 
     //pour le non affichage des modaux
@@ -100,6 +111,13 @@ function create ()
         fill : "#FFFFFF",
         align : "center"
     });
+
+
+    shootAstronaut = this.sound.add('shootAstronaut');
+    shootSat = this.sound.add('shootSat');
+    explosion = this.sound.add('explosion');
+    soundLife = this.sound.add('life');
+ 
 }
 
 function update (time, delta)
@@ -123,10 +141,12 @@ function update (time, delta)
         //console.log(rnd);
         if(rnd == 0){
             let tirEnnemis = this.physics.add.sprite(1150, enemyFiring*100 + 80, 'fake').setScale(0.15).setVelocityX(-200);
+            shootSat.play();
             fakeTab.push(tirEnnemis);
         }
         else{
             let tirEnnemis = this.physics.add.sprite(1150, enemyFiring*100 + 80, 'fakenewspaper').setScale(0.15).setVelocityX(-200);
+            shootSat.play();            
             fakeTab.push(tirEnnemis);
         }
         numberOfEnnemies--;
@@ -148,6 +168,7 @@ function update (time, delta)
         let SOURCE = this.physics.add.sprite(player.x, player.y, 'source'+random);
         SOURCE.setVelocityX(400);
         SOURCE.setScale(0.4);
+        shootAstronaut.play();
         sourceTab.push(SOURCE);
     }
     
@@ -156,11 +177,13 @@ function update (time, delta)
             this.physics.overlap(fakeTab[i], sourceTab[j], () => {
                 fakeTab[i].destroy();
                 sourceTab[j].destroy();
+                explosion.play();
                 ennemyDestroyed++;
             }, null, this);
         }
         this.physics.overlap(fakeTab[i], hitbox, () => {
             fakeTab[i].destroy();
+            soundLife.play();
             lifeLess();
         }, null, this);
     }
@@ -200,7 +223,7 @@ function update (time, delta)
         }
         this.scene.pause();
 
-        document.getElementById("btnmodalfake").addEventListener("click", event => {
+        document.getElementById("modalfakewin").addEventListener("click", event => {
             document.getElementById("modalfakewin").style.display = "none";
             document.getElementById("modalfakeinfo").style.display = "block";
         });

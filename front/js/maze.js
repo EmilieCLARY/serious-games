@@ -41,6 +41,8 @@ var barrel = [];
 var nbrBarrelCollected = 0;
 var nbrBarrelTotal;
 
+var soundCollect;
+
 var entreeX, entreeY = 0;
 var sortieX, sortieY = 0;
 
@@ -77,6 +79,8 @@ function preload ()
     this.load.image('barrel', '../img/maze/barrel.png');
 
     this.load.image('background', '../img/maze/back.png')
+
+    this.load.audio('collect', [ '../sounds/big-head/collect.ogg', '../sounds/big-head/collect.mp3' ]);
 
 
 
@@ -197,7 +201,7 @@ function create ()
                 PosX += 80;
             }
             else if(map[i][j] == 0){
-                this.add.sprite(PosX, PosY, "playerF").setScale(0.25);
+                this.add.sprite(PosX, PosY, "playerF").setScale(0.01);
                 PosX += 80; 
             }
             
@@ -313,6 +317,9 @@ function create ()
         frameRate: 10,
     });
 
+    soundCollect = this.sound.add('collect');
+
+
 }
 
 function update (time, delta)
@@ -350,6 +357,7 @@ function update (time, delta)
             //console.log("test")
             barrel[i].destroy();
             nbrBarrelCollected++;
+            soundCollect.play();
             let tmp = nbrBarrelTotal - nbrBarrelCollected;
             text.setText("Collect all the oil barrel and escape the maze\nBarrels remaining : " + tmp);
             // Pop une modal box ? avec le nombre restants

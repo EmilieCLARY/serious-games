@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score</title>
+    <link rel="stylesheet" href="../dist/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/logo/logo.png">
+</head>
+
+<body>
+
+
+    <div class="parentscore h-screen bg-fondmain">
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##              BORDURE                 ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+
+
+        <div class="div1Jeu border-rougeContour border-t-contourRouge"></div>
+        <div class="div2Jeu border-rougeContour border-l-contourRouge"></div>
+        <div class="div3Jeu border-rougeContour border-b-contourRouge"></div>
+        <div class="div4Jeu border-rougeContour border-r-contourRouge"></div>
+
+
+        <!-- ########################################## -->
+        <!-- ##                                      ## -->
+        <!-- ##              score                   ## -->
+        <!-- ##                                      ## -->
+        <!-- ########################################## -->
+
+        <!--background-->
+        <div class="divboxscore bg-lightfond border-rougebouton border-4 rounded-xl w-full h-full">
+
+            <div class="parentscorein w-full h-full">
+                <div class="scorebh bg-darkfond border-rougebouton border-4 rounded-xl" id="scorebh"> </div>
+                <div class="div2 rainbow3"> </div>
+                <div class="imagearbre bg-darkfond border-rougebouton border-4 rounded-xl"> </div>
+                <div class="scorebhtitre text-center font-pixelise text-xl flex items-center justify-center">Big Head
+                    Gauge</div>
+                <div class="scorearbretitre text-center font-pixelise text-xl flex items-center justify-center">Number
+                    of trees</div>
+                <div class="div6 bg-darkfond border-rougebouton border-4 rounded-xl"> </div>
+                <div class="nombrearbre text-center font-pixelise text-5xl flex items-center justify-center"
+                    id="scoretree">487</div>
+                <div class="img1"> </div>
+                <div class="img2"> </div>
+                <div class="titrenbfollowers flex items-center justify-center text-center font-pixelise text-2xl">Number
+                    total of followers</div>
+                <div class="nombredefollowersfinal flex items-center justify-center text-center font-pixelise text-7xl"
+                    id="nombredefollowersfinal"></div>
+                <div class="scorefinaltitre text-center font-pixelise text-5xl">Final Score </div>
+                <div class="scorefinalscore text-center font-pixelise text-7xl" id="scorefinalscore"></div>
+            </div>
+
+
+
+
+        </div>
+
+        <!--TITRE-->
+        <div
+            class="divtitrescore border-white border-4 rounded-xl w-full flex text-center items-center justify-items-center bg-rougebouton z-10">
+            <div class="titre w-full text-6xl text-white font-pixelise">
+                <h1>Score</h1>
+            </div>
+        </div>
+
+        <!--BOUTON-->
+        <div class="divbtn click mt-3 w-full flex text-center items-center justify-items-center bg-rougebouton border-white border-4 rounded-xl"
+            id="boutonretouraccueil">
+            <div class="form click grostext w-full  text-white font-pixelise">
+                <input type="submit" class="click" id="boutonform" value="Back to menu">
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+<script src="../js/modules/socketLoading.js"></script>
+<script type="text/javascript" src="../js/score.js"></script>
+
+</html>

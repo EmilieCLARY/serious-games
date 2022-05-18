@@ -1,5 +1,7 @@
 //const { spawn } = require("child_process");
 
+document.getElementById("mailBtn").style.backgroundImage = 'url("../../img/mainPage/bulle.png")';
+
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('option-buttons');
 
@@ -11,7 +13,7 @@ socket.emit('getAppearance');
 socket.emit('getNextText');
 socket.emit('getTreesToPlant');
 socket.on('newAppearance', (Appearance)=>{
-    console.log("oui");
+    //console.log("oui");
     userAppearance = Appearance;
 });
 socket.on('leProchainTexte', (text) => {
@@ -33,9 +35,23 @@ function startGame() {
     showTextNode(nextTxt);
 }
 
+var timeLooper;
+var textToWrite;
+function loop(){
+    if(textToWrite.length > 0){
+        document.getElementById("textML").innerHTML += textToWrite.shift();
+    }
+    else{
+        clearTimeout(timeLooper);
+    }
+    timeLooper = setTimeout('loop()', 40);
+}
+
 function showTextNode(textNodeIndex) {
     const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
     textElement.innerText = textNode.text;
+    //console.log(textNode.text);
+    
     while (optionButtonsElement.firstChild) {
         optionButtonsElement.removeChild(optionButtonsElement.firstChild);
     }
@@ -46,7 +62,7 @@ function showTextNode(textNodeIndex) {
         nbChoix++;
     });
 
-    console.log("Nb choix :", nbChoix);
+    //console.log("Nb choix :", nbChoix);
 
     let compt = 0;
 
@@ -58,7 +74,7 @@ function showTextNode(textNodeIndex) {
         
         if (showOption(option)) {
             
-            console.log(compt);
+            //console.log(compt);
             if(nbChoix===1){
                 textElement.style.display = "none";
                 optionButtonsElement.classList.add('zoneDesReponses','m-4', 'rounded-3xl', 'border-rougebouton', 'bg-lightfond', 'border-4');
@@ -127,7 +143,8 @@ function showTextNode(textNodeIndex) {
                     
                 var newDivBtext = document.createElement("div");
                 newDivBtext.classList.add('Btext','bg-white','p-4','h-full','flex','items-center');
-                newDivBtext.innerText = textElement.innerText;
+                //newDivBtext.innerText = textElement.innerText;
+                newDivBtext.setAttribute("id","textML");
                 newDivMLtext.appendChild(newDivBtext);
 
                 var newDivBWT = document.createElement("div");
@@ -186,7 +203,10 @@ function showTextNode(textNodeIndex) {
                 newDivMLbtn.appendChild(section);
                 button.addEventListener('click', () => selectOption(option));
                 optionButtonsElement.appendChild(newDivMLbtn);
-            
+                
+                textToWrite = textNode.text.split("");
+    
+                loop();
                 
             }if(nbChoix===2){
                 if(compt==1){
@@ -199,7 +219,7 @@ function showTextNode(textNodeIndex) {
 
                     /* le texte */
                     var newDivMLtext = document.createElement("div");
-                    newDivMLtext.classList.add('MLtext','flex','items-center','text-justify','m-4');
+                    newDivMLtext.classList.add('MLtext','flex','items-center','text-justify','m-4','font-pixelise', 'text-center');
 
                         /* la bulle */
                     var newDivBcoin1 = document.createElement("div");
@@ -257,7 +277,8 @@ function showTextNode(textNodeIndex) {
                     
                     var newDivBtext = document.createElement("div");
                     newDivBtext.classList.add('Btext','bg-white','p-4','h-full','flex','items-center');
-                    newDivBtext.innerText = textElement.innerText;
+                    //newDivBtext.innerText = textElement.innerText;
+                    newDivBtext.setAttribute("id","textML");
                     newDivMLtext.appendChild(newDivBtext);
 
                     var newDivBWT = document.createElement("div");
@@ -316,6 +337,10 @@ function showTextNode(textNodeIndex) {
                     newDivMLbtn.appendChild(section);
                     button.addEventListener('click', () => selectOption(option));
                     optionButtonsElement.appendChild(newDivMLbtn);
+
+                    textToWrite = textNode.text.split("");
+    
+                    loop();
             
                 }
                 if(compt==2){
@@ -390,7 +415,7 @@ function showTextNode(textNodeIndex) {
                     newDivchoicexstruct.classList.add('choicexin3struct','h-full','w-full');
                     newDivchoicextext.appendChild(span1);
                     newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
-                    console.log(userAppearance);
+                    //console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -418,7 +443,7 @@ function showTextNode(textNodeIndex) {
                         }
                     }
                     else{
-                        console.log("oui");
+                        //console.log("oui");
                         newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
                     newDivchoicexstruct.appendChild(newDivchoicexphoto);
@@ -465,7 +490,7 @@ function showTextNode(textNodeIndex) {
                     newDivchoicexstruct.classList.add('choicexin3struct','h-full','w-full');   
                     newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
                     newDivchoicextext.appendChild(span1);
-                    console.log(userAppearance);
+                    //console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -493,7 +518,7 @@ function showTextNode(textNodeIndex) {
                         }
                     }
                     else{
-                        console.log("oui");
+                        //console.log("oui");
                         newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
                     newDivchoicexstruct.appendChild(newDivchoicexphoto);
@@ -540,7 +565,7 @@ function showTextNode(textNodeIndex) {
                     span5.classList.add('line','-bottom');              
                     newDivchoicexphoto.classList.add('choicexin3photo','h-1/2','w-full');
                     newDivchoicextext.appendChild(span1);
-                    console.log(userAppearance);
+                    //console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -568,7 +593,7 @@ function showTextNode(textNodeIndex) {
                         }
                     }
                     else{
-                        console.log("oui");
+                        //console.log("oui");
                         newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
                     newDivchoicexstruct.appendChild(newDivchoicexphoto);
@@ -617,7 +642,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
-                    console.log(userAppearance);
+                    //console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -645,7 +670,7 @@ function showTextNode(textNodeIndex) {
                         }
                     }
                     else{
-                        console.log("oui");
+                        //console.log("oui");
                         newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
                                   
@@ -700,7 +725,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
-                    console.log(userAppearance);
+                    //console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -728,7 +753,7 @@ function showTextNode(textNodeIndex) {
                         }
                     }
                     else{
-                        console.log("oui");
+                        //console.log("oui");
                         newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
                                   
@@ -783,7 +808,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
-                    console.log(userAppearance);
+                    //console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -811,7 +836,7 @@ function showTextNode(textNodeIndex) {
                         }
                     }
                     else{
-                        console.log("oui");
+                        //console.log("oui");
                         newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
                                   
@@ -865,7 +890,7 @@ function showTextNode(textNodeIndex) {
                     //newDiv1.classList.add('choicenum1c4', 'm-4');
                     //newDiv1photo.classList.add('choicenum4c4photo');
                     //newDiv1text.classList.add('choicenum4c4text');
-                    console.log(userAppearance);
+                    //console.log(userAppearance);
                     if(option.appearance){
                         switch (userAppearance) {
                             case 0:
@@ -893,7 +918,7 @@ function showTextNode(textNodeIndex) {
                         }
                     }
                     else{
-                        console.log("oui");
+                        //console.log("oui");
                         newDivchoicexphoto.style.backgroundImage = 'url("../'+option.image+'")';
                     }
                                   
@@ -925,7 +950,7 @@ function showOption(option) {
 }
 
 class Post{
-    constructor(text_, commentaries_, fol_, folPS_, bh_, img_, appearance_){
+    constructor(text_, commentaries_, fol_, folPS_, bh_, img_, appearance_, score_){
         this.text = text_;
         this.commentaries = commentaries_;
         let min = Math.ceil(fol_[0]);
@@ -935,6 +960,8 @@ class Post{
         this.bh = bh_;
         this.img = img_;
         this.appearance = appearance_;
+        this.score = score_;
+
     }
 }
 
@@ -942,18 +969,19 @@ function selectOption(option) {
     const nextTextNodeId = option.nextText;
     socket.emit('leProchainTextCLui', nextTextNodeId);
     if (nextTextNodeId <= 0) {
+
         return startGame();
     }
     state = Object.assign(state, option.setState);
     
     if(option.commentaries != undefined){
-        let newPost = new Post(option.text, option.commentaries, option.fol, option.folPS, option.bh, option.image, option.appearance);
-        console.log("New post incoming", newPost);
+        let newPost = new Post(option.text, option.commentaries, option.fol, option.folPS, option.bh, option.image, option.appearance, option.score);
+        //console.log("New post incoming", newPost);
         socket.emit('newPost', newPost);
         showTextNode(nextTextNodeId);
     }
     else{
-        console.log('C MCLESGO');
+        //console.log('C MCLESGO');
         if(option.goBackToHome){
             window.location.href = "../home.html";
         }
@@ -996,7 +1024,8 @@ const textNodes = [
                 bh : 30,
                 nextText: 2,
                 image : '../img/characters/sportif/Carre/bbCourt',
-                appearance : true
+                appearance : true,
+                score : 1
             },
             {
                 text: 'Welcome to my new account on Ethical Network !\n I am currently a professional basketball player. My job being the best there is for me, I won\'t forget to share my adventures with you guys ! \n Hope you\'ll enjoy !',
@@ -1006,7 +1035,8 @@ const textNodes = [
                 bh : 5,
                 nextText: 3,
                 image : '../img/characters/sportif/Carre/bbCourt',
-                appearance : true
+                appearance : true,
+                score : 3
             },
             {
                 text: 'Welcome to my new account on Ethical Network !\n I\'m a basketball fan but I\'m not very good at it. However I think basketball is cool ! This account is a way for me to share stuff about basket ball and my life in general.',
@@ -1016,7 +1046,8 @@ const textNodes = [
                 bh : 5,
                 nextText: 4,
                 image : '../img/characters/sportif/Carre/bbCourt',
-                appearance : true
+                appearance : true,
+                score : 2
             }
         ]
     },
@@ -1074,7 +1105,8 @@ const textNodes = [
                 nextText: 8,
                 mj: 0,
                 image : '../img/characters/sportif/posts/training/dailytraining',
-                appearance : true
+                appearance : true,
+                score : 3
             },            
             {
                 text: 'I\'ll explain to you my daily training because mine is simply the best there is !\n First, I wake up early to go to the gym, because the world is in the hands of people who are waking up early, and I am :)\n Next, I\'m going to the court to smash some noobs. I just can\'t be defeated!',
@@ -1085,7 +1117,8 @@ const textNodes = [
                 nextText: 7,
                 mj : 0,
                 image : '../img/characters/sportif/posts/training/dailytraining',
-                appearance : true
+                appearance : true,
+                score : 1
             },            
             {
                 text: 'Hi guys ! I\'ll explain you my daily training !\nI start the day with a gym session. Then I join my teammates.\n I personnaly do not warm up because, well, I find it useless. I mean, who needs it ? So my training start with some exercices specific to basketball (shooting, defense, dribbling). Then, we make a small match with all the team. And finally, we have some recovery exercises but thos are as useless as the warm up.',
@@ -1096,7 +1129,8 @@ const textNodes = [
                 nextText: 9,
                 mj : 0,
                 image : '../img/characters/sportif/posts/training/dailytraining',
-                appearance : true
+                appearance : true,
+                score : 2
             }
         ]
     },
@@ -1150,7 +1184,8 @@ const textNodes = [
                 nextText: 11,
                 mj : 0,
                 image : '../img/characters/sportif/posts/saladeProt.png',
-                appearance : false
+                appearance : false,
+                score : 2
             },            
             {
                 //Photo fruit et légumes
@@ -1162,7 +1197,8 @@ const textNodes = [
                 nextText: 12,
                 mj : 0,
                 image : '../img/characters/sportif/posts/fruits.png',
-                appearance : false
+                appearance : false,
+                score : 3
             },            
             {
                 //Photo burger frites
@@ -1174,7 +1210,8 @@ const textNodes = [
                 nextText: 13,
                 mj : 0,
                 image : '../img/characters/sportif/posts/hamburger.png',
-                appearance : false
+                appearance : false,
+                score : 1
             },
             {
                 //Photo sandwitch
@@ -1263,7 +1300,8 @@ const textNodes = [
                 mj : 0,
                 sponsor : 'BouclierFéroce',
                 image : '../img/characters/sportif/posts/rhinoshield.png',
-                appearance : false
+                appearance : false,
+                score : 1.5
             },            
             {
                 //BlueLightLegend
@@ -1276,7 +1314,8 @@ const textNodes = [
                 mj : 0,
                 sponsor : 'BlueLightLegend',
                 image : '../img/characters/sportif/posts/blueLightLegend.png',
-                appearance : false
+                appearance : false,
+                score : 1.5
             },            
             {
                 //Adadas
@@ -1289,7 +1328,8 @@ const textNodes = [
                 mj : 0,
                 sponsor : 'Adadas',
                 image : '../img/characters/sportif/posts/adadas.png',
-                appearance : false
+                appearance : false,
+                score : 1.5
             }
         ]
     },
@@ -1331,7 +1371,7 @@ const textNodes = [
     },
     {
         id: 16,
-        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Chose your sponsor according to your community and what you post. You could have explained well to fans why you choosed BouclierFeroce for sponsor. ',
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Choose your sponsor according to your community and what you post. You could have explained well to fans why you choosed BouclierFeroce for sponsor. ',
         options: [
             {
                 text: 'Sorry, I\'ll try to do better next time !',
@@ -1343,7 +1383,7 @@ const textNodes = [
     },
     {
         id: 17,
-        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Chose your sponsor according to your community and what you post. A video games is a pretty cool idea but considering your community interests, it won\'t a successful deal.',
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Choose your sponsor according to your community and what you post. A video games is a pretty cool idea but considering your community interests, it won\'t have a success.',
         options: [
             {
                 text: 'I\'ll try to be better next time, I\'m ready to go next ',
@@ -1379,7 +1419,8 @@ const textNodes = [
                 nextText: 20,
                 mj : 0,
                 image : '../img/characters/sportif/posts/podiumTeam.png',
-                appearance : false
+                appearance : false,
+                score : 2
             },            
             {
                 // PHOTO PODIUM COMPLET
@@ -1391,11 +1432,12 @@ const textNodes = [
                 nextText: 21,
                 mj : 0,
                 image : '../img/characters/sportif/posts/podiumComplet.png',
-                appearance : false
+                appearance : false,
+                score : 3
             },            
             {
                 // PHOTO SEUL
-                text: 'So happy of the results, thanks for the kinds words ! I played perfectly and obviously carried my team !',
+                text: 'So happy of the results, thanks for the kind words ! I played perfectly and obviously carried my team !',
                 commentaries : ['GG to your team !', 'Congratulation, perfect result just like you !'],
                 fol : [10000, 15000],
                 folPS : 100,
@@ -1403,13 +1445,14 @@ const textNodes = [
                 nextText: 22,
                 mj : 0,
                 image : '../img/characters/sportif/posts/winner/sportifMedal',
-                appearance : true
+                appearance : true,
+                score : 1
             }
         ]
     },
     {
         id: 20,
-        text: 'Hi my friend !\n It was a nice post, you thanked your team and if feels kind ! You could have thanked all people in the tournament but your post was great anyway ! Good luck for what\'s next ! ',
+        text: 'Hi my friend !\n Nicely done ! You thanked your team and it felt kind ! If you want to do even more, next time don\'t forget to mention all the others competitors. However your post was great ! Good luck for what\'s next ! ',
         options: [
             {
                 text: 'It\'s good for me, let\'s go ! !',
@@ -1421,7 +1464,7 @@ const textNodes = [
     },
     {
         id: 21,
-        text: 'Hi my friend ! You made a very good post ! You thanked everyone and words used were perfect !',
+        text: 'Hi my friend ! You chose wisely ! You thanked everyone in the most kindhearted way !',
         options: [
             {
                 text: 'Thank you ! Let\'s go next !',
@@ -1433,7 +1476,7 @@ const textNodes = [
     },
     {
         id: 22,
-        text: 'Hi my friend ! To be honest I\'m a bit disappointed... It was presumptious and your community will not like that. Keep going mate, you can do it !',
+        text: 'Hi my friend ! I have to admit, I am disappointed... It was presumptuous and I can assure you, your community will not appreciate that. You should be more thoughtful next time, you can do it !',
         options: [
             {
                 text: 'Sorry for this one, I\'m ready to go next !',
@@ -1445,17 +1488,18 @@ const textNodes = [
     },
     {
         id: 23,
-        text: 'You have made some trainings for disabled people. Show it to your community.',
+        text: 'You did some trainings for disabled people. Show it to your community.',
         options: [
             {
-                text: 'Today I made a special training for disabled people, even though they won\'t ever be as good as me, they were not sooo bad',
+                text: 'Today I made a special training for disabled people, even though they won\'t ever be as good as me, they can always try',
                 commentaries : ['Great initiative !', 'I love this initiative'],
                 fol : [10000, 15000],
                 folPS : 500,
                 bh : 40,
                 nextText: 24,
                 mj : 0,
-                image : '../img/characters/sportif/posts/handicape.png'
+                image : '../img/characters/sportif/posts/handicape.png',
+                score : 1
             },            
             {
                 text: 'Disability is a daily challenge, today i realised how it\'s hard to live with it and was glad to help disabled people through their sport journey',
@@ -1465,7 +1509,8 @@ const textNodes = [
                 bh : 5,
                 nextText: 25,
                 mj : 0,
-                image : '../img/characters/sportif/posts/handicape.png'
+                image : '../img/characters/sportif/posts/handicape.png',
+                score : 3
             },            
             {
                 text: 'Hey guys, today I helped coaches with a special training for disabled people, it was ok',
@@ -1475,13 +1520,14 @@ const textNodes = [
                 bh : 20,
                 nextText: 26,
                 mj : 0,
-                image : '../img/characters/sportif/posts/handicape.png'
+                image : '../img/characters/sportif/posts/handicape.png',
+                score : 2
             }
         ]
     },
     {
         id: 24,
-        text: 'What\'s up ! It\'s McLesgo again ! Your post is too much arrogant ! Be careful for the next one !',
+        text: 'Hello there! It\'s McLesgo again ! Your post is disrespectful and arrogant ! Be careful for the next one !',
         options: [
             {
                 text: 'Sorry for that ! Go next !',
@@ -1493,7 +1539,7 @@ const textNodes = [
     },
     {
         id: 25,
-        text: 'What\'s up ! It\'s McLesgo again ! Very great post, your initiative is perfect. Congratulation !',
+        text: 'Hello there ! It\'s McLesgo again ! Very good post, your initiative is perfect. Congratulations !',
         options: [
             {
                 text: 'Thank you ! Let\'s go next !',
@@ -1505,10 +1551,10 @@ const textNodes = [
     },
     {
         id: 26,
-        text: 'What\'s up ! It\'s McLesgo again ! Your choice is not very good, you seems unhappy. Be more attractive for your community !',
+        text: 'Hello there ! It\'s McLesgo again ! Your choice wasn\'t the best, It felt like you had a lack of enthousiasm. You have to show more energy if you want your community to grow bigger.',
         options: [
             {
-                text: 'Sorry for this one, I\'m ready to go next !',
+                text: 'My bad, I\'ll think about it next time !',
                 nextText: 27,
                 goBackToHome : true,
                 mj : 0
@@ -1517,10 +1563,10 @@ const textNodes = [
     },
     {
         id: 27,
-        text: 'Your community is growing up and some new sponsors wants to collaborate with you.\n Choose which new sponsor you want !',
+        text: 'Your community is growing bigger and new sponsors wants to collaborate with you.\n Choose which sponsor you want !',
         options: [
             {   // SudVPN
-                text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
+                text: 'Hello  guys !\n I have a second sponsor who supports me in my projects ! Check out their shop !',
                 commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
                 fol : [10000, 15000],
                 folPS : 600,
@@ -1529,10 +1575,11 @@ const textNodes = [
                 mj : 0,
                 sponsor : 'SudVPN',
                 image : '../img/characters/sportif/posts/SudVPN.png',
-                appearance : false
+                appearance : false,
+                score : 1.5
             },            
             {   // Decat'court
-                text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
+                text: 'Hello guys!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
                 commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
                 fol : [50000, 70000],
                 folPS : 1500,
@@ -1541,10 +1588,11 @@ const textNodes = [
                 mj : 0,
                 sponsor : 'Decathcour',
                 image : '../img/characters/sportif/posts/decathcour.png',
-                appearance : false
+                appearance : false,
+                score : 3
             },            
             {   // FAFI 22
-                text: 'Hello friends!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
+                text: 'Hello guys!\n I have a second sponsor who supports me in my projects ! Check out their shop !',
                 commentaries : ['So cool ! Good job !', 'Not really what I was expecting...'],
                 fol : [10000, 15000],
                 folPS : 600,
@@ -1553,13 +1601,14 @@ const textNodes = [
                 mj : 0,
                 sponsor : 'FAFI 22',
                 image : '../img/characters/sportif/posts/fafi22.png',
-                appearance : false
+                appearance : false,
+                score : 1.5
             }
         ]
     },
     {
         id: 28,
-        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post.\n You could have explain well to fans why you choosed SudVPN for sponsor. ',
+        text: 'Hello ! I\'m back again. Be careful on your choice of sponsor ! Choose a sponsor according to your community interests and what you post.\n You could have explained to your fans why you choosed SudVPN as your sponsor. ',
         options: [
             {
                 text: 'Sorry for that ! Go next !',
@@ -1571,7 +1620,7 @@ const textNodes = [
     },
     {
         id: 80,
-        text: 'Do you know that SudVPN is engaged in reducing their environemental impact ? I have a new challenge for you ! You\'ll be teleported in a maze and you need to collect all the barrels before they poison the forest. \nGood luck !',
+        text: 'Did you know that SudVPN is engaged in reducing their environemental impact ? Speaking of environment : I have a new challenge for you ! You\'ll be teleported in a maze. There you will have to collect all the barrels you can find before they poison the forest. \nGood luck !',
         options: [
             {
                 text: 'Let\'s go !',
@@ -1583,7 +1632,7 @@ const textNodes = [
     },
     {
         id: 29,
-        text: 'Hello !\n I\'m back again. You have made the good choice ! Your community will be interested in this type of sponsor because it\'s according to your main activity.',
+        text: 'Hello !\n I\'m back again. You have made the right choice ! Your community will be interested in this type of sponsor because it\'s related to your main activity.',
         options: [
             {
                 text: 'Thank you ! Let\'s go next !',
@@ -1595,7 +1644,7 @@ const textNodes = [
     },
     {
         id: 81,
-        text: 'Do you know that Decath\'Court is engaged in reducing their environemental impact ? I have a new challenge for you ! You\'ll be teleported in a maze and you need to collect all the barrels before they poison the forest. \nGood luck !',
+        text: 'Do you know that Decath\'Court is engaged in reducing their environemental impact ? Speaking of environment : I have a new challenge for you ! You\'ll be teleported in a maze. There you will have to collect all the barrels you find before they poison the forest. \nGood luck !',
         options: [
             {
                 text: 'Let\'s go !',
@@ -1607,7 +1656,7 @@ const textNodes = [
     },
     {
         id: 30,
-        text: 'Hello !\n I\'m back again. Be careful on your choice of sponsor ! Take a sponsor according to your community and what you post.\n A video games is a pretty cool idea but your community won\'t be interested.',
+        text: 'Hello !\n I\'m back again. Be careful on your choice of sponsor ! Choose a sponsor according to your community and what you post.\n A video games is a pretty cool idea but not the best choice regarding your followers.',
         options: [
             {
                 text: 'Sorry for this one, I\'m ready to go next !',
@@ -1619,7 +1668,7 @@ const textNodes = [
     },
     {
         id: 82,
-        text: 'Do you know that FAFI22 is engaged in reducing their environemental impact ? I have a new challenge for you ! You\'ll be teleported in a maze and you need to collect all the barrels before they poison the forest. \nGood luck !',
+        text: 'Do you know that FAFI22 is engaged in reducing their environemental impact ? Speaking of environments : I have a new challenge for you ! You\'ll be teleported in a maze. There you will have to collect all the barrels you find before they poison the forest. \nGood luck !',
         options: [
             {
                 text: 'Let\'s go !',
@@ -1631,10 +1680,10 @@ const textNodes = [
     },
     {
         id: 31,
-        text: 'You will make a little tutorial to train at home. Choose the post you want !',
+        text: 'You will make a little tutorial to train at home. Choose the post you want to share !',
         options: [
             {
-                text: 'Hi guys !\n I have done exercices for you but be careful it\'s very difficult, only me can do it easily.\nCheck out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
+                text: 'Hi guys !\n I have created exercices for you but be careful it\'s very difficult fro begginers like you, only me can do it easily.\nCheck out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
                 commentaries : ['Thanks a lot I will try them !', 'Cool ! I was looking for exercices like them !'],
                 fol : [20000, 30000],
                 folPS : 600,
@@ -1642,7 +1691,8 @@ const textNodes = [
                 nextText: 32,
                 mj : 0,
                 image : '../img/characters/sportif/posts/prog.png',
-                appearance : false
+                appearance : false,
+                score : 2
             },            
             {
                 text: 'Hi guys !\n That\'s not very important to make sport every day but if you want to, check out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
@@ -1653,7 +1703,8 @@ const textNodes = [
                 nextText: 33,
                 mj : 0,
                 image : '../img/characters/sportif/posts/prog.png',
-                appearance : false
+                appearance : false,
+                score : 1
             },            
             {
                 text: 'Hi guys !\n I found perfect exercices for you and your family to train your body and improve your health !\nCheck out this link : https://www.youtube.com/watch?v=r8cexmYOknI',
@@ -1664,13 +1715,14 @@ const textNodes = [
                 nextText: 34,
                 mj : 0,
                 image : '../img/characters/sportif/posts/prog.png',
-                appearance : false
+                appearance : false,
+                score : 3
             }
         ]
     },
     {
         id: 32,
-        text: 'Here I am again !\n Your post was presumptious and your community will not like that. Be careful to what you post !\n Keep going mate, you can do it !',
+        text: 'Here I am again !\n Your post was presumptuous and your community will not like that. Be careful !\n Keep going, you can do it !',
         options: [
             {
                 text: 'So sorry for that ! Go next !',
@@ -1682,7 +1734,7 @@ const textNodes = [
     },
     {
         id: 33,
-        text: 'Here I am again !\n Your post was not really great. You need to motivate people to do sport. Multiple studies have shown that sport is benefic for health.\n But keep going, you can do it ! ',
+        text: 'Here I am again !\n Your post was not really great. You need to motivate people to do sport. Multiple studies have shown that sport is benefic for one\'s health.\n But keep going, you can do it ! ',
         options: [
             {
                 text: 'I\'ll think about it next time, thanks !',
@@ -1694,7 +1746,7 @@ const textNodes = [
     },
     {
         id: 34,
-        text: 'Here I am again !\n Very great post, your initiative is perfect.\n Congratulation !',
+        text: 'Here I am again !\n Very good post, your initiative is laudable.\n Congratulation !',
         options: [
             {
                 text: 'Thank you ! Let\'s go next !',
@@ -1713,24 +1765,26 @@ const textNodes = [
                 text: 'Hi guys ! I\'m really happy to share you the picture of the cup we won this season. Thanks for all your support !',
                 commentaries : ['Amazing wow ! GG to you and your team !', 'Excellent results !'],
                 fol : [70000, 100000],
-                folPS : 600,
+                folPS : 800,
                 bh : 5,
                 nextText: 36,
                 mj : 0,
                 image : '../img/characters/sportif/posts/podiumTeamTrophy.png',
-                appearance : false
+                appearance : false,
+                score : 3
             },            
             {
                 //PHOTO SEUL AVEC LA COUPE
                 text: 'Hi guys ! I\'m really happy to share you the picture of the cup we won this season. Thanks for all your support !',
                 commentaries : ['Amazing wow ! GG to you and your team !', 'Excellent results !'],
                 fol : [30000, 50000],
-                folPS : 800,
+                folPS : 600,
                 bh : 30,
                 nextText: 37,
                 mj : 0,
                 image : '../img/characters/sportif/posts/winnerseason/sportifTrophy',
-                appearance : true
+                appearance : true,
+                score : 1
             },            
             {
                 //PHOTO DE LA COUPE
@@ -1742,13 +1796,14 @@ const textNodes = [
                 nextText: 38,
                 mj : 0,
                 image : '../img/characters/sportif/posts/allTeamsTrophy.png',
-                appearance : false
+                appearance : false,
+                score : 2
             }
         ]
     },
     {
         id: 36,
-        text: 'Here I am again !\n Your post was presumptious and your community will not like that. Be careful to what you post ! You could have added a message for your team or other opponents.\n Keep going mate, you can do it !',
+        text: 'Here I am again !\n Your post was presumptuous I have to let you know your community will not like that. Be careful ! You could have added a message for your team or other opponents for example.\n Keep going, you can do it !',
         options: [
             {
                 text: 'So sorry for that ! Go next !',
@@ -1760,7 +1815,7 @@ const textNodes = [
     },
     {
         id: 37,
-        text: 'Here I am again !\n Your post was okay. Remember to add a message of support for your team !\n But keep going, you can do it ! ',
+        text: 'Here I am again !\n Your post was okay. Remember to add a message of support for your team !\n Keep going, you can do it ! ',
         options: [
             {
                 text: 'Ok ! I will do better next time ! Go next !',
@@ -1772,7 +1827,7 @@ const textNodes = [
     },
     {
         id: 38,
-        text: 'Here I am again !\n Very great post, your initiative is perfect.\n Congratulation !',
+        text: 'Here I am again !\n Very good post, your initiative is perfect.\n Congratulations !',
         options: [
             {
                 text: 'Thank you ! Let\'s go next !',
@@ -1787,7 +1842,7 @@ const textNodes = [
 
     {
         id: 39,
-        text: 'Hello there ! I\'m still here !\n I just wanted to thank you, you\'ve finished the game !',
+        text: 'Hello there ! I\'m still here !\n I just wanted to thank you for playing, you\'ve finished the game !',
         options: [
             {
                 text: 'Yes, finally !',
@@ -1805,7 +1860,7 @@ const textNodes = [
     },
     {
         id: 40,
-        text: 'Calm down, you don\'t need to be this rude, did you forget what you\'ve learned ?! ',
+        text: 'There is no need to be this rude, did you forget what you\'ve learned ? ',
         options: [
             {
                 text: 'Yes sorry..',
@@ -1817,7 +1872,7 @@ const textNodes = [
     },
     {
         id: 41,
-        text: 'I\'m not sure you really mean it.. Can I trust you afterall ?',
+        text: 'I\'m not sure you really meant it.. Can I trust you afterall ?',
         options: [
             {
                 text: 'Of course ! Why would I lie to you ?',
@@ -1826,7 +1881,7 @@ const textNodes = [
                 mj : 0
             },
             {
-                text: 'You\'re smart, this was a joke !',
+                text: 'You\'re clever, this was a joke !',
                 nextText: 42,
                 goBackToHome : false,
                 mj : 0
@@ -1847,7 +1902,7 @@ const textNodes = [
     },
     {
         id: 43,
-        text: 'So you\'ve finished our game. I hope that you enjoyed it !\n If you want to play again to all our minigames you can choose "Freeplay" on the main page !\n Goodluck in your next adventure ! And don\'t forget to give us a point !',
+        text: 'So you\'ve finished our game. I hope you enjoyed it !\n If you want to play again to all our minigames you can choose "Freeplay" on the main page !\n Goodluck in your next adventure ! And don\'t forget to give us a point !',
         options: [
             {
                 text: 'Thank you MacLesgo !',
