@@ -54,6 +54,7 @@ var interval;
 var folQueue = new Queue();
 var postListDansLaPage = [];
 var btnMailActive = false;
+var endOfGame;
 
 
 // animation du loader
@@ -64,6 +65,7 @@ window.addEventListener('load', () => {
     loader.classList.add('fondu-out');
 })
 
+document.getElementById("popupQuitter").style.display = 'none';
 
 socket.emit('getTreesPlanted');
 socket.emit('getTypeOfInfluencer');
@@ -75,6 +77,7 @@ socket.emit('getFollowersPerSecond');
 socket.emit('getBigHeadGauge');
 socket.emit('getSponsors');
 socket.emit('getTreesToPlant');
+socket.emit('getEnd');
 
 
 document.getElementById("popuppostgd").style.display = "none";
@@ -325,6 +328,27 @@ socket.on('newPosts', (postList) => {
     if(postList.length > postListDansLaPage.length){
         document.getElementById("mailBtn").style.backgroundImage = 'url("../img/mainPage/bulleNotif.png")';
         btnMailActive = true;
+    }
+    
+    if(myJob == 0){
+        if(postList.length == 9){
+            endOfGame = true;
+            document.getElementById("popupQuitter").style.display = 'block';
+            
+            document.getElementById("boutonpourquitter").addEventListener("click", event => {
+                window.location.href = "../html/score.html";
+            });
+        }
+    }
+    else if(myJob == 2){
+        if(postList.length == 8){
+            endOfGame = true;
+            document.getElementById("popupQuitter").style.display = 'block';
+        
+            document.getElementById("boutonpourquitter").addEventListener("click", event => {
+                window.location.href = "../html/score.html";
+            });
+        }
     }
 
     postListDansLaPage = postList;

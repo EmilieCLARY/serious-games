@@ -36,6 +36,10 @@ document.getElementById("athlete").addEventListener("click", event => {
     document.getElementById("chief").style.display = "none";
     document.getElementById("gamer").style.display = "none";
     document.getElementById("titleJob").style.display = "none";
+    document.getElementById("choix3gris").style.display = "none";
+    document.getElementById("choix4gris").style.display = "none";
+    document.getElementById("choix3comingsoon").style.display = "none";
+    document.getElementById("choix4comingsoon").style.display = "none";
 
     document.getElementById("c16cases").style.display = "block";
     document.getElementById("c26cases").style.display = "block";
@@ -107,6 +111,10 @@ document.getElementById("chief").addEventListener("click", event => {
     document.getElementById("chief").style.display = "none";
     document.getElementById("gamer").style.display = "none";
     document.getElementById("titleJob").style.display = "none";
+    document.getElementById("choix3gris").style.display = "none";
+    document.getElementById("choix4gris").style.display = "none";
+    document.getElementById("choix3comingsoon").style.display = "none";
+    document.getElementById("choix4comingsoon").style.display = "none";
 
     document.getElementById("c16cases").style.display = "block";
     document.getElementById("c26cases").style.display = "block";

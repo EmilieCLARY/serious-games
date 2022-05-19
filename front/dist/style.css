@@ -677,6 +677,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 5%;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-\[150px\] {
   height: 150px;
 }
@@ -829,13 +833,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(121 118 118 / var(--tw-border-opacity));
 }
 
+.border-white {
+  border-color: #FFFFFFFF;
+}
+
 .border-rougebouton {
   --tw-border-opacity: 1;
   border-color: rgb(102 5 3 / var(--tw-border-opacity));
-}
-
-.border-white {
-  border-color: #FFFFFFFF;
 }
 
 .border-fonce {
@@ -890,6 +894,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-darkfond {
   --tw-bg-opacity: 1;
   background-color: rgb(196 179 156 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
 }
 
 .p-5 {
@@ -1080,8 +1088,8 @@ body{
   font: Pixelise;
   letter-spacing: 20px;
   margin-bottom: 150px;
-  -webkit-animation: flash 1.2s linear infinite;
-  animation: flash 1.2s linear infinite;
+  -webkit-animation: flash 0.9s linear infinite;
+  animation: flash 0.9s linear infinite;
 }
 
 @-webkit-keyframes flash{
@@ -1153,21 +1161,6 @@ body{
   animation-delay: 0.7s;
 }
 
-.lettre:nth-child(8){
-  -webkit-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
-.lettre:nth-child(9){
-  -webkit-animation-delay: 0.9s;
-  animation-delay: 0.9s;
-}
-
-.lettre:nth-child(10){
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
 .fondu-out{
   opacity:0;
   transition: opacity 0,4s ease-out;
@@ -1223,7 +1216,7 @@ body{
 
 .Profilepicture {
   grid-area: 1 / 1 / 6 / 5;
-  background-image: url("../img/mainPage/gauge.png");
+  /*background-image: url("../img/mainPage/gauge.png");*/
   background-size : contain;
   background-repeat : no-repeat;
   background-position: left;
@@ -1546,7 +1539,7 @@ body{
 /*pop up message*/
 
 .popupMessenger{
-  grid-area: 2 / 2 / 12 / 7 ;
+  grid-area: 4 / 2 / 12 / 6 ;
 }
 
 .parentMessenger{
@@ -1559,7 +1552,7 @@ body{
 
 .messageEntrant{
   padding: 20px;
-  background-color: red;
+  background-color: #79bcde;
   margin: 5px;
   text-align: left;
   margin-right: 30%;
@@ -1568,7 +1561,7 @@ body{
 
 .messageSortant{
   padding: 20px;
-  background-color: green;
+  background-color: #9a9191;
   margin: 5px;
   text-align: right;
   margin-left: 30%;
@@ -1593,6 +1586,18 @@ body{
   background-size : contain;
   background-repeat : no-repeat;
   background-position: center;
+}
+
+.parentmodalquitter {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.boutonpourquitter {
+  grid-area: 5 / 4 / 10 / 18;
 }
 
 /* #######################################################################################################################
@@ -1673,6 +1678,10 @@ body{
 
 .div15fp h1{
   font-size: 65px;
+}
+
+.popupQuitter{
+  grid-area: 11 / 1 / 13 / 4;
 }
 
 .tortue{
@@ -1941,6 +1950,10 @@ body{
   background-size: contain;
   background-repeat: no-repeat;
   background-position : center;
+}
+
+.coming{
+  transform:rotate(-45deg);
 }
 
 .chiefs{

@@ -46,8 +46,8 @@ body{
     font: Pixelise;
     letter-spacing: 20px;
     margin-bottom: 150px;
-    -webkit-animation: flash 1.2s linear infinite;
-            animation: flash 1.2s linear infinite;
+    -webkit-animation: flash 0.9s linear infinite;
+            animation: flash 0.9s linear infinite;
 }
 
 @-webkit-keyframes flash{
@@ -108,18 +108,6 @@ body{
     -webkit-animation-delay: 0.7s;
             animation-delay: 0.7s;
 }
-.lettre:nth-child(8){
-    -webkit-animation-delay: 0.8s;
-            animation-delay: 0.8s;
-}
-.lettre:nth-child(9){
-    -webkit-animation-delay: 0.9s;
-            animation-delay: 0.9s;
-}
-.lettre:nth-child(10){
-    -webkit-animation-delay: 1s;
-            animation-delay: 1s;
-}
 
 .fondu-out{
     opacity:0;
@@ -171,7 +159,7 @@ body{
 .Player { grid-area: 1 / 5 / 6 / 11;}
 
 .Profilepicture { grid-area: 1 / 1 / 6 / 5; 
-    background-image: url("../img/mainPage/gauge.png");
+    /*background-image: url("../img/mainPage/gauge.png");*/
     background-size : contain;
     background-repeat : no-repeat;
     background-position: left;}
@@ -427,7 +415,7 @@ body{
         /*pop up message*/
 
         .popupMessenger{
-            grid-area: 2 / 2 / 12 / 7 ;
+            grid-area: 4 / 2 / 12 / 6 ;
         }
 
         .parentMessenger{
@@ -440,7 +428,7 @@ body{
 
         .messageEntrant{
             padding: 20px;
-            background-color: red;
+            background-color: #79bcde;
             margin: 5px;
             text-align: left;
             margin-right: 30%;
@@ -448,7 +436,7 @@ body{
         }
         .messageSortant{
             padding: 20px;
-            background-color: green;
+            background-color: #9a9191;
             margin: 5px;
             text-align: right;
             margin-left: 30%;
@@ -476,6 +464,15 @@ body{
         } 
 
 
+        .parentmodalquitter {
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+            
+        .boutonpourquitter { grid-area: 5 / 4 / 10 / 18; } 
 
     
 
@@ -522,6 +519,9 @@ body{
         font-size: 65px;
     }
     
+   .popupQuitter{
+    grid-area: 11 / 1 / 13 / 4;
+    }
 
     .tortue{
         background-image: url("../img/freeplay/turtle-saver.png" );
@@ -733,6 +733,10 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     background-position : center;
+}
+
+.coming{
+    transform:rotate(-45deg);
 }
 
 .chiefs{
@@ -1860,23 +1864,22 @@ body{
     grid-row-gap: 0px;
     }
     
-    .nom1 { grid-area: 2 / 2 / 7 / 6; }
-    .nom2 { grid-area: 2 / 7 / 7 / 11; }
-    .nom3 { grid-area: 2 / 12 / 7 / 16; }
-    .nom4 { grid-area: 2 / 17 / 7 / 21; }
-    .nom5 { grid-area: 2 / 22 / 7 / 26; }
-    .desc1 { grid-area: 8 / 2 / 11 / 6; }
-    .desc2 { grid-area: 8 / 7 / 11 / 11; }
-    .desc3 { grid-area: 8 / 12 / 11 / 16; }
-    .desc4 { grid-area: 8 / 17 / 11 / 21; }
-    .desc5 { grid-area: 8 / 22 / 11 / 26; } 
+.nom1 { grid-area: 2 / 2 / 7 / 6; }
+.nom2 { grid-area: 2 / 7 / 7 / 11; }
+.nom3 { grid-area: 2 / 12 / 7 / 16; }
+.nom4 { grid-area: 2 / 17 / 7 / 21; }
+.nom5 { grid-area: 2 / 22 / 7 / 26; }
+.desc1 { grid-area: 8 / 2 / 11 / 6; }
+.desc2 { grid-area: 8 / 7 / 11 / 11; }
+.desc3 { grid-area: 8 / 12 / 11 / 16; }
+.desc4 { grid-area: 8 / 17 / 11 / 21; }
+.desc5 { grid-area: 8 / 22 / 11 / 26; } 
+.ppalexis{
+    background-image: url("../img/characters/scientist/scientistLight.png" );background-size: contain;
+    background-repeat: no-repeat;
+    background-position : center;
+}
 
-    .ppalexis{
-        background-image: url("../img/characters/scientist/scientistLight.png" );background-size: contain;
-        background-repeat: no-repeat;
-        background-position : center;
-    }
-    
     .ppantoine{
         background-image: url("../img/characters/scientist/scientistLight.png" );background-size: contain;
         background-repeat: no-repeat;

@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="../dist/style.css">
     <title>Accueil</title>
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo/logo.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body class="h-screen border-rougeContour border-contourRouge bg-fondmain">
 
@@ -20,7 +22,7 @@
         </div>
           
         <div class="choiceMainAdventure bg-lightfond  my-2 mx-4 "> 
-            <a href="free-play.html">
+            <a href="/html/free-play.html">
             <div class="choiceModeDeJeu flex h-full items-center click w-full font-pixelise text-center">
               <span>
                 <h1 class="text-4xl"><strong>Free Play</strong></h1>
@@ -56,7 +58,7 @@
       
       
       </div>
-          
+      <script src="../js/modules/socketLoading.js"></script>
 </body>
   <script src="../js/accueil.js"></script>
 </html>

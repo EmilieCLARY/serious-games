@@ -60,6 +60,7 @@ var bigHeadGauge = 0;
 var userSponsors = [];
 var numberOfMalus;
 var mjPlayed = 0;
+var endOfGame = false;
 
 var postScore27 = 0;
 var gameScore16 = 0;
@@ -216,11 +217,44 @@ io.on('connection', (socket) => {
         let tmp = gameScore16 + postScore27;
         socket.emit("theFinalScore", tmp, mjPlayed);
     });
+
+    socket.on('resetGame', () => {
+        userName;
+        userJob;
+        userAppearance;
+        treesPlanted = 0;
+        userTreesToPlant = 0;
+        userPosts = [];
+        nextText = 1;
+        userFollowers = 0;
+        followersPerSecond = 1;
+        bigHeadGauge = 0;
+        userSponsors = [];
+        numberOfMalus;
+        mjPlayed = 0;
+        endOfGame = false;
+
+        postScore27 = 0;
+        gameScore16 = 0;
+
+        bool10 = false;
+        bool100 = false;
+        bool1000 = false;
+        bool5000 = false;
+        bool20000 = false;
+        bool50000 = false;
+        bool100000 = false;
+        bool200000 = false;
+        bool500000 = false;
+        bool1000000 = false;
+
+        console.log('Reset parameters');
+    })
 });
 
 
-http.listen(4300, () => {
-    console.log('Serveur lancé sur le port 4300');
+http.listen(4800, () => {
+    console.log('Serveur lancé sur le port 4800');
 });
 
 function updateTreesToPlant(fol){

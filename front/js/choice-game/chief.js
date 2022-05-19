@@ -1129,7 +1129,7 @@ const textNodes = [
     },
     {
         id: 7,
-        text: 'Hello there, I am back !\n It was a good choice, tasteful food and good for one\'s health !\n Congratulation !',
+        text: 'Hello there, I am back !\n It was a good choice, tasteful food and good for one\'s health !\n Congratulations !',
         options: [
             {
                 text: 'Thank you, I\'m ready to go next !',
@@ -1460,7 +1460,7 @@ const textNodes = [
     },
     {
         id: 24,
-        text: 'Hi ! It\'s me again ! You did a really great job, sensibilize everyone about this cause is really good !',
+        text: 'Hi ! It\'s me again ! You did a really great job, sensibilizing everyone about this cause is really good !',
         options: [
             {
                 text: 'Let\'s go next !',
@@ -1496,7 +1496,7 @@ const textNodes = [
     },
     {
         id: 27,
-        text: 'As today is the world ocean day, you could help association to collect plastic trash from the ocean ! Did you know that globally it\'s estimated that approximately 52% of all sea turtles have eaten plastic ? Let\'s counter this !',
+        text: 'As today is the world ocean day, you could help association to collect plastic trash from the ocean ! Did you know that globally it\'s estimated that approximately 52% of all sea turtles have eaten plastic ? You\'re able to help them ! Pick up the plastic and take it to the boat before turtle eats it ! Let\'s counter this !',
         options: [
             {
                 text: 'Let\s save the turtle !',
@@ -1640,7 +1640,7 @@ const textNodes = [
                 bh : 10,
                 nextText: 36,
                 mj : 0,
-                image : '../img/characters/sportif/posts/localFood.png',
+                image : '../img/characters/chief/posts/localFood.png',
                 appearance : false,
                 score : 3
             }

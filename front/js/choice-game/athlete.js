@@ -1136,7 +1136,7 @@ const textNodes = [
     },
     {
         id: 7,
-        text: 'Good morning say it back !\n I may have already said it but you need to be kind and cool with your followers ! They\'re here to progress or just to chill.\n You just gained BigHead.',
+        text: 'Hi there !\n I may have already said it but you need to be kind and cool with your followers ! They\'re here to progress or just to chill.\n You just gained BigHead.',
         options: [
             {
                 text: 'I\'ll try to be better next time, I\'m ready to go next !',
@@ -1395,7 +1395,7 @@ const textNodes = [
     },
     {
         id: 18,
-        text: 'Hello ! I\'m back again. You have made the good choice ! Your community will be interested in this type of sponsor because it\'s related to your main activity.',
+        text: 'Hello ! I\'m back again. You have made the right choice ! Your community will be interested in this type of sponsor because it\'s related to your main activity.',
         options: [
             {
                 text: 'Thank you, I\'m ready to go next !',
@@ -1407,7 +1407,7 @@ const textNodes = [
     },
     {
         id: 19,
-        text: 'You just scored first at a major event ! Congratulation ! Now you have to tell it to your followers, choose your way to do it !',
+        text: 'You just scored first at a major event ! Congratulations ! Now you have to tell it to your followers, choose your way to do it !',
         options: [
             {
                 // PHOTO EQUIPE PODIUM
