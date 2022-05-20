@@ -6,4 +6,4 @@ document.getElementById("gocredits2").addEventListener("click", event => {
     window.location.href = "../html/credits.html";
 });
 
-//socket.emit('resetGame');
+socket.emit('resetGame');

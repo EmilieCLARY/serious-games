@@ -225,9 +225,9 @@ io.on('connection', (socket) => {
     });
 
     socket.on('resetGame', () => {
-        userName;
-        userJob;
-        userAppearance;
+        userName = undefined;
+        userJob = undefined;
+        userAppearance = undefined;
         treesPlanted = 0;
         userTreesToPlant = 0;
         userPosts = [];
@@ -236,9 +236,10 @@ io.on('connection', (socket) => {
         followersPerSecond = 1;
         bigHeadGauge = 0;
         userSponsors = [];
-        numberOfMalus;
+        numberOfMalus = undefined;
         mjPlayed = 0;
         endOfGame = false;
+        mapTree = undefined;
 
         postScore27 = 0;
         gameScore16 = 0;
@@ -259,8 +260,8 @@ io.on('connection', (socket) => {
 });
 
 
-http.listen(4800, () => {
-    console.log('Serveur lancé sur le port 4800');
+http.listen(4300, () => {
+    console.log('Serveur lancé sur le port 4300');
 });
 
 function updateTreesToPlant(fol){
