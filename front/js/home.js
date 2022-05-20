@@ -392,7 +392,7 @@ socket.on('newPosts', (postList) => {
                 case 5:
                     document.getElementById("btnpost" + tmp).style.display = 'block';
                     document.getElementById("btnpost" + tmp).style.backgroundImage = 'url("'+postList[i].img+'YW.png")';
-                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'YM.png")';
+                    document.getElementById("popuppost").style.backgroundImage = 'url("'+postList[i].img+'YW.png")';
                     break;
                                 
                 default:
@@ -628,7 +628,7 @@ function popupWatiTropBO(number){
                 document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'BW.png")';
                 break;
             case 5:
-                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'YM.png")';
+                document.getElementById("popuppost").style.backgroundImage = 'url("'+postListDansLaPage[postListDansLaPage.length - number].img+'YW.png")';
                 break;
                             
             default:
@@ -748,6 +748,7 @@ document.getElementById("mailBtn").addEventListener("click", event => {
             rnd = Math.floor(Math.random() * dmTab.length);
             var div = document.createElement("div");
             div.classList.add('messageEntrant');
+            div.classList.add('font-pixelise');
             div.textContent = dmTab[rnd][0];
             dmPage.appendChild(div);
             P1.textContent = dmTab[rnd][1][0];
@@ -792,6 +793,7 @@ document.getElementById("btnEnvoyerMessage").addEventListener("click", event => 
     //alert(messageSelected);
     var div = document.createElement("div");
     div.classList.add('messageSortant');
+    div.classList.add('font-pixelise');
     if(messageSelected == 1){
         div.textContent = dmTab[rnd][1][0];
         dmPage.appendChild(div);
@@ -810,6 +812,7 @@ document.getElementById("btnEnvoyerMessage").addEventListener("click", event => 
     let tmp = setTimeout(() => {
         let div = document.createElement("div");
         div.classList.add('messageEntrant');
+        div.classList.add('font-pixelise');
         if(messageSelected == 1){
             div.textContent = dmTab[rnd][1][1];
             dmPage.appendChild(div);

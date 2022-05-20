@@ -1768,7 +1768,7 @@ const textNodes = [
         text: 'So you\'ve finished our game. I hope you enjoyed it !\n If you want to play again to all our minigames you can choose "Freeplay" on the main page !\n Goodluck in your next adventure ! And don\'t forget to give us a point !',
         options: [
             {
-                text: 'Thank you MacLesgo !',
+                text: 'Thank you McLesgo !',
                 nextText: 43,
                 goBackToHome : true,
                 mj : 0

@@ -1644,7 +1644,7 @@ const textNodes = [
     },
     {
         id: 81,
-        text: 'Do you know that Decath\'Court is engaged in reducing their environemental impact ? Speaking of environment : I have a new challenge for you ! You\'ll be teleported in a maze. There you will have to collect all the barrels you find before they poison the forest. \nGood luck !',
+        text: 'Do you know that Decathcour is engaged in reducing their environemental impact ? Speaking of environment : I have a new challenge for you ! You\'ll be teleported in a maze. There you will have to collect all the barrels you find before they poison the forest. \nGood luck !',
         options: [
             {
                 text: 'Let\'s go !',
@@ -1905,7 +1905,7 @@ const textNodes = [
         text: 'So you\'ve finished our game. I hope you enjoyed it !\n If you want to play again to all our minigames you can choose "Freeplay" on the main page !\n Goodluck in your next adventure ! And don\'t forget to give us a point !',
         options: [
             {
-                text: 'Thank you MacLesgo !',
+                text: 'Thank you McLesgo !',
                 nextText: 43,
                 goBackToHome : true,
                 mj : 0

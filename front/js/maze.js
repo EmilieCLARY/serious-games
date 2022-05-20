@@ -329,26 +329,51 @@ function update (time, delta)
 
     if (this.cursors.left.isDown){
 
-        this.player.setVelocityX(-400);
+        this.player.setVelocityX(-300);
         this.player.flipX = true;
         this.player.anims.play('walkRight', true);
 
     }
     else if (this.cursors.right.isDown){
-        this.player.setVelocityX(400);
+        this.player.setVelocityX(300);
         this.player.flipX = false;
         this.player.anims.play('walkRight', true);
     }
-    if (this.cursors.up.isDown){
-        this.player.setVelocityY(-400);
+    if (this.cursors.up.isDown && !this.cursors.left.isDown && !this.cursors.right.isDown){
+        this.player.setVelocityY(-300);
         this.player.flipX = false;
         this.player.anims.play('walkTop', true);
     }
-    else if (this.cursors.down.isDown){
-        this.player.setVelocityY(400);
+    else if (this.cursors.down.isDown && !this.cursors.right.isDown && !this.cursors.left.isDown){
+        this.player.setVelocityY(300);
 
         this.player.flipX = false;
         this.player.anims.play('walk', true);
+    }
+
+    if ((this.cursors.up.isDown && this.cursors.left.isDown)){
+        this.player.setVelocityY(-200);
+        this.player.setVelocityX(-200);
+        this.player.flipX = true;
+        this.player.anims.play('walkRight', true);
+    }
+    else if((this.cursors.up.isDown && this.cursors.right.isDown)){
+        this.player.setVelocityY(-200);
+        this.player.setVelocityX(200);
+        this.player.flipX = false;
+        this.player.anims.play('walkRight', true);
+    }
+    else if ((this.cursors.down.isDown && this.cursors.left.isDown)){
+        this.player.setVelocityY(200);
+        this.player.setVelocityX(-200);
+        this.player.flipX = true;
+        this.player.anims.play('walkRight', true);
+    }
+    else if((this.cursors.down.isDown && this.cursors.right.isDown)){
+        this.player.setVelocityY(200);
+        this.player.setVelocityX(200);
+        this.player.flipX = false;
+        this.player.anims.play('walkRight', true);
     }
 
     for(let i = 0; i < barrel.length; i++){
