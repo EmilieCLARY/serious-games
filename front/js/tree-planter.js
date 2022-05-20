@@ -16,15 +16,17 @@ var config = {
     parent: 'treePlanter'
 };
 
-var game = new Phaser.Game(config);
+var game;
 
 // TIME IN SECONDS
 var timeToPlay = 12000;
 var treesToPlant;
+var treesAlreadyPlanted;
 
 socket.emit('getTreesToPlant');
-socket.on('newTreesToPlant', (nb) => {
+socket.on('newTreesToPlant', (nb, nb2) => {
     treesToPlant = nb;
+    treesAlreadyPlanted = nb2;
 });
 
 var cursor;
@@ -37,7 +39,8 @@ var arrow;
 var mapHeight = 36;
 var mapWidth = 70;
 var gridSize = 40;
-var map = new Array(mapWidth);
+var map;
+var mapTreeWasDefined = false;
 
 var arbre;
 var tabTree = [];
@@ -60,18 +63,28 @@ var arrose;
 
 var pointJoueur;
 
-
-for(let i = 0; i < mapHeight; i++){
-    map[i] = new Array(mapWidth);
-}
-
-for(let j = 0; j < mapHeight; j++){
-    for(let k = 0; k < mapWidth; k++){
-        map[j][k] = 0;
+socket.emit('getMapTree');
+socket.on('theTreesMap', (mapTree) => {
+    console.log("oui");
+    if(mapTree != undefined){
+        map = mapTree;
+        mapTreeWasDefined = true;
     }
-}
-
-chemins();
+    else{
+        map = new Array(mapWidth)
+        for(let i = 0; i < mapHeight; i++){
+            map[i] = new Array(mapWidth);
+        }
+        
+        for(let j = 0; j < mapHeight; j++){
+            for(let k = 0; k < mapWidth; k++){
+                map[j][k] = 0;
+            }
+        }
+        chemins();
+    }
+    game = new Phaser.Game(config);
+});
 
 
 
@@ -122,23 +135,35 @@ function create ()
     //let PosX = 120;
     //let PosY = 220;
 //
-    let tmpCounter = 0;
-    for(let i = 0; i < mapHeight; i++){
-        for(let j = 0; j < mapWidth; j++){
-            if(map[i][j] == 0){
-                //this.add.image(PosX, PosY, "vert").setScale(4);
-                tmpCounter++;
-            }
+    //let tmpCounter = 0;
+    //for(let i = 0; i < mapHeight; i++){
+        //for(let j = 0; j < mapWidth; j++){
+            //if(map[i][j] == 0){
+            //    //this.add.image(PosX, PosY, "vert").setScale(4);
+            //    tmpCounter++;
+            //}
             //this.add.text(PosX, PosY, j, {
             //    fontSize: '13px',
             //    fill: '#000000'
             //});
             //PosX += 40
-        }
+        //}
     //    PosX = 120;
     //    PosY += 40;
+    //}
+    //console.log(tmpCounter / 2)
+
+    if(mapTreeWasDefined == true){
+        for(let i = 0; i < mapHeight; i++){
+            for(let j = 0; j < mapWidth; j++){
+                let PosX = j * 40 + 120;
+                let PosY = i * 40 + 220;
+                if(map[i][j] == 7){
+                    this.add.sprite(PosX, PosY, "grand").setScale(0.14);
+                }
+            }
+        }
     }
-    console.log(tmpCounter / 2)
 
     this.player = this.physics.add.sprite(300, 200, 'player').setCollideWorldBounds(true);
     this.player.setScale(0.15);
@@ -169,14 +194,49 @@ function create ()
 
     //this.add.grid(100, 50, mapWidth * gridSize, mapHeight * gridSize, gridSize, 0x999999, 1, 0x666666).setOrigin(0);
    
-    arbre = this.add.sprite(120, 220, "trigger").setScale(0.07);
+    /*arbre = this.add.sprite(120, 220, "trigger").setScale(0.07);
     let array = [arbre, 0, 0];
     tabTree.push(array);
     map[0][0] = 1;
     newTreeeeeee = false;
 
     nextXpx = 120 + 40;
-    nextYpx = 220 + 40;
+    nextYpx = 220 + 40;*/
+    let posPlayerY = Math.round((this.player.x-120) / 40);
+        let posPlayerX = Math.round((this.player.y-220) / 40);
+
+        let maxX = posPlayerX + 10;
+        if(maxX >= 36) maxX = 35;
+        let minX = posPlayerX - 10;
+        if(minX < 0) minX = 0;
+        let maxY = posPlayerY + 10;
+        if(maxY >= 70) maxY = 69;
+        let minY = posPlayerY - 10;
+        if(minY < 0) minY = 0;
+
+        //console.log(minX, maxX, minY, maxY);
+
+        let positionX = Phaser.Math.Between(minX, maxX);
+        let positionY = Phaser.Math.Between(minY, maxY);
+
+        console.log(positionX, positionY);
+
+        while(map[positionX][positionY] != 0 || (positionX - 1 >= 0 && map[positionX-1][positionY] > 0) || (positionX+1 < 36 && map[positionX+1][positionY] > 0) || (positionY - 1 >= 0 && map[positionX][positionY-1] > 0) || (positionY + 1 < 70 && map[positionX][positionY+1] > 0)){
+
+            positionX = Phaser.Math.Between(minX, maxX);
+            positionY = Phaser.Math.Between(minY, maxY);
+            console.log("Reroll : ", positionX, positionY);
+        }   
+        
+        let tree = this.add.sprite(positionY * 40 + 120, positionX * 40 + 220, "trigger").setScale(0.07);
+        let array = [tree, positionX, positionY];
+        tabTree.push(array);
+        map[positionX][positionY] = 1;
+
+        nextXpx = positionY * 40 + 120 + 40;
+        nextYpx = positionX * 40 + 220 + 40;
+
+        newTreeeeeee = false;
 
     /********************************/
     /*                              */
@@ -404,7 +464,7 @@ function update (time, delta)
 
     //console.log(countTrees()[0] + countTrees()[1], treesToPlant);
 
-    if(newTreeeeeee === true && ((countTrees()[0] + countTrees()[1]) < treesToPlant)){
+    if(newTreeeeeee === true && ((countTrees()[0] + countTrees()[1]) < treesToPlant + treesAlreadyPlanted)){
 
         let posPlayerY = Math.round((this.player.x-120) / 40);
         let posPlayerX = Math.round((this.player.y-220) / 40);
@@ -481,16 +541,21 @@ function update (time, delta)
         '\nTrees planted : ' + treeFull
     );
 
-    let tmpLUL = treesToPlant - treeFull;
+    let tmpLUL = treesToPlant + treesAlreadyPlanted - treeFull;
     textTime.setText('Trees to plant : ' + tmpLUL);
 
     if(tmpLUL == 0){
         document.getElementById("modalendtree").style.display = "block";
         document.getElementById("leBeauBouton").addEventListener("click", event => {
-            socket.emit('treesPlanted', countTrees()[0]);
+            socket.emit('treesPlanted', countTrees()[0], tmpLUL, map);
             window.location.href = "../html/home.html";
         });
     }
+
+    //document.getElementById("leBouton").addEventListener("click", event => {
+    //    socket.emit('treesPlanted', countTrees()[0], tmpLUL, map);
+    //    window.location.href = "../html/home.html";
+    //});
 
      /********************************/
     /*                              */
@@ -534,11 +599,6 @@ function update (time, delta)
     this.minimap.ignore(textTime);
     this.minimap.ignore(arrow);
 }
-
-document.getElementById("leBouton").addEventListener("click", event => {
-    socket.emit('treesPlanted', countTrees()[0]);
-    window.location.href = "../html/home.html";
-});
 
 function countTrees(){
     let tmp = 0;

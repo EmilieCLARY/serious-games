@@ -61,6 +61,7 @@ var userSponsors = [];
 var numberOfMalus;
 var mjPlayed = 0;
 var endOfGame = false;
+var mapTree;
 
 var postScore27 = 0;
 var gameScore16 = 0;
@@ -92,11 +93,16 @@ io.on('connection', (socket) => {
         console.log(userAppearance);
     });
 
-    socket.on('treesPlanted', (trees) => {
+    socket.on('treesPlanted', (trees, treeRemaining, map) => {
         treesPlanted = trees;
-        userTreesToPlant -= trees;
+        userTreesToPlant = treeRemaining;
+        mapTree = map;
         console.log("TreesPlanted : ", treesPlanted);
         console.log("Trees to plant : ", treesPlanted);
+    });
+
+    socket.on('getMapTree', () => {
+        socket.emit('theTreesMap', mapTree);
     });
 
     socket.on('username', (name) => {
@@ -171,7 +177,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('getTreesToPlant', () => {
-        socket.emit('newTreesToPlant', userTreesToPlant);
+        socket.emit('newTreesToPlant', userTreesToPlant, treesPlanted);
     });
     
     socket.on("newSponsor", (sponsor) => {
@@ -195,7 +201,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on("lessTreesPlanted", (number) => {
-        treesPlanted += number;
+        treesPlanted -= number;
         console.log("Perte de", number, "arbres");
     });
 
