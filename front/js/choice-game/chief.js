@@ -1170,7 +1170,7 @@ const textNodes = [
         options: [
             {
                 // Nickel
-                text: 'Hi everyone ! I thought that it\'d be useful for you to learn how to cook great crepes ! By the way in this recipe I used ',
+                text: 'Hi everyone ! I thought that it\'d be useful for you to learn how to cook great crepes ! Be careful some ingredients aren\'t good for your health. Consume them with moderation !',
                 commentaries : ['Thanks for the recipe ! I\'ll use it soon !', 'I\'ll try it !'],
                 fol : [3000, 5000],
                 folPS : 20,
@@ -1182,7 +1182,7 @@ const textNodes = [
             },
             {
                 // Pas trop d'infos
-                text: 'Hi everyone ! I thought that it\'d be useful for you to learn how to cook great crepes ! By the way in this recipe I used ',
+                text: 'Hi everyone ! I thought that it\'d be useful for you to learn how to cook great crepes ! Ingredients are good, enjoy !',
                 commentaries : ['Thanks for the recipe ! I\'ll use it soon !', 'I\'ll try it !'],
                 fol : [800, 1500],
                 folPS : 10,
@@ -1194,7 +1194,7 @@ const textNodes = [
             },
             {
                 // Information fausse
-                text: 'Hi everyone ! I thought that it\'d be useful for you to learn how to cook great crepes ! By the way in this recipe I used ',
+                text: 'Hi everyone ! I thought that it\'d be useful for you to learn how to cook great crepes ! Butter and sugar are some healthy ingredients. You can eat a lot of crepes ! Enjoy your meal !',
                 commentaries : ['Thanks for the recipe ! I\'ll use it soon !', 'I\'ll try it !'],
                 fol : [600, 1000],
                 folPS : 8,
@@ -1249,7 +1249,7 @@ const textNodes = [
             {
                 text: 'I\'m ready',
                 nextText: 15,
-                goBackToHome : true,
+                goBackToHome : false,
                 mj : 4
             },
         ]

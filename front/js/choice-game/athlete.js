@@ -1083,7 +1083,7 @@ const textNodes = [
     },
     {
         id: 5,
-        text: 'Hi I\'m back ! I just wanted to give you some insights about your new job ! You\'ll be redirected to your main page. Here you\'ll see all indicators needed to build an "ethical network".',
+        text: 'I just wanted to give you some insights about your new job ! You\'ll be redirected to your main page. Here you\'ll see all indicators needed to build an "ethical network".',
         options: [
             {
                 text: 'Thanks for the advice, go next !',

@@ -830,13 +830,13 @@ document.getElementById("btnEnvoyerMessage").addEventListener("click", event => 
 var dmTab = [];
 var dm = [];
 dmTab.push(["Hi ! I love your account ! Would you make other posts ?", 
-    ["Thanks a lot, yes I would !", "Nice I can't stand to see them !", 
-    "Yes don't worry posts are coming", "Nice I can't stand to see them !",
+    ["Thanks a lot, yes I would !", "Nice I can't wait to see them !", 
+    "Yes don't worry posts are coming", "Nice I can't wait to see them !",
     "No my account will stop :(", "Oh I'm so sad :/"]]);
-dmTab.push(["Hello ! Your account is very fun ! Do you have some sponsors ?", 
+dmTab.push(["Hello ! Your account is very fun ! Do you have any sponsor ?", 
     ["Thanks a lot, yes I have some sponsors look on the right side of my profile page !", "Nice I have never seen them !", 
-    "I'm working to have some sponsors !", "Ok ! Sport sponsor would be cool !",
-    "It's very complicated to have a sponsor feeting with me ! Checkout the right side of my profile page to see them", "Ok ! I know how it's important for you ! Good luck in your carreer !"]]);
+    "I'm working to have some sponsors !", "Ok ! Sport related sponsor would be cool !",
+    "It's very complicated to have a sponsor fitting with me ! Checkout the right side of my profile page to see them", "Ok ! I know how it's important for you ! Good luck in your carreer !"]]);
 dmTab.push(["Hi ! Your account is great ! What is your followers objective ?", 
     ["Thanks a lot, I don't have any objectives of followers ! People who likes my account follow me and that's all", "Very good mindset ! You will be famous", 
     "Thank you ! My followers objective is to have the maximum of followers to get a lot of money !!", "Hum... Ok.",
