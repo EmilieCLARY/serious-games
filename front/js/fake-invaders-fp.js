@@ -184,6 +184,7 @@ function update (time, delta)
             fakeTab[i].destroy();
             soundLife.play();
             lifeLess();
+            ennemyDestroyed++;
         }, null, this);
     }
 
